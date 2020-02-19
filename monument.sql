@@ -16,7 +16,8 @@ CREATE TABLE FindSpot (
 
 INSERT INTO FindSpot (FindSpotID, Province,   Settlement, SpecificLocation, LONG,       LAT)
      VALUES          (1,          'Dalmatia', 'Iader',    null,             15.2313648, 44.119371),
-                     (2,          'Dalmatia', 'Aequum',   null,             16.655704,  43.739278);
+                     (2,          'Dalmatia', 'Aequum',   null,             16.655704,  43.739278),
+										 (3,          'Dalmatia', 'Salona', 'Grad Diokletianpalast Mausoleum', 16.44032121, 43.50811796);
 
 SELECT Settlement
   FROM FindSpot
