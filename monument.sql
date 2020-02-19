@@ -52,8 +52,8 @@ INSERT INTO Monument (MonumentID, FindSpotID, FirstPublicationCitation, DateFoun
                     																																								 null,        null,             null,            null,           18,       19,     null,     null,     null,       null),
                      (2,          2,          null,                     null,      null,                   null,         null,           null,                null,     'Sex(tus) Iu[lius Sex(ti) f(ilius)] / Ani(ensi) Silva[nus Foro Iulii] / summus c[urat(or) c(ivium) R(omanorum) prov(inciae) Dalm(atiae)] / suffragio [eorum factus vet(eranus?)] / leg(ionis) VII C(laudiae) P(iae) F(idelis) aed[ilis col(oniae) Claudiae Aequi ab] / ordine primus [post col(oniam) ded(uctam) creatus] / IIIIvir i(ure) d(icundo) pont(ifex) [in col(onia?) Salona(?) 3] / in ag[ro] p(edes) [3] / h(oc) s(epulcrum) h(eredem) [n(on) s(equetur)]',
                                                                                                                                                                                      null,        null,             null,            null,           18,       19,     null,     null,     null,       null);
-                    
-      
+
+
 
 
 CREATE TABLE MonumentMilitaryOffice (
@@ -108,7 +108,7 @@ SELECT * FROM PrimaryCorpus where MonumentID IN (1,2);
 DROP VIEW IF EXISTS AllCorpora;
 CREATE VIEW AllCorpora as
 SELECT MonumentID, CIL, Tončinić, Betz, ILJug, OtherDB
-  FROM (SELECT MonumentID 
+  FROM (SELECT MonumentID
           FROM Monument)
   LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' - ') as CIL
         			 FROM MonumentCorpus
@@ -130,5 +130,5 @@ SELECT MonumentID, CIL, Tončinić, Betz, ILJug, OtherDB
         			 FROM MonumentCorpus
         			 WHERE CorpusName = 'Other DB'
         			 GROUP BY MonumentID) as OtherDBtable USING (MonumentID);
-.mode lines
+
 SELECT * FROM AllCorpora;
