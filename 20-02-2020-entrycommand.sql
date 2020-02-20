@@ -21,17 +21,10 @@ INSERT INTO FindSpot (FindSpotID, Province,   Settlement, SpecificLocation, LONG
 										 (4,          'Dalmatia', 'Aequum',  'Majstorovici',null,null),
 										 (5, 					'Dalmatia', 'Tilurium','Vojnić',null,null),
 										 (6,          'Dalmatia', 'Tilurium',null,16.729321,  43.607338),
-										 (7,          'Dalmatia', null,null,null,null),
+										 (7,          'Dalmatia',null,null,null,null),
 										 (8,          'Dalmatia', 'Salona',  'NthNecropolis',null,null),
 										 (9,          'Dalmatia', 'Salona',  'EastNecropolis',null,null),
-										 (10,         'Dalmatia','Iader','Filippi-house', null, null),
-                     (11,         'Dalmatia','Salona',null,null,null),
-                     (12,         'Dalmatia','Bigeste-Ljubuški','Filovača',null,null),
-                     (13,         'Dalmatia','Tilurium','Gardun house',null,null),
-                     (14,         'Dalmatia','Iader','Church of st Michael',null,null),
-                     (15,         'Dalmatia','Narona','Vid-Metković',17.62464523, 43.08130155),
-                     (16,         'Dalmatia','Solin',null,null,null),
-                     (17,         'Thracia','Lysimachia',null,26.75081, 40.548232);
+										 (10,         'Dalmatia', 'Tilurium',null,null,null);
 
 SELECT Settlement
   FROM FindSpot
@@ -63,10 +56,10 @@ CREATE TABLE Monument (
 );
 
 INSERT INTO Monument (MonumentID, FindSpotID, FirstPublicationCitation, DateFound, DateFoundPrecisionNote, MonumentType, MilitaryStatus, MemberSeventhLegion, CPFTitle, Inscription, Translation, DoorMotifPresent, PortraitPresent, WeaponsPresent, DateFrom, DateTo, DateNote, Location, StelaeType, Note)
-      VALUES         (1,          1,          null,                     null,      null,                   'construction dedication',         null,           'yes',                'no',     'Ti(berius) Caesar divi Aug(usti) f(ilius) / Augustus imp(erator) pontif(ex) max(imus) / trib(unicia) potest(ate) XX co(n)s(ul) III / leg(io) VII leg(io) XI / P(ublio) Cornelio Dolabella / leg(ato) pr(o) pr(aetore)',
-                    																																								 null,        'no',             'no',            null,           18,       19,     null,     null,     null,       null),
-                     (2,          2,          null,                     null,      null,                   'stela',         'veteran',           'yes',                'cpf',     'Sex(tus) Iu[lius Sex(ti) f(ilius)] / Ani(ensi) Silva[nus Foro Iulii] / summus c[urat(or) c(ivium) R(omanorum) prov(inciae) Dalm(atiae)] / suffragio [eorum factus vet(eranus?)] / leg(ionis) VII C(laudiae) P(iae) F(idelis) aed[ilis col(oniae) Claudiae Aequi ab] / ordine primus [post col(oniam) ded(uctam) creatus] / IIIIvir i(ure) d(icundo) pont(ifex) [in col(onia?) Salona(?) 3] / in ag[ro] p(edes) [3] / h(oc) s(epulcrum) h(eredem) [n(on) s(equetur)]',
-                                                                                                                                                                                     null,        null,             null,            null,           42,       42,     null,     null,     null,       'Shows Legio VII vexilations working on demarcations/splitting up of the land in the hinterland of Dal. e.g., peacetime activities');
+      VALUES         (1,          1,          null,                     null,      null,                   null,         null,           null,                null,     'Ti(berius) Caesar divi Aug(usti) f(ilius) / Augustus imp(erator) pontif(ex) max(imus) / trib(unicia) potest(ate) XX co(n)s(ul) III / leg(io) VII leg(io) XI / P(ublio) Cornelio Dolabella / leg(ato) pr(o) pr(aetore)',
+                    																																								 null,        null,             null,            null,           18,       19,     null,     null,     null,       null),
+                     (2,          2,          null,                     null,      null,                   null,         null,           null,                null,     'Sex(tus) Iu[lius Sex(ti) f(ilius)] / Ani(ensi) Silva[nus Foro Iulii] / summus c[urat(or) c(ivium) R(omanorum) prov(inciae) Dalm(atiae)] / suffragio [eorum factus vet(eranus?)] / leg(ionis) VII C(laudiae) P(iae) F(idelis) aed[ilis col(oniae) Claudiae Aequi ab] / ordine primus [post col(oniam) ded(uctam) creatus] / IIIIvir i(ure) d(icundo) pont(ifex) [in col(onia?) Salona(?) 3] / in ag[ro] p(edes) [3] / h(oc) s(epulcrum) h(eredem) [n(on) s(equetur)]',
+                                                                                                                                                                                     null,        null,             null,            null,           18,       19,     null,     null,     null,       null);
 
 
 
@@ -78,8 +71,7 @@ CREATE TABLE MonumentMilitaryOffice (
 );
 
 INSERT INTO MonumentMilitaryOffice (MonumentID, OfficeType)
-     VALUES                        (1,          'Milites'),
-		                               (2,          'Milites');
+     VALUES                        (2,          'Milites');
 
 
 CREATE TABLE Corpus (
@@ -105,10 +97,10 @@ CREATE TABLE MonumentCorpus (
 INSERT INTO MonumentCorpus (MonumentID,  CorpusName,  Reference,   isPrimaryReference)
      VALUES                (1,           'CIL',       '03, 02908', true),  --isPrimaryReference indicates which corpus appears in the "primary corpus" by setting it to be true. Otherwise, null is mostly hiddenish.
                            (1,           'Tončinić',  '92',        null),
-													 (1,           'Betz',     '1 i 84',     null),
-                           (2,           'Tončinić',  '73',        null),
-                           (2,           'CIL',       '03, 02733', true),
-													 (2,           'Betz',     '72',         null)
+                           (2,           'Tončinić',  '73',        true),
+                           (2,           'Tončinić',  'error',     null),
+                           (2,           'Other DB',  'EDCS-54900234',     null),
+                           (2,           'Other DB',  'SanaderTončinić2013',     null)
      ;
 
 DROP VIEW IF EXISTS PrimaryCorpus;
