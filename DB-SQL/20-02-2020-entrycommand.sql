@@ -24,7 +24,13 @@ INSERT INTO FindSpot (FindSpotID, Province,   Settlement, SpecificLocation, LONG
 										 (7,          'Dalmatia',null,null,null,null),
 										 (8,          'Dalmatia', 'Salona',  'NthNecropolis',null,null),
 										 (9,          'Dalmatia', 'Salona',  'EastNecropolis',null,null),
-										 (10,         'Dalmatia', 'Tilurium',null,null,null);
+										 (10,         'Dalmatia', 'Tilurium',null,null,null),
+										 (11,         'Dalmatia', 'Salona'  ,null,null,null),
+										 (12,         'Dalmatia','Bigeste-Ljubuški','Filovača',null,null),
+										 (13,         'Dalmatia','Tilurium','Gardun house',null,null),
+										 (14,         'Dalmatia','Iader','Church of st Michael',null,null),
+										 (15,         'Dalmatia','Narona','Vid-Metković',17.62464523,43.08130155)
+										 ;
 
 SELECT Settlement
   FROM FindSpot
