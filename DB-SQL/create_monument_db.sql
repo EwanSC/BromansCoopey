@@ -59,7 +59,9 @@ INSERT INTO FindSpot (FindSpotID, Province,   Settlement, SpecificLocation, LONG
 										 (42,         'Galatia','Iconium','near Antiochia Pisidiae', null, null),
                      (43,         'Dalmatia','Tragurium', null, null, null),
                      (44,         'Dalmatia','Burnum', null, null, null),
-                     (45,         'Dalmatia','Klis','EastNecropolis originally?', null, null);
+                     (45,         'Dalmatia','Klis','EastNecropolis originally?', null, null),
+										 (46,         'Dalmatia','Tragurium','Seget Donji', null, null),
+										 (47,         'Dalmatia','Andetrium','Gornji Postinje', null, null);
 
 SELECT Settlement
   FROM FindSpot
@@ -154,16 +156,14 @@ CREATE TABLE MonumentCorpus (
 	isPrimaryReference BOOLEAN
 );
 -- -- monumentcorpusID is an autonum we don't care about, so we won't write it. Let the database take care of things.
--- INSERT INTO MonumentCorpus (MonumentID,  CorpusName,  Reference,   isPrimaryReference)
---      VALUES                (1,           'CIL',       '03, 02908', 1),  --isPrimaryReference indicates which corpus appears in the "primary corpus" by setting it to be true. Otherwise, null is mostly hiddenish.
---                            (1,           'Tončinić',  '92',        null),
--- 													 (1,           'Betz',     '1 i 84',     null),
---                            (2,           'Tončinić',  '73',        null),
---                            (2,           'CIL',       '03, 02733', 1),
--- 													 (2,           'Betz',     '72',         null)
---      ;
+--(MonumentID,  CorpusName,  Reference,   isPrimaryReference)
+-- below is the import code for automatic .csv importing, it needs to be worked on.
 
+--.mode csv--
 
+--.import ../monument-spreadsheet.csv Monument
+
+--UPDATE MonumentCorpus SET isPrimaryReference = NULL WHERE isPrimaryReference = '';
 
 DROP VIEW IF EXISTS PrimaryCorpus;
 CREATE VIEW PrimaryCorpus as
