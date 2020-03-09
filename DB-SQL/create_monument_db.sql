@@ -100,7 +100,26 @@ CREATE TABLE Monument (
 
 .import ../monument-spreadsheet.csv Monument
 
+UPDATE monument SET MonumentID = NULL WHERE MonumentID = '';
+UPDATE monument SET FindSpotID = NULL WHERE FindSpotID = '';
 UPDATE monument SET FirstPublicationCitation = NULL WHERE FirstPublicationCitation = '';
+UPDATE monument SET DateFound = NULL WHERE DateFound = '';
+UPDATE monument SET DateFoundPrecisionNote = NULL WHERE DateFoundPrecisionNote = '';
+UPDATE monument SET MonumentType = NULL WHERE MonumentType = '';
+UPDATE monument SET MilitaryStatus = NULL WHERE MilitaryStatus = '';
+UPDATE monument SET MemberSeventhLegion = NULL WHERE MemberSeventhLegion = '';
+UPDATE monument SET CPFTitle = NULL WHERE CPFTitle = '';
+UPDATE monument SET Inscription = NULL WHERE Inscription = '';
+UPDATE monument SET Translation = NULL WHERE Translation = '';
+UPDATE monument SET DoorMotifPresent = NULL WHERE DoorMotifPresent = '';
+UPDATE monument SET PortraitPresent = NULL WHERE PortraitPresent = '';
+UPDATE monument SET WeaponsPresent = NULL WHERE WeaponsPresent = '';
+UPDATE monument SET DateFrom = NULL WHERE DateFrom = '';
+UPDATE monument SET DateTo = NULL WHERE DateTo = '';
+UPDATE monument SET DateNote = NULL WHERE DateNote = '';
+UPDATE monument SET Location = NULL WHERE Location = '';
+UPDATE monument SET StelaeType = NULL WHERE StelaeType = '';
+UPDATE monument SET Note = NULL WHERE Note = '';
 
 
 CREATE TABLE MonumentMilitaryOffice (
@@ -123,6 +142,7 @@ INSERT INTO Corpus (CorpusName)
                    ('Tončinić'),
                    ('Betz'),
                    ('ILJug'),
+									 ('AE'),
                    ('Other DB');
 
 
