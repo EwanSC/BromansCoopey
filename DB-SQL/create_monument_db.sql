@@ -56,7 +56,10 @@ INSERT INTO FindSpot (FindSpotID, Province,   Settlement, SpecificLocation, LONG
 										 (39,         'Dalmatia','Vaganj','Near jajce', 17.17608, 44.15513),
 										 (40,         'Galatia','Antiochia Pisidiae', null, null, null),
 										 (41,         'Galatia','Cormasa','near Antiochia Pisidiae', null, null),
-										 (42,         'Galatia','Iconium','near Antiochia Pisidiae', null, null);
+										 (42,         'Galatia','Iconium','near Antiochia Pisidiae', null, null),
+                     (43,         'Dalmatia','Tragurium', null, null, null),
+                     (44,         'Dalmatia','Burnum', null, null, null),
+                     (45,         'Dalmatia','Klis','EastNecropolis originally?', null, null);
 
 SELECT Settlement
   FROM FindSpot
@@ -87,13 +90,17 @@ CREATE TABLE Monument (
 	Note TEXT
 );
 
-INSERT INTO Monument (MonumentID, FindSpotID, FirstPublicationCitation, DateFound, DateFoundPrecisionNote, MonumentType, MilitaryStatus, MemberSeventhLegion, CPFTitle, Inscription, Translation, DoorMotifPresent, PortraitPresent, WeaponsPresent, DateFrom, DateTo, DateNote, Location, StelaeType, Note)
-      VALUES         (1,          1,          null,                     null,      null,                   'construction dedication',         null,           'yes',                'no',     'Ti(berius) Caesar divi Aug(usti) f(ilius) / Augustus imp(erator) pontif(ex) max(imus) / trib(unicia) potest(ate) XX co(n)s(ul) III / leg(io) VII leg(io) XI / P(ublio) Cornelio Dolabella / leg(ato) pr(o) pr(aetore)',
-                    																																								 null,        'no',             'no',            null,           18,       19,     null,     null,     null,       null),
-                     (2,          2,          null,                     null,      null,                   'stela',         'veteran',           'yes',                'cpf',     'Sex(tus) Iu[lius Sex(ti) f(ilius)] / Ani(ensi) Silva[nus Foro Iulii] / summus c[urat(or) c(ivium) R(omanorum) prov(inciae) Dalm(atiae)] / suffragio [eorum factus vet(eranus?)] / leg(ionis) VII C(laudiae) P(iae) F(idelis) aed[ilis col(oniae) Claudiae Aequi ab] / ordine primus [post col(oniam) ded(uctam) creatus] / IIIIvir i(ure) d(icundo) pont(ifex) [in col(onia?) Salona(?) ---] / in ag[ro] p(edes) [---] / h(oc) s(epulcrum) h(eredem) [n(on) s(equetur)]',
-                                                                                                                                                                                     null,        null,             null,            null,           42,       42,     null,     null,     null,       'Check inconsistencies in Tončinić2011');
+-- INSERT INTO Monument (MonumentID, FindSpotID, FirstPublicationCitation, DateFound, DateFoundPrecisionNote, MonumentType, MilitaryStatus, MemberSeventhLegion, CPFTitle, Inscription, Translation, DoorMotifPresent, PortraitPresent, WeaponsPresent, DateFrom, DateTo, DateNote, Location, StelaeType, Note)
+--       VALUES         (1,          1,          null,                     null,      null,                   'construction dedication',         null,           'yes',                'no',     'Ti(berius) Caesar divi Aug(usti) f(ilius) / Augustus imp(erator) pontif(ex) max(imus) / trib(unicia) potest(ate) XX co(n)s(ul) III / leg(io) VII leg(io) XI / P(ublio) Cornelio Dolabella / leg(ato) pr(o) pr(aetore)',
+--                     																																								 null,        'no',             'no',            null,           18,       19,     null,     null,     null,       null),
+--                      (2,          2,          null,                     null,      null,                   'stela',         'veteran',           'yes',                'cpf',     'Sex(tus) Iu[lius Sex(ti) f(ilius)] / Ani(ensi) Silva[nus Foro Iulii] / summus c[urat(or) c(ivium) R(omanorum) prov(inciae) Dalm(atiae)] / suffragio [eorum factus vet(eranus?)] / leg(ionis) VII C(laudiae) P(iae) F(idelis) aed[ilis col(oniae) Claudiae Aequi ab] / ordine primus [post col(oniam) ded(uctam) creatus] / IIIIvir i(ure) d(icundo) pont(ifex) [in col(onia?) Salona(?) ---] / in ag[ro] p(edes) [---] / h(oc) s(epulcrum) h(eredem) [n(on) s(equetur)]',
+--                                                                                                                                                                                      null,        null,             null,            null,           42,       42,     null,     null,     null,       'Check inconsistencies in Tončinić2011');
+--
+.mode csv
 
+.import ../monument-spreadsheet.csv Monument
 
+UPDATE monument SET FirstPublicationCitation = NULL WHERE FirstPublicationCitation = '';
 
 
 CREATE TABLE MonumentMilitaryOffice (
@@ -126,15 +133,17 @@ CREATE TABLE MonumentCorpus (
 	Reference TEXT NOT NULL,
 	isPrimaryReference BOOLEAN
 );
--- monumentcorpusID is an autonum we don't care about, so we won't write it. Let the database take care of things.
-INSERT INTO MonumentCorpus (MonumentID,  CorpusName,  Reference,   isPrimaryReference)
-     VALUES                (1,           'CIL',       '03, 02908', true),  --isPrimaryReference indicates which corpus appears in the "primary corpus" by setting it to be true. Otherwise, null is mostly hiddenish.
-                           (1,           'Tončinić',  '92',        null),
-													 (1,           'Betz',     '1 i 84',     null),
-                           (2,           'Tončinić',  '73',        null),
-                           (2,           'CIL',       '03, 02733', true),
-													 (2,           'Betz',     '72',         null)
-     ;
+-- -- monumentcorpusID is an autonum we don't care about, so we won't write it. Let the database take care of things.
+-- INSERT INTO MonumentCorpus (MonumentID,  CorpusName,  Reference,   isPrimaryReference)
+--      VALUES                (1,           'CIL',       '03, 02908', 1),  --isPrimaryReference indicates which corpus appears in the "primary corpus" by setting it to be true. Otherwise, null is mostly hiddenish.
+--                            (1,           'Tončinić',  '92',        null),
+-- 													 (1,           'Betz',     '1 i 84',     null),
+--                            (2,           'Tončinić',  '73',        null),
+--                            (2,           'CIL',       '03, 02733', 1),
+-- 													 (2,           'Betz',     '72',         null)
+--      ;
+
+
 
 DROP VIEW IF EXISTS PrimaryCorpus;
 CREATE VIEW PrimaryCorpus as
