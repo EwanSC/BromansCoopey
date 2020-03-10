@@ -149,21 +149,21 @@ INSERT INTO Corpus (CorpusName)
 
 
 CREATE TABLE MonumentCorpus (
-    MonumentCorpusID INTEGER PRIMARY KEY,
+  MonumentCorpusID INTEGER PRIMARY KEY,
 	MonumentID INTEGER REFERENCES Monument NOT NULL,
 	CorpusName TEXT NOT NULL REFERENCES Corpus,
 	Reference TEXT NOT NULL,
 	isPrimaryReference BOOLEAN
 );
 -- -- monumentcorpusID is an autonum we don't care about, so we won't write it. Let the database take care of things.
---(MonumentID,  CorpusName,  Reference,   isPrimaryReference)
+(MonumentID,  CorpusName,  Reference,   isPrimaryReference)
 -- below is the import code for automatic .csv importing, it needs to be worked on.
 
---.mode csv--
+.mode csv
 
---.import ../monument-spreadsheet.csv Monument
+.import ../MonumentCorpus.csv MonumentCorpus
 
---UPDATE MonumentCorpus SET isPrimaryReference = NULL WHERE isPrimaryReference = '';
+UPDATE MonumentCorpus SET isPrimaryReference = NULL WHERE isPrimaryReference = '';
 
 DROP VIEW IF EXISTS PrimaryCorpus;
 CREATE VIEW PrimaryCorpus as
