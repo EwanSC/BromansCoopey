@@ -63,9 +63,9 @@ INSERT INTO FindSpot (FindSpotID, Province,   Settlement, SpecificLocation, LONG
 										 (46,         'Dalmatia','Tragurium','Seget Donji', null, null),
 										 (47,         'Dalmatia','Andetrium','Gornji Postinje', null, null);
 
-SELECT Settlement
-  FROM FindSpot
- WHERE Province = 'Dalmatia';
+-- SELECT Settlement
+--   FROM FindSpot
+--  WHERE Province = 'Dalmatia';
 
 CREATE TABLE Monument (
 	MonumentID INTEGER PRIMARY KEY,
@@ -101,6 +101,9 @@ CREATE TABLE Monument (
 .mode csv
 
 .import ../monument-spreadsheet.csv Monument
+
+
+select 'monumentsloaded', count(*) from monument;
 
 UPDATE monument SET MonumentID = NULL WHERE MonumentID = '';
 UPDATE monument SET FindSpotID = NULL WHERE FindSpotID = '';
@@ -153,16 +156,18 @@ CREATE TABLE MonumentCorpus (
 	MonumentID INTEGER REFERENCES Monument NOT NULL,
 	CorpusName TEXT NOT NULL REFERENCES Corpus,
 	Reference TEXT NOT NULL,
-	isPrimaryReference BOOLEAN
+	isPrimaryReference TEXT
 );
 -- -- monumentcorpusID is an autonum we don't care about, so we won't write it. Let the database take care of things.
-(MonumentID,  CorpusName,  Reference,   isPrimaryReference)
+-- (MonumentID,  CorpusName,  Reference,   isPrimaryReference)
 -- below is the import code for automatic .csv importing, it needs to be worked on.
 
 .mode csv
 
 .import ../MonumentCorpus.csv MonumentCorpus
 
+
+select count(*) from MonumentCorpus;
 UPDATE MonumentCorpus SET isPrimaryReference = NULL WHERE isPrimaryReference = '';
 
 DROP VIEW IF EXISTS PrimaryCorpus;
@@ -172,7 +177,6 @@ SELECT MonumentID, CorpusName || ': ' || Reference as corpus
  WHERE isPrimaryReference is not null;
 
 
-SELECT * FROM PrimaryCorpus where MonumentID IN (1,2);
 
 
 DROP VIEW IF EXISTS AllCorpora;
@@ -200,5 +204,3 @@ SELECT MonumentID, CIL, Tončinić, Betz, ILJug, OtherDB
         			 FROM MonumentCorpus
         			 WHERE CorpusName = 'Other DB'
         			 GROUP BY MonumentID) as OtherDBtable USING (MonumentID);
-
-SELECT * FROM AllCorpora;
