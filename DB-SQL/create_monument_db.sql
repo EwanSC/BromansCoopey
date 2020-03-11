@@ -133,9 +133,9 @@ CREATE TABLE MonumentMilitaryOffice (
     PRIMARY KEY (MonumentID, OfficeType)
 );
 
-INSERT INTO MonumentMilitaryOffice (MonumentID, OfficeType)
-     VALUES                        (1,          'Milites'),
-		                               (2,          'Milites');
+--INSERT INTO MonumentMilitaryOffice (MonumentID, OfficeType)
+--     VALUES                        (1,          'Milites'),
+--		                               (2,          'Milites');
 
 
 CREATE TABLE Corpus (
@@ -181,7 +181,7 @@ SELECT MonumentID, CorpusName || ': ' || Reference as corpus
 
 DROP VIEW IF EXISTS AllCorpora;
 CREATE VIEW AllCorpora as
-SELECT MonumentID, CIL, Tončinić, Betz, ILJug, OtherDB
+SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, OtherDB
   FROM (SELECT MonumentID
           FROM Monument)
   LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' - ') as CIL
@@ -200,6 +200,10 @@ SELECT MonumentID, CIL, Tončinić, Betz, ILJug, OtherDB
         			 FROM MonumentCorpus
         			 WHERE CorpusName = 'ILJug'
         			 GROUP BY MonumentID) as ILJugtable USING (MonumentID)
+	LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' - ') as AE
+						   FROM MonumentCorpus
+						   WHERE CorpusName = 'AE'
+						   GROUP BY MonumentID) as AEtable USING (MonumentID)
   LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' - ') as OtherDB
         			 FROM MonumentCorpus
         			 WHERE CorpusName = 'Other DB'
