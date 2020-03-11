@@ -136,6 +136,13 @@ CREATE TABLE MonumentMilitaryOffice (
 --INSERT INTO MonumentMilitaryOffice (MonumentID, OfficeType)
 --     VALUES                        (1,          'Milites'),
 --		                               (2,          'Milites');
+-- This was originaly going to be put in manually, but I decided to put in an 'automatic' .csv import system.
+
+.mode csv
+
+.import ../MonumentMilitaryOffice.csv MonumentMilitaryOffice
+
+UPDATE MonumentMilitaryOffice SET OfficeType = NULL WHERE OfficeType = '';
 
 
 CREATE TABLE Corpus (
