@@ -191,27 +191,27 @@ CREATE VIEW AllCorpora as
 SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, OtherDB
   FROM (SELECT MonumentID
           FROM Monument)
-  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' - ') as CIL
+  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' ; ') as CIL
         			 FROM MonumentCorpus
         			 WHERE CorpusName = 'CIL'
         			 GROUP BY MonumentID) as ciltable USING (MonumentID)
-  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' - ') as Tončinić
+  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' ; ') as Tončinić
         			 FROM MonumentCorpus
         			 WHERE CorpusName = 'Tončinić'
         			 GROUP BY MonumentID) as Tončinićtable USING (MonumentID)
-  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' - ') as Betz
+  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' ; ') as Betz
         			 FROM MonumentCorpus
         			 WHERE CorpusName = 'Betz'
         			 GROUP BY MonumentID) as Betztable USING (MonumentID)
-  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' - ') as ILJug
+  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' ; ') as ILJug
         			 FROM MonumentCorpus
         			 WHERE CorpusName = 'ILJug'
         			 GROUP BY MonumentID) as ILJugtable USING (MonumentID)
-	LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' - ') as AE
+	LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' ; ') as AE
 						   FROM MonumentCorpus
 						   WHERE CorpusName = 'AE'
 						   GROUP BY MonumentID) as AEtable USING (MonumentID)
-  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' - ') as OtherDB
+  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' ; ') as OtherDB
         			 FROM MonumentCorpus
         			 WHERE CorpusName = 'Other DB'
         			 GROUP BY MonumentID) as OtherDBtable USING (MonumentID);
