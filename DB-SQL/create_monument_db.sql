@@ -87,8 +87,8 @@ CREATE TABLE Monument (
 	DateFrom DATE,
 	DateTo DATE,
 	DateNote TEXT,
-	Location TEXT,
 	StelaeType TEXT,
+	Location TEXT,
 	Note TEXT
 );
 
