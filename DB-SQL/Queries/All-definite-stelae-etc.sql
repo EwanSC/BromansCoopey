@@ -5,7 +5,8 @@ join FindSpot using (FindSpotID)
 Where (MonumentType = 'inscription fragment'
 or    MonumentType = 'stela'
 or    MonumentType = 'funerary inscription'
-or    MonumentType = 'altar')
+or    MonumentType = 'altar'
+or    MonumentType = 'sacral monument')
 and   MemberSeventhLegion = 'yes'
 and   isPrimaryReference = '1'
 and   Province = 'Dalmatia'
