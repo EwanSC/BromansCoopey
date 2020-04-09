@@ -1,4 +1,4 @@
-Select MonumentID, PrimaryReferenceTypeLocation.CorpusName ||', '|| PrimaryReferenceTypeLocation.Reference as 'Reference', Monument.MonumentType, Settlement, SpecificLocation, OfficeType, Inscription
+Select MonumentID, PrimaryReferenceTypeLocation.CorpusName ||', '|| PrimaryReferenceTypeLocation.Reference as 'Reference', Monument.MonumentType, Settlement, SpecificLocation, MilitaryStatus, OfficeType, Inscription
 from PrimaryReferenceTypeLocation
 join Monument using (MonumentID)
 join MonumentMilitaryOffice using (MonumentID)
@@ -9,5 +9,4 @@ or Monument.MonumentType = 'inscription fragment'
 or Monument.MonumentType = 'funerary inscription'
 or Monument.MonumentType = 'sacral monument'
 or Monument.MonumentType = 'titulus')
-and MemberSeventhLegion = 'yes'
-and MilitaryStatus is null;
+and MemberSeventhLegion = 'yes';
