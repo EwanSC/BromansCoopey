@@ -9,5 +9,6 @@ and (MonumentType = 'altar'
 or MonumentType = 'stela'
 or MonumentType = 'inscription fragment'
 or MonumentType = 'funerary inscription'
-or MonumentType = 'sacral monument')
-order by Settlement;
+or MonumentType = 'sacral monument'
+or MonumentType = 'titulus')
+order by MonumentType;
