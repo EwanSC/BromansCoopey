@@ -49,7 +49,7 @@ INSERT INTO FindSpot (FindSpotID, Province,   Settlement, SpecificLocation, LONG
 										 (32,         'Dalmatia','Andetrium','Gornji Muć', null, null),
 										 (33,         'Dalmatia','Ljubuški','Humac', null, null),
 										 (34,         'Dalmatia','Aequum','Hrvace', null, null),
-										 (35,         'Dalmatia','Siculi','Tragurium', null, null),
+										 (35,         'Dalmatia','Siculi','Bijaći, near Tragurium', null, null),
 										 (36,         'Dalmatia','Salona','Near Porta Caesarea', null, null),
 										 (37,         'Dalmatia','Salona','Kapljuč', null, null),
 										 (38,         'Dalmatia','Ljubuški','Vitaljina', null, null),
