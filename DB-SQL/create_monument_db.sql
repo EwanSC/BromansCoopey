@@ -62,7 +62,9 @@ INSERT INTO FindSpot (FindSpotID, Province,   Settlement, SpecificLocation, LONG
                      (45,         'Dalmatia','Salona','Modern Klis, possibly from the East Necropolis originally', null, null),
 										 (46,         'Dalmatia','Tragurium','Seget Donji', null, null),
 										 (47,         'Dalmatia','Andetrium','Gornji Postinje', null, null),
-									   (48,         'Dalmatia','Popović','Near Karin', null, null);
+									   (48,         'Dalmatia','Popović','Near Karin', null, null),
+										 (49,         'Dalmatia','Krug', 'Near Jesenice, Poljice', null, null),
+										 (50,         'Dalmatia','Razvođe', 'Near Burnum', null, null);
 
 -- SELECT Settlement
 --   FROM FindSpot
