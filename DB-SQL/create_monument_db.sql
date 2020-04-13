@@ -16,11 +16,11 @@ CREATE TABLE FindSpot (
 
 INSERT INTO FindSpot (FindSpotID, Province,   Settlement, SpecificLocation, LONG,       LAT)
      VALUES          (1,          'Dalmatia', 'Iader',null,15.2313648, 44.119371),
-                     (2,          'Dalmatia', 'Aequum',null,16.655704,  43.739278),
+                     (2,          'Dalmatia', 'Aequum','sinj',16.655704,  43.739278),
 										 (3,          'Dalmatia', 'Salona',  'Grad Diokletianpalast Mausoleum', 16.44032121, 43.50811796),
 										 (4,          'Dalmatia', 'Aequum',  'Majstorovici',null,null),
 										 (5, 					'Dalmatia', 'Tilurium','Vojnić',null,null),
-										 (6,          'Dalmatia', 'Tilurium',null,16.729321,  43.607338),
+										 (6,          'Dalmatia', 'Tilurium','Gardun',16.729321,  43.607338),
 										 (7,          'Dalmatia', null,null,null,null),
 										 (8,          'Dalmatia', 'Salona',  'North Necropolis',null,null),
 										 (9,          'Dalmatia', 'Salona',  'East Necropolis',null,null),
@@ -64,7 +64,11 @@ INSERT INTO FindSpot (FindSpotID, Province,   Settlement, SpecificLocation, LONG
 										 (47,         'Dalmatia','Andetrium','Gornji Postinje', null, null),
 									   (48,         'Dalmatia','Popović','Near Karin', null, null),
 										 (49,         'Dalmatia','Krug', 'Near Jesenice, Poljice', null, null),
-										 (50,         'Dalmatia','Razvođe', 'Near Burnum', null, null);
+										 (50,         'Dalmatia','Razvođe', 'Near Burnum', null, null),
+										 (51,         'Dalmatia','Gorica','Near Dubrava, Poljice', null, null),
+										 (52,         'Dalmatia','The surrounds of Sinjsko polje', null, null, null),
+									   (53,         'Dalmatia','Krinj','Near Čitluk', null, null),
+										 (54,         'Dalmatia','Aequum','Čitluk', null,  null);
 
 -- SELECT Settlement
 --   FROM FindSpot
