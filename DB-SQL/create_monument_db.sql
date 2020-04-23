@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS Corpus;
 DROP TABLE IF EXISTS MonumentMilitaryOffice;
 DROP TABLE IF EXISTS Monument;
 DROP TABLE IF EXISTS FindSpot;
+DROP TABLE IF EXISTS LegioServicemen;
 
 
 CREATE TABLE FindSpot (
@@ -181,7 +182,24 @@ CREATE TABLE MonumentCorpus (
 .import ../MonumentCorpus.csv MonumentCorpus
 
 
+CREATE TABLE LegioServicemen (
+  ServicemanID INTEGER PRIMARY KEY,
+	MonumentID INTEGER REFERENCES Monument,
+	Name TEXT,
+	DeceasedOrDedicant TEXT,
+	Tribe TEXT,
+	OriginProvince TEXT,
+	OriginSettlement TEXT,
+	Note TEXT
+);
+-- ServicemanID is used to refer to the Legio VII serviceman recorded upon the inscription. There can be multiple per MonumentCorpusID
+-- Deceased or Dedicant refers to whether or not the Serviceman is the dedicant, or the deceased (sometimes it is also both - erected during lifetime)
+.mode csv
+
+.import ../LegioServicemen.csv LegioServicemen
+
 select count(*) from MonumentCorpus;
+select count(*) from LegioServicemen;
 UPDATE MonumentCorpus SET isPrimaryReference = NULL WHERE isPrimaryReference = '';
 
 DROP VIEW IF EXISTS PrimaryCorpus;
