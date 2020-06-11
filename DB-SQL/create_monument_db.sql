@@ -202,13 +202,14 @@ select count(*) from MonumentCorpus;
 select count(*) from LegioServicemen;
 UPDATE MonumentCorpus SET isPrimaryReference = NULL WHERE isPrimaryReference = '';
 
+
+--Below are the various views created so that some information from various tables can be found in the same view
+
 DROP VIEW IF EXISTS PrimaryCorpus;
 CREATE VIEW PrimaryCorpus as
 SELECT MonumentID, CorpusName || ': ' || Reference as corpus
   FROM MonumentCorpus
  WHERE isPrimaryReference is not null;
-
-
 
 
 DROP VIEW IF EXISTS AllCorpora;
@@ -240,3 +241,56 @@ SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, OtherDB
         			 FROM MonumentCorpus
         			 WHERE CorpusName = 'Other DB'
         			 GROUP BY MonumentID) as OtherDBtable USING (MonumentID);
+
+DROP VIEW IF EXISTS LegionaryDetailsDalmatia;
+CREATE VIEW LegionaryDetailsDalmatia AS
+SELECT MonumentID as 'Monument', CorpusName as 'Primary', Reference, MonumentType, militarystatus, OfficeType as 'Active Office', MemberSeventhLegion as 'Member of Legio VII', CPFTitle as 'CPF title'
+	FROM Monument JOIN FindSpot USING (FindSpotID)
+							  JOIN MonumentMilitaryOffice USING (monumentid)
+							  JOIN MonumentCorpus USING (MonumentID)
+	WHERE province = 'Dalmatia'
+   	AND isPrimaryReference = '1'
+	  AND (MonumentType = 'stela' or MonumentType = 'funerary inscription' or MonumentType = 'titulus' or MonumentType = 'inscription fragment' or MonumentType = 'sacral monument' or MonumentType = 'altar');
+
+
+DROP VIEW IF EXISTS LegionaryDetails;
+CREATE VIEW LegionaryDetails AS
+SELECT MonumentID as 'Monument', CorpusName as 'Primary', Reference, Name, MonumentType, militarystatus, OfficeType as 'Active Office', MemberSeventhLegion as 'Member of Legio VII', CPFTitle as 'CPF title'
+	FROM Monument JOIN FindSpot USING (FindSpotID)
+	              JOIN MonumentMilitaryOffice USING (monumentid)
+				        JOIN MonumentCorpus USING (MonumentID)
+				        JOIN LegioServicemen USING (MonumentID)
+ WHERE province = 'Dalmatia'
+	 AND isPrimaryReference = '1'
+	 AND (MonumentType = 'stela' or MonumentType = 'funerary inscription' or MonumentType = 'titulus' or MonumentType = 'inscription fragment' or MonumentType = 'sacral monument' or MonumentType = 'altar');
+
+
+DROP VIEW IF EXISTS NotTončinić;
+CREATE VIEW NotTončinić AS
+SELECT MonumentID, CorpusName, Reference, AE, ILJug, OtherDB
+	FROM MonumentCorpus JOIN AllCorpora USING (MonumentID)
+ WHERE Tončinić IS NULL
+	 AND isPrimaryReference is '1';
+
+DROP VIEW IF EXISTS PrimaryReferenceTypeLocation;
+CREATE VIEW PrimaryReferenceTypeLocation AS
+SELECT MonumentID, MonumentCorpus.CorpusName ||', '|| MonumentCorpus.Reference as Reference, monument.MonumentType, FindSpot.province, FindSpot.Settlement, FindSpot.SpecificLocation
+  FROM Monument JOIN MonumentCorpus USING (MonumentID)
+								JOIN FindSpot USING (FindSpotID)
+ WHERE isPrimaryReference = '1';
+
+DROP VIEW IF EXISTS ServicemenAndReference;
+CREATE VIEW ServicemenAndReference AS
+SELECT ServicemanID, MonumentID, CorpusName ||', '|| Reference AS Reference, Tončinić, Name, DeceasedOrDedicant, Tribe, OriginProvince, OriginSettlement
+  FROM LegioServicemen JOIN MonumentCorpus USING (monumentID)
+											 JOIN AllCorpora USING (MonumentID)
+	WHERE isPrimaryReference = '1';
+
+DROP VIEW IF EXISTS TončinićPrimaryReference;
+CREATE VIEW TončinićPrimaryReference AS
+SELECT CorpusName ||', '|| REFERENCE as 'Reference', Tončinić, Inscription
+  FROM MonumentCorpus JOIN AllCorpora USING (MonumentID)
+											JOIN Monument USING (monumentID)
+ WHERE isPrimaryReference = '1'
+	 AND Tončinić IS NOT NULL
+ ORDER BY Reference;
