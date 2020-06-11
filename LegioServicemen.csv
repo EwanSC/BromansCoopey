@@ -1,30 +1,56 @@
-﻿1,2,"Sextus Julius Silvanus, son of Sextus",commemorated,Aniensis,,Forum Iuli,"If the reconstruction of Forum Iuli is correct (the monument is now lost), it could refer to Cividale del Friuli (Italia), Fréjus (Gallia Narbonensis), Voghera (Italia)"
-2,4,"Lucius Vettius Secundus, son of Marcus",both,Maecia,Italy,Libarna,
-3,5,"Lucius Ancharenus, son of Quintus",commemorated,Sergia,Asia Minor,Laranda,
-4,6,"Titus Ancharenus, son of Titus",commemorated,Sergia,Asia Minor,Laranda,
-5,7,Marcus Antonius Celurus,commemorated,,,,
-6,8,Lucius Arruntius,commemorated,,Asia Minor,Pasimo,
-7,9,Gaius Asurius,commemorated,,Italy,Florentia,
-8,10,"Lucius Attius, son of Lucius",commemorated,Sergia,,Augusta,"Unsure if Augusta Praetoria (Italia) or Augusta Troas (Asia Minor). Tončinić 2011, 204-205; Fadić 1995 168: Troas may be more likely, as Sergia is a common tribe for Asia Minor citizens, and another Member (Gaius Curiatius) does list Augusta Troas as his place of origin (MonumentID 32, CIL 3, 2019)."
-9,11,"Sextus Atilius, son of Sextus",commemorated,Papiria,Italy,Ticinum,
-10,12,"Quintus Baebius, son of Quintus",commemorated,Sergia,Asia Minor,Conona,
-11,13,Gaius Bittius Gemellus,commemorated,Tromentia,,,Domicile is lost as inscription is fragmentary
-12,14,Lucius Caesius Bassus,commemorated,Camilia,Italy,Pisaurum,
-13,15,"Lucius Domitius Aquila, son of Lucius",both,Aniensis,Asia Minor,Mylias,
-14,15,"Gaius Domitius Aquilinus, son of Lucius",commemorated,Aniensis,Asia Minor,Mylias,"Stela does not explicitly mention that Gaius from Mylia, but his father/brother commemorated on the same monument is from Mylias"
-15,16,"Gaius Domitius, son of Gnaeus",commemorated,Velina,Asia Minor,Pessinus,
-16,17,"Titus Elvius Salinator, son of Titus",commemorator,Scaptia,,,"Titus' fatther, Titus, is recorded to have been part of the Scaptia tribe, so Titus Elvius may be a member of the same tribe"
-17,18,"Lucius Fabius, son of Gaius",commemorated,Sergia,Asia Minor,Conona,"It is not certain that Lucius was a member of Legio VII, for the inscription does not explicitly mention service, but it is fragementary and damaged. It was found in the durrounds of tilurium however, and is of a similar style to other stelae of Legio VII members. Tončinić 2011: 37-38"
-18,19,"Lucius Fabius Saturninus, son of Lucius",both,,,,
-19,20,"Marcus Heredius, son of Marcus",commemorated,Palatina,,,
-20,21,"Lucius Herennius, son of Lucius",commemorated,Papiria,Asia Minor,Mylias,
-21,22,"Quintus Hortensius, son of Quintus",commemorated,,,,
-22,23,Marcus Caecilius,commemorated,,,,
-23,24,"Quintus Igneinus Ferox, son of Quintus",commemorated,Aniensis,Asia Minor,Augusta Troas,"Quintus may be a Legio VII member, it is not explicit in his stela however. This possibility is reinforced by the fact that Legio VII member Gaius Curitatus is from Augusta Troas #32, CIL 3, 2109"
-24,25,"Gaius Julius, son of Gaius",commemorated,Fabia,Asia Minor,Ninica,
-25,26,"Gaius Julius, son of Gaius",commemorated,Velina,Asia Minor,Pessinus,
-26,27,"Gaius Julius, son of Gaius",commemorated,Voltinia,,Clistinna,Mitchell 1976: n.50 suggests the name is similar to several other found in Galatia
-27,28,"Gaius Julius Agrippa, son of Gaius",commemorated,Sergia,,,Other members of Sergia tribe are predominantly from Asia Minor
-28,29,"Marcus Julius, son of Marcus",commemorated,,,Trernahensis,"Tončinić 2011: 205 purports that this 'city' is likely a ethnic name (nomen ethnicom), and the locaiton is unknown."
-29,30,"Sextus Clodius, son of Gaius",,Publilia,Italy,Verona,"No mention of Legio VII as the stelae is damaged. However, style is the same as many other stelae belonging to servicemen of the legio, and it was found at Tilurium. "
-30,31,"Lucius Cornelius, son of Lucius",commemorated,Fabia,Asia Minor,Heraclea,"Tončinić 2011, 50: Could also be Heraclea Macedonia (Betz 1938 and Wilkes 1969), but Fadić 1997 notes that all other extant members of Macedonian decent are of the Voltinia or Aemilia tribe."
+﻿1,2,"Sextus Julius Silvanus, son of Sextus",commemorated,veteran,Aniensis,,Forum Iuli,"If the reconstruction of Forum Iuli is correct (the monument is now lost), it could refer to Cividale del Friuli (Italia), Fréjus (Gallia Narbonensis), Voghera (Italia)"
+2,4,"Lucius Vettius Secundus, son of Marcus",both,veteran,Maecia,Italy,Libarna,
+3,5,"Lucius Ancharenus, son of Quintus",commemorated,,Sergia,Asia Minor,Laranda,
+4,6,"Titus Ancharenus, son of Titus",commemorated,,Sergia,Asia Minor,Laranda,
+5,7,Marcus Antonius Celurus,commemorated,,,,,
+6,8,Lucius Arruntius,commemorated,veteran?,,Asia Minor,Pasimo,
+7,9,Gaius Asurius,commemorated,,,Italy,Florentia,
+8,10,"Lucius Attius, son of Lucius",commemorated,,Sergia,,Augusta,"Unsure if Augusta Praetoria (Italia) or Augusta Troas (Asia Minor). Tončinić 2011, 204-205; Fadić 1995 168: Troas may be more likely, as Sergia is a common tribe for Asia Minor citizens, and another Member (Gaius Curiatius) does list Augusta Troas as his place of origin (MonumentID 32, CIL 3, 2019)."
+9,11,"Sextus Atilius, son of Sextus",commemorated,veteran,Papiria,Italy,Ticinum,
+10,12,"Quintus Baebius, son of Quintus",commemorated,,Sergia,Asia Minor,Conona,
+11,13,Gaius Bittius Gemellus,commemorated,,Tromentia,,,Domicile is lost as inscription is fragmentary
+12,14,Lucius Caesius Bassus,commemorated,veteran,Camilia,Italy,Pisaurum,
+13,15,"Lucius Domitius Aquila, son of Lucius",both,veteran,Aniensis,Asia Minor,Mylias,
+14,15,"Gaius Domitius Aquilinus, son of Lucius",commemorated,,Aniensis,Asia Minor,Mylias,"Stela does not explicitly mention that Gaius from Mylia, but his father/brother commemorated on the same monument is from Mylias"
+15,16,"Gaius Domitius, son of Gnaeus",commemorated,veteran,Velina,Asia Minor,Pessinus,
+16,17,"Titus Elvius Salinator, son of Titus",commemorator,,Scaptia,,,"Titus' father, Titus, is recorded to have been part of the Scaptia tribe, so Titus Elvius may be a member of the same tribe"
+17,18,"Lucius Fabius, son of Gaius",commemorated,,Sergia,Asia Minor,Conona,"It is not certain that Lucius was a member of Legio VII, for the inscription does not explicitly mention service, but it is fragementary and damaged. It was found in the durrounds of tilurium however, and is of a similar style to other stelae of Legio VII members. Tončinić 2011: 37-38"
+18,19,"Lucius Fabius Saturninus, son of Lucius",both,veteran,,,,
+19,20,"Marcus Heredius, son of Marcus",commemorated,veteran,Palatina,,,
+20,21,"Lucius Herennius, son of Lucius",commemorated,veteran,Papiria,Asia Minor,Mylias,
+21,22,"Quintus Hortensius, son of Quintus",commemorated,veteran,,,,
+22,23,Marcus Caecilius,commemorated,veteran,,,,
+23,24,"Quintus Igneinus Ferox, son of Quintus",commemorated,,Aniensis,Asia Minor,Augusta Troas,"Quintus may be a Legio VII member, it is not explicit in his stela however. This possibility is reinforced by the fact that Legio VII member Gaius Curitatus is from Augusta Troas #32, CIL 3, 2109"
+24,25,"Gaius Julius, son of Gaius",commemorated,,Fabia,Asia Minor,Ninica,
+25,26,"Gaius Julius, son of Gaius",commemorated,veteran,Velina,Asia Minor,Pessinus,
+26,27,"Gaius Julius, son of Gaius",commemorated,,Voltinia,,Clistinna,Mitchell 1976: n.50 suggests the name is similar to several other found in Galatia
+27,28,"Gaius Julius Agrippa, son of Gaius",commemorated,,Sergia,,,"Other members of Sergia tribe are predominantly from Asia Minor, Tončinić 2011."
+28,29,"Marcus Julius, son of Marcus",commemorated,,,,Trernahensis,"Tončinić 2011: 205 purports that this 'city' is likely a ethnic name (nomen ethnicom), and the locaiton is unknown."
+29,30,"Sextus Clodius, son of Gaius",,,Publilia,Italy,Verona,"No mention of Legio VII as the stelae is damaged. However, style is the same as many other stelae belonging to servicemen of the legio, and it was found at Tilurium. "
+30,31,"Lucius Cornelius, son of Lucius",commemorated,,Fabia,Asia Minor,Heraclea,"Tončinić 2011, 50: Could also be Heraclea Macedonia (Betz 1938 and Wilkes 1969), but Fadić 1997 notes that all other extant members of Macedonian decent are of the Voltinia or Aemilia tribe."
+31,32,,,veteran,,,,
+32,33,,,veteran,,,,
+33,35,,,veteran,,,,
+34,40,,,veteran,,,,
+35,41,,,veteran,,,,
+36,42,,,veteran,,,,
+37,45,,,veteran,,,,
+38,46,,,veteran,,,,
+39,53,,,veteran,,,,
+40,54,,,veteran,,,,
+41,59,,,veteran,,,,
+42,61,,,veteran,,,,
+43,62,,,veteran,,,,
+44,67,,,veteran,,,,
+45,69,,,veteran,,,,
+46,71,,,veteran,,,,
+47,72,,,veteran,,,,
+48,73,,,veteran,,,,
+49,74,,,veteran,,,,
+50,78,,,veteran,,,,
+51,81,,,veteran,,,,
+52,82,,,veteran?,,,,
+53,84,,,veteran,,,,
+54,87,,,veteran,,,,
+55,88,,,veteran,,,,
+56,98,,,veteran,,,,

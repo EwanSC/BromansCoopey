@@ -82,7 +82,6 @@ CREATE TABLE Monument (
 	DateFound DATE,
 	DateFoundPrecisionNote TEXT,
 	MonumentType TEXT,
-	MilitaryStatus TEXT,
 	MemberSeventhLegion TEXT,
 	CPFTitle TEXT, -- this can have values of: no, c, cpf, maybe, and both.
 	               -- The value "both" reflects historical uncertainty
@@ -119,7 +118,6 @@ UPDATE monument SET FirstPublicationCitation = NULL WHERE FirstPublicationCitati
 UPDATE monument SET DateFound = NULL WHERE DateFound = '';
 UPDATE monument SET DateFoundPrecisionNote = NULL WHERE DateFoundPrecisionNote = '';
 UPDATE monument SET MonumentType = NULL WHERE MonumentType = '';
-UPDATE monument SET MilitaryStatus = NULL WHERE MilitaryStatus = '';
 UPDATE monument SET MemberSeventhLegion = NULL WHERE MemberSeventhLegion = '';
 UPDATE monument SET CPFTitle = NULL WHERE CPFTitle = '';
 UPDATE monument SET Inscription = NULL WHERE Inscription = '';
@@ -136,9 +134,9 @@ UPDATE monument SET Note = NULL WHERE Note = '';
 
 
 CREATE TABLE MonumentMilitaryOffice (
-    MonumentID INTEGER REFERENCES Monument,
-    OfficeType TEXT,
-    PRIMARY KEY (MonumentID, OfficeType)
+	  DistinctOffice NUMBER PRIMARY KEY,
+		MonumentID INTEGER REFERENCES Monument,
+    OfficeType TEXT
 );
 
 --INSERT INTO MonumentMilitaryOffice (MonumentID, OfficeType)
@@ -187,6 +185,7 @@ CREATE TABLE LegioServicemen (
 	MonumentID INTEGER REFERENCES Monument,
 	Name TEXT,
 	DeceasedOrDedicant TEXT,
+  MilitaryStatus TEXT,
 	Tribe TEXT,
 	OriginProvince TEXT,
 	OriginSettlement TEXT,
@@ -244,10 +243,11 @@ SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, OtherDB
 
 DROP VIEW IF EXISTS LegionaryDetailsDalmatia;
 CREATE VIEW LegionaryDetailsDalmatia AS
-SELECT MonumentID as 'Monument', CorpusName as 'Primary', Reference, MonumentType, militarystatus, OfficeType as 'Active Office', MemberSeventhLegion as 'Member of Legio VII', CPFTitle as 'CPF title'
+SELECT MonumentID as 'Monument', CorpusName as 'Primary', Reference, MonumentType, militarystatus, OfficeType as 'Active Office', MemberSeventhLegion as 'Member of Legio VII', CPFTitle as 'CPF'
 	FROM Monument JOIN FindSpot USING (FindSpotID)
 							  JOIN MonumentMilitaryOffice USING (monumentid)
 							  JOIN MonumentCorpus USING (MonumentID)
+								JOIN LegioServicemen USING (MonumentID)
 	WHERE province = 'Dalmatia'
    	AND isPrimaryReference = '1'
 	  AND (MonumentType = 'stela' or MonumentType = 'funerary inscription' or MonumentType = 'titulus' or MonumentType = 'inscription fragment' or MonumentType = 'sacral monument' or MonumentType = 'altar');
@@ -255,7 +255,7 @@ SELECT MonumentID as 'Monument', CorpusName as 'Primary', Reference, MonumentTyp
 
 DROP VIEW IF EXISTS LegionaryDetails;
 CREATE VIEW LegionaryDetails AS
-SELECT MonumentID as 'Monument', CorpusName as 'Primary', Reference, Name, MonumentType, militarystatus, OfficeType as 'Active Office', MemberSeventhLegion as 'Member of Legio VII', CPFTitle as 'CPF title'
+SELECT MonumentID as 'Monument', CorpusName as 'Primary', Reference, Name, MonumentType, militarystatus, OfficeType as 'Active Office', MemberSeventhLegion as 'Member of Legio VII', CPFTitle as 'CPF'
 	FROM Monument JOIN FindSpot USING (FindSpotID)
 	              JOIN MonumentMilitaryOffice USING (monumentid)
 				        JOIN MonumentCorpus USING (MonumentID)
