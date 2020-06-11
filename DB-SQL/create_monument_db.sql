@@ -243,7 +243,7 @@ SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, OtherDB
 
 DROP VIEW IF EXISTS LegionaryDetailsDalmatia;
 CREATE VIEW LegionaryDetailsDalmatia AS
-SELECT MonumentID as 'Monument', CorpusName as 'Primary', Reference, MonumentType, militarystatus, OfficeType as 'Active Office', MemberSeventhLegion as 'Member of Legio VII', CPFTitle as 'CPF'
+SELECT MonumentID as 'Monument', CorpusName ||', '|| Reference as Reference, MonumentType, militarystatus, OfficeType as 'Active Office', MemberSeventhLegion as 'Member of Legio VII', CPFTitle as 'CPF'
 	FROM Monument JOIN FindSpot USING (FindSpotID)
 							  JOIN MonumentMilitaryOffice USING (monumentid)
 							  JOIN MonumentCorpus USING (MonumentID)
@@ -255,7 +255,7 @@ SELECT MonumentID as 'Monument', CorpusName as 'Primary', Reference, MonumentTyp
 
 DROP VIEW IF EXISTS LegionaryDetails;
 CREATE VIEW LegionaryDetails AS
-SELECT MonumentID as 'Monument', CorpusName as 'Primary', Reference, Name, MonumentType, militarystatus, OfficeType as 'Active Office', MemberSeventhLegion as 'Member of Legio VII', CPFTitle as 'CPF'
+SELECT MonumentID as 'Monument', CorpusName ||', '|| Reference as Reference, Name, MonumentType, militarystatus, OfficeType as 'Active Office', MemberSeventhLegion as 'Member of Legio VII', CPFTitle as 'CPF'
 	FROM Monument JOIN FindSpot USING (FindSpotID)
 	              JOIN MonumentMilitaryOffice USING (monumentid)
 				        JOIN MonumentCorpus USING (MonumentID)
