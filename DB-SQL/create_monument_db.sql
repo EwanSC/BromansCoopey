@@ -184,15 +184,19 @@ CREATE TABLE LegioServicemen (
   ServicemanID INTEGER PRIMARY KEY,
 	MonumentID INTEGER REFERENCES Monument,
 	Name TEXT,
+	DefiniteServiceman TEXT,
 	DeceasedOrDedicant TEXT,
   MilitaryStatus TEXT,
 	Tribe TEXT,
 	OriginProvince TEXT,
 	OriginSettlement TEXT,
-	Note TEXT
+	OtherMonument TEXT,
+	ServicemanNote TEXT
 );
--- ServicemanID is used to refer to the Legio VII serviceman recorded upon the inscription. There can be multiple per MonumentCorpusID
+-- ServicemanID is used to refer to the Legio VII serviceman recorded upon the inscription. There can be multiple per MonumentID
 -- Deceased or Dedicant refers to whether or not the Serviceman is the dedicant, or the deceased (sometimes it is also both - erected during lifetime)
+-- DefiniteServiceman refers to whether or not they were a soldier/milites, not necessarily Legio VII. For that, see .Monument
+-- OtherMonument refers to any other monuemnt in the corpus where this individual was also mentioned (or may have been mentioned)
 .mode csv
 
 .import ../LegioServicemen.csv LegioServicemen
@@ -200,6 +204,15 @@ CREATE TABLE LegioServicemen (
 select count(*) from MonumentCorpus;
 select count(*) from LegioServicemen;
 UPDATE MonumentCorpus SET isPrimaryReference = NULL WHERE isPrimaryReference = '';
+UPDATE LegioServicemen SET Name = NULL WHERE Name = '';
+UPDATE LegioServicemen SET DefiniteServiceman = NULL WHERE DefiniteServiceman = '';
+UPDATE LegioServicemen SET DeceasedOrDedicant = NULL WHERE DeceasedOrDedicant = '';
+UPDATE LegioServicemen SET Tribe = NULL WHERE Tribe = '';
+UPDATE LegioServicemen SET MilitaryStatus = NULL WHERE MilitaryStatus = '';
+UPDATE LegioServicemen SET OriginProvince = NULL WHERE OriginProvince = '';
+UPDATE LegioServicemen SET OriginSettlement = NULL WHERE OriginSettlement = '';
+UPDATE LegioServicemen SET OtherMonument = NULL WHERE OtherMonument = '';
+UPDATE LegioServicemen SET ServicemanNote = NULL WHERE ServicemanNote = '';
 
 
 --Below are the various views created so that some information from various tables can be found in the same view
