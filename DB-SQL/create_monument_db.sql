@@ -185,7 +185,7 @@ CREATE TABLE LegioServicemen (
 	MonumentID INTEGER REFERENCES Monument,
 	Name TEXT,
 	DefiniteServiceman TEXT,
-	DeceasedOrDedicant TEXT,
+	ReferencedAs TEXT,
   MilitaryStatus TEXT,
 	Tribe TEXT,
 	OriginProvince TEXT,
@@ -193,8 +193,10 @@ CREATE TABLE LegioServicemen (
 	OtherMonument TEXT,
 	ServicemanNote TEXT
 );
--- ServicemanID is used to refer to the Legio VII serviceman recorded upon the inscription. There can be multiple per MonumentID
--- Deceased or Dedicant refers to whether or not the Serviceman is the dedicant, or the deceased (sometimes it is also both - erected during lifetime)
+-- 'ServicemanID' is used to refer to the Legio VII serviceman recorded upon the
+-- inscription. There can be multiple per MonumentID
+-- 'Referenced As' refers to how Serviceman is referred to: either as commemorator,
+-- commemorated, both (erected during lifetime), administrator, or dedicant (sacral inscriptions)
 -- DefiniteServiceman refers to whether or not they were a soldier/milites, not necessarily Legio VII. For that, see .Monument
 -- OtherMonument refers to any other monuemnt in the corpus where this individual was also mentioned (or may have been mentioned)
 .mode csv
@@ -206,7 +208,7 @@ select count(*) from LegioServicemen;
 UPDATE MonumentCorpus SET isPrimaryReference = NULL WHERE isPrimaryReference = '';
 UPDATE LegioServicemen SET Name = NULL WHERE Name = '';
 UPDATE LegioServicemen SET DefiniteServiceman = NULL WHERE DefiniteServiceman = '';
-UPDATE LegioServicemen SET DeceasedOrDedicant = NULL WHERE DeceasedOrDedicant = '';
+UPDATE LegioServicemen SET ReferencedAs = NULL WHERE ReferencedAs = '';
 UPDATE LegioServicemen SET Tribe = NULL WHERE Tribe = '';
 UPDATE LegioServicemen SET MilitaryStatus = NULL WHERE MilitaryStatus = '';
 UPDATE LegioServicemen SET OriginProvince = NULL WHERE OriginProvince = '';
@@ -276,7 +278,6 @@ SELECT MonumentID as 'Monument', CorpusName ||', '|| Reference as Reference, Nam
  WHERE province = 'Dalmatia'
 	 AND isPrimaryReference = '1'
 	 AND (MonumentType = 'stela' or MonumentType = 'funerary inscription' or MonumentType = 'titulus' or MonumentType = 'inscription fragment' or MonumentType = 'sacral monument' or MonumentType = 'altar');
-
 
 DROP VIEW IF EXISTS NotTončinić;
 CREATE VIEW NotTončinić AS

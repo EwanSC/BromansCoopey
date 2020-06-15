@@ -3,7 +3,7 @@
 3,5,"Lucius Ancharenus, son of Quintus",yes,commemorated,,Sergia,Asia Minor,Laranda,,
 4,6,"Titus Ancharenus, son of Titus",yes,commemorated,,Sergia,Asia Minor,Laranda,,
 5,7,Marcus Antonius Celurus,yes,commemorated,,,,,,
-6,8,Lucius Arruntius,yes,commemorated,veteran?,,Asia Minor,Pasimo,,
+6,8,Lucius Arruntius,yes,commemorated,?veteran,,Asia Minor,Pasimo,,
 7,9,Gaius Asurius,yes,commemorated,,,Italy,Florentia,,
 8,10,"Lucius Attius, son of Lucius",yes,commemorated,,Sergia,,Augusta,,"Unsure if Augusta Praetoria (Italia) or Augusta Troas (Asia Minor). Tončinić 2011, 204-205; Fadić 1995 168: Troas may be more likely, as Sergia is a common tribe for Asia Minor citizens, and another Member (Gaius Curiatius) does list Augusta Troas as his place of origin (MonumentID 32, CIL 3, 2019)."
 9,11,"Sextus Atilius, son of Sextus",yes,commemorated,veteran,Papiria,Italy,Ticinum,,
@@ -13,7 +13,7 @@
 13,15,"Lucius Domitius Aquila, son of Lucius",yes,both,veteran,Aniensis,Asia Minor,Mylias,,
 14,15,"Gaius Domitius Aquilinus, son of Lucius",yes,commemorated,,Aniensis,Asia Minor,Mylias,,"Stela does not explicitly mention that Gaius from Mylia, but his father/brother commemorated on the same monument is from Mylias"
 15,16,"Gaius Domitius, son of Gnaeus",yes,commemorated,veteran,Velina,Asia Minor,Pessinus,,
-16,17,"Titus Elvius Salinator, son of Titus",yes,commemorator,,Scaptia,,,,"Titus' father, Titus, is recorded to have been part of the Scaptia tribe, so Titus Elvius may be a member of the same tribe"
+16,17,"Titus Elvius Salinator, son of Titus",yes,commemorator,,Scaptia,,,,"Titus' father, Titus, is recorded to have been part of the Scaptia tribe, so Titus Elvius was likley also a member of the same tribe"
 17,18,"Lucius Fabius, son of Gaius",yes,commemorated,,Sergia,Asia Minor,Conona,,"It is not certain that Lucius was a member of Legio VII, for the inscription does not explicitly mention service, but it is fragementary and damaged. It was found in the durrounds of tilurium however, and is of a similar style to other stelae of Legio VII members. Tončinić 2011: 37-38"
 18,19,"Lucius Fabius Saturninus, son of Lucius",yes,both,veteran,,,,,
 19,20,"Marcus Heredius, son of Marcus",yes,commemorated,veteran,Palatina,,,,
@@ -53,9 +53,9 @@
 53,57,Marcus Percennius,yes,,,Voltinia,Macedonia,Philippi,,"Tončinić 2011: 79-80, Hofmann 1905: 50-51 suggested the reonstruction of 'philippi' for the Domus, as other members of Voltinia tribe are from the site. This has been mostly accepted."
 54,58,Quintus Petronius Valentus,yes,commemorated,,,,,,
 55,59,Gaius Pinarius Scarpus,yes,commemorated,veteran,,,,,
-56,60,Publius Plotius,yes,commemorator,,,,,102,"Same individual mentioned is mentioned again in MonumentID 102, where it is revealed he was a centurion."
+56,60,Publius Plotius,yes,commemorator,,,,,"102, as dedicant","Same individual mentioned is mentioned again in MonumentID 102, where it is revealed he was a centurion."
 57,61,"Lucius Riccius, son of Lucius",yes,commemorated,veteran,Velina,Asia Minor,Pessinus,,
-58,61,"Lucius Atilius, son of Lucius",yes,both,veteran,Velina,Asia Minor?,Pessinus?,,"Relatively safe to assume, as Tončinić does (2011: 82) that Atilius is of the same Domicile as his uncle (ServicemanID 57), for he is of the same tribe."
+58,61,"Lucius Atilius, son of Lucius",yes,both,veteran,Velina,?Asia Minor,?Pessinus,,"Relatively safe to assume, as Tončinić does (2011: 82) that Atilius is of the same Domicile as his uncle (ServicemanID 57), for he is of the same tribe."
 59,62,"Titus Sabinius, son of Titus",yes,commemorated,veteran,Fabia,Asia Minor,Sebaste,,
 60,63,"Lucius Septimius Gratianus, son of Genialis",yes,commemorated,,,,,,
 61,64,"Marcus Sosius, son of Marcus",yes,,,Fabia,Asia Minor,Sebastopolis,,"Tončinić 2011: 84 translates 'sebasto' as Sebatopolis, expecting '-polis' in the next line. Perhaps it could also be Sebaste, for ServicemanID 59 is from this site and is of the same tribe, and therefore 'Sebasto' could here be a carver's 'typo' shall we say, and meant to be 'Sebaste'."
@@ -69,26 +69,39 @@
 69,72,"Titus Varius, son of Titus",yes,commemorated,veteran,Velina,Asia Minor,Pessinus,,
 70,73,"Gaius Vatinius Capito, son of Sextus",yes,both,veteran,,Italy,Arretium,,
 71,74,"Lucius Vegnonius, son of Lucius ",yes,commemorated,veteran,,Italy,Florentia,,
-72,75,,,,,,,,,
-73,76,,,,,,,,,
-74,77,,,,,,,,,
-75,78,,,,veteran,,,,,
-76,79,,,,,,,,,
-77,80,,,,,,,,,
-78,81,,,,veteran,,,,,
-79,82,,,,veteran?,,,,,
-80,83,,,,,,,,,
-81,84,,,,veteran,,,,,
-82,85,,,,,,,,,
-83,87,,,,veteran,,,,,
-84,88,,,,veteran,,,,,
-85,89,,,,,,,,,
-86,90,,,,,,,,,
-87,91,,,,,,,,,
-88,92,,,,,,,,,
-89,93,,,,,,,,,
-90,94,,,,,,,,,
-91,95,,,,,,,,,
-92,96,,,,,,,,,
-93,97,,,,,,,,,
-94,98,,,,veteran,,,,,
+72,75,"Gaius Vibius Pudes, son of Gaius",yes,both,,Pomptina,Italy,Arretium,,
+73,76,"Marcus Vibius, son of Marcus",yes,commemorated,,Aemilia,Macedonia,Dyrrachium,,
+74,77,signifer leg vii cpf,yes,commemorated,,,,,,
+75,78,vet leg vii cpf,yes,both,veteran,,,,,
+76,79,C[aius?---],yes,commemorated,,Pollia,Asia Minor,Aesis,,
+77,80,mil le[g] vii,yes,commemorated,,Pomptina,Italy,Arretium,,
+78,81,[----]elius mat[----],yes,commemorated,veteran,,,R[---],,
+79,82,[Au]reli[us-],yes,commemorated,?veteran,,,,,
+80,83,Manius Coelius,yes,administrator,,,,,,
+81,84,"Titus Cissonius, son of Quintus",yes,commemorated,veteran,Sergia,,,,Brother of ServicemanID 82
+82,84,"Publius Cissonius, son of Quintus",yes,commemorator,,Sergia,,,,Brother of ServicemanID 81
+83,85,"Lucius Coelius, son of Lucius",yes,commemorated,,Aniensis,,,,
+84,86,"Gaius Julius, son of Gaius",yes,both,,Papiria,Asia Minor,Cormassa,,
+85,87,"Publius Mestrius Maecianus, son of Publius",yes,commemorator,veteran,,,,,
+86,87,"Marcus Lollius, son of Marcus",yes,commemorator,,,,,,
+87,88,"Gaius Aulius Secundus, son of Gaius",yes,commemorated,veteran,Aniensis,Italy,Cremona,,
+88,89,mil leg v[ii],yes,commemorated,,,,,,
+89,89,frater,uncertain,commemorator,,,,,,"Potentionally a metaphorical 'frater', i.e. fellow serviceman. Not proveable however."
+90,90,?Ar[---] Tuscus,yes,commemorated,,,,,,
+91,91,son of Titus,yes,,,?Quirina,,,,
+92,92,[An]tonius,yes,,,,Gallia Narbonensis,Vienna,,
+93,93,"[---] Valens, son of Spurius",yes,,,,Italy,Placentia,,
+94,94,[---]Capti[o],yes,,,,,,,
+95,95,[---] leg vii,yes,,,,,,,
+96,96,[----]rv[---][---]mil[---],yes,,,,,,,
+97,97,[---]s C(aius?) Pala[---],uncertain,,,?Palatina,,,,
+98,98,?Son of Lucius,yes,both,veteran,,,,,"First line of inscription in CIL seems to read [---]O L[-], this last  could be reconstrcuted as [---]O L(ucii)[F(ilius)] and thus 'son of Lucius'"
+99,100,[---]centurio le[g],yes,,,,,,,
+100,101,[m]iles leg vi[i],yes,dedicant,,,,,,
+101,103,Julius [---],yes,dedicant,,,,,,
+102,104,Sextus Titius Geminus,yes,administrator,,,,,?109,"Čače 2003: 16-21, claims this is the same person as ServicemanID 104(monumentID109), spelling his name wrong: S(extus) instead of G/C(aius)."
+103,105,[---]nus Laco,yes,administrator,,,,,,
+104,106,Lucius Trebius Secundus,yes,administrator,,,,,,May not refer to a Legio VII member
+105,107,[Vib]ullius T[---],yes,administrator,,,,,,
+106,108,Gaius Marius Maternus,yes,administrator,,,,,,
+107,109,Gaius Titus Geminus,yes,administrator,,,,,?104,"Čače 2003: 16-21, claims this is the same person as ServicemanID 99, with MonumentID 104 having spelt his name wrong: S(extus) instead of G/C(aius)."
