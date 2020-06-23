@@ -161,7 +161,7 @@ INSERT INTO Corpus (CorpusName)
                    ('Betz'),
                    ('ILJug'),
 									 ('AE'),
-                   ('Other DB');
+                   ('Other Ref');
 
 
 CREATE TABLE MonumentCorpus (
@@ -228,7 +228,7 @@ SELECT MonumentID, CorpusName || ': ' || Reference as corpus
 
 DROP VIEW IF EXISTS AllCorpora;
 CREATE VIEW AllCorpora as
-SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, OtherDB
+SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, OtherRef
   FROM (SELECT MonumentID
           FROM Monument)
   LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' ; ') as CIL
@@ -251,10 +251,10 @@ SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, OtherDB
 						   FROM MonumentCorpus
 						   WHERE CorpusName = 'AE'
 						   GROUP BY MonumentID) as AEtable USING (MonumentID)
-  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' ; ') as OtherDB
+  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' ; ') as OtherRef
         			 FROM MonumentCorpus
-        			 WHERE CorpusName = 'Other DB'
-        			 GROUP BY MonumentID) as OtherDBtable USING (MonumentID);
+        			 WHERE CorpusName = 'Other Ref'
+        			 GROUP BY MonumentID) as OtherReftable USING (MonumentID);
 
 DROP VIEW IF EXISTS LegionaryDetailsDalmatia;
 CREATE VIEW LegionaryDetailsDalmatia AS
@@ -281,7 +281,7 @@ SELECT MonumentID as 'Monument', CorpusName ||', '|| Reference as Reference, Nam
 
 DROP VIEW IF EXISTS NotTončinić;
 CREATE VIEW NotTončinić AS
-SELECT MonumentID, CorpusName, Reference, AE, ILJug, OtherDB
+SELECT MonumentID, CorpusName, Reference, AE, ILJug, OtherRef
 	FROM MonumentCorpus JOIN AllCorpora USING (MonumentID)
  WHERE Tončinić IS NULL
 	 AND isPrimaryReference is '1';
