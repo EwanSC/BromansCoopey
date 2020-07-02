@@ -10,13 +10,15 @@ CREATE TABLE FindSpot (
 	FindSpotID INTEGER PRIMARY KEY,
 	Province TEXT,
 	Settlement TEXT,
-	SpecificLocation TEXT,
+	ExtraInfo TEXT,
 	LONG NUMBER,
 	LAT NUMBER,
 	Pleiades INTEGER
 );
 
-INSERT INTO FindSpot (FindSpotID, Province,   Settlement, SpecificLocation, LONG, LAT, Pleiades)
+-- LONG and LAT are approximate, more related to the settlement/specific location than the actual monument itself.
+
+INSERT INTO FindSpot (FindSpotID, Province,   Settlement, ExtraInfo, LONG, LAT, Pleiades)
      VALUES          (1,          'Dalmatia', 'Iader',null,15.223778, 44.115501,197312),
                      (2,          'Dalmatia', 'Aequum','sinj',16.655704,  43.739278, 197095),
 										 (3,          'Dalmatia', 'Salona',  'Grad Diokletianpalast Mausoleum', 16.44032121, 43.50811796,197488),
@@ -52,8 +54,8 @@ INSERT INTO FindSpot (FindSpotID, Province,   Settlement, SpecificLocation, LONG
 										 (33,         'Dalmatia','Bigeste/Ljubuški','Humac',17.521667,43.196667,197167),
 										 (34,         'Dalmatia','Aequum','Hrvace',null,null,197095),
 										 (35,         'Dalmatia','Siculi','Bijaći, near Tragurium',16.346833,43.553234,197511),
-										 (36,         'Dalmatia','Salona','Near Porta Caesarea',null,null,197488),
-										 (37,         'Dalmatia','Salona','Kapljuč',null,null,197488),
+										 (36,         'Dalmatia','Salona','Near Porta Caesarea',16.4823429,43.5383152,197488),
+										 (37,         'Dalmatia','Salona','North Necropolis, Kapljuč',16.4737934,43.5424905,197488),
 										 (38,         'Dalmatia','Bigeste/Ljubuški','Vitaljina',17.562,43.1694,197167),
 										 (39,         'Dalmatia','Vaganj','Near jajce',17.17608,44.15513,null),
 										 (40,         'Galatia','Antiochia Pisidiae', null, 31.1894355,38.305175,609307),
@@ -61,14 +63,14 @@ INSERT INTO FindSpot (FindSpotID, Province,   Settlement, SpecificLocation, LONG
 										 (42,         'Galatia','Iconium','near Antiochia Pisidiae',32.492331,37.872202,648647),
                      (43,         'Dalmatia','Tragurium',null,16.25063,43.517639,197555),
                      (44,         'Dalmatia','Burnum',null,16.025622,44.018914,197184),
-                     (45,         'Dalmatia','Salona','Modern Klis, possibly from the East Necropolis originally',null,null,197488),
+                     (45,         'Dalmatia','Salona','Modern Klis, possibly from the East Necropolis originally',16.496858,43.540222,197488),
 										 (46,         'Dalmatia','Tragurium','Seget Donji',16.2333,43.5167,197555),
 										 (47,         'Dalmatia','Andetrium','Gornji Postinje',16.424,43.701,197115),
-									   (48,         'Dalmatia','Popović','Near Karin', null,null,null),
-										 (49,         'Dalmatia','Krug', 'Near Jesenice, Poljice',null, null,null),
+									   (48,         'Dalmatia','Popovići','Near Karin',15.672364,44.070419,null),
+										 (49,         'Dalmatia','Krug', 'Near Jesenice, Poljice',16.647371,43.495214,null),
 										 (50,         'Dalmatia','Razvođe', 'Near Burnum',16.107708,43.92898,null),
-										 (51,         'Dalmatia','Gorica','Near Dubrava, Poljice',null,null,null),
-										 (52,         'Dalmatia','Sinjsko polje','The area between Aequum and Tilurium',16.695576,43.675387,null),
+										 (51,         'Dalmatia','Gorica','Near Dubrava, Poljice',16.634664,43.456728,null),
+										 (52,         'Dalmatia','Sinjsko polje','The area between Aequum and Tilurium',16.695576,43.675387,197552),
 									   (53,         'Dalmatia','Aequum','Krinj, near Čitluk',16.644167,43.745556,197095),
 										 (54,         'Dalmatia','Aequum','Čitluk',16.655704,43.739278,197095);
 
@@ -162,6 +164,7 @@ INSERT INTO Corpus (CorpusName)
                    ('Betz'),
                    ('ILJug'),
 									 ('AE'),
+									 ('EDH'),
                    ('Other Ref');
 
 
@@ -229,7 +232,7 @@ SELECT MonumentID, CorpusName || ': ' || Reference as corpus
 
 DROP VIEW IF EXISTS AllCorpora;
 CREATE VIEW AllCorpora as
-SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, OtherRef
+SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDH, OtherRef
   FROM (SELECT MonumentID
           FROM Monument)
   LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' ; ') as CIL
@@ -252,6 +255,10 @@ SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, OtherRef
 						   FROM MonumentCorpus
 						   WHERE CorpusName = 'AE'
 						   GROUP BY MonumentID) as AEtable USING (MonumentID)
+	LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' ; ') as EDH
+						 	 FROM MonumentCorpus
+						   WHERE CorpusName = 'EDH'
+						   GROUP BY MonumentID) as EDHtable USING (MonumentID)
   LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, ' ; ') as OtherRef
         			 FROM MonumentCorpus
         			 WHERE CorpusName = 'Other Ref'
@@ -289,7 +296,7 @@ SELECT MonumentID, CorpusName, Reference, AE, ILJug, OtherRef
 
 DROP VIEW IF EXISTS PrimaryReferenceTypeLocation;
 CREATE VIEW PrimaryReferenceTypeLocation AS
-SELECT MonumentID, MonumentCorpus.CorpusName ||', '|| MonumentCorpus.Reference as Reference, monument.MonumentType, FindSpot.province, FindSpot.Settlement, FindSpot.SpecificLocation
+SELECT MonumentID, MonumentCorpus.CorpusName ||', '|| MonumentCorpus.Reference as Reference, monument.MonumentType, FindSpot.province, FindSpot.Settlement, FindSpot.ExtraInfo
   FROM Monument JOIN MonumentCorpus USING (MonumentID)
 								JOIN FindSpot USING (FindSpotID)
  WHERE isPrimaryReference = '1';
