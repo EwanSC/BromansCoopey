@@ -19,40 +19,40 @@ CREATE TABLE FindSpot (
 -- LONG and LAT are approximate, more related to the settlement/specific location than the actual monument itself.
 
 INSERT INTO FindSpot (FindSpotID, Province,   Settlement, ExtraInfo, LONG, LAT, Pleiades)
-     VALUES          (1,          'Dalmatia', 'Iader',null,15.223778, 44.115501,197312),
-                     (2,          'Dalmatia', 'Aequum','sinj',16.655704,  43.739278, 197095),
-										 (3,          'Dalmatia', 'Salona',  'Grad Diokletianpalast Mausoleum', 16.44032121, 43.50811796,197488),
-										 (4,          'Dalmatia', 'Aequum',  'Majstorovici',null,null,197095),
-										 (5, 					'Dalmatia', 'Tilurium','Vojnić',null,null,197552),
-										 (6,          'Dalmatia', 'Tilurium','Gardun',16.729321,  43.607338,197552),
+     VALUES          (1,          'Dalmatia', 'Iader',null,15.223778,44.115501,197312),
+                     (2,          'Dalmatia', 'Aequum','sinj',16.655704,43.739278,197095),
+										 (3,          'Dalmatia', 'Salona',  'Grad Diokletianpalast Mausoleum',16.44032121,43.50811796,197488),
+										 (4,          'Dalmatia', 'Aequum',  'Hrvace, in a Barn',16.621101,43.755188,197095),
+										 (5, 					'Dalmatia', 'Tilurium','Vojnić',16.700356,43.615035,197552),
+										 (6,          'Dalmatia', 'Tilurium','Gardun',16.729321,43.607338,197552),
 										 (7,          'Dalmatia', null,null,null,null,981522),
-										 (8,          'Dalmatia', 'Salona',  'North Necropolis',null,null,197488),
-										 (9,          'Dalmatia', 'Salona',  'East Necropolis',null,null,197488),
-										 (10,         'Dalmatia','Iader','Filippi house', null, null,197312),
+										 (8,          'Dalmatia', 'Salona',  'North Necropolis',16.476543,43.538690,197488),
+										 (9,          'Dalmatia', 'Salona',  'East Necropolis',16.4874212,43.5400879,197488),
+										 (10,         'Dalmatia','Iader','Filippi house',15.1788642,44.1349343,197312),
                      (11,         'Dalmatia','Salona',null,16.483426,43.539561,197488),
-                     (12,         'Dalmatia','Bigeste/Ljubuški','Filovača',null,null,197167),
-                     (13,         'Dalmatia','Tilurium','Gardun, built into a house',null,null,197552),
-                     (14,         'Dalmatia','Iader','Church of st Michael',null,null,197312),
+                     (12,         'Dalmatia','Bigeste/Ljubuški','Filovača',17.561619,43.195182,197167),
+                     (13,         'Dalmatia','Tilurium','Gardun, built into a house',16.729321,43.607338,197552),
+                     (14,         'Dalmatia','Iader','Church of st Michael',15.1801579,44.1484605,197312),
                      (15,         'Dalmatia','Narona','Vid Metković',17.62464523, 43.08130155,197400),
                      (16,         'Thracia','Lysimacheia',null,26.75081, 40.548232,501458),
 										 (17,         'Dalmatia','Dugopolje','Near Tilurium and Salona',16.596944,43.580278,null),
 										 (18,         'Dalmatia','Corinium','Karin, Near Iader', 15.633504,44.104527,197225),
-										 (19,         'Dalmatia','Tilurium','Košute',null,null,197552),
+										 (19,         'Dalmatia','Tilurium','Košute',16.6906865,43.6221675,197552),
 										 (20,         'Dalmatia','Dicmo','Near Tilurium',16.95,43.5,null),
-										 (21,         'Dalmatia','Prud',null,null,null,null),
-										 (22,         'Dalmatia','Imotski' ,'Runovići' , 17.216667,43.45,null),
-										 (23,         'Dalmatia','Tilurium','Cetina River', 16.728064, 43.61461719,197552),
-										 (24,         'MoesiaS','Viminacium','Gradac', 21.1913635,44.7266235,207549),
-										 (25,         'Dalmatia','Bigeste/Ljubuški','Hardomilje', 17.55,43.15,197167),
-										 (26,         'Dalmatia','Asseria','Podgrađe', 15.6663802,44.01096805,197145),
-										 (27,         'Dalmatia','Bigeste/Ljubuški','Veljaci', 17.445,43.237222,197167),
-										 (28,         'Dalmatia','Aequum','Glavice, near Sinj',null,null,197095),
-										 (29,         'Dalmatia','Tilurium','Trilj',null,null,197552),
+										 (21,         'Dalmatia','Prud',null,17.5494842,43.0920794,null),
+										 (22,         'Dalmatia','Imotski' ,'Runovići' ,17.216667,43.45,null),
+										 (23,         'Dalmatia','Tilurium','Cetina River',16.728064,43.61461719,197552),
+										 (24,         'MoesiaS','Viminacium','Gradac',21.1913635,44.7266235,207549),
+										 (25,         'Dalmatia','Bigeste/Ljubuški','Hardomilje',17.55,43.15,197167),
+										 (26,         'Dalmatia','Asseria','Podgrađe',15.6663802,44.01096805,197145),
+										 (27,         'Dalmatia','Bigeste/Ljubuški','Veljaci',17.445,43.237222,197167),
+										 (28,         'Dalmatia','Aequum','Glavice, near Sinj',16.6146048,43.7119684,197095),
+										 (29,         'Dalmatia','Tilurium','Trilj',16.6906865,43.6221675,197552),
 										 (30,         'Dalmatia','Municipium Riditarum/Rider, Danilo','Near Šibenik',16.055704,43.700462,197473),
 										 (31,         'Dalmatia','Narona','Čitluk', 16.484007,43.690597,197400),
 										 (32,         'Dalmatia','Andetrium','Gornji Muć',16.53,43.68,197115),
 										 (33,         'Dalmatia','Bigeste/Ljubuški','Humac',17.521667,43.196667,197167),
-										 (34,         'Dalmatia','Aequum','Hrvace',null,null,197095),
+										 (34,         'Dalmatia','Aequum','Hrvace',16.621101,43.755188,197095),
 										 (35,         'Dalmatia','Siculi','Bijaći, near Tragurium',16.346833,43.553234,197511),
 										 (36,         'Dalmatia','Salona','Near Porta Caesarea',16.4823429,43.5383152,197488),
 										 (37,         'Dalmatia','Salona','North Necropolis, Kapljuč',16.4737934,43.5424905,197488),
@@ -183,6 +183,7 @@ CREATE TABLE MonumentCorpus (
 
 .import ../MonumentCorpus.csv MonumentCorpus
 
+select count(*) from MonumentCorpus;
 
 CREATE TABLE LegioServicemen (
   ServicemanID INTEGER PRIMARY KEY,
@@ -207,7 +208,6 @@ CREATE TABLE LegioServicemen (
 
 .import ../LegioServicemen.csv LegioServicemen
 
-select count(*) from MonumentCorpus;
 select count(*) from LegioServicemen;
 UPDATE MonumentCorpus SET isPrimaryReference = NULL WHERE isPrimaryReference = '';
 UPDATE LegioServicemen SET Name = NULL WHERE Name = '';
