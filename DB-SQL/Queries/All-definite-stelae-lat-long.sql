@@ -1,4 +1,4 @@
-select CorpusName ||' '|| Reference as 'Reference', MonumentType as 'Monument Type', ExtraInfo as 'Site', Settlement as 'Ancient Settlement', Province
+select CorpusName ||' '|| Reference as 'Reference', LAT, LONG
 from Monument 
 join FindSpot using (FindSpotID)
 join MonumentCorpus using (MonumentID)
