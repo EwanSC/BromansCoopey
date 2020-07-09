@@ -1,4 +1,4 @@
-select CorpusName ||' '|| Reference as 'Reference', LAT, LONG
+select CorpusName ||' '|| Reference as 'Reference', Settlement, ExtraInfo, LAT, LONG
 from Monument 
 join FindSpot using (FindSpotID)
 join MonumentCorpus using (MonumentID)
@@ -11,4 +11,4 @@ or MonumentType = 'inscription fragment'
 or MonumentType = 'funerary inscription'
 or MonumentType = 'sacral monument'
 or MonumentType = 'titulus')
-order by MonumentType;
+order by Settlement;
