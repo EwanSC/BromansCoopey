@@ -74,10 +74,6 @@ INSERT INTO FindSpot (FindSpotID, Province,   Settlement, ExtraInfo, LONG, LAT, 
 									   (53,         'Dalmatia','Aequum','Krinj, near Čitluk',16.644167,43.745556,197095),
 										 (54,         'Dalmatia','Aequum','Čitluk',16.655704,43.739278,197095);
 
--- SELECT Settlement
---   FROM FindSpot
---  WHERE Province = 'Dalmatia';
-
 CREATE TABLE Monument (
 	MonumentID INTEGER PRIMARY KEY,
 	FindSpotID INTEGER REFERENCES FindSpot,
@@ -86,9 +82,9 @@ CREATE TABLE Monument (
 	DateFoundPrecisionNote TEXT,
 	MonumentType TEXT,
 	MemberSeventhLegion TEXT,
-	CPFTitle TEXT, -- this can have values of: no, c, cpf, maybe, and both.
-	               -- The value "both" reflects historical uncertainty
-	               -- and is not actually multivalued.
+	CPFTitle TEXT, -- this can have values of: no, c, cpf, maybe.
+	               -- The value "maybe" reflects historical uncertainty
+								 -- it could be there, but it could also not be
 	Inscription TEXT,
 	Translation TEXT,
 	DoorMotifPresent BOOLEAN,
@@ -102,12 +98,6 @@ CREATE TABLE Monument (
 	Note TEXT
 );
 
--- INSERT INTO Monument (MonumentID, FindSpotID, FirstPublicationCitation, DateFound, DateFoundPrecisionNote, MonumentType, MilitaryStatus, MemberSeventhLegion, CPFTitle, Inscription, Translation, DoorMotifPresent, PortraitPresent, WeaponsPresent, DateFrom, DateTo, DateNote, Location, StelaeType, Note)
---       VALUES         (1,          1,          null,                     null,      null,                   'construction dedication',         null,           'yes',                'no',     'Ti(berius) Caesar divi Aug(usti) f(ilius) / Augustus imp(erator) pontif(ex) max(imus) / trib(unicia) potest(ate) XX co(n)s(ul) III / leg(io) VII leg(io) XI / P(ublio) Cornelio Dolabella / leg(ato) pr(o) pr(aetore)',
---                     																																								 null,        'no',             'no',            null,           18,       19,     null,     null,     null,       null),
---                      (2,          2,          null,                     null,      null,                   'stela',         'veteran',           'yes',                'cpf',     'Sex(tus) Iu[lius Sex(ti) f(ilius)] / Ani(ensi) Silva[nus Foro Iulii] / summus c[urat(or) c(ivium) R(omanorum) prov(inciae) Dalm(atiae)] / suffragio [eorum factus vet(eranus?)] / leg(ionis) VII C(laudiae) P(iae) F(idelis) aed[ilis col(oniae) Claudiae Aequi ab] / ordine primus [post col(oniam) ded(uctam) creatus] / IIIIvir i(ure) d(icundo) pont(ifex) [in col(onia?) Salona(?) ---] / in ag[ro] p(edes) [---] / h(oc) s(epulcrum) h(eredem) [n(on) s(equetur)]',
---                                                                                                                                                                                      null,        null,             null,            null,           42,       42,     null,     null,     null,       'Check inconsistencies in Tončinić2011');
---
 .mode csv
 
 .import ../monument-spreadsheet.csv Monument
@@ -175,7 +165,7 @@ CREATE TABLE MonumentCorpus (
 	Reference TEXT NOT NULL,
 	isPrimaryReference TEXT
 );
--- -- monumentcorpusID is an autonum we don't care about, so we won't write it. Let the database take care of things.
+-- monumentcorpusID is an autonum we don't care about, so we won't write it. Let the database take care of things.
 -- (MonumentID,  CorpusName,  Reference,   isPrimaryReference)
 -- below is the import code for automatic .csv importing, it needs to be worked on.
 
@@ -221,7 +211,7 @@ UPDATE LegioServicemen SET OtherMonument = NULL WHERE OtherMonument = '';
 UPDATE LegioServicemen SET ServicemanNote = NULL WHERE ServicemanNote = '';
 
 
---Below are the various views created so that some information from various tables can be found in the same view
+-- Below are the various views created so that some information from various tables can be found in the same view
 
 DROP VIEW IF EXISTS PrimaryCorpus;
 CREATE VIEW PrimaryCorpus as
