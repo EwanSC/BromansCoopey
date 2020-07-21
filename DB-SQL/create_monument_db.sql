@@ -1,9 +1,9 @@
-DROP TABLE IF EXISTS MonumentCorpus;
 DROP TABLE IF EXISTS Corpus;
 DROP TABLE IF EXISTS MonumentMilitaryOffice;
 DROP TABLE IF EXISTS Monument;
 DROP TABLE IF EXISTS FindSpot;
 DROP TABLE IF EXISTS LegioServicemen;
+DROP TABLE IF EXISTS MonumentCorpus;
 
 
 CREATE TABLE FindSpot (
@@ -175,6 +175,8 @@ CREATE TABLE MonumentCorpus (
 
 select count(*) from MonumentCorpus;
 
+UPDATE MonumentCorpus SET isPrimaryReference = NULL WHERE isPrimaryReference = '';
+
 CREATE TABLE LegioServicemen (
   ServicemanID INTEGER PRIMARY KEY,
 	MonumentID INTEGER REFERENCES Monument,
@@ -199,7 +201,7 @@ CREATE TABLE LegioServicemen (
 .import ../LegioServicemen.csv LegioServicemen
 
 select count(*) from LegioServicemen;
-UPDATE MonumentCorpus SET isPrimaryReference = NULL WHERE isPrimaryReference = '';
+
 UPDATE LegioServicemen SET Name = NULL WHERE Name = '';
 UPDATE LegioServicemen SET DefiniteServiceman = NULL WHERE DefiniteServiceman = '';
 UPDATE LegioServicemen SET ReferencedAs = NULL WHERE ReferencedAs = '';
@@ -293,8 +295,8 @@ SELECT MonumentID, MonumentCorpus.CorpusName ||', '|| MonumentCorpus.Reference a
 
 DROP VIEW IF EXISTS ServicemenAndReference;
 CREATE VIEW ServicemenAndReference AS
-SELECT ServicemanID, MonumentID, CorpusName ||', '|| Reference AS Reference, Tončinić, Name, DeceasedOrDedicant, Tribe, OriginProvince, OriginSettlement
-  FROM LegioServicemen JOIN MonumentCorpus USING (monumentID)
+SELECT ServicemanID, MonumentID, MonumentCorpus.CorpusName ||', '|| MonumentCorpus.Reference AS Reference, AllCorpora.Tončinić, LegioServicemen.Name, LegioServicemen.DeceasedOrDedicant, LegioServicemen.Tribe, LegioServicemen.OriginProvince, LegioServicemen.OriginSettlement
+  FROM LegioServicemen JOIN MonumentCorpus USING (MonumentID)
 											 JOIN AllCorpora USING (MonumentID)
 	WHERE isPrimaryReference = '1';
 
@@ -302,7 +304,7 @@ DROP VIEW IF EXISTS TončinićPrimaryReference;
 CREATE VIEW TončinićPrimaryReference AS
 SELECT CorpusName ||', '|| REFERENCE as 'Reference', Tončinić, Inscription
   FROM MonumentCorpus JOIN AllCorpora USING (MonumentID)
-											JOIN Monument USING (monumentID)
+											JOIN Monument USING (MonumentID)
  WHERE isPrimaryReference = '1'
 	 AND Tončinić IS NOT NULL
  ORDER BY Reference;
