@@ -72,7 +72,8 @@ INSERT INTO FindSpot (FindSpotID, Province,   Settlement, ExtraInfo, LONG, LAT, 
 										 (52,         'Dalmatia','Sinjsko polje','The area between Aequum and Tilurium',16.695576,43.675387,197552),
 										 (51,         'Dalmatia','Gorica','Near Dubrava, Poljice',16.647371,43.495214,null),
 									   (53,         'Dalmatia','Aequum','Krinj, near Čitluk',16.644167,43.745556,197095),
-										 (54,         'Dalmatia','Aequum','Čitluk',16.655704,43.739278,197095);
+										 (54,         'Dalmatia','Aequum','Čitluk',16.655704,43.739278,197095),
+										 (55,					'Galatia','Apollonia','Later became site of Tymandus',30.607024,38.104416,609563);
 
 CREATE TABLE Monument (
 	MonumentID INTEGER PRIMARY KEY,
