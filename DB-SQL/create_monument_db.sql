@@ -17,6 +17,7 @@ CREATE TABLE FindSpot (
 );
 
 -- LONG and LAT are approximate, more related to the settlement/specific location than the actual monument itself.
+-- Need to check all of these are actually being used, some FindSpotID may no longer be relevant
 
 INSERT INTO FindSpot (FindSpotID, Province,   Settlement, ExtraInfo, LONG, LAT, Pleiades)
      VALUES          (1,          'Dalmatia', 'Iadera',null,15.223778,44.115501,197312),
