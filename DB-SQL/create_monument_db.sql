@@ -304,7 +304,7 @@ SELECT ServicemanID, MonumentID, MonumentCorpus.CorpusName ||', '|| MonumentCorp
 
 DROP VIEW IF EXISTS TončinićPrimaryReference;
 CREATE VIEW TončinićPrimaryReference AS
-SELECT CorpusName ||', '|| REFERENCE as 'Reference', Tončinić, Inscription
+SELECT MonumentID, CorpusName ||', '|| REFERENCE as 'Reference', Tončinić, Inscription
   FROM MonumentCorpus JOIN AllCorpora USING (MonumentID)
 											JOIN Monument USING (MonumentID)
  WHERE isPrimaryReference = '1'
