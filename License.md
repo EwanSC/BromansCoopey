@@ -1,6 +1,6 @@
 # Summary
 This Repository is shared using the Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0): https://creativecommons.org/licenses/by-sa/4.0/
-<p>When atrributing: **Copyright (c) 2020 EwanSC**</P>
+<p>When atrributing: <strong>Copyright (c) 2020 EwanSC</strong>/P>
 
 ## CC BY-SA 4.0 License:
 
