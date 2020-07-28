@@ -130,8 +130,9 @@ UPDATE monument SET Note = NULL WHERE Note = '';
 
 CREATE TABLE MonumentMilitaryOffice (
 	  DistinctOffice NUMBER PRIMARY KEY,
-		MonumentID INTEGER REFERENCES Monument,
-    OfficeType TEXT
+		ServicemanID INTEGER REFERENCES LegioServicemen,
+    OfficeType TEXT,
+		MonumentID INTEGER REFERENCES Monument
 );
 
 --INSERT INTO MonumentMilitaryOffice (MonumentID, OfficeType)
@@ -144,11 +145,15 @@ CREATE TABLE MonumentMilitaryOffice (
 .import ../MonumentMilitaryOffice.csv MonumentMilitaryOffice
 
 UPDATE MonumentMilitaryOffice SET OfficeType = NULL WHERE OfficeType = '';
+UPDATE MonumentMilitaryOffice SET ServicemanID = NULL WHERE ServicemanID = '';
+
 
 
 CREATE TABLE Corpus (
-	CorpusName TEXT PRIMARY KEY --which db type is this?
+	CorpusName TEXT PRIMARY KEY
 );
+
+--which db type is this?
 
 INSERT INTO Corpus (CorpusName)
      VALUES        ('CIL'),
