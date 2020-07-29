@@ -265,11 +265,14 @@ SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDH, OtherRef
 
 DROP VIEW IF EXISTS LegionaryDetailsDalmatia;
 CREATE VIEW LegionaryDetailsDalmatia AS
-SELECT MonumentID as 'Monument', CorpusName ||', '|| Reference as Reference, MonumentType, militarystatus, OfficeType as 'Active Office', MemberSeventhLegion as 'Member of Legio VII', CPFTitle as 'CPF'
+SELECT MonumentID as 'Monument', CorpusName ||', '|| Reference as Reference, Name, MonumentType, militarystatus, Office as 'Active Office', MemberSeventhLegion as 'Member of Legio VII', CPFTitle as 'CPF', Settlement, ExtraInfo
 	FROM Monument JOIN FindSpot USING (FindSpotID)
-							  JOIN MonumentMilitaryOffice USING (monumentid)
-							  JOIN MonumentCorpus USING (MonumentID)
-								JOIN LegioServicemen USING (MonumentID)
+						    JOIN LegioServicemen USING (MonumentID)
+						    JOIN MonumentCorpus USING (MonumentID)
+						    LEFT OUTER JOIN (SELECT MonumentID, group_concat(OfficeType, ' ; ') as Office
+		        			 FROM MonumentMilitaryOffice
+		        			 WHERE MonumentID = MonumentID
+		        			 GROUP BY MonumentID) as Officetable USING (MonumentID)
 	WHERE province = 'Dalmatia'
    	AND isPrimaryReference = '1'
 	  AND (MonumentType = 'stela' or MonumentType = 'funerary inscription' or MonumentType = 'titulus' or MonumentType = 'inscription fragment' or MonumentType = 'sacral monument' or MonumentType = 'altar');
@@ -277,13 +280,15 @@ SELECT MonumentID as 'Monument', CorpusName ||', '|| Reference as Reference, Mon
 
 DROP VIEW IF EXISTS LegionaryDetails;
 CREATE VIEW LegionaryDetails AS
-SELECT MonumentID as 'Monument', CorpusName ||', '|| Reference as Reference, Name, MonumentType, militarystatus, OfficeType as 'Active Office', MemberSeventhLegion as 'Member of Legio VII', CPFTitle as 'CPF'
+SELECT MonumentID as 'Monument', CorpusName ||', '|| Reference as Reference, Name, MonumentType, militarystatus, Office as 'Active Office', MemberSeventhLegion as 'Member of Legio VII', CPFTitle as 'CPF', Province
 	FROM Monument JOIN FindSpot USING (FindSpotID)
-	              JOIN MonumentMilitaryOffice USING (monumentid)
-				        JOIN MonumentCorpus USING (MonumentID)
-				        JOIN LegioServicemen USING (MonumentID)
- WHERE province = 'Dalmatia'
-	 AND isPrimaryReference = '1'
+						    JOIN LegioServicemen USING (MonumentID)
+						    JOIN MonumentCorpus USING (MonumentID)
+						    LEFT OUTER JOIN (SELECT MonumentID, group_concat(OfficeType, ' ; ') as Office
+		        			 FROM MonumentMilitaryOffice
+		        			 WHERE MonumentID = MonumentID
+		        			 GROUP BY MonumentID) as Officetable USING (MonumentID)
+	 WHERE isPrimaryReference = '1'
 	 AND (MonumentType = 'stela' or MonumentType = 'funerary inscription' or MonumentType = 'titulus' or MonumentType = 'inscription fragment' or MonumentType = 'sacral monument' or MonumentType = 'altar');
 
 DROP VIEW IF EXISTS NotTončinić;
