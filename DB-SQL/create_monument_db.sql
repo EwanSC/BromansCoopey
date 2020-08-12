@@ -76,6 +76,9 @@ INSERT INTO FindSpot (FindSpotID, Province,   Settlement, ExtraInfo, LONG, LAT, 
 										 (54,         'Dalmatia','Aequum','Čitluk',16.655704,43.739278,197095),
 										 (55,					'Galatia','Apollonia','Later became site of Tymandus',30.607024,38.104416,609563);
 
+select 'findspotsloaded', count(*) from FindSpot;
+
+
 CREATE TABLE Monument (
 	MonumentID INTEGER PRIMARY KEY,
 	FindSpotID INTEGER REFERENCES FindSpot,
@@ -101,9 +104,7 @@ CREATE TABLE Monument (
 );
 
 .mode csv
-
 .import ../monument-spreadsheet.csv Monument
-
 
 select 'monumentsloaded', count(*) from monument;
 
@@ -141,8 +142,9 @@ CREATE TABLE MonumentMilitaryOffice (
 -- This was originaly going to be put in manually, but I decided to put in an 'automatic' .csv import system.
 
 .mode csv
-
 .import ../MonumentMilitaryOffice.csv MonumentMilitaryOffice
+
+select 'officesloaded', count(*) from MonumentMilitaryOffice;
 
 UPDATE MonumentMilitaryOffice SET OfficeType = NULL WHERE OfficeType = '';
 UPDATE MonumentMilitaryOffice SET ServicemanID = NULL WHERE ServicemanID = '';
@@ -164,6 +166,8 @@ INSERT INTO Corpus (CorpusName)
 									 ('EDH'),
                    ('Other Ref');
 
+select 'corpusloaded', count(*) from Corpus;
+
 
 CREATE TABLE MonumentCorpus (
   MonumentCorpusID INTEGER PRIMARY KEY,
@@ -177,10 +181,9 @@ CREATE TABLE MonumentCorpus (
 -- below is the import code for automatic .csv importing, it needs to be worked on.
 
 .mode csv
-
 .import ../MonumentCorpus.csv MonumentCorpus
 
-select count(*) from MonumentCorpus;
+select 'referencesloaded', count(*) from MonumentCorpus;
 
 UPDATE MonumentCorpus SET isPrimaryReference = NULL WHERE isPrimaryReference = '';
 
@@ -203,11 +206,11 @@ CREATE TABLE LegioServicemen (
 -- commemorated, both (erected during lifetime), administrator, or dedicant (sacral inscriptions)
 -- DefiniteServiceman refers to whether or not they were a soldier/milites, not necessarily Legio VII. For that, see .Monument
 -- OtherMonument refers to any other monuemnt in the corpus where this individual was also mentioned (or may have been mentioned)
-.mode csv
 
+.mode csv
 .import ../LegioServicemen.csv LegioServicemen
 
-select count(*) from LegioServicemen;
+select 'legionariesloaded', count(*) from LegioServicemen;
 
 UPDATE LegioServicemen SET Name = NULL WHERE Name = '';
 UPDATE LegioServicemen SET DefiniteServiceman = NULL WHERE DefiniteServiceman = '';
