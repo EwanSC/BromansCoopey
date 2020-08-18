@@ -37,7 +37,7 @@
 37,42,"Gaius Lollius Valens, son of Gaius",yes,both,veteran,Papiria,,,,"Asia Minor? Other Papiria member, Lucius Herrenius MonumentID 21 is from Mylias; or Itlay? Sextus Atilius MonumentID 11 is from Ticinum"
 38,43,"Gaius Longinus, son of Gaius",yes,commemorated,,Cornelia,Asia Minor,Amblada,,
 39,44,Gaius Lucretius,yes,commemorated,,,Italy,Verona,,"Brother of MonumentID 45? Found in same plot accoring to Betz 1938: 66; and both epitaphs record the same sized grave plot (20x10ft), Tončinić 2011: 62-63."
-40,45,Gaius Lucretius,yes,both,veteran,,Italy,Verona,44?,"Brother of MonumentID 44? Found in same plot accoring to Betz 1938: 66; and both epitaphs record the same sized grave plot (20x10ft), Tončinić 2011: 62-63. If so, this Gaius could be the 'brother' recorded as the erector of monument MonumentID 44."
+40,45,Gaius Lucretius,yes,both,veteran,,Italy,Verona,?ServicemanID 118,"Brother of MonumentID 44? (and therefore this is ServicemanID 118) Found in same plot accoring to Betz 1938: 66; and both epitaphs record the same sized grave plot (20x10ft), Tončinić 2011: 62-63. If so, this Gaius could be the 'brother' recorded as the erector of monument MonumentID 44."
 41,46,"Quintus Magius, son of Gaius",yes,commemorated,veteran,Publilia,Italy,Verona,,
 42,47,"Gaius Manticus, son of Gaius",yes,,,Scaptia,,,,"Inscription is damaged at the end, so it is difficult to see the capacity in which Gaius references on this tombstone, pressumably as either the 'commemorated' or 'both' (erecting during his lifetime to himself and a certain other Gaius)."
 43,47,Gaius Avinnius Postumius,uncertain,,,,,,,"Possible serviceman, mentioned on same inscription as ServicemanID 42, but inscription is damaged at the end, could also be a son, freedman and/or heir."
@@ -99,10 +99,22 @@
 99,100,[---]centurio le[g],yes,,,,,,,
 100,101,[m]iles leg vi[i],yes,dedicant,,,,,,
 101,103,Julius [---],yes,dedicant,,,,,,
-102,104,Sextus Titius Geminus,yes,administrator,,,,,?109,"Čače 2003: 16-21, claims this is the same person as ServicemanID 104(monumentID109), spelling his name wrong: S(extus) instead of G/C(aius)."
+102,104,Sextus Titius Geminus,yes,administrator,,,,,"?MonumentID 109, ServicemanID 107","Čače 2003: 16-21, claims this is the same person as ServicemanID 104(monumentID109), spelling his name wrong: S(extus) instead of G/C(aius)."
 103,105,[---]nus Laco,yes,administrator,,,,,,
 104,106,Lucius Trebius Secundus,yes,administrator,,,,,,May not refer to a Legio VII member
 105,107,[Vib]ullius T[---],yes,administrator,,,,,,
 106,108,Gaius Marius Maternus,yes,administrator,,,,,,
-107,109,Gaius Titus Geminus,yes,administrator,,,,,?104,"Čače 2003: 16-21, claims this is the same person as ServicemanID 99, with MonumentID 104 having spelt his name wrong: S(extus) instead of G/C(aius)."
+107,109,Gaius Titus Geminus,yes,administrator,,,,,"?MonumentID 104, ServicemanID 102","Čače 2003: 16-21, claims this is the same person as ServicemanID 99, with MonumentID 104 having spelt his name wrong: S(extus) instead of G/C(aius)."
 108,129,Gaius Painius Numisius,yes,both,veteran,,,,,
+109,5,Quintus Ancharenus ,uncertain,commemorator,,,,,,"Brother of commemorated (ServicemanID 3), but may also be a soldier of Legio VII"
+110,12,frater,uncertain,commemorator,,,,,,"Unnamed frater of ServicemanID 10, therefore may be 'comrade' type of frater found in military contexts, see Kepartov 1986"
+111,29,"Marcus Arruntius, frater",uncertain,commemorator,,,,,,"Unlikely that Marcus is blood brother (kin) with the deceased (ServicemanID 28) based on gentilicum, so may be soldier/'comrade' type of frater recorded by Kepartov 1986"
+112,31,"Secundus, heres",uncertain,commemorator,,,,,,"Heres of ServicemanID 30, unspecified status, but may be miles."
+113,34,heredes,uncertain,commemorator,,,,,,"heredes of ServicemanID 33, unkonwn number and unknown status, may be fellow miles however, as the commemorated was an active miles, and therefore may not have had a family/children/wife etc."
+114,14,heres,uncertain,commemorator,,,,,,"Heres of ServicemanID 12, could therefore be miles as 12 died whilst still on active service"
+115,26,Gaius Mummius,uncertain,commemorator,,,,,,"Could be a son, brother, or non-relative of ServicemanID 25 (on account of shared praenomen but not gentilicum) who was also fellow miles"
+116,40,here,uncertain,commemorator,,,,,,"Could be miles of some relation to ServicemanID 35, but 35 was a veteran so may also have been a family member or civilian"
+117,43,frater,uncertain,commemorator,,,,,,"Unnamed frater of ServicemanID 38, therefore may be 'comrade' type of frater found in military contexts, see Kepartov 1986"
+118,44,frater,uncertain,commemorator,,,,,?ServicemanID 40,"Very likely this is in fact referring to ServicemanID 40. Monument was found in the same plot as MonumentID 44 accoring to Betz 1938: 66; and both epitaphs record the same sized grave plot (20x10ft), Tončinić 2011: 62-63."
+119,48,Maximus,uncertain,commemorator,,,,,,"Unknown relation to ServicemanID 44, possibly fellow miles"
+120,55,heres,uncertain,commemorator,,,,,,"Unnamed heres of ServicemanID 51, could be miles. Indeed, 51 was an active miles when they were commemorated"
