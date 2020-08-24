@@ -266,24 +266,9 @@ SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDH, OtherRef
         			 WHERE CorpusName = 'Other Ref'
         			 GROUP BY MonumentID) as OtherReftable USING (MonumentID);
 
-DROP VIEW IF EXISTS 'All Legionaries in Dalmatia';
-CREATE VIEW 'All Legionaries in Dalmatia' AS
-SELECT MonumentID as 'Monument', CorpusName ||', '|| Reference as Reference, Name, MonumentType, militarystatus, Office as 'Active Office', MemberSeventhLegion as 'Member of Legio VII', CPFTitle as 'CPF', Settlement, ExtraInfo
-	FROM Monument JOIN FindSpot USING (FindSpotID)
-						    JOIN LegioServicemen USING (MonumentID)
-						    JOIN MonumentCorpus USING (MonumentID)
-						    LEFT OUTER JOIN (SELECT MonumentID, group_concat(OfficeType, ' ; ') as Office
-		        			 FROM MonumentMilitaryOffice
-		        			 WHERE MonumentID = MonumentID
-		        			 GROUP BY MonumentID) as Officetable USING (MonumentID)
-	WHERE province = 'Dalmatia'
-   	AND isPrimaryReference = '1'
-	  AND (MonumentType = 'stela' or MonumentType = 'funerary inscription' or MonumentType = 'titulus' or MonumentType = 'inscription fragment' or MonumentType = 'sacral monument' or MonumentType = 'altar');
-
-
-DROP VIEW IF EXISTS 'All Legionaries';
-CREATE VIEW 'All Legionaries' AS
-SELECT MonumentID as 'Monument', CorpusName ||', '|| Reference as Reference, Name, MonumentType, militarystatus, Office as 'Active Office', MemberSeventhLegion as 'Member of Legio VII', CPFTitle as 'Legio Title', Province
+DROP VIEW IF EXISTS 'All Servicemen';
+CREATE VIEW 'All Servicemen' AS
+SELECT MonumentID as 'Monument', CorpusName ||', '|| Reference as Reference, ServicemanID, Name, OriginSettlement, OriginProvince, militarystatus, Office as 'Active Office', MemberSeventhLegion as 'Member of Legio VII', CPFTitle as 'Member of VII CPF', MonumentType, Province as 'Monument Province'
 	FROM Monument JOIN FindSpot USING (FindSpotID)
 						    JOIN LegioServicemen USING (MonumentID)
 						    JOIN MonumentCorpus USING (MonumentID)
