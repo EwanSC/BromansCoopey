@@ -31,7 +31,7 @@ INSERT INTO FindSpot (FindSpotID, Province,   Settlement, ExtraInfo, LONG, LAT, 
 										 (9,          'Dalmatia', 'Salona',  'East Necropolis',16.491405,43.541733,197488),
 										 (10,         'Dalmatia','Iadera','Filippi house',15.237922,44.120336,197312),
                      (11,         'Dalmatia','Salona',null,16.483426,43.539561,197488),
-                     (12,         'Dalmatia','Bigeste/Ljubuški','Filovača',17.561619,43.195182,197167),
+                     (12,         'Dalmatia','Pagus Scunasticus/Bigeste','Beširica, Filovača',17.561619,43.195182,197167),
                      (13,         'Dalmatia','Tilurium','Gardun, built into a house',16.714676,43.612652,197552),
                      (14,         'Dalmatia','Iadera','Church of st Michael',15.283776,44.219355,197312),
                      (15,         'Dalmatia','Narona','Vid Metković',17.62464523, 43.08130155,197400),
@@ -44,20 +44,20 @@ INSERT INTO FindSpot (FindSpotID, Province,   Settlement, ExtraInfo, LONG, LAT, 
 										 (22,         'Dalmatia','Imotski' ,null,17.217691,43.447478,null),
 										 (23,         'Dalmatia','Tilurium','Cetina River',16.728064,43.61461719,197552),
 										 (24,         'MoesiaS','Viminacium',null,21.230575,44.732910,207549),
-										 (25,         'Dalmatia','Bigeste/Ljubuški','Hardomilje',17.544753,43.159097,197167),
+										 (25,         'Dalmatia','Pagus Scunasticus/Bigeste','Vuna, Hardomilje',17.544753,43.159097,197167),
 										 (26,         'Dalmatia','Asseria','Podgrađe',15.6663802,44.01096805,197145),
-										 (27,         'Dalmatia','Bigeste/Ljubuški','Veljaci',17.445,43.237222,197167),
+										 (27,         'Dalmatia','Pagus Scunasticus/Bigeste','Veljaci',17.445,43.237222,197167),
 										 (28,         'Dalmatia','Aequum','Glavice, near Sinj',16.661095,43.711624,197095),
 										 (29,         'Dalmatia','Tilurium','Trilj',16.723601,43.618756,197552),
 										 (30,         'Dalmatia','Municipium Riditarum/Rider, Danilo','Near Šibenik',16.055704,43.700462,197473),
 										 (31,         'Dalmatia','Narona','Čitluk',17.698194,43.228021,197400),
 										 (32,         'Dalmatia','Andetrium','Gornji Muć',16.484007,43.690597,197115),
-										 (33,         'Dalmatia','Bigeste/Ljubuški','Humac',17.533683,43.184896,197167),
+										 (33,         'Dalmatia','Pagus Scunasticus/Bigeste','Gračine, Humac',17.528855,43.182217,197167),
 										 (34,         'Dalmatia','Aequum','Hrvace',16.621101,43.755188,197095),
 										 (35,         'Dalmatia','Siculi','Bijaći, near Tragurium',16.298595,43.555434,197511),
 										 (36,         'Dalmatia','Salona','Near Porta Caesarea',16.4823429,43.5383152,197488),
 										 (37,         'Dalmatia','Salona','North Necropolis, Kapljuč',16.476790,43.539370,197488),
-										 (38,         'Dalmatia','Bigeste/Ljubuški','Vitaljina',17.5285698,43.182298,197167),
+										 (38,         'Dalmatia','Pagus Scunasticus/Bigeste','Grebine, Vitaljina',17.5285698,43.182298,197167),
 										 (39,         'Dalmatia','Vaganj','Near jajce',17.17608,44.15513,null),
 										 (40,         'Galatia','Antiochia Pisidiae', null, 31.1894355,38.305175,609307),
 										 (41,         'Galatia','Cormasa','near Antiochia Pisidiae',30.1194035,37.5053445,638936),
@@ -74,7 +74,10 @@ INSERT INTO FindSpot (FindSpotID, Province,   Settlement, ExtraInfo, LONG, LAT, 
 										 (51,         'Dalmatia','Gorica','Near Dubrava, Poljice',16.647371,43.495214,null),
 									   (53,         'Dalmatia','Aequum','Krinj, near Čitluk',16.644167,43.745556,197095),
 										 (54,         'Dalmatia','Aequum','Čitluk',16.655704,43.739278,197095),
-										 (55,					'Galatia','Apollonia','Later became site of Tymandus',30.607024,38.104416,609563);
+										 (55,					'Galatia','Apollonia','Later became site of Tymandus',30.607024,38.104416,609563),
+										 (56,         'Dalmatia','Pagus Scunasticus/Bigeste','Glavica, Ljubuški',17.556913,43.196349,197167),
+									 	 (57,         'Dalmatia','Pagus Scunasticus/Bigeste','Humac',17.528855,43.182217,197167),
+										 (58,         'Dalmatia','Pagus Scunasticus/Bigeste','Smokovice, Hardomilje',17.544753,43.159097,197167);
 
 select 'findspotsloaded', count(*) from FindSpot;
 
@@ -140,6 +143,8 @@ CREATE TABLE MonumentMilitaryOffice (
 --     VALUES                        (1,          'Milites'),
 --		                               (2,          'Milites');
 -- This was originaly going to be put in manually, but I decided to put in an 'automatic' .csv import system.
+-- DistinctOffice is not really important, just needed a primary key for thist table as a single monumentID and ServicemanID
+-- could have multiple Offices for it, thus a unique key was needed
 
 .mode csv
 .import ../MonumentMilitaryOffice.csv MonumentMilitaryOffice
