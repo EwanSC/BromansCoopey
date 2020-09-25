@@ -1,4 +1,4 @@
-SELECT CorpusName ||' '|| reference as 'Primary Reference', Inscription, MonumentType AS 'Monument Type', (Settlement ||', '|| coalesce(ExtraInfo, '')) AS FindSpot 
+SELECT CorpusName ||' '|| reference as 'Primary Reference', Inscription, MonumentType AS 'Monument Type', StelaeType AS 'Style Type', (Settlement ||', '|| coalesce(ExtraInfo, '')) AS FindSpot 
 FROM Monument
 JOIN MonumentCorpus USING (MonumentID)
 JOIN FindSpot USING (FindSpotID)
