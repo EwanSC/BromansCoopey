@@ -1,4 +1,4 @@
-SELECT Monument.MonumentID, MonumentCorpus.CorpusName ||', '|| MonumentCorpus.Reference AS Reference, Monument.Inscription, MonumentType, DateFrom, DateTo, Monument.MemberSeventhLegion, Monument.CPFTitle, FindSpot.Settlement, FindSpot.ExtraInfo, Monument.Note
+SELECT Monument.MonumentID, MonumentCorpus.CorpusName ||', '|| MonumentCorpus.Reference AS Reference, Monument.Inscription, MonumentType, StelaeType, DateFrom, DateTo, Monument.MemberSeventhLegion, Monument.CPFTitle, FindSpot.Settlement, FindSpot.ExtraInfo, Monument.Note
 FROM Monument
 JOIN MonumentCorpus USING (MonumentID)
 JOIN FindSpot USING (FindSpotID)
