@@ -32,7 +32,7 @@
 32,5,EDH,HD039866,
 33,5,Other Ref,"Sanader 2000, figs 4 and 6",
 34,5,Other Ref,"Sanader, Milićević Bradač, Demicheli 2007",
-35,5,Other Ref,"Sanader, Milićević Bradač, Demicheli 2010",
+35,5,Other Ref,"Sanader, Milićević Bradač, Demicheli 2013",
 36,5,Tončinić,001,
 37,6,CIL,"03, 02709",1
 38,6,Tončinić,002,
@@ -80,7 +80,7 @@
 80,12,Other Ref,"BD-VAHD (1) 1878, no.24",
 81,12,Other Ref,"Wilkes 1969, 463",
 82,12,Other Ref,"Sanader, Milićević Bradač, Demicheli 2007",
-83,12,Other Ref,"Sanader, Milićević Bradač, Demicheli 2010",
+83,12,Other Ref,"Sanader, Milićević Bradač, Demicheli 2013",
 84,12,EDH,HD058840,
 85,12,Other Ref,"Rendić-Miočević 1987, 226",
 86,12,Other Ref,"Fadić 1997, no. 11",
@@ -178,7 +178,7 @@
 178,25,Other Ref,"Rendić-Miočević 1987, 228",
 179,25,Other Ref,"Fadić, 1997, no. 10",
 180,25,Other Ref,"Sanader, Milićević Bradač, Demicheli 2007",
-181,25,Other Ref,"Sanader, Milićević Bradač, Demicheli 2010",
+181,25,Other Ref,"Sanader, Milićević Bradač, Demicheli 2013",
 182,25,EDH,HD034294,
 183,26,Tončinić,021,
 184,26,AE,"1994, 1355",1
@@ -201,7 +201,7 @@
 201,29,CIL,"03, 02715",1
 202,29,Tončinić,024,
 203,29,Betz,030,
-204,29,Other Ref,"Fadić 1994, no.4",
+204,29,Other Ref,"Fadić 1995, no.4",
 205,29,Other Ref,"Wilkes 1969, 467",
 206,29,EDH,HD062415,
 207,30,CIL,"03, 13976",1
@@ -357,8 +357,8 @@
 357,51,Other Ref,"Fadić 1997, 81 no.8",
 358,51,Other Ref,"Šegvić 1996, 135-136 no. 32",
 359,51,Other Ref,"Sanader, Milićević Bradač, Demicheli 2007",
-360,51,Other Ref,"Sanader, Milićević Bradač, Demicheli 2010",
-361,51,Other Ref,"Radman Livaja 2010, 108-109 no. 114",
+360,51,Other Ref,"Sanader, Milićević Bradač, Demicheli 2013",
+361,51,Other Ref,"Radman-Livaja 2010, 108-109 no. 114",
 362,51,EDH,HD040157,
 363,52,CIL,"03, 09738",1
 364,52,CIL,"03, 08781",
@@ -585,11 +585,11 @@
 585,83,EDH,HD053672,
 586,84,CIL,"03, 06826",1
 587,84,AE,"1998, 1386-9",
-588,84,Other Ref,Mitchell 1973,
+588,84,Other Ref,Mitchell 1976,
 589,84,Other Ref,Whately 2016,
 590,85,CIL,"03, 06827",1
 591,85,AE,"1998, 1386-9",
-592,85,Other Ref,Mitchell 1973,
+592,85,Other Ref,Mitchell 1976,
 593,85,Other Ref,Whately 2016,
 594,86,Other Ref,"Bean 1959, 93",1
 595,86,Other Ref,Whately 2016,
@@ -661,7 +661,7 @@
 661,102,Tončinić,089,
 662,102,AE,"1981, 0669",1
 663,102,AE,"1985, 0712",
-664,102,Other Ref,"Jelčić 1981, 98-100",
+664,102,Other Ref,"Jeličić-Radonić 1981, 98-100",
 665,102,EDH,HD003120,
 666,103,CIL,"03, 14951",1
 667,103,Tončinić,090,
