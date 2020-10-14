@@ -271,9 +271,9 @@ SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDH, OtherRef
         			 WHERE CorpusName = 'Other Ref'
         			 GROUP BY MonumentID) as OtherReftable USING (MonumentID);
 
-DROP VIEW IF EXISTS 'All Servicemen';
-CREATE VIEW 'All Servicemen' AS
-SELECT MonumentID as 'Monument', CorpusName ||', '|| Reference as Reference, ServicemanID, Name, OriginSettlement, OriginProvince, militarystatus, Office as 'Active Office', MemberSeventhLegion as 'Member of Legio VII', CPFTitle as 'Member of VII CPF', MonumentType, Province as 'Monument Province'
+DROP VIEW IF EXISTS All_Servicemen;
+CREATE VIEW All_Servicemen AS
+SELECT MonumentID as 'Monument', CorpusName ||', '|| Reference as 'Reference', ServicemanID, Name, OriginSettlement, OriginProvince, militarystatus, Office as 'ActiveOffice', MemberSeventhLegion as 'MemberLegioVII', CPFTitle as 'MemberCPF', MonumentType, Province as 'Monument_Province'
 	FROM Monument JOIN FindSpot USING (FindSpotID)
 						    JOIN LegioServicemen USING (MonumentID)
 						    JOIN MonumentCorpus USING (MonumentID)
@@ -284,29 +284,29 @@ SELECT MonumentID as 'Monument', CorpusName ||', '|| Reference as Reference, Ser
 	 WHERE isPrimaryReference = '1'
 	 AND (MonumentType = 'stela' or MonumentType = 'funerary inscription' or MonumentType = 'titulus' or MonumentType = 'inscription fragment' or MonumentType = 'sacral monument' or MonumentType = 'altar');
 
-DROP VIEW IF EXISTS 'Not in Tončinić 2011';
-CREATE VIEW 'Not in Tončinić 2011' AS
+DROP VIEW IF EXISTS Not_in_Tončinić_2011;
+CREATE VIEW Not_in_Tončinić_2011 AS
 SELECT MonumentID, CorpusName, Reference, AE, ILJug, OtherRef
 	FROM MonumentCorpus JOIN AllCorpora USING (MonumentID)
  WHERE Tončinić IS NULL
 	 AND isPrimaryReference is '1';
 
-DROP VIEW IF EXISTS 'Reference, Monument and Location';
-CREATE VIEW 'Reference, Monument and Location' AS
+DROP VIEW IF EXISTS Reference_Monument_Location;
+CREATE VIEW Reference_Monument_Location AS
 SELECT MonumentID, MonumentCorpus.CorpusName ||', '|| MonumentCorpus.Reference as Reference, monument.MonumentType, FindSpot.province, FindSpot.Settlement, FindSpot.ExtraInfo
   FROM Monument JOIN MonumentCorpus USING (MonumentID)
 								JOIN FindSpot USING (FindSpotID)
  WHERE isPrimaryReference = '1';
 
-DROP VIEW IF EXISTS 'Servicemen and Reference';
-CREATE VIEW 'Servicemen and Reference' AS
+DROP VIEW IF EXISTS Servicemen_Reference;
+CREATE VIEW Servicemen_Reference AS
 SELECT ServicemanID, MonumentID, MonumentCorpus.CorpusName ||', '|| MonumentCorpus.Reference AS Reference, AllCorpora.Tončinić, LegioServicemen.Name, LegioServicemen.ReferencedAs, LegioServicemen.Tribe, LegioServicemen.OriginProvince, LegioServicemen.OriginSettlement
   FROM LegioServicemen JOIN MonumentCorpus USING (MonumentID)
 											 JOIN AllCorpora USING (MonumentID)
 WHERE isPrimaryReference = '1';
 
-DROP VIEW IF EXISTS 'Tončinić and Primary Reference';
-CREATE VIEW 'Tončinić and Primary Reference' AS
+DROP VIEW IF EXISTS Tončinić_Primary_Reference;
+CREATE VIEW Tončinić_Primary_Reference AS
 SELECT MonumentID, CorpusName ||', '|| REFERENCE as 'Reference', Tončinić, Inscription
   FROM MonumentCorpus JOIN AllCorpora USING (MonumentID)
 											JOIN Monument USING (MonumentID)
