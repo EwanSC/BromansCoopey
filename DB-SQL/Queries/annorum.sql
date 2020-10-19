@@ -1,4 +1,4 @@
-SELECT MonumentID, CorpusName ||' '|| Reference AS Reference, Inscription, MemberSeventhLegion, Tončinić
+SELECT MonumentID, CorpusName ||' '|| Reference AS Reference, Inscription, MemberSeventhLegion, Tončinić, Settlement
 FROM Monument
 JOIN MonumentCorpus USING (MonumentID)
 JOIN FindSpot USING (FindSpotID)
