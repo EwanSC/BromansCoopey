@@ -93,11 +93,12 @@ CREATE TABLE Monument (
 	CPFTitle TEXT, -- this can have values of: no, c, cpf, maybe.
 	               -- The value "maybe" reflects historical uncertainty
 								 -- it could be there, but it could also not be
+								 -- if there are two, the title at time of death is listed
 	Inscription TEXT,
 	Translation TEXT,
-	DoorMotifPresent BOOLEAN,
-	PortraitPresent BOOLEAN,
-	WeaponsPresent BOOLEAN,
+	LowerFieldMotif TEXT,
+	Portrait TEXT,
+	Frieze TEXT,
 	DateFrom DATE,
 	DateTo DATE,
 	DateNote TEXT,
@@ -121,9 +122,9 @@ UPDATE monument SET MemberSeventhLegion = NULL WHERE MemberSeventhLegion = '';
 UPDATE monument SET CPFTitle = NULL WHERE CPFTitle = '';
 UPDATE monument SET Inscription = NULL WHERE Inscription = '';
 UPDATE monument SET Translation = NULL WHERE Translation = '';
-UPDATE monument SET DoorMotifPresent = NULL WHERE DoorMotifPresent = '';
-UPDATE monument SET PortraitPresent = NULL WHERE PortraitPresent = '';
-UPDATE monument SET WeaponsPresent = NULL WHERE WeaponsPresent = '';
+UPDATE monument SET LowerFieldMotif = NULL WHERE LowerFieldMotif = '';
+UPDATE monument SET Portrait = NULL WHERE Portrait = '';
+UPDATE monument SET Frieze = NULL WHERE Frieze = '';
 UPDATE monument SET DateFrom = NULL WHERE DateFrom = '';
 UPDATE monument SET DateTo = NULL WHERE DateTo = '';
 UPDATE monument SET DateNote = NULL WHERE DateNote = '';
@@ -159,8 +160,6 @@ UPDATE MonumentMilitaryOffice SET ServicemanID = NULL WHERE ServicemanID = '';
 CREATE TABLE Corpus (
 	CorpusName TEXT PRIMARY KEY
 );
-
---which db type is this?
 
 INSERT INTO Corpus (CorpusName)
      VALUES        ('CIL'),
@@ -284,32 +283,9 @@ SELECT MonumentID as 'Monument', CorpusName ||', '|| Reference as 'Reference', S
 	 WHERE isPrimaryReference = '1'
 	 AND (MonumentType = 'stela' or MonumentType = 'funerary inscription' or MonumentType = 'titulus' or MonumentType = 'inscription fragment' or MonumentType = 'sacral monument' or MonumentType = 'altar');
 
-DROP VIEW IF EXISTS Not_in_Tončinić_2011;
-CREATE VIEW Not_in_Tončinić_2011 AS
-SELECT MonumentID, CorpusName, Reference, AE, ILJug, OtherRef
-	FROM MonumentCorpus JOIN AllCorpora USING (MonumentID)
- WHERE Tončinić IS NULL
-	 AND isPrimaryReference is '1';
-
 DROP VIEW IF EXISTS Reference_Monument_Location;
 CREATE VIEW Reference_Monument_Location AS
 SELECT MonumentID, MonumentCorpus.CorpusName ||' '|| MonumentCorpus.Reference as Reference, monument.MonumentType, FindSpot.province, FindSpot.Settlement, FindSpot.ExtraInfo
   FROM Monument JOIN MonumentCorpus USING (MonumentID)
 								JOIN FindSpot USING (FindSpotID)
  WHERE isPrimaryReference = '1';
-
-DROP VIEW IF EXISTS Servicemen_Reference;
-CREATE VIEW Servicemen_Reference AS
-SELECT ServicemanID, MonumentID, MonumentCorpus.CorpusName ||', '|| MonumentCorpus.Reference AS Reference, AllCorpora.Tončinić, LegioServicemen.Name, LegioServicemen.ReferencedAs, LegioServicemen.Tribe, LegioServicemen.OriginProvince, LegioServicemen.OriginSettlement
-  FROM LegioServicemen JOIN MonumentCorpus USING (MonumentID)
-											 JOIN AllCorpora USING (MonumentID)
-WHERE isPrimaryReference = '1';
-
-DROP VIEW IF EXISTS Tončinić_Primary_Reference;
-CREATE VIEW Tončinić_Primary_Reference AS
-SELECT MonumentID, CorpusName ||', '|| REFERENCE as 'Reference', Tončinić, Inscription
-  FROM MonumentCorpus JOIN AllCorpora USING (MonumentID)
-											JOIN Monument USING (MonumentID)
- WHERE isPrimaryReference = '1'
-	 AND Tončinić IS NOT NULL
- ORDER BY Reference;
