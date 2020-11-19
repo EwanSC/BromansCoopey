@@ -96,7 +96,8 @@ CREATE TABLE Monument (
 								 -- if there are two, the title at time of death is listed
 	Inscription TEXT,
 	Translation TEXT,
-	LowerFieldMotif TEXT,
+	LowerFieldDecoration TEXT,
+	LowerFieldDetail TEXT,
 	Portrait TEXT,
 	Frieze TEXT,
 	DateFrom DATE,
@@ -122,7 +123,8 @@ UPDATE monument SET MemberSeventhLegion = NULL WHERE MemberSeventhLegion = '';
 UPDATE monument SET CPFTitle = NULL WHERE CPFTitle = '';
 UPDATE monument SET Inscription = NULL WHERE Inscription = '';
 UPDATE monument SET Translation = NULL WHERE Translation = '';
-UPDATE monument SET LowerFieldMotif = NULL WHERE LowerFieldMotif = '';
+UPDATE monument SET LowerFieldDecoration = NULL WHERE LowerFieldDecoration = '';
+UPDATE monument SET LowerFieldDetail = NULL WHERE LowerFieldDetail = '';
 UPDATE monument SET Portrait = NULL WHERE Portrait = '';
 UPDATE monument SET Frieze = NULL WHERE Frieze = '';
 UPDATE monument SET DateFrom = NULL WHERE DateFrom = '';
