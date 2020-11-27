@@ -90,10 +90,7 @@ CREATE TABLE Monument (
 	DateFoundPrecisionNote TEXT,
 	MonumentType TEXT,
 	MemberSeventhLegion TEXT,
-	CPFTitle TEXT, -- this can have values of: no, c, cpf, maybe.
-	               -- The value "maybe" reflects historical uncertainty
-								 -- it could be there, but it could also not be
-								 -- if there are two, the title at time of death is listed
+	Unit TEXT, -- this refers to the unit title, even if the unit is not legio VII
 	Inscription TEXT,
 	Translation TEXT,
 	LowerFieldDecoration TEXT,
@@ -120,7 +117,7 @@ UPDATE monument SET DateFound = NULL WHERE DateFound = '';
 UPDATE monument SET DateFoundPrecisionNote = NULL WHERE DateFoundPrecisionNote = '';
 UPDATE monument SET MonumentType = NULL WHERE MonumentType = '';
 UPDATE monument SET MemberSeventhLegion = NULL WHERE MemberSeventhLegion = '';
-UPDATE monument SET CPFTitle = NULL WHERE CPFTitle = '';
+UPDATE monument SET Unit = NULL WHERE Unit = '';
 UPDATE monument SET Inscription = NULL WHERE Inscription = '';
 UPDATE monument SET Translation = NULL WHERE Translation = '';
 UPDATE monument SET LowerFieldDecoration = NULL WHERE LowerFieldDecoration = '';
@@ -274,7 +271,7 @@ SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDH, OtherRef
 
 DROP VIEW IF EXISTS All_Servicemen;
 CREATE VIEW All_Servicemen AS
-SELECT MonumentID as 'Monument', CorpusName ||', '|| Reference as 'Reference', ServicemanID, Name, OriginSettlement, OriginProvince, militarystatus, Office as 'ActiveOffice', MemberSeventhLegion as 'MemberLegioVII', CPFTitle as 'MemberCPF', MonumentType, Province as 'Monument_Province'
+SELECT MonumentID as 'Monument', CorpusName ||', '|| Reference as 'Reference', ServicemanID, Name, OriginSettlement, OriginProvince, militarystatus, Office as 'ActiveOffice', MemberSeventhLegion as 'MemberLegioVII', Unit as 'MemberCPF', MonumentType, Province as 'Monument_Province'
 	FROM Monument JOIN FindSpot USING (FindSpotID)
 						    JOIN LegioServicemen USING (MonumentID)
 						    JOIN MonumentCorpus USING (MonumentID)
