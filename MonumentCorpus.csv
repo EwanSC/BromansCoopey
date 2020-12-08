@@ -51,7 +51,7 @@
 51,8,ILJug,"3, 2091",1
 52,8,Betz,044,
 53,8,Other Ref,"Wilkes 1969, 463",
-54,8,Other Ref,"Miletić 1989a, 102-106",
+54,8,Other Ref,"Miletić 1989, 102-106",
 55,8,Other Ref,"Miletić 1990, 169",
 56,8,EDH,HD034435,
 57,8,Other Ref,"BD-VAHD (37) 1914, no. 4657 A",
@@ -59,8 +59,8 @@
 59,9,Other Ref,"BD-VAHD (11) 1888, no. 94",
 60,9,Betz,022,
 61,9,Tončinić,005,
-62,9,Other Ref,"Miletić 1992, 27-34",
-63,9,Other Ref,"Miletić 1989a, 66-71",
+62,9,Other Ref,"Miletić 1991, 27-34",
+63,9,Other Ref,"Miletić 1989, 66-71",
 64,9,EDH,HD062488,
 65,10,Tončinić,006,
 66,10,Other Ref,"Fadić 1995, 163-187",
@@ -167,7 +167,7 @@
 167,24,ILJug,"3, 2105",1
 168,24,Other Ref,"Wilkes 1969, 466",
 169,24,Other Ref,"BD-VAHD (37) 1914, 65 no.4656A",
-170,24,Other Ref,"Miletić 1989a, 102-106",
+170,24,Other Ref,"Miletić 1989, 102-106",
 171,24,Other Ref,"Miletić 1990, 169-180",
 172,24,EDH,HD034445,
 173,25,ILJug,"3, 1950",1
@@ -209,7 +209,7 @@
 209,30,Betz,024,
 210,30,AE,"2007, 1104",
 211,30,Other Ref,"BD-VAHD (17) 1894, 4 no. 2",
-212,30,Other Ref,"Patsch 1897b, no. 10",
+212,30,Other Ref,"Patsch 1897, no. 10",
 213,30,Other Ref,"Wilkes 1969, 461",
 214,30,Other Ref,"Fadić 1997, no. 18",
 215,30,Other Ref,Tončinić 2007,
@@ -349,7 +349,7 @@
 349,50,AE,"1991, 1291",1
 350,50,Other Ref,"Cambi 1986, 81ff",
 351,50,Other Ref,"Cambi 1991, 61-72",
-352,50,Other Ref,"Miletić 1992, 28, 33",
+352,50,Other Ref,"Miletić 1991, 28, 33",
 353,50,EDH,HD039727,
 354,51,Tončinić,042,
 355,51,AE,"1995, 1232",1
@@ -398,7 +398,7 @@
 398,56,Tončinić,047,
 399,56,CIL,"03, 13978",1
 400,56,Other Ref,"BD-VAHD (17) 1894, 5 no. 3",
-401,56,Other Ref,"Patsch 1897b, 350",
+401,56,Other Ref,"Patsch 1897, 350",
 402,56,EDH,HD061690,
 403,57,CIL,"03, 14933",1
 404,57,Tončinić,048,
@@ -417,7 +417,7 @@
 417,59,ILJug,"3, 2280",1
 418,59,Other Ref,"BD-VAHD (27) 1904, 157 no. 3164",
 419,59,Other Ref,"Egger 1926, 67, no. 2",
-420,59,Other Ref,"Miletić 1989a, 108-109",
+420,59,Other Ref,"Miletić 1989, 108-109",
 421,59,Other Ref,"Miletić 1990, 183-186",
 422,59,EDH,HD034679,
 423,60,Tončinić,051,
@@ -425,7 +425,7 @@
 425,60,Betz,010,
 426,60,Other Ref,"Brøndsted 1928, 158 no. 5",
 427,60,Other Ref,"BD-VAHD (50) 1928-1929, 13 no. 5",
-428,60,Other Ref,"Miletić 1989a, 99, 105 pl. XV",
+428,60,Other Ref,"Miletić 1989, 99, 105 pl. XV",
 429,60,Other Ref,"Miletić 1990, 170-171 fig. 3, 179",
 430,60,EDH,HD035037,
 431,61,CIL,"03, 01818",1
@@ -439,7 +439,7 @@
 439,62,Betz,065,
 440,62,Other Ref,"Lanza 1856, 78-80 no. 50",
 441,62,Other Ref,"Wilkes 1969, 462",
-442,62,Other Ref,"Miletić 1989a, 101, 105-106",
+442,62,Other Ref,"Miletić 1989, 101, 105-106",
 443,62,Other Ref,"Miletić 1990, 179",
 444,62,EDH,HD063317,
 445,63,Tončinić,054,
@@ -465,7 +465,7 @@
 465,65,ILJug,"3, 2090",1
 466,65,Other Ref,"BD-VAHD (36) 1913, 14-15 no. 4407 A",
 467,65,Other Ref,"Wilkes 1969, 463",
-468,65,Other Ref,"Miletić 1992, 33",
+468,65,Other Ref,"Miletić 1991, 33",
 469,65,EDH,HD034434,
 470,66,CIL,"03, 08760",1
 471,66,Tončinić,057,
@@ -485,7 +485,7 @@
 485,68,AE,"1991, 1290",1
 486,68,Other Ref,"Cambi 1986, 61-62, pl. 8.1.",
 487,68,Other Ref,"Cambi 1991, 61-72",
-488,68,Other Ref,"Miletić 1992, 28, 33",
+488,68,Other Ref,"Miletić 1991, 28, 33",
 489,68,EDH,HD039722,
 490,69,Tončinić,060,
 491,69,AE,"2003, 1330",1
@@ -540,13 +540,13 @@
 540,77,Betz,017,
 541,77,ILJug,"3, 2093",1
 542,77,Other Ref,"BD-VAHD (37) 1914, 55 no. 4576 A",
-543,77,Other Ref,"Miletić 1992, 23-25 fig. 1",
+543,77,Other Ref,"Miletić 1991, 23-25 fig. 1",
 544,77,EDH,HD034436,
 545,78,Tončinić,070,
 546,78,Betz,071,
 547,78,ILJug,"3, 2600",1
 548,78,Other Ref,"Brønsted 1928, 157-8 no. 4",
-549,78,Other Ref,"Miletić 1989a, 99, 105 pl. XV",
+549,78,Other Ref,"Miletić 1989, 99, 105 pl. XV",
 550,78,Other Ref,"Miletić 1990, 170-171 fig. 3, 179",
 551,78,EDH,HD035036,
 552,79,CIL,"03, 09742",1
@@ -627,7 +627,7 @@
 627,95,Tončinić,082,
 628,95,Betz,079,
 629,95,Other Ref,"BD-VAHD (18) 1895, 216 no. 2111",
-630,95,Other Ref,"Miletić 1989a, 105",
+630,95,Other Ref,"Miletić 1989, 105",
 631,95,Other Ref,"Miletić 1990a, 179",
 632,95,EDH,HD062028,
 633,96,CIL,"03, 08767",1
@@ -644,7 +644,7 @@
 644,98,EDH,HD063895,
 645,99,Tončinić,086,1
 646,99,Other Ref,"BD-VAHD (27) 1904, 53 no. A 3209",
-647,99,Other Ref,"Miletić 1989a, 101",
+647,99,Other Ref,"Miletić 1989, 101",
 648,99,Other Ref,"Miletić 1990a, 174",
 649,100,Tončinić,087,
 650,100,ILJug,"2, 0733",1
