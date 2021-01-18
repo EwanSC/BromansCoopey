@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS LegioServicemen;
 DROP TABLE IF EXISTS MonumentCorpus;
 DROP TABLE IF EXISTS Units;
 DROP TABLE IF EXISTS MonumentUnit;
+DROP TABLE IF EXISTS MilitaryStatus;
 
 
 CREATE TABLE FindSpot (
@@ -57,13 +58,13 @@ INSERT INTO FindSpot
 				 		(27,'Dalmatia',	'Pagus Scunasticus',					null,														'Veljaci',							null,															null,					17.445,			43.237222,	null,																					'https://www.trismegistos.org/place/43363'),
 				 		(28,'Dalmatia',	'Aequum',											null,														'Glavice',							null,															null,					16.661095,	43.711624,	'https://pleiades.stoa.org/places/197095',		'https://www.trismegistos.org/place/19893'),
 				 		(29,'Dalmatia',	'Tilurium',										null,														'Trilj',								null,															null,					16.723601,	43.618756,	'https://pleiades.stoa.org/places/197552',		'https://www.trismegistos.org/place/29459'),
-				 		(30,'Dalmatia',	'Municipium Riditarum/Rider',	null,														'Danilo',								null,										'Near Šibenik',					16.055704,	43.700462,	'https://pleiades.stoa.org/places/197473',		'https://www.trismegistos.org/place/29458'),
+				 		(30,'Dalmatia',	'Municipium Riditarum/Rider',	null,														'Danilo',								null,										'near Šibenik',					16.055704,	43.700462,	'https://pleiades.stoa.org/places/197473',		'https://www.trismegistos.org/place/29458'),
 				 		(31,'Dalmatia',	'Narona',											null,														'Čitluk',								null,															null,					17.698194,	43.228021,	'https://pleiades.stoa.org/places/197400',		'https://www.trismegistos.org/place/16527'),
 				 		(32,'Dalmatia',	'Andetrium',									null,														'Gornji Muć',						null,															null,					16.484007,	43.690597,	'https://pleiades.stoa.org/places/197115',		'https://www.trismegistos.org/place/29420'),
 				 		(33,'Dalmatia',	'Pagus Scunasticus',					null,														'Gračine-Humac',				null,															null,					17.528855,	43.182217,	null,																					'https://www.trismegistos.org/place/43363'),
 				 		(34,'Dalmatia',	'Aequum',											null,														'Hrvace',								null,															null,					16.621101,	43.755188,	'https://pleiades.stoa.org/places/197095',		'https://www.trismegistos.org/place/19893'),
-				 		(35,'Dalmatia',	'Siculi',											null,														'Bijaći',								null,					'Near Tragurium/Trogir',					16.298595,	43.555434,	'https://pleiades.stoa.org/places/197511',		'https://www.trismegistos.org/place/29385'),
-				 		(36,'Dalmatia',	'Salona',											'Near Porta Caesarea',					'Solin',								null,															null,					16.4823429,	43.5383152,	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
+				 		(35,'Dalmatia',	'Siculi',											null,														'Bijaći',								null,					'near Tragurium/Trogir',					16.298595,	43.555434,	'https://pleiades.stoa.org/places/197511',		'https://www.trismegistos.org/place/29385'),
+				 		(36,'Dalmatia',	'Salona',											'near Porta Caesarea',					'Solin',								null,															null,					16.4823429,	43.5383152,	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
 				 		(37,'Dalmatia',	'Salona',											'North Necropolis',							'Kapljuč',							null,															null,					16.476790,	43.539370,	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
 				 		(38,'Dalmatia',	'Pagus Scunasticus',					null,														'Grebine-Vitaljina',		null,															null,					17.5285698,	43.182298,	null,																					'https://www.trismegistos.org/place/43363'),
 				 		(39,'Dalmatia',	null,													null,														'Vaganj-Jajce',					null,															null,					17.17608,		44.15513,		null,																					'https://www.trismegistos.org/place/36267'),
@@ -75,11 +76,11 @@ INSERT INTO FindSpot
          		(45,'Dalmatia',	'Salona',											'East Necropolis originally?',	'Klis', 								null,															null,					16.496858,	43.540222,	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
 				 		(46,'Dalmatia',	'Tragurium',									null,														'Seget Donji',					null,															null,					16.2333,		43.5167,		'https://pleiades.stoa.org/places/197555',		'https://www.trismegistos.org/place/29369'),
 				 		(47,'Dalmatia',	'Andetrium',									null,														'Gornji Postinje',			null,															null,					16.424,			43.701,			'https://pleiades.stoa.org/places/197115',		'https://www.trismegistos.org/place/29420'),
-			   		(48,'Dalmatia',	null,													null,														'Popovići',							null,											'Near Karin',					15.663098,	44.075137,	null,																					'https://www.trismegistos.org/place/36189'),
-				 		(50,'Dalmatia',	null,													null,														'Razvođe',							null,						'Near Burnum/Kistanje',					16.107708,	43.92898,		null,																					null),
-				 		(49,'Dalmatia',	null,													null,														'Krug',									null,					'Near Jesenice, Poljice',					16.634664,	43.456728,	null,																					'https://www.trismegistos.org/place/36097'),
+			   		(48,'Dalmatia',	null,													null,														'Popovići',							null,											'near Karin',					15.663098,	44.075137,	null,																					'https://www.trismegistos.org/place/36189'),
+				 		(50,'Dalmatia',	null,													null,														'Razvođe',							null,						'near Burnum/Kistanje',					16.107708,	43.92898,		null,																					null),
+				 		(49,'Dalmatia',	null,													null,														'Krug',									null,					'near Jesenice, Poljice',					16.634664,	43.456728,	null,																					'https://www.trismegistos.org/place/36097'),
 				 		(52,'Dalmatia',	null,													'Originally Aequum?',						'Sinjsko polje',				null,															null,					16.695576,	43.675387,	null,																					null),
-				 		(51,'Dalmatia',	null,													null,														'Gorica',								null,					'Near Dubrava, Poljice',					16.647371,	43.495214,	null,																					null),
+				 		(51,'Dalmatia',	null,													null,														'Gorica',								null,					'near Dubrava, Poljice',					16.647371,	43.495214,	null,																					null),
 			   		(53,'Dalmatia',	'Aequum',											null,														'Krinj',								null,															null,					16.644167,	43.745556,	'https://pleiades.stoa.org/places/197095',		'https://www.trismegistos.org/place/19893'),
 				 		(54,'Dalmatia',	'Aequum',											null,														'Čitluk',								null,															null,					16.655704,	43.739278,	'https://pleiades.stoa.org/places/197095',		'https://www.trismegistos.org/place/19893'),
 				 		(55,'Galatia',	'Apollonia/Tymandus',					null,														null,										null,															null,					30.607024,	38.104416,	'https://pleiades.stoa.org/places/609563',		'https://www.trismegistos.org/place/16444'),
@@ -109,7 +110,7 @@ CREATE TABLE Monument (
 	DateNote TEXT,
 	StelaeType TEXT,
 	Location TEXT,
-	Note TEXT
+	MonumentNote TEXT
 );
 
 .mode csv
@@ -135,7 +136,7 @@ UPDATE monument SET DateTo = NULL WHERE DateTo = '';
 UPDATE monument SET DateNote = NULL WHERE DateNote = '';
 UPDATE monument SET Location = NULL WHERE Location = '';
 UPDATE monument SET StelaeType = NULL WHERE StelaeType = '';
-UPDATE monument SET Note = NULL WHERE Note = '';
+UPDATE monument SET MonumentNote = NULL WHERE MonumentNote = '';
 
 
 CREATE TABLE Units (
@@ -158,10 +159,10 @@ INSERT INTO Units
 					(11,'Legio VII CPF or XI CPF'),
 					(12,'Legio VII, VII CPF, XI, XI CPF');
 
-	select 'unitsloaded', count(*) from Units;
+select 'unitsloaded', count(*) from Units;
 
 CREATE TABLE MonumentUnit (
-	MonumentUnitID INTEGER PRIMARY KEY,
+	MilitaryStatusID INTEGER PRIMARY KEY,
 	MonumentID INTEGER REFERENCES Monument,
 	UnitID INTEGER REFERENCES Units,
 	Certainty TEXT
@@ -172,6 +173,39 @@ CREATE TABLE MonumentUnit (
 
 select 'monumentunitsloaded', count(*) from MonumentUnit;
 
+CREATE TABLE MilitaryStatus (
+	MilitaryStatusID INTEGER PRIMARY KEY,
+	FirstRecordedOffice TEXT,
+ 	SecondRecordedOffice TEXT,
+	FirstOfficeCertainty TEXT,
+	SecondOfficeCertainty TEXT,
+	VeteranStatus TEXT,
+	VeteranStatusCertainty TEXT
+);
+--
+INSERT INTO MilitaryStatus
+(MilitaryStatusID, FirstRecordedOffice, SecondRecordedOffice, FirstOfficeCertainty, SecondOfficeCertainty, VeteranStatus, VeteranStatusCertainty)
+	VALUES 	(1,	'miles',							null,									'specified',null,					null,				null),
+					(2,	'eques',							null,									'specified',null,					null,				null),
+					(3,	'eques',							null,									'likely',		null,					null,				null),
+					(4,	'eques',							null,									'specified',null,					'veteran',	'specified'),
+					(5,	'centurio',						null,									'specified',null,					null,				null),
+					(6,	'centurio',						null,									'specified',null,					'veteran',	'specified'),
+					(7,	'centurio', 					null, 								'likely',		null,					null, 			null),
+					(8,	'centurio',						null,									'likely',		null,					'veteran',	'likely'),
+					(9,	'signifer',						null,									'specified',null,					null,				null),
+					(10,'imaginifer',					null,									'specified',null,					null,				null),
+					(11,null,									null,									null,				null,					null,				null),
+					(12,'tribunus',						null,									'likely',		null,					null,				null),
+					(13,'princeps posterior',	null,									'specified',null,					null,				null),
+					(14,null,									null,									null,				null,					'veteran',	'specified'),
+					(15,null,									null,									null,				null,					'veteran',	'likely'),
+					(16,'scriba',							null,									'specified',null,					'veteran',	'specified'),
+					(17,'primus pilus',				'praefectus castorum','specified','specified',	null,				null),
+					(18,'centurio',						'iudex',							'likely',		'specified',	null,				null),
+					(19,'miles',							'exacto consularis',	'specified','specified',	null,				null);
+
+	select 'officesloaded', count(*) from MilitaryStatus;
 
 CREATE TABLE MonumentMilitaryOffice (
 	  DistinctOffice NUMBER PRIMARY KEY,
@@ -183,7 +217,7 @@ CREATE TABLE MonumentMilitaryOffice (
 .mode csv
 .import ../MonumentMilitaryOffice.csv MonumentMilitaryOffice
 
-select 'officesloaded', count(*) from MonumentMilitaryOffice;
+select 'militaryserviceloaded', count(*) from MonumentMilitaryOffice;
 
 UPDATE MonumentMilitaryOffice SET OfficeType = NULL WHERE OfficeType = '';
 UPDATE MonumentMilitaryOffice SET ServicemanID = NULL WHERE ServicemanID = '';
@@ -230,7 +264,7 @@ CREATE TABLE LegioServicemen (
 	DefiniteServiceman TEXT,
 	UnitID INTEGER REFERENCES Units,
 	LiklihoodOfUnitAttribution TEXT,
-  MilitaryStatus TEXT,
+  MilitaryStatusID INTEGER REFERENCES MilitaryStatus,
 	Tribe TEXT,
 	OriginProvince TEXT,
 	OriginSettlement TEXT,
@@ -255,7 +289,7 @@ UPDATE LegioServicemen SET DefiniteServiceman = NULL WHERE DefiniteServiceman = 
 UPDATE LegioServicemen SET UnitID = NULL WHERE UnitID = '';
 UPDATE LegioServicemen SET LiklihoodOfUnitAttribution = NULL WHERE LiklihoodOfUnitAttribution = '';
 UPDATE LegioServicemen SET Tribe = NULL WHERE Tribe = '';
-UPDATE LegioServicemen SET MilitaryStatus = NULL WHERE MilitaryStatus = '';
+UPDATE LegioServicemen SET MilitaryStatusID = NULL WHERE MilitaryStatusID = '';
 UPDATE LegioServicemen SET OriginProvince = NULL WHERE OriginProvince = '';
 UPDATE LegioServicemen SET OriginSettlement = NULL WHERE OriginSettlement = '';
 UPDATE LegioServicemen SET OtherMonument = NULL WHERE OtherMonument = '';
@@ -307,20 +341,52 @@ SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDH, OtherRef
 
 DROP VIEW IF EXISTS All_Servicemen;
 CREATE VIEW All_Servicemen AS
-SELECT MonumentID as 'Monument', CorpusName ||', '|| Reference as 'Reference', ServicemanID, Name, OriginSettlement, OriginProvince, militarystatus, Office as 'ActiveOffice', MonumentType, RomanProvince as 'Monument_Province'
-	FROM Monument JOIN FindSpot USING (FindSpotID)
-						     JOIN LegioServicemen USING (MonumentID)
-						     JOIN MonumentCorpus USING (MonumentID)
-		LEFT OUTER JOIN (SELECT MonumentID, group_concat(OfficeType, ' ; ') as Office
-		        			 FROM MonumentMilitaryOffice
-		        			 WHERE MonumentID = MonumentID
-		        			 GROUP BY MonumentID) as Officetable USING (MonumentID)
-	 WHERE isPrimaryReference = '1'
-	 AND (MonumentType = 'stela' or MonumentType = 'funerary inscription' or MonumentType = 'titulus' or MonumentType = 'inscription fragment' or MonumentType = 'sacral monument' or MonumentType = 'altar');
+SELECT
+	ServicemanID,
+	MonumentID as 'Monument',
+	CorpusName ||' '|| Reference as 'Reference',
+	Name AS 'Nomina',
+	Tribe AS 'Tribus',
+	OriginSettlement ||', '|| (coalesce(OriginProvince, ' ')) AS 'Domicilium',
+	DefiniteServiceman AS 'Serviceman?',
+	UnitTitle ||'('|| LiklihoodOfUnitAttribution AS 'Unit Afilliation and Certainty',
+	FirstRecordedOffice ||'('|| FirstOfficeCertainty AS 'Office and Certainty',
+	SecondRecordedOffice ||'('|| SecondOfficeCertainty AS 'Other Office if specfied',
+	VeteranStatus ||'('|| VeteranStatusCertainty AS 'Veteran Status and Certainty',
+	MonumentType,
+	ServicemanNote
+	FROM LegioServicemen
+		JOIN Monument USING (MonumentID)
+		JOIN MonumentCorpus USING (MonumentID)
+		JOIN MilitaryStatus USING (MilitaryStatusID)
+		JOIN Units USING (UnitID)
+	WHERE isPrimaryReference = '1'
+	AND (MonumentType = 'stela'
+			or MonumentType = 'funerary inscription'
+			or MonumentType = 'titulus'
+			or MonumentType = 'inscription fragment'
+			or MonumentType = 'sacral monument'
+			or MonumentType = 'altar')
+	ORDER BY DefiniteServiceman DESC, ServicemanID;
 
 DROP VIEW IF EXISTS Reference_Monument_Location;
 CREATE VIEW Reference_Monument_Location AS
-SELECT MonumentID, MonumentCorpus.CorpusName ||' '|| MonumentCorpus.Reference as Reference, Monument.MonumentType, FindSpot.RomanProvince, FindSpot.AncientSettlement, FindSpot.SpecificAncientProveniance, FindSpot.ModernSettlement, FindSpot.ModernProvenance, FindSpot.LocationNote
+SELECT 	MonumentID,
+				MonumentCorpus.CorpusName ||' '|| MonumentCorpus.Reference as Reference,
+				Monument.MonumentType,
+				UnitsMentioned AS 'Units Mentioned',
+				FindSpot.RomanProvince,
+				FindSpot.AncientSettlement,
+				FindSpot.SpecificAncientProveniance,
+				FindSpot.ModernSettlement,
+				FindSpot.ModernProvenance,
+				FindSpot.LocationNote,
+				Location ||'. '|| MonumentNote AS 'Modern Location and Notes'
   FROM Monument JOIN MonumentCorpus USING (MonumentID)
-								JOIN FindSpot USING (FindSpotID)
+				JOIN FindSpot USING (FindSpotID)
+				JOIN (SELECT MonumentID, group_concat(UnitID, ', ') as UnitsMentioned
+        			 FROM MonumentUnit
+					 WHERE MonumentID = MonumentID
+        			 GROUP BY MonumentID) as MonumentUnitTable USING (MonumentID)
+
  WHERE isPrimaryReference = '1';
