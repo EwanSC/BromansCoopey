@@ -1,9 +1,11 @@
 DROP TABLE IF EXISTS Corpus;
+DROP TABLE IF EXISTS MonumentMilitaryOffice;
 DROP TABLE IF EXISTS Monument;
 DROP TABLE IF EXISTS FindSpot;
 DROP TABLE IF EXISTS LegioServicemen;
 DROP TABLE IF EXISTS MonumentCorpus;
 DROP TABLE IF EXISTS Units;
+DROP TABLE IF EXISTS MonumentUnit;
 DROP TABLE IF EXISTS MilitaryStatus;
 DROP TABLE IF EXISTS MonumentServicemen;
 
@@ -165,6 +167,17 @@ INSERT INTO Units
 
 select 'unitsloaded', count(*) from Units;
 
+--CREATE TABLE MonumentUnit (
+--	MilitaryStatusID INTEGER PRIMARY KEY,
+--	MonumentID INTEGER REFERENCES Monument,
+--	UnitID INTEGER REFERENCES Units
+--);
+--
+--.mode csv
+--.import ../Unit_Monument.csv MonumentUnit
+--
+--select 'monumentunitsloaded', count(*) from MonumentUnit;
+
 CREATE TABLE MilitaryStatus (
 	MilitaryStatusID INTEGER PRIMARY KEY,
 	FirstRecordedOffice TEXT,
@@ -200,6 +213,21 @@ INSERT INTO MilitaryStatus
 					(21,null,									null,									null,				null,					'veteran',	'conjecture');
 
 	select 'officesloaded', count(*) from MilitaryStatus;
+
+--CREATE TABLE MonumentMilitaryOffice (
+--	  DistinctOffice NUMBER PRIMARY KEY,
+--		ServicemanID INTEGER REFERENCES LegioServicemen,
+--    OfficeType TEXT,
+--		MonumentID INTEGER REFERENCES Monument
+--);
+--
+--.mode csv
+--.import ../MonumentMilitaryOffice.csv MonumentMilitaryOffice
+--
+--select 'militaryserviceloaded', count(*) from MonumentMilitaryOffice;
+--
+--UPDATE MonumentMilitaryOffice SET OfficeType = NULL WHERE OfficeType = '';
+--UPDATE MonumentMilitaryOffice SET ServicemanID = NULL WHERE ServicemanID = '';
 
 CREATE TABLE Corpus (
 	CorpusName TEXT PRIMARY KEY
@@ -265,16 +293,18 @@ UPDATE LegioServicemen SET OriginSettlement = NULL WHERE OriginSettlement = '';
 UPDATE LegioServicemen SET ServicemanNote = NULL WHERE ServicemanNote = '';
 UPDATE LegioServicemen SET TribusDomiciliumNote = NULL WHERE TribusDomiciliumNote = '';
 
+
+
 CREATE TABLE MonumentServicemen (
 	  MonumentServicemanID NUMBER PRIMARY KEY,
 		ServicemanID INTEGER REFERENCES LegioServicemen,
 		MonumentID INTEGER REFERENCES Monument,
-		ServicemanReferencedAs TEXT,
+		ReferencedAs TEXT,
 		PossibleDuplicateServicemanID INTEGER,
 		SourceForDuplicateArgument TEXT
 );
 
--- ServicemanReferencedAs refers to how Serviceman is referred to: either as commemorator,
+--'Referenced As' refers to how Serviceman is referred to: either as commemorator,
 -- commemorated, both (erected during lifetime), administrator, or dedicant (sacral inscriptions)
 -- PossibleDuplicateServicemanID records the ServicemanID of the individual which may be a duplicate of this certain MonumentID
 
@@ -283,9 +313,10 @@ CREATE TABLE MonumentServicemen (
 
 select 'monumentservicemenloaded', count(*) from MonumentServicemen;
 
-UPDATE MonumentServicemen SET ServicemanReferencedAs = NULL WHERE ServicemanReferencedAs = '';
+UPDATE MonumentServicemen SET ReferencedAs = NULL WHERE ReferencedAs = '';
 UPDATE MonumentServicemen SET PossibleDuplicateServicemanID = NULL WHERE PossibleDuplicateServicemanID = '';
 UPDATE MonumentServicemen SET SourceForDuplicateArgument = NULL WHERE SourceForDuplicateArgument = '';
+
 
 -- Below are the various views created so that some information from various tables can be found in the same view
 
@@ -333,33 +364,32 @@ SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDH, OtherRef
 DROP VIEW IF EXISTS All_Servicemen;
 CREATE VIEW All_Servicemen AS
 SELECT
-	LegioServicemen.ServicemanID,
-	Monument,
+	ServicemanID,
+	MonumentID as 'Monument',
+	CorpusName ||' '|| Reference as 'Reference',
 	Name AS 'Nomina',
 	Tribe AS 'Tribus',
 	OriginSettlement ||', '|| (coalesce(OriginProvince, ' ')) AS 'Domicilium',
 	DefiniteServiceman AS 'Serviceman?',
-	Units.UnitTitle ||'('|| LegioServicemen.LiklihoodOfUnitAttribution AS 'Unit Afilliation and Certainty',
+	UnitTitle ||'('|| LiklihoodOfUnitAttribution AS 'Unit Afilliation and Certainty',
 	FirstRecordedOffice ||'('|| FirstOfficeCertainty AS 'Office and Certainty',
 	SecondRecordedOffice ||'('|| SecondOfficeCertainty AS 'Other Office if specified',
 	VeteranStatus ||'('|| VeteranStatusCertainty AS 'Veteran Status and Certainty',
+	MonumentType,
 	ServicemanNote
 	FROM LegioServicemen
+		JOIN Monument USING (MonumentID)
+		JOIN MonumentCorpus USING (MonumentID)
 		JOIN MilitaryStatus USING (MilitaryStatusID)
 		JOIN Units USING (UnitID)
-		JOIN (SELECT ServicemanID, group_concat(MonumentID, '; ') as Monument
-	        			 FROM MonumentServicemen
-	        			 WHERE ServicemanID = ServicemanID
-	        			 GROUP BY ServicemanID) as MonumentIDTable USING (ServicemanID)
+	WHERE isPrimaryReference = '1'
+	AND (MonumentType = 'stela'
+			or MonumentType = 'funerary inscription'
+			or MonumentType = 'titulus'
+			or MonumentType = 'inscription fragment'
+			or MonumentType = 'sacral monument'
+			or MonumentType = 'altar')
 	ORDER BY DefiniteServiceman DESC, ServicemanID;
-
---	WHERE isPrimaryReference = '1'
---	AND (MonumentType = 'stela'
---			or MonumentType = 'funerary inscription'
---			or MonumentType = 'titulus'
---			or MonumentType = 'inscription fragment'
---			or MonumentType = 'sacral monument'
---			or MonumentType = 'altar')
 
 DROP VIEW IF EXISTS Reference_Monument_Location;
 --CREATE VIEW Reference_Monument_Location AS
