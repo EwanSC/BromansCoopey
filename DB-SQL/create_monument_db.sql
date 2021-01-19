@@ -109,8 +109,10 @@ CREATE TABLE Monument (
 	DateTo DATE,
 	DateNote TEXT,
 	StelaeType TEXT,
-	Location TEXT,
-	MonumentNote TEXT
+	ModernHolding TEXT,
+	HoldingData TEXT,
+	MonumentNote TEXT,
+	DBInclusionNote TEXT
 );
 
 .mode csv
@@ -134,9 +136,12 @@ UPDATE monument SET Frieze = NULL WHERE Frieze = '';
 UPDATE monument SET DateFrom = NULL WHERE DateFrom = '';
 UPDATE monument SET DateTo = NULL WHERE DateTo = '';
 UPDATE monument SET DateNote = NULL WHERE DateNote = '';
-UPDATE monument SET Location = NULL WHERE Location = '';
+UPDATE monument SET ModernHolding = NULL WHERE ModernHolding = '';
 UPDATE monument SET StelaeType = NULL WHERE StelaeType = '';
+UPDATE monument SET HoldingData = NULL WHERE HoldingData = '';
 UPDATE monument SET MonumentNote = NULL WHERE MonumentNote = '';
+UPDATE monument SET DBInclusionNote = NULL WHERE DBInclusionNote = '';
+
 
 
 CREATE TABLE Units (
