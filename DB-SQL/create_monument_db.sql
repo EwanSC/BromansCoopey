@@ -160,23 +160,22 @@ INSERT INTO Units
 	        (7,'Cohors II Cyrrhestarum'),
 					(8,'Legio VII Macedonica'),
 					(9,'Legio VII or VIII'),
-					(10,'Legio XI CPF'),
+					(10,'Legio VII CPF and VII Claudia'),
 					(11,'Legio VII CPF or XI CPF'),
 					(12,'Legio VII, VII CPF, XI, XI CPF');
 
 select 'unitsloaded', count(*) from Units;
 
-CREATE TABLE MonumentUnit (
-	MilitaryStatusID INTEGER PRIMARY KEY,
-	MonumentID INTEGER REFERENCES Monument,
-	UnitID INTEGER REFERENCES Units,
-	Certainty TEXT
-);
-
-.mode csv
-.import ../Unit_Monument.csv MonumentUnit
-
-select 'monumentunitsloaded', count(*) from MonumentUnit;
+--CREATE TABLE MonumentUnit (
+--	MilitaryStatusID INTEGER PRIMARY KEY,
+--	MonumentID INTEGER REFERENCES Monument,
+--	UnitID INTEGER REFERENCES Units
+--);
+--
+--.mode csv
+--.import ../Unit_Monument.csv MonumentUnit
+--
+--select 'monumentunitsloaded', count(*) from MonumentUnit;
 
 CREATE TABLE MilitaryStatus (
 	MilitaryStatusID INTEGER PRIMARY KEY,
@@ -201,14 +200,16 @@ INSERT INTO MilitaryStatus
 					(9,	'signifer',						null,									'specified',null,					null,				null),
 					(10,'imaginifer',					null,									'specified',null,					null,				null),
 					(11,null,									null,									null,				null,					null,				null),
-					(12,'tribunus',						null,									'likely',		null,					null,				null),
+					(12,'tribunus',						'iudex',							'likely',		'specified',	null,				null),
 					(13,'princeps posterior',	null,									'specified',null,					null,				null),
 					(14,null,									null,									null,				null,					'veteran',	'specified'),
 					(15,null,									null,									null,				null,					'veteran',	'likely'),
 					(16,'scriba',							null,									'specified',null,					'veteran',	'specified'),
 					(17,'primus pilus',				'praefectus castorum','specified','specified',	null,				null),
 					(18,'centurio',						'iudex',							'likely',		'specified',	null,				null),
-					(19,'miles',							'exacto consularis',	'specified','specified',	null,				null);
+					(19,'miles',							'exacto consularis',	'specified','specified',	null,				null),
+					(20,'centurio',						'iudex',							'specified','specified',	null,				null),
+					(21,null,									null,									null,				null,					'veteran',	'conjecture');
 
 	select 'officesloaded', count(*) from MilitaryStatus;
 
@@ -356,7 +357,7 @@ SELECT
 	DefiniteServiceman AS 'Serviceman?',
 	UnitTitle ||'('|| LiklihoodOfUnitAttribution AS 'Unit Afilliation and Certainty',
 	FirstRecordedOffice ||'('|| FirstOfficeCertainty AS 'Office and Certainty',
-	SecondRecordedOffice ||'('|| SecondOfficeCertainty AS 'Other Office if specfied',
+	SecondRecordedOffice ||'('|| SecondOfficeCertainty AS 'Other Office if specified',
 	VeteranStatus ||'('|| VeteranStatusCertainty AS 'Veteran Status and Certainty',
 	MonumentType,
 	ServicemanNote
@@ -375,23 +376,23 @@ SELECT
 	ORDER BY DefiniteServiceman DESC, ServicemanID;
 
 DROP VIEW IF EXISTS Reference_Monument_Location;
-CREATE VIEW Reference_Monument_Location AS
-SELECT 	MonumentID,
-				MonumentCorpus.CorpusName ||' '|| MonumentCorpus.Reference as Reference,
-				Monument.MonumentType,
-				UnitsMentioned AS 'Units Mentioned',
-				FindSpot.RomanProvince,
-				FindSpot.AncientSettlement,
-				FindSpot.SpecificAncientProveniance,
-				FindSpot.ModernSettlement,
-				FindSpot.ModernProvenance,
-				FindSpot.LocationNote,
-				Location ||'. '|| MonumentNote AS 'Modern Location and Notes'
-  FROM Monument JOIN MonumentCorpus USING (MonumentID)
-				JOIN FindSpot USING (FindSpotID)
-				JOIN (SELECT MonumentID, group_concat(UnitID, ', ') as UnitsMentioned
-        			 FROM MonumentUnit
-					 WHERE MonumentID = MonumentID
-        			 GROUP BY MonumentID) as MonumentUnitTable USING (MonumentID)
-
- WHERE isPrimaryReference = '1';
+--CREATE VIEW Reference_Monument_Location AS
+--SELECT 	MonumentID,
+--				MonumentCorpus.CorpusName ||' '|| MonumentCorpus.Reference as Reference,
+--				Monument.MonumentType,
+--				UnitsMentioned AS 'Units Mentioned',
+--				FindSpot.RomanProvince,
+--				FindSpot.AncientSettlement,
+--				FindSpot.SpecificAncientProveniance,
+--				FindSpot.ModernSettlement,
+--				FindSpot.ModernProvenance,
+--				FindSpot.LocationNote,
+--				Location ||'. '|| MonumentNote AS 'Modern Location and Notes'
+--  FROM Monument JOIN MonumentCorpus USING (MonumentID)
+--				JOIN FindSpot USING (FindSpotID)
+--				JOIN (SELECT MonumentID, group_concat(UnitID, ', ') as UnitsMentioned
+--        			 FROM MonumentUnit
+--					 WHERE MonumentID = MonumentID
+--        			 GROUP BY MonumentID) as MonumentUnitTable USING (MonumentID)
+--
+-- WHERE isPrimaryReference = '1';
