@@ -63,7 +63,7 @@ INSERT INTO FindSpot
 				 		(33,'Dalmatia',	'Pagus Scunasticus',					null,														'Gračine-Humac',				null,															null,					17.528855,	43.182217,	null,																					'https://www.trismegistos.org/place/43363'),
 				 		(34,'Dalmatia',	'Aequum',											null,														'Hrvace',								null,															null,					16.621101,	43.755188,	'https://pleiades.stoa.org/places/197095',		'https://www.trismegistos.org/place/19893'),
 				 		(35,'Dalmatia',	'Siculi',											null,														'Bijaći',								null,					'near Tragurium/Trogir',					16.298595,	43.555434,	'https://pleiades.stoa.org/places/197511',		'https://www.trismegistos.org/place/29385'),
-				 		(36,'Dalmatia',	'Salona',											'near Porta Caesarea',					'Solin',								null,															null,					16.4823429,	43.5383152,	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
+				 		(36,'Dalmatia',	'Salona',											'Porta Caesara-Five bridges',		'Solin',								'Pet mostova',										null,					16.4823429,	43.5383152,	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
 				 		(37,'Dalmatia',	'Salona',											'North Necropolis',							'Kapljuč',							null,															null,					16.476790,	43.539370,	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
 				 		(38,'Dalmatia',	'Pagus Scunasticus',					null,														'Grebine-Vitaljina',		null,															null,					17.5285698,	43.182298,	null,																					'https://www.trismegistos.org/place/43363'),
 				 		(39,'Dalmatia',	null,													null,														'Vaganj-Jajce',					null,															null,					17.17608,		44.15513,		null,																					'https://www.trismegistos.org/place/36267'),
@@ -93,9 +93,10 @@ select 'findspotsloaded', count(*) from FindSpot;
 CREATE TABLE Monument (
 	MonumentID INTEGER PRIMARY KEY,
 	FindSpotID INTEGER REFERENCES FindSpot,
-	FirstPublicationCitation TEXT,
-	DateFound DATE,
-	DateFoundPrecisionNote TEXT,
+	ProvenianceNote TEXT,
+	PublicationCitation TEXT,
+	DateFoundOrPublished DATE,
+	DateFoundorPublishedPrecisionNote TEXT,
 	MonumentType TEXT,
 	MonumentOfSeventhLegion TEXT,
 	Inscription TEXT,
@@ -121,9 +122,10 @@ select 'monumentsloaded', count(*) from monument;
 
 UPDATE monument SET MonumentID = NULL WHERE MonumentID = '';
 UPDATE monument SET FindSpotID = NULL WHERE FindSpotID = '';
-UPDATE monument SET FirstPublicationCitation = NULL WHERE FirstPublicationCitation = '';
-UPDATE monument SET DateFound = NULL WHERE DateFound = '';
-UPDATE monument SET DateFoundPrecisionNote = NULL WHERE DateFoundPrecisionNote = '';
+UPDATE monument SET ProvenianceNote = NULL WHERE ProvenianceNote = '';
+UPDATE monument SET PublicationCitation = NULL WHERE PublicationCitation = '';
+UPDATE monument SET DateFoundOrPublished = NULL WHERE DateFoundOrPublished = '';
+UPDATE monument SET DateFoundorPublishedPrecisionNote = NULL WHERE DateFoundorPublishedPrecisionNote = '';
 UPDATE monument SET MonumentType = NULL WHERE MonumentType = '';
 UPDATE monument SET MonumentOfSeventhLegion = NULL WHERE MonumentOfSeventhLegion = '';
 UPDATE monument SET Inscription = NULL WHERE Inscription = '';
