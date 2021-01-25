@@ -63,7 +63,7 @@ INSERT INTO FindSpot
 				 		(33,'Dalmatia',	'Pagus Scunasticus',					null,														'Gračine-Humac',				null,															null,					17.528855,	43.182217,	null,																					'https://www.trismegistos.org/place/43363'),
 				 		(34,'Dalmatia',	'Aequum',											null,														'Hrvace',								null,															null,					16.621101,	43.755188,	'https://pleiades.stoa.org/places/197095',		'https://www.trismegistos.org/place/19893'),
 				 		(35,'Dalmatia',	'Siculi',											null,														'Bijaći',								null,					'near Tragurium/Trogir',					16.298595,	43.555434,	'https://pleiades.stoa.org/places/197511',		'https://www.trismegistos.org/place/29385'),
-				 		(36,'Dalmatia',	'Salona',											'Porta Caesara-Five bridges',		'Solin',								'Pet mostova',										null,					16.4823429,	43.5383152,	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
+				 		(36,'Dalmatia',	'Salona',											'Porta Caesara-Five bridges',		'Solin',								'Pet mostova',										null,					16.483576,	43.538339, 	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
 				 		(37,'Dalmatia',	'Salona',											'North Necropolis',							'Kapljuč',							null,															null,					16.476790,	43.539370,	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
 				 		(38,'Dalmatia',	'Pagus Scunasticus',					null,														'Grebine-Vitaljina',		null,															null,					17.5285698,	43.182298,	null,																					'https://www.trismegistos.org/place/43363'),
 				 		(39,'Dalmatia',	null,													null,														'Vaganj-Jajce',					null,															null,					17.17608,		44.15513,		null,																					'https://www.trismegistos.org/place/36267'),
@@ -112,7 +112,8 @@ CREATE TABLE Monument (
 	ModernHolding TEXT,
 	HoldingData TEXT,
 	MonumentNote TEXT,
-	DBInclusionNote TEXT
+	DBInclusionNote TEXT,
+	Media TEXT
 );
 
 .mode csv
@@ -142,7 +143,7 @@ UPDATE monument SET StelaeType = NULL WHERE StelaeType = '';
 UPDATE monument SET HoldingData = NULL WHERE HoldingData = '';
 UPDATE monument SET MonumentNote = NULL WHERE MonumentNote = '';
 UPDATE monument SET DBInclusionNote = NULL WHERE DBInclusionNote = '';
-
+UPDATE monument SET Media = NULL WHERE Media = '';
 
 
 CREATE TABLE Units (
