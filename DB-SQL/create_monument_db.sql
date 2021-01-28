@@ -214,8 +214,9 @@ INSERT INTO Corpus (CorpusName)
                    ('Betz'),
                    ('ILJug'),
 									 ('AE'),
+									 ('EDCS'),
 									 ('EDH'),
-                   ('Other Ref');
+									 ('Other Ref');
 
 select 'corpusloaded', count(*) from Corpus;
 
@@ -294,14 +295,15 @@ UPDATE MonumentServicemen SET SourceForDuplicateArgument = NULL WHERE SourceForD
 
 DROP VIEW IF EXISTS PrimaryCorpus;
 CREATE VIEW PrimaryCorpus as
-SELECT MonumentID, CorpusName || ' ' || Reference as corpus
+SELECT MonumentID, CorpusName || ' ' || Reference as corpus, Media
   FROM MonumentCorpus
+	JOIN Monument USING (MonumentID)
  WHERE isPrimaryReference is not null;
 
 
 DROP VIEW IF EXISTS AllCorpora;
 CREATE VIEW AllCorpora as
-SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDH, OtherRef
+SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDCS, EDH, OtherRef
   FROM (SELECT MonumentID
           FROM Monument)
   LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') as CIL
@@ -324,6 +326,10 @@ SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDH, OtherRef
 						   FROM MonumentCorpus
 						   WHERE CorpusName = 'AE'
 						   GROUP BY MonumentID) as AEtable USING (MonumentID)
+	LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') as EDCS
+						 		FROM MonumentCorpus
+						 		WHERE CorpusName = 'EDCS'
+						 		GROUP BY MonumentID) as EDCStable USING (MonumentID)
 	LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') as EDH
 						 	 FROM MonumentCorpus
 						   WHERE CorpusName = 'EDH'
