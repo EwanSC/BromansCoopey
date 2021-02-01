@@ -12,10 +12,10 @@ CREATE TABLE FindSpot (
 	FindSpotID INTEGER PRIMARY KEY,
 	RomanProvince TEXT,
 	AncientSettlement TEXT,
-	SpecificAncientProveniance TEXT,
+	AncientLocationSpecific TEXT,
 	ModernSettlement TEXT,
 	ModernProvenance TEXT,
-	LocationNote TEXT,
+	ModernLocationNote TEXT,
 	ExtraInfo TEXT,
 	LONG NUMBER,
 	LAT NUMBER,
@@ -27,20 +27,20 @@ CREATE TABLE FindSpot (
 -- Need to check all of these are actually being used, some FindSpotID may no longer be relevant
 
 INSERT INTO FindSpot
-(FindSpotID,RomanProvince,	AncientSettlement,						SpecificAncientProveniance, 		ModernSettlement,				ModernProvenance,									LocationNote,	LONG,				LAT,				Pleiades,                                    Trismegistos)
-     VALUES (1,	'Dalmatia', 'Iadera',											null,														null,										null,															null,					15.223778,	44.115501,	'https://pleiades.stoa.org/places/197312',		'https://www.trismegistos.org/place/28796'),
+(FindSpotID,RomanProvince,	AncientSettlement,						AncientLocationSpecific, 		ModernSettlement,				ModernProvenance,									ModernLocationNote,	LONG,				LAT,				Pleiades,                                    Trismegistos)
+     VALUES (1,	'Dalmatia', 'Tilurium',										null,														'Vojnić',								'built into modern structure',		null,					16.700356,	43.615035,	'https://pleiades.stoa.org/places/197552',		'https://www.trismegistos.org/place/29459'),
          		(2, 'Dalmatia', 'Aequum',											null,														'Sinj',									null,															null,					16.655704,	43.739278,	'https://pleiades.stoa.org/places/197095',		'https://www.trismegistos.org/place/19893'),
 				 		(3, 'Dalmatia', 'Spalatum',										null,														'Split',								'Mausoleum of Diocletian',				null,					16.4388951,	43.507814,	'https://pleiades.stoa.org/places/834862588',	'https://www.trismegistos.org/place/29361'),
-				 		(4, 'Dalmatia', 'Aequum',											null,														'Hrvace',								'Secondary use',									null,					16.621101,	43.755188,	'https://pleiades.stoa.org/places/197095',		'https://www.trismegistos.org/place/19893'),
+				 		(4, 'Dalmatia', 'Aequum',											null,														'Hrvace',								'built into modern structure',		'near Sinj',	16.621101,	43.755188,	'https://pleiades.stoa.org/places/197095',		'https://www.trismegistos.org/place/19893'),
 				 		(5,	'Dalmatia', 'Tilurium',										null,														'Vojnić',								null,															null,					16.700356,	43.615035,	'https://pleiades.stoa.org/places/197552',		'https://www.trismegistos.org/place/29459'),
 				 		(6, 'Dalmatia', 'Tilurium',										null,														'Gardun',								null,															null,					16.714766,	43.612006,	'https://pleiades.stoa.org/places/197552',		'https://www.trismegistos.org/place/29459'),
 				 		(7, 'Dalmatia', null,													null,														null,										null,															null,					null,				null,				'https://pleiades.stoa.org/places/981522',		'https://www.trismegistos.org/place/11624'),
-				 		(8, 'Dalmatia', 'Salona',											'North Necropolis',							'Solin',								null,															null,					16.476543,	43.538690,	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
-				 		(9, 'Dalmatia', 'Salona',											'East Necropolis',							'Solin',								null,															null,					16.491405,	43.541733,	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
-				 		(10,'Dalmatia',	'Iadera',											null,														null,										'Filippi house',									null,					15.237922,	44.120336,	'https://pleiades.stoa.org/places/197312',		'https://www.trismegistos.org/place/28796'),
+				 		(8, 'Dalmatia', 'Salona',											'North Necropolis',							'Solin',								null,			'Matinčevo-Porta Suburbia I',					16.476543,	43.538690,	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
+				 		(9, 'Dalmatia', 'Salona',											'East Necropolis',							'Solin',								null,						 'near Porta Andetria',					16.491405,	43.541733,	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
+				 		(10,'Dalmatia',	'Iadera',											null,														'Zadar',								'built into modern structure',		null,					15.237922,	44.120336,	'https://pleiades.stoa.org/places/197312',		'https://www.trismegistos.org/place/28796'),
          		(11,'Dalmatia',	'Salona',											null,														'Solin',								null,															null,					16.483426,	43.539561,	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
          		(12,'Dalmatia',	'Pagus Scunasticus',					null,														'Filovača',							null,															null,					17.561619,	43.195182,	null,																					'https://www.trismegistos.org/place/43363'),
-         		(13,'Dalmatia',	'Tilurium',										null,														'Gardun',								'Secondary use',									null,					16.714676,	43.612652,	'https://pleiades.stoa.org/places/197552',		'https://www.trismegistos.org/place/29459'),
+         		(13,'Dalmatia',	'Tilurium',										null,														'Gardun',								'built into modern structure',		null,					16.714676,	43.612652,	'https://pleiades.stoa.org/places/197552',		'https://www.trismegistos.org/place/29459'),
          		(14,'Dalmatia',	'Iadera',											null,														null,										'Church of st Michael',						null,					15.283776,	44.219355,	'https://pleiades.stoa.org/places/197312',		'https://www.trismegistos.org/place/28796'),
          		(15,'Dalmatia',	'Narona',											null,														'Vid-Metković',					null,															null,					17.62464523,43.08130155,'https://pleiades.stoa.org/places/197400',		'https://www.trismegistos.org/place/16527'),
          		(16,'Thracia',	'Lysimacheia',								null,														'Bolayir',							null,															null,					26.762394,	40.515920,	'https://pleiades.stoa.org/places/501458',		'https://www.trismegistos.org/place/3582'),
@@ -63,7 +63,7 @@ INSERT INTO FindSpot
 				 		(33,'Dalmatia',	'Pagus Scunasticus',					null,														'Gračine-Humac',				null,															null,					17.528855,	43.182217,	null,																					'https://www.trismegistos.org/place/43363'),
 				 		(34,'Dalmatia',	'Aequum',											null,														'Hrvace',								null,															null,					16.621101,	43.755188,	'https://pleiades.stoa.org/places/197095',		'https://www.trismegistos.org/place/19893'),
 				 		(35,'Dalmatia',	'Siculi',											null,														'Bijaći',								null,					'near Tragurium/Trogir',					16.298595,	43.555434,	'https://pleiades.stoa.org/places/197511',		'https://www.trismegistos.org/place/29385'),
-				 		(36,'Dalmatia',	'Salona',											'Porta Caesara-Five bridges',		'Solin',								'Pet mostova',										null,					16.483576,	43.538339, 	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
+				 		(36,'Dalmatia',	'Salona',											'Porta Caesara-Five bridges',		'Solin',								null,										'Pet mostova',					16.483576,	43.538339, 	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
 				 		(37,'Dalmatia',	'Salona',											'North Necropolis',							'Kapljuč',							null,															null,					16.476790,	43.539370,	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
 				 		(38,'Dalmatia',	'Pagus Scunasticus',					null,														'Grebine-Vitaljina',		null,															null,					17.5285698,	43.182298,	null,																					'https://www.trismegistos.org/place/43363'),
 				 		(39,'Dalmatia',	null,													null,														'Vaganj-Jajce',					null,															null,					17.17608,		44.15513,		null,																					'https://www.trismegistos.org/place/36267'),
@@ -85,7 +85,12 @@ INSERT INTO FindSpot
 				 		(55,'Galatia',	'Apollonia/Tymandus',					null,														null,										null,															null,					30.607024,	38.104416,	'https://pleiades.stoa.org/places/609563',		'https://www.trismegistos.org/place/16444'),
 				 		(56,'Dalmatia',	'Pagus Scunasticus',					null,														'Glavica-Ljubuški',			null,															null,					17.556913,	43.196349,	null,																					'https://www.trismegistos.org/place/43363'),
 			 	 		(57,'Dalmatia',	'Pagus Scunasticus',					null,														'Humac',								null,															null,					17.528855,	43.182217,	null,																					'https://www.trismegistos.org/place/43363'),
-				 		(58,'Dalmatia',	'Pagus Scunasticus',					null,														'Smokovice-Hardomilje',	null,															null,					17.544753,	43.159097,	null,																					'https://www.trismegistos.org/place/43363');
+				 		(58,'Dalmatia',	'Pagus Scunasticus',					null,														'Smokovice-Hardomilje',	null,															null,					17.544753,	43.159097,	null,																					'https://www.trismegistos.org/place/43363'),
+						(59,'Dalmatia', 'Tilurium',										null,														'Vojnić',								null,'found between Vojnić and Gardun',					16.700356,	43.615035,	'https://pleiades.stoa.org/places/197552',		'https://www.trismegistos.org/place/29459'),
+						(60,'Dalmatia',	'Salona',											'North Necropolis',							'Kapljuč',							'secondary use',									null,					16.476790,	43.539370,	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
+						(61,'Dalmatia',	'Salona',											'North Necropolis',							'Solin',								'surrounds of the amphitheatre',	null,					16.475334,	43.538629, 	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
+						(62,'Dalmatia', 'Salona',											'East Necropolis',							'Solin',								null,													'Gradina',				16.491401,	43.537314, 	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
+						(63,'Dalmatia',	'Salona',											null,														'Solin',								null,								'ul. Marka Marulića',				16.493097,	43.535713, 	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043');
 
 select 'findspotsloaded', count(*) from FindSpot;
 
@@ -93,7 +98,7 @@ select 'findspotsloaded', count(*) from FindSpot;
 CREATE TABLE Monument (
 	MonumentID INTEGER PRIMARY KEY,
 	FindSpotID INTEGER REFERENCES FindSpot,
-	ProvenianceNote TEXT,
+	FindSpotNote TEXT,
 	PublicationCitation TEXT,
 	DateFoundOrPublished DATE,
 	DateFoundorPublishedPrecisionNote TEXT,
@@ -123,7 +128,7 @@ select 'monumentsloaded', count(*) from monument;
 
 UPDATE monument SET MonumentID = NULL WHERE MonumentID = '';
 UPDATE monument SET FindSpotID = NULL WHERE FindSpotID = '';
-UPDATE monument SET ProvenianceNote = NULL WHERE ProvenianceNote = '';
+UPDATE monument SET FindSpotNote = NULL WHERE FindSpotNote = '';
 UPDATE monument SET PublicationCitation = NULL WHERE PublicationCitation = '';
 UPDATE monument SET DateFoundOrPublished = NULL WHERE DateFoundOrPublished = '';
 UPDATE monument SET DateFoundorPublishedPrecisionNote = NULL WHERE DateFoundorPublishedPrecisionNote = '';
@@ -378,10 +383,10 @@ DROP VIEW IF EXISTS Reference_Monument_Location;
 --				UnitsMentioned AS 'Units Mentioned',
 --				FindSpot.RomanProvince,
 --				FindSpot.AncientSettlement,
---				FindSpot.SpecificAncientProveniance,
+--				FindSpot.AncientLocationSpecific,
 --				FindSpot.ModernSettlement,
 --				FindSpot.ModernProvenance,
---				FindSpot.LocationNote,
+--				FindSpot.ModernLocationNote,
 --				Location ||'. '|| MonumentNote AS 'Modern Location and Notes'
 --  FROM Monument JOIN MonumentCorpus USING (MonumentID)
 --				JOIN FindSpot USING (FindSpotID)
