@@ -51,7 +51,7 @@ INSERT INTO FindSpot
 				 		(21,'Dalmatia',	null,													null,														'Prud',									null,																					null,					17.5494842,	43.0920794,	null,																					'https://www.trismegistos.org/place/36202'),
 				 		(22,'Dalmatia',	null,													null,														'Imotski',							null,																					null,					17.217691,	43.447478,	null,																					'https://www.trismegistos.org/place/29382'),
 				 		(23,'Dalmatia',	'Pons Tiluri',								null,														'Trilj',								'Cetina River',																null,					16.728064,	43.61461719,'https://pleiades.stoa.org/places/197453',		'https://www.trismegistos.org/place/40852'),
-				 		(24,'Moesia S',	'Viminacium',									null,														'Drmno',								null,																					null,					21.230575,	44.732910,	'https://pleiades.stoa.org/places/207549',		'https://www.trismegistos.org/place/29642'),
+				 		(24,'Moesia Superior','Viminacium',						null,														'Drmno',								null,																					null,					21.230575,	44.732910,	'https://pleiades.stoa.org/places/207549',		'https://www.trismegistos.org/place/29642'),
 				 		(25,'Dalmatia',	'Pagus Scunasticus',					null,														'Vuna-Hardomilje',			null,																					null,					17.544753,	43.159097,	null,																					'https://www.trismegistos.org/place/43363'),
 				 		(26,'Dalmatia',	'Asseria',										null,														'Podgrađe',							null,																					null,					15.6663802,	44.01096805,'https://pleiades.stoa.org/places/197145',		'https://www.trismegistos.org/place/28793'),
 				 		(27,'Dalmatia',	'Pagus Scunasticus',					null,														'Veljaci',							null,																					null,					17.445,			43.237222,	null,																					'https://www.trismegistos.org/place/43363'),
@@ -92,7 +92,8 @@ INSERT INTO FindSpot
 						(62,'Dalmatia', 'Salona',											'East Necropolis',							'Solin',								null,																		'Gradina',					16.491401,	43.537314, 	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
 						(63,'Dalmatia',	'Salona',											null,														'Solin',								'ul. Marka Marulića',													null,					16.493097,	43.535713, 	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
 						(64,'Dalmatia',	'Iadera',											null,														'Zadar',								'uncertain',																	null,					15.237922,	44.120336,	'https://pleiades.stoa.org/places/197312',		'https://www.trismegistos.org/place/28796'),
-						(65,'Dalmatia',	'Tragurium',									null,														'Trogir',								'built into modern structure',								null,					16.25063,		43.517639,	'https://pleiades.stoa.org/places/197555',		'https://www.trismegistos.org/place/29369');
+						(65,'Dalmatia',	'Tragurium',									null,														'Trogir',								'built into modern structure',								null,					16.25063,		43.517639,	'https://pleiades.stoa.org/places/197555',		'https://www.trismegistos.org/place/29369'),
+						(66,'Dalmatia',	'Tilurium',										null,														'Trilj',								null,																					null,					16.723601,	43.618756,	'https://pleiades.stoa.org/places/197552',		'https://www.trismegistos.org/place/29459');
 
 select 'findspotsloaded', count(*) from FindSpot;
 
