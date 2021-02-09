@@ -11,12 +11,12 @@ DROP TABLE IF EXISTS MonumentServicemen;
 CREATE TABLE FindSpot (
 	FindSpotID INTEGER PRIMARY KEY,
 	RomanProvince TEXT,
-	AncientSettlement TEXT,
-	AncientLocationSpecific TEXT,
-	ModernSettlement TEXT,
-	ModernProvenance TEXT,
+	AncientSite TEXT,
+	SpecificAncientLocation TEXT,
+	ModernSite TEXT,
+	SpecificModernLocation TEXT,
 	ModernLocationNote TEXT,
-	ExtraInfo TEXT,
+	ExtraLocationNote TEXT,
 	LONG NUMBER,
 	LAT NUMBER,
 	Pleiades TEXT,
@@ -27,7 +27,7 @@ CREATE TABLE FindSpot (
 -- Need to check all of these are actually being used, some FindSpotID may no longer be relevant
 
 INSERT INTO FindSpot
-(FindSpotID,RomanProvince,	AncientSettlement,						AncientLocationSpecific, 		ModernSettlement,				ModernProvenance,										ModernLocationNote,					LONG,				LAT,				Pleiades,                                    Trismegistos)
+(FindSpotID,RomanProvince,	AncientSite,									SpecificAncientLocation, 				ModernSite,							SpecificModernLocation,					ExtraLocationNote,					LONG,				LAT,				Pleiades,                                    Trismegistos)
      VALUES (1,	'Dalmatia', 'Tilurium',										null,														'Vojnić',								'built into modern structure',								null,					16.700356,	43.615035,	'https://pleiades.stoa.org/places/197552',		'https://www.trismegistos.org/place/29459'),
          		(2, 'Dalmatia', 'Aequum',											null,														'Sinj',									null,																					null,					16.655704,	43.739278,	'https://pleiades.stoa.org/places/197095',		'https://www.trismegistos.org/place/19893'),
 				 		(3, 'Dalmatia', 'Spalatum',										null,														'Split',								'Mausoleum of Diocletian',										null,					16.4388951,	43.507814,	'https://pleiades.stoa.org/places/834862588',	'https://www.trismegistos.org/place/29361'),
@@ -72,7 +72,7 @@ INSERT INTO FindSpot
 				 		(42,'Galatia',	'Iconium',										null,														'Konya',								null,										'near Antiochia Pisidiae',					32.492331,	37.872202,	'https://pleiades.stoa.org/places/648647',		'https://www.trismegistos.org/place/2919'),
          		(43,'Dalmatia',	'Tragurium',									null,														'Trogir',								null,																					null,					16.25063,		43.517639,	'https://pleiades.stoa.org/places/197555',		'https://www.trismegistos.org/place/29369'),
          		(44,'Dalmatia',	'Burnum',											null,														'Kistanje',							null,																					null,					16.025622,	44.018914,	'https://pleiades.stoa.org/places/197184',		'https://www.trismegistos.org/place/29387'),
-         		(45,'Dalmatia',	'Salona',											'East Necropolis originally?',	'Klis', 								null,																					null,					16.496858,	43.540222,	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
+         		(45,'Dalmatia',	'Salona',											'East Necropolis?',							'Klis', 								null,																					null,					16.496858,	43.540222,	'https://pleiades.stoa.org/places/197488',		'https://www.trismegistos.org/place/7043'),
 				 		(46,'Dalmatia',	'Tragurium',									null,														'Seget Donji',					null,																					null,					16.2333,		43.5167,		'https://pleiades.stoa.org/places/197555',		'https://www.trismegistos.org/place/29369'),
 				 		(47,'Dalmatia',	'Andetrium',									null,														'Gornji Postinje',			null,																					null,					16.424,			43.701,			'https://pleiades.stoa.org/places/197115',		'https://www.trismegistos.org/place/29420'),
 			   		(48,'Dalmatia',	null,													null,														'Popovići',							null,																	'near Karin',					15.663098,	44.075137,	null,																					'https://www.trismegistos.org/place/36189'),
@@ -101,7 +101,7 @@ select 'findspotsloaded', count(*) from FindSpot;
 CREATE TABLE Monument (
 	MonumentID INTEGER PRIMARY KEY,
 	FindSpotID INTEGER REFERENCES FindSpot,
-	FindSpotNote TEXT,
+	MonumentSpecificFindSpotNote TEXT,
 	PublicationCitation TEXT,
 	DateFoundOrPublished DATE,
 	DateFoundorPublishedPrecisionNote TEXT,
@@ -131,7 +131,7 @@ select 'monumentsloaded', count(*) from monument;
 
 UPDATE monument SET MonumentID = NULL WHERE MonumentID = '';
 UPDATE monument SET FindSpotID = NULL WHERE FindSpotID = '';
-UPDATE monument SET FindSpotNote = NULL WHERE FindSpotNote = '';
+UPDATE monument SET MonumentSpecificFindSpotNote = NULL WHERE MonumentSpecificFindSpotNote = '';
 UPDATE monument SET PublicationCitation = NULL WHERE PublicationCitation = '';
 UPDATE monument SET DateFoundOrPublished = NULL WHERE DateFoundOrPublished = '';
 UPDATE monument SET DateFoundorPublishedPrecisionNote = NULL WHERE DateFoundorPublishedPrecisionNote = '';
@@ -378,24 +378,22 @@ SELECT
 --			or MonumentType = 'sacral monument'
 --			or MonumentType = 'altar')
 
-DROP VIEW IF EXISTS Reference_Monument_Location;
---CREATE VIEW Reference_Monument_Location AS
---SELECT 	MonumentID,
---				MonumentCorpus.CorpusName ||' '|| MonumentCorpus.Reference as Reference,
---				Monument.MonumentType,
---				UnitsMentioned AS 'Units Mentioned',
---				FindSpot.RomanProvince,
---				FindSpot.AncientSettlement,
---				FindSpot.AncientLocationSpecific,
---				FindSpot.ModernSettlement,
---				FindSpot.ModernProvenance,
---				FindSpot.ModernLocationNote,
---				Location ||'. '|| MonumentNote AS 'Modern Location and Notes'
---  FROM Monument JOIN MonumentCorpus USING (MonumentID)
---				JOIN FindSpot USING (FindSpotID)
---				JOIN (SELECT MonumentID, group_concat(UnitID, ', ') as UnitsMentioned
---        			 FROM MonumentUnit
---					 WHERE MonumentID = MonumentID
---        			 GROUP BY MonumentID) as MonumentUnitTable USING (MonumentID)
---
--- WHERE isPrimaryReference = '1';
+DROP VIEW IF EXISTS Monument_Location;
+CREATE VIEW Monument_Location AS
+SELECT
+	MonumentID, CorpusName ||' ' || Reference as 'Monument Reference',
+	RomanProvince as 'Province', AncientSite as 'Ancient Site',
+	SpecificAncientLocation as 'General Proveniance',
+	ModernSite as 'Modern Site',
+	SpecificModernLocation 'Modern Proveniance',
+	ExtraLocationNote as 'Proveniance Note',
+	MonumentSpecificFindSpotNote as 'Unique Monument Proveniance',
+	LAT,
+	LONG,
+	Pleiades,
+	Trismegistos
+	FROM Monument
+			JOIN FindSpot USING (FindSpotID)
+			JOIN MonumentCorpus USING (MonumentID)
+						WHERE isPrimaryReference IS NOT NULL
+						ORDER BY RomanProvince, AncientSite, SpecificAncientLocation, ModernSite, SpecificModernLocation, ExtraLocationNote
