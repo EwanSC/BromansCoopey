@@ -17,8 +17,8 @@ CREATE TABLE FindSpot (
 	SpecificModernLocation TEXT,
 	ModernLocationNote TEXT,
 	ExtraLocationNote TEXT,
-	LONG NUMBER,
-	LAT NUMBER,
+	LONGITUDE_epsg_4326 NUMBER,
+	LATITUDE_epsg_4326 NUMBER,
 	Pleiades TEXT,
 	Trismegistos TEXT
 );
@@ -27,7 +27,7 @@ CREATE TABLE FindSpot (
 -- Need to check all of these are actually being used, some FindSpotID may no longer be relevant
 
 INSERT INTO FindSpot
-(FindSpotID,RomanProvince,	AncientSite,									SpecificAncientLocation, 				ModernSite,							SpecificModernLocation,					ExtraLocationNote,					LONG,				LAT,				Pleiades,                                    Trismegistos)
+(FindSpotID,RomanProvince,	AncientSite,									SpecificAncientLocation, 				ModernSite,							SpecificModernLocation,					ExtraLocationNote,					LONGITUDE_epsg_4326,				LATITUDE_epsg_4326,				Pleiades,                                    Trismegistos)
      VALUES (1,	'Dalmatia', 'Tilurium',										null,														'Vojnić',								'built into modern structure',								null,					16.700356,	43.615035,	'https://pleiades.stoa.org/places/197552',		'https://www.trismegistos.org/place/29459'),
          		(2, 'Dalmatia', 'Aequum',											null,														'Sinj',									null,																					null,					16.655704,	43.739278,	'https://pleiades.stoa.org/places/197095',		'https://www.trismegistos.org/place/19893'),
 				 		(3, 'Dalmatia', 'Spalatum',										null,														'Split',								'Mausoleum of Diocletian',										null,					16.4388951,	43.507814,	'https://pleiades.stoa.org/places/834862588',	'https://www.trismegistos.org/place/29361'),
@@ -116,7 +116,7 @@ CREATE TABLE Monument (
 	DateFrom DATE,
 	DateTo DATE,
 	DateNote TEXT,
-	StelaeType TEXT,
+	Tončinić2011StelaeType TEXT,
 	ModernHolding TEXT,
 	HoldingData TEXT,
 	MonumentNote TEXT,
@@ -147,7 +147,7 @@ UPDATE monument SET DateFrom = NULL WHERE DateFrom = '';
 UPDATE monument SET DateTo = NULL WHERE DateTo = '';
 UPDATE monument SET DateNote = NULL WHERE DateNote = '';
 UPDATE monument SET ModernHolding = NULL WHERE ModernHolding = '';
-UPDATE monument SET StelaeType = NULL WHERE StelaeType = '';
+UPDATE monument SET Tončinić2011StelaeType = NULL WHERE Tončinić2011StelaeType = '';
 UPDATE monument SET HoldingData = NULL WHERE HoldingData = '';
 UPDATE monument SET MonumentNote = NULL WHERE MonumentNote = '';
 UPDATE monument SET DBInclusionNote = NULL WHERE DBInclusionNote = '';
@@ -286,7 +286,7 @@ CREATE TABLE MonumentServicemen (
 		SourceForDuplicateArgument TEXT
 );
 
--- ServicemanReferencedAs refers to how Serviceman is referred to: either as commemorator,
+-- ServicemanReferencedAs refers to how Serviceman is referred to: either AS commemorator,
 -- commemorated, both (erected during lifetime), administrator, or dedicant (sacral inscriptions)
 -- PossibleDuplicateServicemanID records the ServicemanID of the individual which may be a duplicate of this certain MonumentID
 
@@ -303,7 +303,7 @@ UPDATE MonumentServicemen SET SourceForDuplicateArgument = NULL WHERE SourceForD
 
 DROP VIEW IF EXISTS PrimaryCorpus;
 CREATE VIEW PrimaryCorpus as
-SELECT MonumentID, CorpusName || ' ' || Reference as corpus, Media
+SELECT MonumentID, CorpusName || ' ' || Reference AS "Corpus", MonumentType AS "Monument Type", Media
   FROM MonumentCorpus
 	JOIN Monument USING (MonumentID)
  WHERE isPrimaryReference is not null;
@@ -314,38 +314,38 @@ CREATE VIEW AllCorpora as
 SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDCS, EDH, OtherRef
   FROM (SELECT MonumentID
           FROM Monument)
-  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') as CIL
+  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS CIL
         			 FROM MonumentCorpus
         			 WHERE CorpusName = 'CIL'
-        			 GROUP BY MonumentID) as ciltable USING (MonumentID)
-  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') as Tončinić
+        			 GROUP BY MonumentID) AS ciltable USING (MonumentID)
+  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS Tončinić
         			 FROM MonumentCorpus
         			 WHERE CorpusName = 'Tončinić'
-        			 GROUP BY MonumentID) as Tončinićtable USING (MonumentID)
-  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') as Betz
+        			 GROUP BY MonumentID) AS Tončinićtable USING (MonumentID)
+  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS Betz
         			 FROM MonumentCorpus
         			 WHERE CorpusName = 'Betz'
-        			 GROUP BY MonumentID) as Betztable USING (MonumentID)
-  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') as ILJug
+        			 GROUP BY MonumentID) AS Betztable USING (MonumentID)
+  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS ILJug
         			 FROM MonumentCorpus
         			 WHERE CorpusName = 'ILJug'
-        			 GROUP BY MonumentID) as ILJugtable USING (MonumentID)
-	LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') as AE
+        			 GROUP BY MonumentID) AS ILJugtable USING (MonumentID)
+	LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS AE
 						   FROM MonumentCorpus
 						   WHERE CorpusName = 'AE'
-						   GROUP BY MonumentID) as AEtable USING (MonumentID)
-	LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') as EDCS
+						   GROUP BY MonumentID) AS AEtable USING (MonumentID)
+	LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS EDCS
 						 		FROM MonumentCorpus
 						 		WHERE CorpusName = 'EDCS'
-						 		GROUP BY MonumentID) as EDCStable USING (MonumentID)
-	LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') as EDH
+						 		GROUP BY MonumentID) AS EDCStable USING (MonumentID)
+	LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS EDH
 						 	 FROM MonumentCorpus
 						   WHERE CorpusName = 'EDH'
-						   GROUP BY MonumentID) as EDHtable USING (MonumentID)
-  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') as OtherRef
+						   GROUP BY MonumentID) AS EDHtable USING (MonumentID)
+  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS OtherRef
         			 FROM MonumentCorpus
         			 WHERE CorpusName = 'Other Ref'
-        			 GROUP BY MonumentID) as OtherReftable USING (MonumentID);
+        			 GROUP BY MonumentID) AS OtherReftable USING (MonumentID);
 
 DROP VIEW IF EXISTS All_Servicemen;
 CREATE VIEW All_Servicemen AS
@@ -361,13 +361,14 @@ SELECT
 	SecondRecordedOffice ||'('|| SecondOfficeCertainty AS 'Other Office if specified',
 	VeteranStatus ||'('|| VeteranStatusCertainty AS 'Veteran Status and Certainty',
 	ServicemanNote
-	FROM LegioServicemen
+	FROM MonumentServicemen
+		JOIN LegioServicemen USING (ServicemanID)
 		JOIN MilitaryStatus USING (MilitaryStatusID)
 		JOIN Units USING (UnitID)
-		JOIN (SELECT ServicemanID, group_concat(MonumentID, '; ') as Monument
+		JOIN (SELECT ServicemanID, group_concat(MonumentID, '; ') AS Monument
 	        			 FROM MonumentServicemen
 	        			 WHERE ServicemanID = ServicemanID
-	        			 GROUP BY ServicemanID) as MonumentIDTable USING (ServicemanID)
+	        			 GROUP BY ServicemanID) AS MonumentIDTable USING (ServicemanID)
 	ORDER BY DefiniteServiceman DESC, ServicemanID;
 
 --	WHERE isPrimaryReference = '1'
@@ -381,19 +382,34 @@ SELECT
 DROP VIEW IF EXISTS Monument_Location;
 CREATE VIEW Monument_Location AS
 SELECT
-	MonumentID, CorpusName ||' ' || Reference as 'Monument Reference',
-	RomanProvince as 'Province', AncientSite as 'Ancient Site',
-	SpecificAncientLocation as 'General Proveniance',
-	ModernSite as 'Modern Site',
+	MonumentID,
+	CorpusName ||' ' || Reference AS 'Monument Reference',
+	MonumentType,
+	MonumentOfSeventhLegion AS 'Mentions Legio VII?',
+	Inscription,
+	Translation,
+	Tončinić2011StelaeType AS 'Tončinić 2011 Style Type',
+	LowerFieldDecoration ||', '|| (coalesce(LowerFieldDetail, ' ')) AS 'Lower Field Decoration',
+	Portrait,
+	Frieze,
+	DateFrom,
+	DateTo,
+	DateNote,
+	ModernHolding ||', '|| (coalesce(HoldingData, ' ')) AS 'Current Location',
+	RomanProvince AS 'Ancient Province Find Spot',
+	AncientSite AS 'Ancient Site',
+	SpecificAncientLocation AS 'General Proveniance',
+	ModernSite AS 'Modern Find Site',
 	SpecificModernLocation 'Modern Proveniance',
-	ExtraLocationNote as 'Proveniance Note',
-	MonumentSpecificFindSpotNote as 'Unique Monument Proveniance',
-	LAT,
-	LONG,
+	ExtraLocationNote AS 'General Location Note',
+	MonumentSpecificFindSpotNote AS 'Unique Monument Proveniance Note',
+	LATITUDE_epsg_4326 AS 'LAT',
+	LONGITUDE_epsg_4326 AS 'LONG',
 	Pleiades,
-	Trismegistos
+	Trismegistos,
+	MonumentNote,
+	Media
 	FROM Monument
 			JOIN FindSpot USING (FindSpotID)
 			JOIN MonumentCorpus USING (MonumentID)
 						WHERE isPrimaryReference IS NOT NULL
-						ORDER BY RomanProvince, AncientSite, SpecificAncientLocation, ModernSite, SpecificModernLocation, ExtraLocationNote
