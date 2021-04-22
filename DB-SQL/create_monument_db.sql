@@ -23,9 +23,6 @@ CREATE TABLE FindSpot (
 	Trismegistos TEXT
 );
 
--- LONG and LAT are approximate, more related to the settlement/specific location than the actual monument itself.
--- Need to check all of these are actually being used, some FindSpotID may no longer be relevant
-
 INSERT INTO FindSpot
 (FindSpotID,RomanProvince,	AncientSite,									SpecificAncientLocation, 				ModernSite,							SpecificModernLocation,					ExtraLocationNote,					LONGITUDE_epsg_4326,				LATITUDE_epsg_4326,				Pleiades,                                    Trismegistos)
      VALUES (1,	'Dalmatia', 'Tilurium',										null,														'Vojnić',								'built into modern structure',								null,					16.700356,	43.615035,	'https://pleiades.stoa.org/places/197552',		'https://www.trismegistos.org/place/29459'),
@@ -120,7 +117,7 @@ CREATE TABLE Monument (
 	ModernHolding TEXT,
 	HoldingData TEXT,
 	MonumentNote TEXT,
-	DBInclusionNote TEXT,
+	DBInclusionReason TEXT,
 	Media TEXT
 );
 
@@ -150,7 +147,7 @@ UPDATE monument SET ModernHolding = NULL WHERE ModernHolding = '';
 UPDATE monument SET Tončinić2011StelaeType = NULL WHERE Tončinić2011StelaeType = '';
 UPDATE monument SET HoldingData = NULL WHERE HoldingData = '';
 UPDATE monument SET MonumentNote = NULL WHERE MonumentNote = '';
-UPDATE monument SET DBInclusionNote = NULL WHERE DBInclusionNote = '';
+UPDATE monument SET DBInclusionReason = NULL WHERE DBInclusionReason = '';
 UPDATE monument SET Media = NULL WHERE Media = '';
 
 
@@ -236,7 +233,6 @@ CREATE TABLE MonumentCorpus (
 	Reference TEXT NOT NULL,
 	isPrimaryReference TEXT
 );
--- monumentcorpusID is an autonum we don't care about, so we won't write it. Let the database take care of things.
 
 .mode csv
 .import ../MonumentCorpus.csv MonumentCorpus
@@ -303,7 +299,7 @@ UPDATE MonumentServicemen SET SourceForDuplicateArgument = NULL WHERE SourceForD
 
 DROP VIEW IF EXISTS PrimaryCorpus;
 CREATE VIEW PrimaryCorpus as
-SELECT MonumentID, CorpusName || ' ' || Reference AS "Corpus", MonumentType AS "Monument Type", Media
+SELECT MonumentID, CorpusName || ' ' || Reference AS "Reference", MonumentType AS "Monument Type", Media
   FROM MonumentCorpus
 	JOIN Monument USING (MonumentID)
  WHERE isPrimaryReference is not null;
@@ -371,16 +367,29 @@ SELECT
 	        			 GROUP BY ServicemanID) AS MonumentIDTable USING (ServicemanID)
 	ORDER BY DefiniteServiceman DESC, ServicemanID;
 
---	WHERE isPrimaryReference = '1'
---	AND (MonumentType = 'stela'
---			or MonumentType = 'funerary inscription'
---			or MonumentType = 'titulus'
---			or MonumentType = 'inscription fragment'
---			or MonumentType = 'sacral monument'
---			or MonumentType = 'altar')
+DROP VIEW IF EXISTS Definite_Funerary_Monuments;
+CREATE VIEW Definite_Funerary_Monuments AS
+SELECT MonumentID,
+	CorpusName ||' ' || Reference AS 'Monument Reference',
+	MonumentType,
+	DateFrom ||' to '|| DateTo AS 'Date',
+	RomanProvince ||', '|| AncientSite AS 'Site of Discovery'
+	FROM Monument
+		JOIN MonumentCorpus USING (MonumentID)
+		JOIN FindSpot USING (FindSpotID)
+			WHERE (MonumentType = 'stela'
+				or MonumentType = 'funerary inscription'
+				or MonumentType = 'titulus'
+				or MonumentType = 'inscription fragment'
+				or MonumentType = 'sacral monument'
+				or MonumentType = 'altar')
+			AND isPrimaryReference IS NOT NULL
+				AND (MonumentOfSeventhLegion = 'yes'
+				or MonumentOfSeventhLegion = 'maybe')
+			ORDER BY RomanProvince, AncientSite;
 
-DROP VIEW IF EXISTS Monument_Location;
-CREATE VIEW Monument_Location AS
+DROP VIEW IF EXISTS Monument_and_Location;
+CREATE VIEW Monument_and_Location AS
 SELECT
 	MonumentID,
 	CorpusName ||' ' || Reference AS 'Monument Reference',
@@ -392,8 +401,7 @@ SELECT
 	LowerFieldDecoration ||', '|| (coalesce(LowerFieldDetail, ' ')) AS 'Lower Field Decoration',
 	Portrait,
 	Frieze,
-	DateFrom,
-	DateTo,
+	DateFrom ||' to '||	DateTo AS 'Date',
 	DateNote,
 	ModernHolding ||', '|| (coalesce(HoldingData, ' ')) AS 'Current Location',
 	RomanProvince AS 'Ancient Province Find Spot',
@@ -407,7 +415,7 @@ SELECT
 	LONGITUDE_epsg_4326 AS 'LONG',
 	Pleiades,
 	Trismegistos,
-	MonumentNote,
+	MonumentNote AS 'Note on the Monument',
 	Media
 	FROM Monument
 			JOIN FindSpot USING (FindSpotID)
