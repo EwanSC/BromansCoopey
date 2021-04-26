@@ -1,0 +1,139 @@
+ServicemanID,Monument,Nomina,Tribus,Domicilium,Serviceman?,"Unit Afilliation and Certainty","Office and Certainty","Other Office if specified","Veteran Status and Certainty",ServicemanNote
+1,2,"veteranorum? leg VII CPF",,,yes,"Legio VII CPF(epigraphically attested",centurio(likely,,veteran(likely,
+2,4,"Lucius Vettius Secundus, son of Marcus",Maecia,"Libarna, Italy",yes,"Legio VII(epigraphically attested",,,veteran(specified,
+3,5,"Lucius Ancharenus, son of Quintus",Sergia,"Laranda, Asia Minor",yes,"Legio VII(epigraphically attested",miles(specified,,,
+4,6,"Titus Ancharenus, son of Titus",Sergia,"Laranda, Asia Minor",yes,"Legio VII(epigraphically attested",miles(specified,,,
+5,7,"Marcus Antonius Celurus",,,yes,"Legio VII CPF(epigraphically attested",eques(specified,,,
+6,8,"Lucius Arruntius",,"Pasimo, Asia Minor",yes,"Legio VII(epigraphically attested",,,veteran(likely,
+7,9,"Gaius Asurius",,"Florentia, Italy",yes,"Legio VII(epigraphically attested",miles(specified,,,
+8,10,"Lucius Attius, son of Lucius",Sergia,"Augusta,  ",yes,"Legio VII(epigraphically attested",miles(specified,,,
+9,11,"Sextus Atilius, son of Sextus",Papiria,"Ticinum, Italy",yes,"Legio VII(epigraphically attested",,,veteran(specified,
+10,12,"Quintus Baebius, son of Quintus",Sergia,"Conona, Asia Minor",yes,"Legio VII(epigraphically attested",miles(specified,,,
+11,13,"Gaius Bittius Gemellus",Tromentia,,yes,"Legio VII CPF(epigraphically attested",imaginifer(specified,,,
+12,14,"Lucius Caesius Bassus",Camilia,"Pisaurum, Italy",yes,"Legio VII CPF(epigraphically attested",,,veteran(specified,
+13,15,"Lucius Domitius Aquila, son of Lucius",Aniensis,"Mylias, Asia Minor",yes,"Legio VII(epigraphically attested",,,veteran(specified,
+14,15,"Gaius Domitius Aquilinus, son of Lucius",Aniensis,"Mylias, Asia Minor",yes,"Legio VII(epigraphically attested",miles(specified,,,
+15,16,"Gaius Domitius, son of Gnaeus",Velina,"Pessinus, Asia Minor",yes,"Legio VII(epigraphically attested",,,veteran(specified,
+16,17,"Titus Elvius Salinator, son of Titus",Scaptia,,yes,"Legio VII(epigraphically attested",centurio(specified,,,
+18,19,"Lucius Fabius Saturninus, son of Lucius",,,yes,"Legio VII CPF(epigraphically attested",,,veteran(specified,
+19,20,"Marcus Heredius, son of Marcus",Palatina,,yes,"Legio VII(epigraphically attested",,,veteran(specified,
+20,21,"Lucius Herennius, son of Lucius",Papiria,"Mylias, Asia Minor",yes,"Legio VII(epigraphically attested",,,veteran(specified,
+21,22,"Quintus Hortensius, son of Quintus",,,yes,"Legio VII(epigraphically attested",,,veteran(specified,
+22,23,"Marcus Caecilius",,,yes,"Legio VII Macedonica(epigraphically attested",centurio(specified,,veteran(specified,
+23,24,"Quintus Igneinus Ferox, son of Quintus",Aniensis,"Augusta Troas, Asia Minor",yes,"Legio VII or VII CPF(conjecture",,,,"Quintus may be a Legio VII member, it is not explicit in his stela however. This possibility is reinforced by the fact that Legio VII member Gaius Curitatus is from Augusta Troas MonumentID 32, CIL 3, 2109"
+24,25,"Gaius Julius, son of Gaius",Fabia,"Ninica, Asia Minor",yes,"Legio VII(epigraphically attested",miles(specified,,,
+25,26,"Gaius Julius, son of Gaius",Velina,"Pessinus, Asia Minor",yes,"Legio VII(epigraphically attested",,,veteran(specified,
+26,27,"Gaius Julius, son of Gaius",Voltinia,"Clistinna,  ",yes,"Legio VII(epigraphically attested",miles(specified,,,
+27,28,"Gaius Julius Agrippa, son of Gaius",Sergia,,yes,"Legio VII CPF(epigraphically attested",,,,
+28,29,"Marcus Julius, son of Marcus",,"Trernahensis,  ",yes,"Legio VII CPF(epigraphically attested",miles(specified,,,
+29,30,"Sextus Clodius, son of Gaius",Publilia,"Verona, Italy",yes,"Legio VII, VII CPF, XI, XI CPF(conjecture",miles(specified,,,"No mention of Legio VII as the stelae is damaged. However, style is the same as many other stelae belonging to servicemen of the legio, and it was found at Tilurium. "
+30,31,"Lucius Cornelius, son of Lucius",Fabia,"Heraclea, Asia Minor",yes,"Legio VII(epigraphically attested",miles(specified,,,
+31,32,"Gaius Curiatus Secundus, son of Titus",Sergia,"Augusta Troas, Asia Minor",yes,"Legio VII CPF(epigraphically attested",scriba(specified,,veteran(specified,
+32,33,"Titus Curtiacus, son of Titus",Lemonia,"Bononia, Italy",yes,"Legio VII CPF(epigraphically attested",,,veteran(specified,
+33,34,"Gaius Lartinius, son of Gaius",Pollia,"Forum Corneli, Italy",yes,"Legio VII(epigraphically attested",miles(specified,,,
+34,35,"Publius Lastus Scaeva, son of Aulus",,"Florentia, Italy",yes,"Legio VII CPF(epigraphically attested",eques(specified,,veteran(specified,
+35,40,"Gaius Licinius, son of Gaius",Fabia,"Sinope, Asia Minor",yes,"Legio VII(epigraphically attested",,,veteran(specified,
+36,41,"Marcus Livius, son of Marcus",Palatina,"Alorus, Macedonia",yes,"Legio VII(epigraphically attested",,,veteran(specified,
+37,42,"Gaius Lollius Valens, son of Gaius",Papiria,,yes,"Legio VII CPF(epigraphically attested",,,veteran(specified,
+38,43,"Gaius Longinus, son of Gaius",Cornelia,"Amblada, Asia Minor",yes,"Legio VII(epigraphically attested",miles(specified,,,
+39,44,"Gaius Lucretius",,"Verona, Italy",yes,"Legio VII CPF(epigraphically attested",signifer(specified,,,"Brother of ServicemanID 40. Found in same plot accoring to Betz 1938: 66; and both epitaphs record the same sized grave plot (20x10ft), Tončinić 2011: 62-63."
+40,"45; 44","Gaius Lucretius",,"Verona, Italy",yes,"Legio VII CPF(epigraphically attested",,,veteran(specified,"Brother of ServicemanID39. Found in same plot accoring to Betz 1938: 66; and both epitaphs record the same sized grave plot (20x10ft), Tončinić 2011: 62-63. If so, this Gaius is probably the 'brother' recorded as the erector of monument MonumentID 44"
+40,"45; 44","Gaius Lucretius",,"Verona, Italy",yes,"Legio VII CPF(epigraphically attested",,,veteran(specified,"Brother of ServicemanID39. Found in same plot accoring to Betz 1938: 66; and both epitaphs record the same sized grave plot (20x10ft), Tončinić 2011: 62-63. If so, this Gaius is probably the 'brother' recorded as the erector of monument MonumentID 44"
+41,46,"Quintus Magius, son of Gaius",Publilia,"Verona, Italy",yes,"Legio VII(epigraphically attested",,,veteran(specified,
+42,47,"Gaius Manticus, son of Gaius",Scaptia,,yes,"Legio VII CPF(epigraphically attested",miles(specified,,,
+44,48,"Quintus Marcius Bassus, son of Quintus",Cornelia,"Beneventum, Italy",yes,"Legio VII(epigraphically attested",miles(specified,,,
+45,49,"Lucius Marcilius, son of Gaius",,"Pessinus, Asia Minor",yes,"Legio VII or VII CPF(epigraphically attested",,,veteran(likely,"Listed here as possible veteran because all other monuments from the surround of pagus Scunasticus relate to veterani."
+46,50,"Quintus Mettius Valens, son of Quintus",Voltinia,,yes,"Legio VII CPF(epigraphically attested",miles(specified,,,
+47,51,"Lucius Mummius, son of Lucius",Fabia,"Ancyra, Asia Minor",yes,"Legio VII(epigraphically attested",miles(specified,,,
+48,52,"Quintus Murrius, son of Quintus",Sergia,"Augusta,  ",yes,"Legio VII, VII CPF, XI, XI CPF(conjecture",miles(specified,,,
+49,53,"Gaius Octavius Vitalis, son of Gaius",Fabia,"Brixia, Italy",yes,"Legio VII CPF(epigraphically attested",,,veteran(specified,
+50,54,"Lucius Oppius Segninus, son of Lucius",Sergia,"Conona, Asia Minor",yes,"Legio VII(epigraphically attested",,,veteran(specified,
+51,55,"Quintus Oppius, son of Quintus",Pollia,"Forum Corneli, Italy",yes,"Legio VII(epigraphically attested",signifer(specified,,,
+52,56,"Gaius Parpirius",Fabia,,yes,"Legio VII or VII CPF(conjecture",,,,
+53,57,"Marcus Percennius",Voltinia,"Philippi, Macedonia",yes,"Legio VII, VII CPF, XI, XI CPF(conjecture",eques(likely,,,
+54,58,"Quintus Petronius Valentus",,,yes,"Legio VII CPF(epigraphically attested",miles(specified,,,
+55,59,"Gaius Pinarius Scarpus",,,yes,"Legio VII(epigraphically attested",,,veteran(specified,
+56,"60; 102","Publius Plotius",,,yes,"Legio VII CPF(epigraphically attested",centurio(specified,,,"MonumentID 102 reveals Plotius was a centurion"
+56,"60; 102","Publius Plotius",,,yes,"Legio VII CPF(epigraphically attested",centurio(specified,,,"MonumentID 102 reveals Plotius was a centurion"
+57,61,"Lucius Riccius, son of Lucius",Velina,"Pessinus, Asia Minor",yes,"Legio VII(conjecture",,,veteran(specified,
+58,61,"Lucius Atilius, son of Lucius",Velina,"?Pessinus, ?Asia Minor",yes,"Legio VII(epigraphically attested",,,veteran(specified,
+59,62,"Titus Sabinius, son of Titus",Fabia,"Sebaste, Asia Minor",yes,"Legio VII(epigraphically attested",,,veteran(specified,
+60,63,"Lucius Septimius Gratianus, son of Genialis",,,yes,"Legio VII Claudia(epigraphically attested",miles(specified,"exacto consularis(specified",,
+61,64,"Marcus Sosius, son of Marcus",Fabia,"Sebastopolis, Asia Minor",yes,"Legio VII(conjecture",,,,
+62,65,"Marcus Titus, son of Marcus",Sergia,"Isinda, Asia Minor",yes,"Legio VII(epigraphically attested",eques(specified,,,
+63,66,"Lucius Trebonius Valentus",,,yes,"Legio VII CPF(epigraphically attested",miles(specified,,,
+64,67,"Gaius Valerius Dento, son of Gaius",,,yes,"Legio VII(epigraphically attested",,,veteran(specified,
+65,68,"Quintus Valerius, son of Quintus",Cornelia,"Edessa, Macedonia",yes,"Legio VII(epigraphically attested",miles(specified,,,
+66,69,"Quintus Valerius, son of Quintus",Quirina,"Iconium, Asia Minor",yes,"Legio VII(epigraphically attested",,,veteran(specified,
+67,70,"Lucius Valerius, son of Lucius",Voltinia,"Philippi, Macedonia",yes,"Legio VII(epigraphically attested",miles(specified,,,
+68,71,"Marcus Varenus Valens, son of Marcus",Voltinia,,yes,"Legio VII CPF(epigraphically attested",,,veteran(specified,
+69,72,"Titus Varius, son of Titus",Velina,"Pessinus, Asia Minor",yes,"Legio VII(epigraphically attested",,,veteran(specified,
+70,73,"Gaius Vatinius Capito, son of Sextus",,"Arretium, Italy",yes,"Legio VII CPF(epigraphically attested",,,veteran(specified,
+71,74,"Lucius Vegnonius, son of Lucius ",,"Florentia, Italy",yes,"Legio VII(epigraphically attested",,,veteran(specified,
+72,75,"Gaius Vibius Pudes, son of Gaius",Pomptina,"Arretium, Italy",yes,"Legio VII CPF(epigraphically attested",centurio(specified,,,
+73,76,"Marcus Vibius, son of Marcus",Aemilia,"Dyrrachium, Macedonia",yes,"Legio VII(epigraphically attested",miles(specified,,,
+74,77,"signifer leg vii cpf",,,yes,"Legio VII CPF(epigraphically attested",signifer(specified,,,
+75,78,"vet leg vii cpf",,,yes,"Legio VII CPF(epigraphically attested",,,veteran(specified,
+76,79,C[aius?---],Pollia,"Aesis, Asia Minor",yes,"Legio VII(epigraphically attested",miles(specified,,,
+77,80,"mil le[g] vii",Pomptina,"Arretium, Italy",yes,"Legio VII(epigraphically attested",miles(specified,,,
+78,81,"[----]elius mat[----]",,"R[---],  ",yes,"Legio VII or VII CPF(epigraphically attested",,,veteran(specified,
+79,82,[Au]reli[us-],,,yes,"Legio VII CPF(epigraphically attested",,,veteran(likely,
+80,83,"Manius Coelius",,,yes,"Legio VII(epigraphically attested",centurio(specified,,,
+81,84,"Titus Cissonius, son of Quintus",Sergia,,yes,"Legio VII(epigraphically attested",,,veteran(specified,"Brother of ServicemanID 82"
+83,85,"Lucius Coelius, son of Lucius",Aniensis,,yes,"Legio VII(epigraphically attested",miles(specified,,,
+84,86,"Gaius Julius, son of Gaius",Papiria,"Cormassa, Asia Minor",yes,"Legio VII(epigraphically attested",eques(specified,,veteran(specified,
+85,87,"Publius Mestrius Maecianus, son of Publius",,,yes,"Legio VII(conjecture",,,veteran(specified,
+86,87,"Marcus Lollius, son of Marcus",,,yes,"Legio VII(epigraphically attested",,,veteran(specified,
+87,88,"Gaius Aulius Secundus, son of Gaius",Aniensis,"Cremona, Italy",yes,"Legio VII CPF(epigraphically attested",,,veteran(specified,
+88,89,"mil leg v[ii]",,,yes,"Legio VII or VII CPF(conjecture",miles(specified,,,
+90,90,"?Ar[---] Tuscus",,,yes,"Legio VII(epigraphically attested",,,,
+91,91,"son of Titus",?Quirina,,yes,"Legio VII CPF(epigraphically attested",,,,
+92,92,[An]tonius,,"Vienna, Gallia Narbonensis",yes,"Legio VII or VIII(epigraphically attested",,,,
+93,93,"[---] Valens, son of Spurius",,"Placentia, Italy",yes,"Legio VII or VII CPF(conjecture",,,,
+94,94,[---]Capti[o],,,yes,"Legio VII or VII CPF(epigraphically attested",,,,
+95,95,"[---] leg vii",,,yes,"Legio VII or VII CPF(epigraphically attested",,,,
+96,96,[----]rv[---][---]mil[---],,,yes,"Legio VII or VII CPF(conjecture",miles(specified,,,
+98,98,"ve]ter(anus) leg(ionis)",,,yes,"Legio VII CPF(conjecture",,,veteran(specified,"First line of inscription in CIL seems to read [---]O L[-], this last word could be reconstructed as [---]O L(ucii)[F(ilius)] and thus 'son of Lucius'"
+99,100,"[---c]enturio le[g(ionis)]",,,yes,"Legio VII or VII CPF(conjecture",centurio(specified,,,
+100,101,"[m]iles leg vi[i]",,,yes,"Legio VII or VII CPF(epigraphically attested",miles(specified,,,
+101,103,"Julius [---]",,,yes,"Legio VII CPF or XI CPF(conjecture",centurio(specified,,,
+102,104,"Sextus Titius Geminus",,,yes,"Legio VII(epigraphically attested","princeps posterior(specified",,,"Čače 2003: 16-21, claims this is the same person as ServicemanID 104(monumentID109), spelling his name wrong: S(extus) instead of G/C(aius)."
+103,105,"[---]nus Laco",,,yes,"Legio VII(epigraphically attested",centurio(likely,iudex(specified,,
+104,106,"Lucius Trebius Secundus",,,yes,"Legio VII(conjecture",,,,"May not refer to a Legio VII member"
+105,107,"[Vib]ullius T[---]",,,yes,"Legio VII(epigraphically attested",tribunus(likely,iudex(specified,,
+106,108,"Gaius Marius Maternus",,,yes,"Legio VII CPF(epigraphically attested",centurio(specified,,,
+107,109,"Gaius Titus Geminus",,,yes,"Legio VII(epigraphically attested",centurio(likely,,,"Čače 2003: 16-21, claims this is the same person as ServicemanID 99, with MonumentID 104 having spelt his name wrong: S(extus) instead of G/C(aius)."
+108,129,"Gaius Painius Numisius",,,yes,"Legio VII(epigraphically attested",eques(specified,,veteran(specified,
+128,39,"Lucius Oppidus Secundus",Claudia,"Varvaria, Dalmatia",yes,"Legio VII CPF and VII Claudia(epigraphically attested","primus pilus(specified","praefectus castorum(specified",,
+130,126,"Severus Ubius, son of Triocharus",,,yes,"Ala Tungrorum(epigraphically attested",eques(specified,,,
+131,127,"Gaius Julius Theodorus, son of Barceneus",,,yes,"Cohors II Cyrrhestarum(epigraphically attested",miles(specified,,,
+132,128,"Gaius Julius Andromachus",,,yes,"Cohors II Cyrrhestarum(epigraphically attested",miles(specified,,,
+137,107,"Lucius Sal[vius] Marcus",,,yes,"Legio XI(epigraphically attested",centurio(specified,iudex(specified,,
+17,18,"Lucius Fabius, son of Gaius",Sergia,"Conona, Asia Minor",maybe,"Legio VII or VII CPF(conjecture",,,,"It is not epigraphically attested that Lucius was a member of Legio VII, for the inscription does not explicitly mention service, but it is fragementary and damaged. It was found in the durrounds of Tilurium however, and is of a similar style to other stelae of Legio VII members. Tončinić 2011: 37-38"
+43,47,"Gaius Avinnius Postumius",,,maybe,"Legio VII CPF(conjecture",,,,"Possible serviceman, mentioned on same inscription as ServicemanID 42, but inscription is damaged at the end, could also be a son, freedman and/or heir."
+82,84,"Publius Cissonius, son of Quintus",Sergia,,maybe,"Legio VII(conjecture",,,,"Brother of ServicemanID 81"
+89,89,frater,,,maybe,"Legio VII or VII CPF(conjecture",,,,"Potentionally a metaphorical 'frater', i.e. fellow serviceman. Not proveable however."
+97,97,"[---]s C(aius?) Pala[---]",?Palatina,,maybe,"Legio VII or VII CPF(conjecture",,,,
+109,5,"Quintus Ancharenus ",,,maybe,"Legio VII(conjecture",,,,"Brother of commemorated (ServicemanID 3), but may also be a soldier of Legio VII"
+110,12,frater,,,maybe,"Legio VII(conjecture",,,,"Unnamed frater of ServicemanID 10, therefore may be 'comrade' type of frater found in military contexts, see Kepartov 1986"
+111,29,"Marcus Arruntius, frater [et] heres",,,maybe,"Legio VII CPF(conjecture",,,,"Less likely (yet still possible) that Marcus is blood brother (kin) with the deceased (ServicemanID 28) based on their differing gentilicum, so may be soldier/'comrade' type of frater recorded by Kepartov 1986"
+112,31,"Secundus, heres",,,maybe,"Legio VII(conjecture",,,,"Heres of ServicemanID 30, unspecified status, but may be miles."
+113,34,heredes,,,maybe,"Legio VII(conjecture",,,,"heredes of ServicemanID 33, unkonwn number and unknown status, may be fellow miles however, as the commemorated was an active miles, and therefore may not have had a family/children/wife etc."
+114,14,heres,,,maybe,"Legio VII CPF(conjecture",,,,"Heres of ServicemanID 12, could therefore be miles as 12 died whilst still on active service"
+115,26,"Gaius Mummius",,,maybe,"Legio VII(conjecture",,,,"Could be a son, brother, or non-relative of ServicemanID 25 (on account of shared praenomen but not gentilicum) who was also fellow miles"
+116,40,heredes,,,maybe,"Legio VII(conjecture",,,,"Could be miles of some relation to ServicemanID 35, but 35 was a veteran so may also have been a family member or civilian"
+117,43,frater,,,maybe,"Legio VII(conjecture",,,,"Unnamed frater of ServicemanID 38, therefore may be 'comrade' type of frater found in military contexts, see Kepartov 1986"
+118,48,Maximus,,,maybe,"Legio VII(conjecture",,,,"Unknown relation to ServicemanID 44, possibly fellow miles"
+119,55,heres,,,maybe,"Legio VII(conjecture",,,,"Unnamed heres of ServicemanID 51, could be miles. Indeed, 51 was an active miles when they were commemorated"
+120,65,"Lucius Gellus",Sergia,,maybe,"Legio VII(conjecture",,,,"Commemorator of ServicemanID 62, same tribe as ID 62, but different names (both praenomen and gentilicum), so could be a relative (brother?) from same Eastern city (Isinda), or another site in Asia Minor, for a lot of the members from Asia minor are from the Sergia tribe. Nonetheless, he may be a fellow miles of Legio VII"
+121,68,"Lucius Valerius, heres",,,maybe,"Legio VII(conjecture",,,,"Commemorator of ServicemanID 65. Likley relative, e.g. son or brother, based on same gentilicum, may have been a miles, however he may also have been a civilian son, for the monument was erected in Salona, and also references a freedwoman named Valeria Quinta, who may have been the wife of ServicemanID 65"
+122,69,"Quintus Portorius",,,maybe,"Legio VII(conjecture",,,veteran(conjecture,"Comemmorator of ServicemanID 66 along with ServicemanID 123, could be comrade, son or brother, and possibly a miles as the monument is from Pagus Scunstaicus where there was a large veteran community. However, he may also be a civilian"
+123,69,"Quintus Valerius Anteros",,,maybe,"Legio VII(conjecture",,,veteran(conjecture,"Comemmorator of ServicemanID 66 along with ServicemanID 122, could be son or brother, and possibly a miles as the monument is from Pagus Scunstaicus where there was a large veteran community. However, he may also be a civilian"
+124,72,heres,,,maybe,"Legio VII(conjecture",,,,"Unnamed heres of ServicemanID 69, could be a miles as Pagus Scunasticus was home to a large veteran community, but may also be a civilian son as ID 69 was a settled veteran who may have had a family"
+125,76,"[---]lius heres",,,maybe,"Legio VII(conjecture",,,,"Fragmentarily named heres of ServicemanID 73. Monument was found at Tilurium and ServicemanID 73 did die during active duty, so possibly a fellow miles"
+126,18,"Gaius Fabius",?Sergia,,maybe,"Legio VII or VII CPF(conjecture",,,,"Son of ServicemanID 17. As his father is possibly a Legio VII miles, Gaius Fabius is possibly one too (perhaps less conjecture however). His father is of the Sergia tribe, so he may have been a member of it too"
+127,49,"Gaius M[arcilius?]",,,maybe,"Legio VII CPF(conjecture",,,,"conjecture the commemorator of ServicemanID 45. Unknown relation, however may have the same gentilicum, and therefore may be the father of ServicemanID 45, as he also has the same praenomen as father of ServicemanID 45. Irrespective of this, he may also have been a fellow miles/veteran"
+129,99,]SF[,,,maybe,"Legio VII CPF or XI CPF(conjecture",,,,
+133,128,"Gaius Julius Apollla",,,maybe,"Cohors II Cyrrhestarum(conjecture",,,,"Commemorator of ServicemanID 133, referred to as 'sodalis' (friend), may therefore be fellow soldier. Soldierhood may be even more conjecture on account of the fact the stelae was conjecture originally erected at Tilurium. Cambi 1979; 1994."
+134,127,"Gaius Julius Scapula",,,maybe,"Cohors II Cyrrhestarum(conjecture",,,,"Commemorator of ServicemanID 132. Referred to as 'frater', perhaps a fellow soldier (comrade) because of different Nomen Gentilicium, but perhaps also fellow solider (kin brother), or just civilian (kin brother). Soldierhood may be more conjecture on account of the fact the stelae was conjecture originally erected at Tilurium. Cambi 1979; 1994."
+135,126,Urbanus,,,maybe,"Ala Tungrorum(conjecture",,,,"Commemorator of ServicemanID 131. Different nomen gentilicium may mean this individual is unrelated, and they may be a fellow soldier, particularly as 131 died during active service, and the stelae was conjecture originally erected at Tilurium. Cambi 1979; 1994."
