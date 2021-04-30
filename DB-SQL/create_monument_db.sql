@@ -53,6 +53,7 @@ CREATE TABLE Monument (
 	MonumentOfSeventhLegion TEXT,
 	Inscription TEXT,
 	Translation TEXT,
+	TranslationSource TEXT,
 	LowerFieldDecoration TEXT,
 	LowerFieldDetail TEXT,
 	Portrait TEXT,
@@ -83,6 +84,7 @@ UPDATE monument SET MonumentType = NULL WHERE MonumentType = '';
 UPDATE monument SET MonumentOfSeventhLegion = NULL WHERE MonumentOfSeventhLegion = '';
 UPDATE monument SET Inscription = NULL WHERE Inscription = '';
 UPDATE monument SET Translation = NULL WHERE Translation = '';
+UPDATE monument SET TranslationSource = NULL WHERE TranslationSource = '';
 UPDATE monument SET LowerFieldDecoration = NULL WHERE LowerFieldDecoration = '';
 UPDATE monument SET LowerFieldDetail = NULL WHERE LowerFieldDetail = '';
 UPDATE monument SET Portrait = NULL WHERE Portrait = '';
@@ -321,6 +323,7 @@ SELECT
 	MonumentOfSeventhLegion AS 'Mentions Legio VII?',
 	Inscription,
 	Translation,
+	TranslationSource AS 'Source of Translation',
 	Tončinić2011StelaeType AS 'Tončinić 2011 Style Type',
 	LowerFieldDecoration ||', '|| (coalesce(LowerFieldDetail, ' ')) AS 'Lower Field Decoration',
 	Portrait,
