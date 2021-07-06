@@ -12,7 +12,7 @@
 12,Lucius Caesius Bassus,yes,2,epigraphically attested,14,Camilia,Italy,Pisaurum,,
 13,"Lucius Domitius Aquila, son of Lucius",yes,1,epigraphically attested,14,Aniensis,Asia Minor,Mylias,,
 14,"Gaius Domitius Aquilinus, son of Lucius",yes,1,epigraphically attested,1,Aniensis,Asia Minor,Mylias,"Stela does not explicitly mention that Gaius from Mylia, but his father/brother commemorated on the same monument is from Mylias",
-15,"Gaius Domitius, son of Gnaeus",yes,1,epigraphically attested,14,Velina,Asia Minor,Pessinus,,
+15,"Gaius Domitius, son of Gnaeus",yes,1,epigraphically attested,14,Velina,Galatia,Pessinus,,
 16,"Titus Elvius Salinator, son of Titus",yes,1,epigraphically attested,5,Scaptia,,,"Titus' father, Titus, is recorded to have been part of the Scaptia tribe, so Titus Elvius was likley also a member of the same tribe",
 17,"Lucius Fabius, son of Gaius",maybe,4,conjecture,11,Sergia,Asia Minor,Conana,,"It is not epigraphically attested that Lucius was a member of Legio VII, for the inscription does not explicitly mention service, but it is fragementary and damaged. It was found in the durrounds of Tilurium however, and is of a similar style to other stelae of Legio VII members. Tončinić 2011: 37-38"
 18,"Lucius Fabius Saturninus, son of Lucius",yes,2,epigraphically attested,14,,,,,
@@ -22,7 +22,7 @@
 22,Marcus Caecilius,yes,8,epigraphically attested,6,,,,,
 23,"Quintus Igneinus Ferox, son of Quintus",yes,4,conjecture,11,Aniensis,Asia Minor,Augusta Troas,,"Quintus may be a Legio VII member, it is not explicit in his stela however. This possibility is reinforced by the fact that Legio VII member Gaius Curitatus is from Augusta Troas MonumentID 32, CIL 3, 2109"
 24,"Gaius Julius, son of Gaius",yes,1,epigraphically attested,1,Fabia,Asia Minor,Ninica,,
-25,"Gaius Julius, son of Gaius",yes,1,epigraphically attested,14,Velina,Asia Minor,Pessinus,,
+25,"Gaius Julius, son of Gaius",yes,1,epigraphically attested,14,Velina,Galatia,Pessinus,,
 26,"Gaius Julius, son of Gaius",yes,1,epigraphically attested,1,Voltinia,,Clistinna,Mitchell 1976: n.50 suggests the city name is similar to several others found in Galatia,
 27,"Gaius Julius Agrippa, son of Gaius",yes,2,epigraphically attested,11,Sergia,,,"Other members of Sergia tribe are predominantly from Asia Minor, Tončinić 2011.",
 28,"Marcus Julius, son of Marcus",yes,2,epigraphically attested,1,,,Trernahensis,"Tončinić 2011: 205 purports that this 'city' is likely a ethnic name (nomen ethnicom), and the locaiton is unknown.",
@@ -42,7 +42,7 @@
 42,"Gaius Manticus, son of Gaius",yes,2,epigraphically attested,1,Scaptia,,,,
 43,Gaius Avinnius Postumius,maybe,2,conjecture,11,,,,,"Possible serviceman, mentioned on same inscription as ServicemanID 42, but inscription is damaged at the end, could also be a son, freedman and/or heir."
 44,"Quintus Marcius Bassus, son of Quintus",yes,1,epigraphically attested,1,Cornelia,Italy,Beneventum,,
-45,"Lucius Marcilius, son of Gaius",yes,4,epigraphically attested,15,,Asia Minor,Pessinus,,Listed here as possible veteran because all other monuments from the surround of pagus Scunasticus relate to veterani.
+45,"Lucius Marcilius, son of Gaius",yes,4,epigraphically attested,15,,Galatia,Pessinus,,Listed here as possible veteran because all other monuments from the surround of pagus Scunasticus relate to veterani.
 46,"Quintus Mettius Valens, son of Quintus",yes,2,epigraphically attested,1,Voltinia,,,,
 47,"Lucius Mummius, son of Lucius",yes,1,epigraphically attested,1,Fabia,Asia Minor,Ancyra,,
 48,"Quintus Murrius, son of Quintus",yes,12,conjecture,1,Sergia,,Augusta,"Unsure if Augusta Praetoria (Italia) or Augusta Troas (Asia Minor). Tončinić 2011: 204-205; Fadić 1995 168: Troas may be more conjecture, as Sergia is a common tribe for Asia Minor citizens, and another Member (Gaius Curiatius) does list Augusta Troas as his place of origin (ServicemanID 31, CIL 3, 2019).",
@@ -54,8 +54,8 @@
 54,Quintus Petronius Valentus,yes,2,epigraphically attested,1,,,,,
 55,Gaius Pinarius Scarpus,yes,1,epigraphically attested,14,,,,,
 56,Publius Plotius,yes,2,epigraphically attested,5,,,,,MonumentID 102 reveals Plotius was a centurion
-57,"Lucius Riccius, son of Lucius",yes,1,conjecture,14,Velina,Asia Minor,Pessinus,,
-58,"Lucius Atilius, son of Lucius",yes,1,epigraphically attested,14,Velina,?Asia Minor,?Pessinus,"Relatively safe to assume, as Tončinić does (2011: 82) that Atilius is of the same Domicile as his uncle (ServicemanID 57), for he is of the same tribe.",
+57,"Lucius Riccius, son of Lucius",yes,1,conjecture,14,Velina,Galatia,Pessinus,,
+58,"Lucius Atilius, son of Lucius",yes,1,epigraphically attested,14,Velina,?Galatia,?Pessinus,"Relatively safe to assume, as Tončinić does (2011: 82) that Atilius is of the same Domicile as his uncle (ServicemanID 57), for he is of the same tribe.",
 59,"Titus Sabinius, son of Titus",yes,1,epigraphically attested,14,Fabia,Asia Minor,Sebaste,,
 60,"Lucius Septimius Gratianus, son of Genialis",yes,3,epigraphically attested,19,,,,,
 61,"Marcus Sosius, son of Marcus",yes,1,conjecture,11,Fabia,Asia Minor,Sebastopolis,"Tončinić 2011: 84 translates 'sebasto' as Sebatopolis, expecting '-polis' in the next line. Perhaps it could also be Sebaste, for ServicemanID 59 is from this site and is of the same tribe, and therefore 'Sebasto' could here be a carver's 'typo' shall we say, and meant to be 'Sebaste'.",
@@ -63,10 +63,10 @@
 63,Lucius Trebonius Valentus,yes,2,epigraphically attested,1,,,,,
 64,"Gaius Valerius Dento, son of Gaius",yes,1,epigraphically attested,14,,,,,
 65,"Quintus Valerius, son of Quintus",yes,1,epigraphically attested,1,Cornelia,Macedonia,Edessa,,
-66,"Quintus Valerius, son of Quintus",yes,1,epigraphically attested,14,Quirina,Asia Minor,Iconium,,
+66,"Quintus Valerius, son of Quintus",yes,1,epigraphically attested,14,Quirina,Galatia,Iconium,,
 67,"Lucius Valerius, son of Lucius",yes,1,epigraphically attested,1,Voltinia,Macedonia,Philippi,,
 68,"Marcus Varenus Valens, son of Marcus",yes,2,epigraphically attested,14,Voltinia,,,,
-69,"Titus Varius, son of Titus",yes,1,epigraphically attested,14,Velina,Asia Minor,Pessinus,,
+69,"Titus Varius, son of Titus",yes,1,epigraphically attested,14,Velina,Galatia,Pessinus,,
 70,"Gaius Vatinius Capito, son of Sextus",yes,2,epigraphically attested,14,,Italy,Arretium,,
 71,"Lucius Vegnonius, son of Lucius ",yes,1,epigraphically attested,14,,Italy,Florentia,,
 72,"Gaius Vibius Pudes, son of Gaius",yes,2,epigraphically attested,5,Pomptina,Italy,Arretium,,

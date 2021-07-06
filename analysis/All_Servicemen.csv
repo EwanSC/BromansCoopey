@@ -13,7 +13,7 @@ ServicemanID,Monument,Nomina,Tribus,Domicilium,Serviceman?,"Unit Afilliation and
 12,14,"Lucius Caesius Bassus",Camilia,"Pisaurum, Italy",yes,"Legio VII CPF(epigraphically attested",,,veteran(specified,
 13,15,"Lucius Domitius Aquila, son of Lucius",Aniensis,"Mylias, Asia Minor",yes,"Legio VII(epigraphically attested",,,veteran(specified,
 14,15,"Gaius Domitius Aquilinus, son of Lucius",Aniensis,"Mylias, Asia Minor",yes,"Legio VII(epigraphically attested",miles(specified,,,
-15,16,"Gaius Domitius, son of Gnaeus",Velina,"Pessinus, Asia Minor",yes,"Legio VII(epigraphically attested",,,veteran(specified,
+15,16,"Gaius Domitius, son of Gnaeus",Velina,"Pessinus, Galatia",yes,"Legio VII(epigraphically attested",,,veteran(specified,
 16,17,"Titus Elvius Salinator, son of Titus",Scaptia,,yes,"Legio VII(epigraphically attested",centurio(specified,,,
 18,19,"Lucius Fabius Saturninus, son of Lucius",,,yes,"Legio VII CPF(epigraphically attested",,,veteran(specified,
 19,20,"Marcus Heredius, son of Marcus",Palatina,,yes,"Legio VII(epigraphically attested",,,veteran(specified,
@@ -22,7 +22,7 @@ ServicemanID,Monument,Nomina,Tribus,Domicilium,Serviceman?,"Unit Afilliation and
 22,23,"Marcus Caecilius",,,yes,"Legio VII Macedonica(epigraphically attested",centurio(specified,,veteran(specified,
 23,24,"Quintus Igneinus Ferox, son of Quintus",Aniensis,"Augusta Troas, Asia Minor",yes,"Legio VII or VII CPF(conjecture",,,,"Quintus may be a Legio VII member, it is not explicit in his stela however. This possibility is reinforced by the fact that Legio VII member Gaius Curitatus is from Augusta Troas MonumentID 32, CIL 3, 2109"
 24,25,"Gaius Julius, son of Gaius",Fabia,"Ninica, Asia Minor",yes,"Legio VII(epigraphically attested",miles(specified,,,
-25,26,"Gaius Julius, son of Gaius",Velina,"Pessinus, Asia Minor",yes,"Legio VII(epigraphically attested",,,veteran(specified,
+25,26,"Gaius Julius, son of Gaius",Velina,"Pessinus, Galatia",yes,"Legio VII(epigraphically attested",,,veteran(specified,
 26,27,"Gaius Julius, son of Gaius",Voltinia,"Clistinna,  ",yes,"Legio VII(epigraphically attested",miles(specified,,,
 27,28,"Gaius Julius Agrippa, son of Gaius",Sergia,,yes,"Legio VII CPF(epigraphically attested",,,,
 28,29,"Marcus Julius, son of Marcus",,"Trernahensis,  ",yes,"Legio VII CPF(epigraphically attested",miles(specified,,,
@@ -42,7 +42,7 @@ ServicemanID,Monument,Nomina,Tribus,Domicilium,Serviceman?,"Unit Afilliation and
 41,46,"Quintus Magius, son of Gaius",Publilia,"Verona, Italy",yes,"Legio VII(epigraphically attested",,,veteran(specified,
 42,47,"Gaius Manticus, son of Gaius",Scaptia,,yes,"Legio VII CPF(epigraphically attested",miles(specified,,,
 44,48,"Quintus Marcius Bassus, son of Quintus",Cornelia,"Beneventum, Italy",yes,"Legio VII(epigraphically attested",miles(specified,,,
-45,49,"Lucius Marcilius, son of Gaius",,"Pessinus, Asia Minor",yes,"Legio VII or VII CPF(epigraphically attested",,,veteran(likely,"Listed here as possible veteran because all other monuments from the surround of pagus Scunasticus relate to veterani."
+45,49,"Lucius Marcilius, son of Gaius",,"Pessinus, Galatia",yes,"Legio VII or VII CPF(epigraphically attested",,,veteran(likely,"Listed here as possible veteran because all other monuments from the surround of pagus Scunasticus relate to veterani."
 46,50,"Quintus Mettius Valens, son of Quintus",Voltinia,,yes,"Legio VII CPF(epigraphically attested",miles(specified,,,
 47,51,"Lucius Mummius, son of Lucius",Fabia,"Ancyra, Asia Minor",yes,"Legio VII(epigraphically attested",miles(specified,,,
 48,52,"Quintus Murrius, son of Quintus",Sergia,"Augusta,  ",yes,"Legio VII, VII CPF, XI, XI CPF(conjecture",miles(specified,,,
@@ -55,8 +55,8 @@ ServicemanID,Monument,Nomina,Tribus,Domicilium,Serviceman?,"Unit Afilliation and
 55,59,"Gaius Pinarius Scarpus",,,yes,"Legio VII(epigraphically attested",,,veteran(specified,
 56,"60; 102","Publius Plotius",,,yes,"Legio VII CPF(epigraphically attested",centurio(specified,,,"MonumentID 102 reveals Plotius was a centurion"
 56,"60; 102","Publius Plotius",,,yes,"Legio VII CPF(epigraphically attested",centurio(specified,,,"MonumentID 102 reveals Plotius was a centurion"
-57,61,"Lucius Riccius, son of Lucius",Velina,"Pessinus, Asia Minor",yes,"Legio VII(conjecture",,,veteran(specified,
-58,61,"Lucius Atilius, son of Lucius",Velina,"?Pessinus, ?Asia Minor",yes,"Legio VII(epigraphically attested",,,veteran(specified,
+57,61,"Lucius Riccius, son of Lucius",Velina,"Pessinus, Galatia",yes,"Legio VII(conjecture",,,veteran(specified,
+58,61,"Lucius Atilius, son of Lucius",Velina,"?Pessinus, ?Galatia",yes,"Legio VII(epigraphically attested",,,veteran(specified,
 59,62,"Titus Sabinius, son of Titus",Fabia,"Sebaste, Asia Minor",yes,"Legio VII(epigraphically attested",,,veteran(specified,
 60,63,"Lucius Septimius Gratianus, son of Genialis",,,yes,"Legio VII Claudia(epigraphically attested",miles(specified,"exacto consularis(specified",,
 61,64,"Marcus Sosius, son of Marcus",Fabia,"Sebastopolis, Asia Minor",yes,"Legio VII(conjecture",,,,
@@ -64,10 +64,10 @@ ServicemanID,Monument,Nomina,Tribus,Domicilium,Serviceman?,"Unit Afilliation and
 63,66,"Lucius Trebonius Valentus",,,yes,"Legio VII CPF(epigraphically attested",miles(specified,,,
 64,67,"Gaius Valerius Dento, son of Gaius",,,yes,"Legio VII(epigraphically attested",,,veteran(specified,
 65,68,"Quintus Valerius, son of Quintus",Cornelia,"Edessa, Macedonia",yes,"Legio VII(epigraphically attested",miles(specified,,,
-66,69,"Quintus Valerius, son of Quintus",Quirina,"Iconium, Asia Minor",yes,"Legio VII(epigraphically attested",,,veteran(specified,
+66,69,"Quintus Valerius, son of Quintus",Quirina,"Iconium, Galatia",yes,"Legio VII(epigraphically attested",,,veteran(specified,
 67,70,"Lucius Valerius, son of Lucius",Voltinia,"Philippi, Macedonia",yes,"Legio VII(epigraphically attested",miles(specified,,,
 68,71,"Marcus Varenus Valens, son of Marcus",Voltinia,,yes,"Legio VII CPF(epigraphically attested",,,veteran(specified,
-69,72,"Titus Varius, son of Titus",Velina,"Pessinus, Asia Minor",yes,"Legio VII(epigraphically attested",,,veteran(specified,
+69,72,"Titus Varius, son of Titus",Velina,"Pessinus, Galatia",yes,"Legio VII(epigraphically attested",,,veteran(specified,
 70,73,"Gaius Vatinius Capito, son of Sextus",,"Arretium, Italy",yes,"Legio VII CPF(epigraphically attested",,,veteran(specified,
 71,74,"Lucius Vegnonius, son of Lucius ",,"Florentia, Italy",yes,"Legio VII(epigraphically attested",,,veteran(specified,
 72,75,"Gaius Vibius Pudes, son of Gaius",Pomptina,"Arretium, Italy",yes,"Legio VII CPF(epigraphically attested",centurio(specified,,,
