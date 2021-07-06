@@ -175,6 +175,7 @@ CREATE TABLE LegioServicemen (
 	Tribe TEXT,
 	OriginProvince TEXT,
 	OriginSettlement TEXT,
+	OriginCertainty TEXT,
 	TribusDomiciliumNote TEXT,
 	ServicemanNote TEXT
 );
@@ -194,6 +195,7 @@ UPDATE LegioServicemen SET Tribe = NULL WHERE Tribe = '';
 UPDATE LegioServicemen SET MilitaryStatusID = NULL WHERE MilitaryStatusID = '';
 UPDATE LegioServicemen SET OriginProvince = NULL WHERE OriginProvince = '';
 UPDATE LegioServicemen SET OriginSettlement = NULL WHERE OriginSettlement = '';
+UPDATE LegioServicemen SET OriginCertainty = NULL WHERE OriginCertainty = '';
 UPDATE LegioServicemen SET ServicemanNote = NULL WHERE ServicemanNote = '';
 UPDATE LegioServicemen SET TribusDomiciliumNote = NULL WHERE TribusDomiciliumNote = '';
 
