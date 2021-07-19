@@ -273,17 +273,17 @@ SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDCS, EDH, OtherRef
 
 DROP VIEW IF EXISTS All_Servicemen;
 CREATE VIEW All_Servicemen AS
-SELECT
+SELECT DISTINCT
 	LegioServicemen.ServicemanID,
 	Monument,
 	Name AS 'Nomina',
 	Tribe AS 'Tribus',
 	OriginSettlement ||', '|| (coalesce(OriginProvince, ' ')) AS 'Domicilium',
-	DefiniteServiceman AS 'Serviceman?',
-	Units.UnitTitle ||'('|| LegioServicemen.LiklihoodOfUnitAttribution AS 'Unit Afilliation and Certainty',
-	FirstRecordedOffice ||'('|| FirstOfficeCertainty AS 'Office and Certainty',
-	SecondRecordedOffice ||'('|| SecondOfficeCertainty AS 'Other Office if specified',
-	VeteranStatus ||'('|| VeteranStatusCertainty AS 'Veteran Status and Certainty',
+	DefiniteServiceman,
+	Units.UnitTitle ||'('|| LegioServicemen.LiklihoodOfUnitAttribution AS 'Unit_Affiliation_and_Certainty',
+	FirstRecordedOffice ||'('|| FirstOfficeCertainty AS 'Office_and_Certainty',
+	SecondRecordedOffice ||'('|| SecondOfficeCertainty AS 'Other_Office_and_certainty',
+	VeteranStatus ||'('|| VeteranStatusCertainty AS 'Veteran_Status_and_Certainty',
 	ServicemanNote
 	FROM MonumentServicemen
 		JOIN LegioServicemen USING (ServicemanID)
