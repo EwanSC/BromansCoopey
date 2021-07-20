@@ -1,22 +1,22 @@
 MilitaryStatusID,FirstRecordedOffice,SecondRecordedOffice,FirstOfficeCertainty,SecondOfficeCertainty,VeteranStatus,VeteranStatusCertainty
 1,miles,,specified,,,
 2,eques,,specified,,,
-3,eques,,likely,,,
-4,eques,,specified,,veteran,specified
+3,eques,,conjecture,,,
+4,eques,,specified,,veteranus,specified
 5,centurio,,specified,,,
-6,centurio,,specified,,veteran,specified
-7,centurio,,likely,,,
-8,centurio,,likely,,veteran,likely
+6,centurio,,specified,,veteranus,specified
+7,centurio,,conjecture,,,
+8,centurio,,conjecture,,veteranus,conjecture
 9,signifer,,specified,,,
 10,imaginifer,,specified,,,
 11,,,,,,
-12,tribunus,iudex,likely,specified,,
+12,tribunus,iudex,conjecture,specified,,
 13,"princeps posterior",,specified,,,
-14,,,,,veteran,specified
-15,,,,,veteran,likely
-16,scriba,,specified,,veteran,specified
+14,,,,,veteranus,specified
+15,,,,,veteranus,conjecture
+16,scriba,,specified,,veteranus,specified
 17,"primus pilus","praefectus castorum",specified,specified,,
-18,centurio,iudex,likely,specified,,
+18,centurio,iudex,conjecture,specified,,
 19,miles,"exacto consularis",specified,specified,,
 20,centurio,iudex,specified,specified,,
-21,,,,,veteran,conjecture
+21,,,,,veteranus,conjecture

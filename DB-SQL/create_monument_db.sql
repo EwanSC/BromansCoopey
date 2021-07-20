@@ -227,7 +227,11 @@ UPDATE MonumentServicemen SET SourceForDuplicateArgument = NULL WHERE SourceForD
 
 DROP VIEW IF EXISTS PrimaryCorpus;
 CREATE VIEW PrimaryCorpus as
-SELECT MonumentID, CorpusName || ' ' || Reference AS "Reference", MonumentType AS "Monument Type", Media
+SELECT
+	MonumentID,
+	CorpusName || ' ' || Reference AS "Reference",
+	MonumentType AS "Monument_Type",
+	Media
   FROM MonumentCorpus
 	JOIN Monument USING (MonumentID)
  WHERE isPrimaryReference is not null;
@@ -275,21 +279,21 @@ DROP VIEW IF EXISTS All_Servicemen;
 CREATE VIEW All_Servicemen AS
 SELECT DISTINCT
 	LegioServicemen.ServicemanID,
-	Monument,
+	MonumentIDs,
 	Name AS 'Nomina',
 	Tribe AS 'Tribus',
 	OriginSettlement ||', '|| (coalesce(OriginProvince, ' ')) AS 'Domicilium',
 	DefiniteServiceman,
-	Units.UnitTitle ||'('|| LegioServicemen.LiklihoodOfUnitAttribution AS 'Unit_Affiliation_and_Certainty',
-	FirstRecordedOffice ||'('|| FirstOfficeCertainty AS 'Office_and_Certainty',
-	SecondRecordedOffice ||'('|| SecondOfficeCertainty AS 'Other_Office_and_certainty',
-	VeteranStatus ||'('|| VeteranStatusCertainty AS 'Veteran_Status_and_Certainty',
+	Units.UnitTitle ||'('|| LegioServicemen.LiklihoodOfUnitAttribution ||')' AS 'Unit_Affiliation_and_Certainty',
+	FirstRecordedOffice ||'('|| FirstOfficeCertainty ||')' AS 'Office_and_Certainty',
+	SecondRecordedOffice ||'('|| SecondOfficeCertainty ||')' AS 'Other_Office_and_certainty',
+	VeteranStatus ||'('|| VeteranStatusCertainty ||')' AS 'Veteran_Status_and_Certainty',
 	ServicemanNote
 	FROM MonumentServicemen
 		JOIN LegioServicemen USING (ServicemanID)
 		JOIN MilitaryStatus USING (MilitaryStatusID)
 		JOIN Units USING (UnitID)
-		JOIN (SELECT ServicemanID, group_concat(MonumentID, '; ') AS Monument
+		JOIN (SELECT ServicemanID, group_concat(MonumentID, '; ') AS MonumentIDs
 	        			 FROM MonumentServicemen
 	        			 WHERE ServicemanID = ServicemanID
 	        			 GROUP BY ServicemanID) AS MonumentIDTable USING (ServicemanID)
@@ -298,10 +302,10 @@ SELECT DISTINCT
 DROP VIEW IF EXISTS Definite_Funerary_Monuments;
 CREATE VIEW Definite_Funerary_Monuments AS
 SELECT MonumentID,
-	CorpusName ||' ' || Reference AS 'Monument Reference',
+	CorpusName ||' ' || Reference AS 'Monument_Reference',
 	MonumentType,
-	DateFrom ||' to '|| DateTo AS 'Date',
-	RomanProvince ||', '|| AncientSite AS 'Site of Discovery'
+	DateFrom ||' to '|| DateTo AS 'Creation_Date',
+	RomanProvince ||', '|| AncientSite AS 'Site_of_Discovery'
 	FROM Monument
 		JOIN MonumentCorpus USING (MonumentID)
 		JOIN FindSpot USING (FindSpotID)
@@ -320,31 +324,31 @@ DROP VIEW IF EXISTS Monument_and_Location;
 CREATE VIEW Monument_and_Location AS
 SELECT
 	MonumentID,
-	CorpusName ||' ' || Reference AS 'Monument Reference',
+	CorpusName ||' ' || Reference AS 'Monument_Reference',
 	MonumentType,
-	MonumentOfSeventhLegion AS 'Mentions Legio VII?',
+	MonumentOfSeventhLegion AS 'Mention_Legio_VII',
 	Inscription,
 	Translation,
-	TranslationSource AS 'Source of Translation',
-	Tončinić2011StelaeType AS 'Tončinić 2011 Style Type',
-	LowerFieldDecoration ||', '|| (coalesce(LowerFieldDetail, ' ')) AS 'Lower Field Decoration',
+	TranslationSource AS 'Source_of_Translation',
+	Tončinić2011StelaeType AS 'Tončinić_2011_Style_Type',
+	LowerFieldDecoration ||', '|| (coalesce(LowerFieldDetail, ' ')) AS 'Lower_Field_Decoration',
 	Portrait,
 	Frieze,
-	DateFrom ||' to '||	DateTo AS 'Date',
+	DateFrom ||' to '||	DateTo AS 'Creation_Date',
 	DateNote,
-	ModernHolding ||', '|| (coalesce(HoldingData, ' ')) AS 'Current Location',
-	RomanProvince AS 'Ancient Province Find Spot',
-	AncientSite AS 'Ancient Site',
-	SpecificAncientLocation AS 'General Proveniance',
-	ModernSite AS 'Modern Find Site',
-	SpecificModernLocation 'Modern Proveniance',
-	ExtraLocationNote AS 'General Location Note',
-	MonumentSpecificFindSpotNote AS 'Unique Monument Proveniance Note',
+	ModernHolding ||', '|| (coalesce(HoldingData, ' ')) AS 'Current_Location',
+	RomanProvince AS 'Ancient_Province',
+	AncientSite AS 'Ancient_Site',
+	SpecificAncientLocation AS 'General_Provenience',
+	ModernSite AS 'Modern_Find_Site',
+	SpecificModernLocation 'Modern_Provenience',
+	ExtraLocationNote AS 'General_Location_Note',
+	MonumentSpecificFindSpotNote AS 'Unique_Monument_Provenience_Note',
 	LATITUDE_epsg_4326 AS 'LAT',
 	LONGITUDE_epsg_4326 AS 'LONG',
 	Pleiades,
 	Trismegistos,
-	MonumentNote AS 'Note on the Monument',
+	MonumentNote,
 	Media
 	FROM Monument
 			JOIN FindSpot USING (FindSpotID)

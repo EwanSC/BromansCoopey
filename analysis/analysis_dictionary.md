@@ -7,7 +7,7 @@
 ## The Tables
 
 The **5** analysis tables and their columns are:
-1. All_Servicemen.csv
+1. **All_Servicemen.csv**
   * ServicemanID
   * Monument
   * Nomina
@@ -19,7 +19,7 @@ The **5** analysis tables and their columns are:
   * Other_Office_and_certainty
   * Veteran_Status_and_Certainty
   * ServicemanNote
-2. AllCorpora.csv
+2. **AllCorpora.csv**
   * MonumentID
   * CIL
   * Tončinić
@@ -29,43 +29,44 @@ The **5** analysis tables and their columns are:
   * EDCS
   * EDH
   * OtherRef
-3. Definite_Funerary_Monuments.csv
+3. **Definite_Funerary_Monuments.csv**
   * MonumentID
-  * Monument Reference
+  * Monument_Reference
   * MonumentType
-  * Date
-  * Site of Discovery
-4. Monument_and_Location.csv
+  * Creation_Date
+  * Site_of_Discovery
+4. **Monument_and_Location.csv**
   * MonumentID
-  * Monument Reference
+  * Monument_Reference
   * MonumentType
-  * Mentions Legio VII?
+  * Mention_Legio_VII
   * Inscription
   * Translation
-  * Tončinić 2011 Style Type
-  * Lower Field Decoration
+  * Source_of_Translation
+  * Tončinić_2011_Style_Type
+  * Lower_Field_Decoration
   * Portrait
   * Frieze
-  * Date
+  * Creation_Date
   * DateNote
-  * Current Location
-  * Ancient Province Find Spot
-  * Ancient Site
-  * General Proveniance
-  * Modern Find Site
-  * Modern Proveniance
-  * General Location Note
-  * Unique Monument Proveniance Note
+  * Current_Location
+  * Ancient_Province
+  * Ancient_Site
+  * General_Provenience
+  * Modern_Find_Site
+  * Modern_Provenience
+  * General_Location_Note
+  * Unique_Monument_Provenience_Note
   * LAT
   * LONG
   * Pleiades
   * Trismegistos
-  * Note on the Monument
+  * MonumentNote
   * Media
-5. PrimaryCorpus.csv
+5. **PrimaryCorpus.csv**
   * MonumentID
   * Reference
-  * Monument Type
+  * Monument_Type
   * Media
 
 ## Table Tours
@@ -74,58 +75,67 @@ The **5** analysis tables and their columns are:
 
 * This Table is created with this .sql code:
 
-DROP VIEW IF EXISTS All_Servicemen;
-CREATE VIEW All_Servicemen AS
+``` SQL
 SELECT DISTINCT
 	LegioServicemen.ServicemanID,
-	Monument,
+	MonumentIDs,
 	Name AS 'Nomina',
 	Tribe AS 'Tribus',
 	OriginSettlement ||', '|| (coalesce(OriginProvince, ' ')) AS 'Domicilium',
 	DefiniteServiceman,
-	Units.UnitTitle ||'('|| LegioServicemen.LiklihoodOfUnitAttribution AS 'Unit_Affiliation_and_Certainty',
-	FirstRecordedOffice ||'('|| FirstOfficeCertainty AS 'Office_and_Certainty',
-	SecondRecordedOffice ||'('|| SecondOfficeCertainty AS 'Other_Office_and_certainty',
-	VeteranStatus ||'('|| VeteranStatusCertainty AS 'Veteran_Status_and_Certainty',
+	Units.UnitTitle ||'('|| LegioServicemen.LiklihoodOfUnitAttribution ||')' AS 'Unit_Affiliation_and_Certainty',
+	FirstRecordedOffice ||'('|| FirstOfficeCertainty ||')' AS 'Office_and_Certainty',
+	SecondRecordedOffice ||'('|| SecondOfficeCertainty ||')' AS 'Other_Office_and_certainty',
+	VeteranStatus ||'('|| VeteranStatusCertainty ||')' AS 'Veteran_Status_and_Certainty',
 	ServicemanNote
 	FROM MonumentServicemen
 		JOIN LegioServicemen USING (ServicemanID)
 		JOIN MilitaryStatus USING (MilitaryStatusID)
 		JOIN Units USING (UnitID)
-		JOIN (SELECT ServicemanID, group_concat(MonumentID, '; ') AS Monument
+		JOIN (SELECT ServicemanID, group_concat(MonumentID, '; ') AS MonumentIDs
 	        			 FROM MonumentServicemen
 	        			 WHERE ServicemanID = ServicemanID
 	        			 GROUP BY ServicemanID) AS MonumentIDTable USING (ServicemanID)
 	ORDER BY DefiniteServiceman DESC, ServicemanID;
+```
 
 * Columns:
 1. **ServicemanID**
-* This is the column where the ID number for each individual serviceman referenced in the corpus is listed. It is the PrimaryKey from the data/LegioServicemen table (Data/LegioServicemen.ServicemanID). The view/table is ordered by this column. It is ordered firstly by whether or not the serviceman is definitely or likely a serviceman (e.g. epigraphically attested or conjecture), and then is ordered by ServicemanID.
+* Source Table: (data/LegioServicemen.ServicemanID)
+* This is the column where the ID number for each individual serviceman referenced in the corpus is listed. It is the Primary Key from the data/LegioServicemen table. It is a surrogate key with no relationship to external datasets. The table is ordered by this column. It is ordered firstly by whether or not the serviceman is definitely or likely a serviceman (e.g. epigraphically attested or conjecture), and then is ordered by ServicemanID.
 * Distinct Values: 1-135; 137
-2. **Monument**
-* This is the ID number for each monument that the serviceman is referenced upon. As such there can be multiple entries in this Monument column for each ServicemanID. This Value is the PrimaryKey from the data/Monument table (data/monument.MonumentID)
-* Distinct Values: 2; 4-35; 39-101, 103-109; 126-129
+2. **MonumentIDs**
+* Source Table: (data/LegioServicemen.MonumentIDs)
+* The MonumentID (from data/Monument.MonumentID) of the monument/s that record information about each serviceman. As such there can be several values for each ServicemanID. MonumentID is a surrogate Foreign key linking to data/Monument.
+* Distinct Values: MonumentID 2, 4-35, 39-101, 103-109, 126-129
 3. **Nomina**
-* This is a column where there is an English translation of the name of the serviceman, including a paternal relation, if offered (e.g. 'Marcus, son of Julius'). If name data is not able to be fully reconstructed, it is left in the original Latin in the inscription. This references data/LegioServicemen.Name.
-* Distinct Values: There are 126 unique values, however, in reality, all 136 values are '_distinct_' as some names were used by different servicemen. When servicemen share names, their uniqueness is demonstrated by their different ServicemanID values.
+* Source Table: (data/LegioServicemen.name)
+* Name and paternal relation (where recorded) of the serviceman. Names are translated into English where the original inscription is complete, and left in the original Latin when incomplete (including lacunae).
+* Distinct values: all values. While there may be duplicate names, they are names shared by individual people. Use ServicemanID to determine uniqueness.
 4. **Tribus**
-* Here the Roman tribe or 'tribus' of the recorded serviceman is recorded if available. References data/LegioServicemen.tribe.
+* Source Table: (data/LegioServicemen.tribe)
+* Roman tribe or _tribus_ (Latin) of the recorded serviceman if recorded. _null_ means an absence of data referring to tribe (either it is not recorded or the inscription is fragmentary).
 * Distinct Values: _null_; Aemilia; Aniensis; Camilia; Claudia; Cornelia; Fabia; Lemonia; Maecia; Palatina; Papiria; Pollia; Pomptina; Publilia; Quirina; Scaptia; Sergia; Tromentia; Velina; Voltinia
 5. **Domicilium**
-* This column records the domicilium, or city of origin, of the serviceman and the Roman province of this settlement. It references both data/LegioServicemen.OriginSettlement and data/LegioServicemen.OriginProvince.
-* Distinct Values: _null_, _null_; Aesis, Galatia; Alorum, Macedonia; Amblada, Galatia; Ancyra, Galatia; Arretium, Italy; Augusta Troas, Asia; Augusta,  _null_; Beneventum, Italy; Bononia, Italy; Brixia, Italy; Clistinna, Galatia; Conana, Galatia; Cormassa, Galatia; Cremona, Italy; Dentum, Macedonia; Dyrrachium, Macedonia; Edessa, Macedonia; Florentia, Italy; Forum Corneli, Italy; Heraclea,  _null_; Iconium, Galatia; Isinda, Galatia; Laranda, Galatia; Libarna, Italy; Milyas, Galatia; Ninica, Galatia; Pessinus, Galatia; Phazimon, Galatia; Philippi, Macedonia; Pisaurum, Italy; Placentia, Italy; R[---],  _null_; Sebaste, Galatia; Sebastopolis, Galatia; Sinope, Galatia; Ticinum, Italy; Trernahensis,  _null_; Varvaria, Dalmatia; Verona, Italy; Vienna, Gallia Narbonensis
+* Source Table: (data/LegioServicemen.OriginSettlement & data/LegioServicemen.OriginProvince)
+* _Domicilium_ (Latin), or city of origin, of the serviceman and the Roman province of this settlement/city. _null_ means an absence of data referring to _Domicilium_ (either it is not recorded or the inscription is fragmentary).
+* Distinct Values: _null_; Aesis, Galatia; Alorum, Macedonia; Amblada, Galatia; Ancyra, Galatia; Arretium, Italy; Augusta Troas, Asia; Augusta,; Beneventum, Italy; Bononia, Italy; Brixia, Italy; Clistinna, Galatia; Conana, Galatia; Cormassa, Galatia; Cremona, Italy; Dentum, Macedonia; Dyrrachium, Macedonia; Edessa, Macedonia; Florentia, Italy; Forum Corneli, Italy; Heraclea,; Iconium, Galatia; Isinda, Galatia; Laranda, Galatia; Libarna, Italy; Milyas, Galatia; Ninica, Galatia; Pessinus, Galatia; Phazimon, Galatia; Philippi, Macedonia; Pisaurum, Italy; Placentia, Italy; R[---],; Sebaste, Galatia; Sebastopolis, Galatia; Sinope, Galatia; Ticinum, Italy; Trernahensis,; Varvaria, Dalmatia; Verona, Italy; Vienna, Gallia Narbonensis
 6. **DefiniteServiceman**
-* This column records whether the individual is definitely or maybe a serviceman with the values 'yes' and 'maybe'. It references the column in LegioServicemen.DefiniteServiceman.
+* Source Table: (LegioServicemen.DefiniteServiceman)
+* Records whether the individual is definitely or potentially a serviceman with the values 'yes' and 'maybe'. 'yes' = the individual is recorded as a soldier upon the monument. 'maybe' = the individual could potentially be a soldier, but this is not explicitly stated in writing within the inscription. Refer to ServicemanNote for more information on why an individual classed as 'maybe' has been included.
 * Values: yes; maybe
 7. **Unit_Affiliation_and_Certainty**
-* This column records the Roman unit/s that the serviceman served, or likely served in with the Certainty of this allocation marked after a '(' with 'epigraphically attested' or 'conjecture'. These two values refer to the data from data/Units.UnitTitle and data/LegioServicemen.LiklihoodOfUnitAttribution.
-* Values: Ala Tungrorum(conjecture; Ala Tungrorum(epigraphically attested; Cohors II Cyrrhestarum(conjecture; Cohors II Cyrrhestarum(epigraphically attested; Legio VII Claudia pia fidelis and VII Claudia(epigraphically attested; Legio VII Claudia pia fidelis or XI Claudia pia fidelis(conjecture; Legio VII Claudia pia fidelis(conjecture; Legio VII Claudia pia fidelis(epigraphically attested; Legio VII Claudia(epigraphically attested; Legio VII Macedonica(epigraphically attested; Legio VII or VII Claudia pia fidelis(conjecture; Legio VII or VII Claudia pia fidelis(epigraphically attested; Legio VII or VIII(epigraphically attested; Legio VII(conjecture; Legio VII(epigraphically attested; Legio VII, VII Claudia pia fidelis, XI, XI Claudia pia fidelis(conjecture; Legio XI(epigraphically attested
+* Source Table: (data/Units.UnitTitle & data/LegioServicemen.LiklihoodOfUnitAttribution)
+* Latin name of Roman unit/s that the serviceman served in, or likely served in, followed by the certainty of this attribution inside parentheses recorded as either 'epigraphically attested' or 'conjecture'.
+* Values: Ala Tungrorum(conjecture); Ala Tungrorum(epigraphically attested); Cohors II Cyrrhestarum(conjecture); Cohors II Cyrrhestarum(epigraphically attested); Legio VII Claudia pia fidelis and VII Claudia(epigraphically attested); Legio VII Claudia pia fidelis or XI Claudia pia fidelis(conjecture); Legio VII Claudia pia fidelis(conjecture); Legio VII Claudia pia fidelis(epigraphically attested); Legio VII Claudia(epigraphically atteste)d; Legio VII Macedonica(epigraphically attested); Legio VII or VII Claudia pia fidelis(conjecture); Legio VII or VII Claudia pia fidelis(epigraphically attested); Legio VII or VIII(epigraphically attested); Legio VII(conjecture); Legio VII(epigraphically attested); Legio VII, VII Claudia pia fidelis, XI, XI Claudia pia fidelis(conjecture); Legio XI(epigraphically attested)
 8. **Office_and_Certainty**
-* This column records the first listed office of the servicemen, if there is one recorded, as well as the certainty of this office being ascribed to them, which is placed after the office inside a '('. These two types of data are taken from data/MilitaryStatus.FirstRecordedOffice and data/MilitaryStatus.FirstOfficeCertainty.
-* Values: _null_; centurio(likely; centurio(specified; eques(likely; eques(specified; imaginifer(specified; miles(specified; primus pilus(specified; princeps posterior(specified; scriba(specified; signifer(specified; tribunus(likely
+* Source Table: (data/MilitaryStatus.FirstRecordedOffice & data/MilitaryStatus.FirstOfficeCertainty)
+* First office of the servicemen (if recorded) in Latin, followed by the certainty of this office being ascribed to them (inside parentheses). The two values for certainty of attribution are 'specified' and 'likely'. 'specified' = the office is recorded within the inscription. 'likely' = the attribution of the office is likely on account of factors such as monument decoration, but it is not specified within the inscription. Use ServicemanNote for insight into those classed with offices classed as 'likely'. _null_ means an absence of data referring to office (either it is not recorded or the inscription is fragmentary).
+* Values: _null_; centurio(likely); centurio(specified); eques(likely); eques(specified); imaginifer(specified); miles(specified); primus pilus(specified); princeps posterior(specified); scriba(specified); signifer(specified); tribunus(likely)
 9. **Other_Office_and_certainty**
-* This column records the second listed office of the servicemen, if there is one recorded, as well as the certainty of this office being ascribed to them, which is placed after the office inside a '('. These two types of data are taken from data/MilitaryStatus.SecondRecordedOffice and data/MilitaryStatus.SecondOfficeCertainty.
-* Values: _null_; exacto consularis(specified; iudex(specified; praefectus castorum(specified
+* Source Table: (data/MilitaryStatus.SecondRecordedOffice & data/MilitaryStatus.SecondOfficeCertainty)
+* Second listed office of the servicemen (if recorded) in Latin, followed by the certainty of this office being ascribed to them (inside parentheses). The value for certainty of attribution is 'specified' = the office is recorded within the inscription. _null_ means an absence of data referring to a second office (either it is not recorded or the inscription is fragmentary).
+* Values: _null_; exacto consularis(specified); iudex(specified); praefectus castorum(specified)
 10. **Veteran_Status_and_Certainty**
 * This column records the veteran status of the servicemen, if there is one recorded, as well as the certainty of this status being ascribed to them, which is placed after the office inside a '('. These two types of data are taken from data/MilitaryStatus.VeteranStatus and data/MilitaryStatus.Veteran_Status_and_Certainty.
 * Values: _null_; veteran(conjecture; veteran(likely; veteran(specified
