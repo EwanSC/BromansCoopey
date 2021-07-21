@@ -282,7 +282,7 @@ SELECT DISTINCT
 	MonumentIDs,
 	Name AS 'Nomina',
 	Tribe AS 'Tribus',
-	OriginSettlement ||', '|| (coalesce(OriginProvince, ' ')) AS 'Domicilium',
+	OriginSettlement ||(coalesce(','|| OriginProvince, ' ')) AS 'Domicilium',
 	DefiniteServiceman,
 	Units.UnitTitle ||'('|| LegioServicemen.LiklihoodOfUnitAttribution ||')' AS 'Unit_Affiliation_and_Certainty',
 	FirstRecordedOffice ||'('|| FirstOfficeCertainty ||')' AS 'Office_and_Certainty',

@@ -81,7 +81,7 @@ SELECT DISTINCT
 	MonumentIDs,
 	Name AS 'Nomina',
 	Tribe AS 'Tribus',
-	OriginSettlement ||', '|| (coalesce(OriginProvince, ' ')) AS 'Domicilium',
+	OriginSettlement ||(coalesce(','|| OriginProvince, ' ')) AS 'Domicilium',
 	DefiniteServiceman,
 	Units.UnitTitle ||'('|| LegioServicemen.LiklihoodOfUnitAttribution ||')' AS 'Unit_Affiliation_and_Certainty',
 	FirstRecordedOffice ||'('|| FirstOfficeCertainty ||')' AS 'Office_and_Certainty',
@@ -105,7 +105,7 @@ SELECT DISTINCT
 * This is the column where the ID number for each individual serviceman referenced in the corpus is listed. It is the Primary Key from the data/LegioServicemen table. It is a surrogate key with no relationship to external datasets. The table is ordered by this column. It is ordered firstly by whether or not the serviceman is definitely or likely a serviceman (e.g. epigraphically attested or conjecture), and then is ordered by ServicemanID.
 * Distinct Values: 1-135; 137
 2. **MonumentIDs**
-* Source Table: (data/LegioServicemen.MonumentIDs)
+* Source Table: (data/LegioServicemen.MonumentID)
 * The MonumentID (from data/Monument.MonumentID) of the monument/s that record information about each serviceman. As such there can be several values for each ServicemanID. MonumentID is a surrogate Foreign key linking to data/Monument.
 * Distinct Values: MonumentID 2, 4-35, 39-101, 103-109, 126-129
 3. **Nomina**
