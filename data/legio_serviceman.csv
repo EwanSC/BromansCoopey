@@ -1,0 +1,138 @@
+ServicemanID,Name,DefiniteServiceman,UnitID,LiklihoodOfUnitAttribution,MilitaryStatusID,Tribe,OriginProvince,OriginSettlement,OriginCertainty,TribusDomiciliumNote,ServicemanNote
+1,"veteranorum? leg VII CPF",yes,2,"epigraphically attested",8,,,,,,
+2,"Lucius Vettius Secundus, son of Marcus",yes,1,"epigraphically attested",14,Maecia,Italy,Libarna,,,
+3,"Lucius Ancharenus, son of Quintus",yes,1,"epigraphically attested",1,Sergia,Galatia,Laranda,,,
+4,"Titus Ancharenus, son of Titus",yes,1,"epigraphically attested",1,Sergia,Galatia,Laranda,,,
+5,"Marcus Antonius Celurus",yes,2,"epigraphically attested",2,,,,,,
+6,"Lucius Arruntius",yes,1,"epigraphically attested",15,,Galatia,Phazimon,,,
+7,"Gaius Asurius",yes,1,"epigraphically attested",1,,Italy,Florentia,,,
+8,"Lucius Attius, son of Lucius",yes,1,"epigraphically attested",1,Sergia,,Augusta,,"Unsure if Augusta Praetoria (Italia) or Augusta Troas (Asia Minor). Tončinić 2011, 204-205; Fadić 1995 168: Troas may be more conjecture, as Sergia is a common tribe for Asia Minor citizens, and another Member (Gaius Curiatius) does list Augusta Troas as his place of origin (MonumentID 32, CIL 3, 2019).",
+9,"Sextus Atilius, son of Sextus",yes,1,"epigraphically attested",14,Papiria,Italy,Ticinum,,,
+10,"Quintus Baebius, son of Quintus",yes,1,"epigraphically attested",1,Sergia,Galatia,Conana,,,
+11,"Gaius Bittius Gemellus",yes,2,"epigraphically attested",10,Tromentia,,,,"Domicile is lost as inscription is fragmentary",
+12,"Lucius Caesius Bassus",yes,2,"epigraphically attested",14,Camilia,Italy,Pisaurum,,,
+13,"Lucius Domitius Aquila, son of Lucius",yes,1,"epigraphically attested",14,Aniensis,Galatia,Milyas,,,
+14,"Gaius Domitius Aquilinus, son of Lucius",yes,1,"epigraphically attested",1,Aniensis,Galatia,Milyas,,"Stela does not explicitly mention that Gaius from Milyas, but his father/brother commemorated on the same monument is from Milyas",
+15,"Gaius Domitius, son of Gnaeus",yes,1,"epigraphically attested",14,Velina,Galatia,Pessinus,,,
+16,"Titus Elvius Salinator, son of Titus",yes,1,"epigraphically attested",5,Scaptia,,,,"Titus' father, Titus, is recorded to have been part of the Scaptia tribe, so Titus Elvius was likely also a member of the same tribe",
+17,"Lucius Fabius, son of Gaius",maybe,4,conjecture,11,Sergia,Galatia,Conana,,,"It is not epigraphically attested that Lucius was a member of Legio VII, for the inscription does not explicitly mention service, but it is fragementary and damaged. It was found in the surrounds of Tilurium however, and is of a similar style to other stelae of Legio VII members. Tončinić 2011: 37-38"
+18,"Lucius Fabius Saturninus, son of Lucius",yes,2,"epigraphically attested",14,,,,,,
+19,"Marcus Heredius, son of Marcus",yes,1,"epigraphically attested",14,Palatina,,,,,
+20,"Lucius Herennius, son of Lucius",yes,1,"epigraphically attested",14,Papiria,Galatia,Milyas,,,
+21,"Quintus Hortensius, son of Quintus",yes,1,"epigraphically attested",14,,,,,,
+22,"Marcus Caecilius",yes,8,"epigraphically attested",6,,,,,,
+23,"Quintus Igneinus Ferox, son of Quintus",yes,4,conjecture,11,Aniensis,Asia,"Augusta Troas",,,"Quintus may be a Legio VII member, it is not explicit in his stela however. This possibility is reinforced by the fact that Legio VII member Gaius Curitatus is from Augusta Troas MonumentID 32, CIL 3, 2109"
+24,"Gaius Julius, son of Gaius",yes,1,"epigraphically attested",1,Fabia,Galatia,Ninica,,,
+25,"Gaius Julius, son of Gaius",yes,1,"epigraphically attested",14,Velina,Galatia,Pessinus,,,
+26,"Gaius Julius, son of Gaius",yes,1,"epigraphically attested",1,Voltinia,Galatia,Clistinna,?,"Mitchell 1976: n.50 suggests the city name is similar to several others found in Galatia",
+27,"Gaius Julius Agrippa, son of Gaius",yes,2,"epigraphically attested",11,Sergia,,,,"Other members of Sergia tribe are predominantly from Asia Minor, Tončinić 2011.",
+28,"Marcus Julius, son of Marcus",yes,2,"epigraphically attested",1,,,Trernahensis,,"Tončinić 2011: 205 purports that this 'city' is likely a ethnic name (nomen ethnicom), and the locaiton is unknown.",
+29,"Sextus Clodius, son of Gaius",yes,12,conjecture,1,Publilia,Italy,Verona,,,"No mention of Legio VII as the stelae is damaged. However, style is the same as many other stelae belonging to servicemen of the legio, and it was found at Tilurium. "
+30,"Lucius Cornelius, son of Lucius",yes,1,"epigraphically attested",1,Fabia,,Heraclea,,"Tončinić 2011, 50: Could also be Heraclea Macedonia (Betz 1938 and Wilkes 1969), but Fadić 1997 notes that all other extant members of Macedonian decent are of the Voltinia or Aemilia tribe.",
+31,"Gaius Curiatus Secundus, son of Titus",yes,2,"epigraphically attested",16,Sergia,Asia,"Augusta Troas",,,
+32,"Titus Curtiacus, son of Titus",yes,2,"epigraphically attested",14,Lemonia,Italy,Bononia,,,
+33,"Gaius Lartinius, son of Gaius",yes,1,"epigraphically attested",1,Pollia,Italy,"Forum Corneli",,,
+34,"Publius Lastus Scaeva, son of Aulus",yes,2,"epigraphically attested",4,,Italy,Florentia,,,
+35,"Gaius Licinius, son of Gaius",yes,1,"epigraphically attested",14,Fabia,Galatia,Sinope,,,
+36,"Marcus Livius, son of Marcus",yes,1,"epigraphically attested",14,Palatina,Macedonia,Alorum,,,
+37,"Gaius Lollius Valens, son of Gaius",yes,2,"epigraphically attested",14,Papiria,,,,"Asia Minor? Another Papiria member, Lucius Herrenius ServicemanID 20 is from Milyas; or Italy? Sextus Atilius ServicemanID 9 is from Ticinum",
+38,"Gaius Longinus, son of Gaius",yes,1,"epigraphically attested",1,Cornelia,Galatia,Amblada,,,
+39,"Gaius Lucretius",yes,2,"epigraphically attested",9,,Italy,Verona,,,"Brother of ServicemanID 40. Found in same plot according to Betz 1938: 66; and both epitaphs record the same sized grave plot (20x10ft), Tončinić 2011: 62-63."
+40,"Gaius Lucretius",yes,2,"epigraphically attested",14,,Italy,Verona,,,"Brother of ServicemanID39. Found in same plot according to Betz 1938: 66; and both epitaphs record the same sized grave plot (20x10ft), Tončinić 2011: 62-63. If so, this Gaius is probably the 'brother' recorded as the erector of monument MonumentID 44"
+41,"Quintus Magius, son of Gaius",yes,1,"epigraphically attested",14,Publilia,Italy,Verona,,,
+42,"Gaius Manticus, son of Gaius",yes,2,"epigraphically attested",1,Scaptia,,,,,
+43,"Gaius Avinnius Postumius",maybe,2,conjecture,11,,,,,,"Possible serviceman, mentioned on same inscription as ServicemanID 42, but inscription is damaged at the end, could also be a son, freedman and/or heir."
+44,"Quintus Marcius Bassus, son of Quintus",yes,1,"epigraphically attested",1,Cornelia,Italy,Beneventum,,,
+45,"Lucius Marcilius, son of Gaius",yes,4,"epigraphically attested",15,,Galatia,Pessinus,,,"Listed here as possible veteran because all other monuments from the surround of pagus Scunasticus relate to veterani."
+46,"Quintus Mettius Valens, son of Quintus",yes,2,"epigraphically attested",1,Voltinia,,,,,
+47,"Lucius Mummius, son of Lucius",yes,1,"epigraphically attested",1,Fabia,Galatia,Ancyra,,,
+48,"Quintus Murrius, son of Quintus",yes,12,conjecture,1,Sergia,,Augusta,,"Unsure if Augusta Praetoria (Italia) or Augusta Troas (Asia Minor). Tončinić 2011: 204-205; Fadić 1995 168: Troas may be more conjecture, as Sergia is a common tribe for Asia Minor citizens, and another Member (Gaius Curiatius) does list Augusta Troas as his place of origin (ServicemanID 31, CIL 3, 2019).",
+49,"Gaius Octavius Vitalis, son of Gaius",yes,2,"epigraphically attested",14,Fabia,Italy,Brixia,,,
+50,"Lucius Oppius Segninus, son of Lucius",yes,1,"epigraphically attested",14,Sergia,Galatia,Conana,,,
+51,"Quintus Oppius, son of Quintus",yes,1,"epigraphically attested",9,Pollia,Italy,"Forum Corneli",,,
+52,"Gaius Parpirius",yes,4,conjecture,11,Fabia,,,,,
+53,"Marcus Percennius",yes,12,conjecture,3,Voltinia,Macedonia,Philippi,,"Tončinić 2011: 79-80, Hofmann 1905: 50-51 suggested the reconstruction of 'philippi' for the Domus, as other members of Voltinia tribe are from the site. This has been mostly accepted.",
+54,"Quintus Petronius Valentus",yes,2,"epigraphically attested",1,,,,,,
+55,"Gaius Pinarius Scarpus",yes,1,"epigraphically attested",14,,,,,,
+56,"Publius Plotius",yes,2,"epigraphically attested",5,,,,,,"MonumentID 102 reveals Plotius was a centurion"
+57,"Lucius Riccius, son of Lucius",yes,1,conjecture,14,Velina,Galatia,Pessinus,,,
+58,"Lucius Atilius, son of Lucius",yes,1,"epigraphically attested",14,Velina,Galatia,Pessinus,?,"Relatively safe to assume, as Tončinić does (2011: 82) that Atilius is of the same Domicile as his uncle (ServicemanID 57), for he is of the same tribe.",
+59,"Titus Sabinius, son of Titus",yes,1,"epigraphically attested",14,Fabia,Galatia,Sebaste,,,
+60,"Lucius Septimius Gratianus, son of Genialis",yes,3,"epigraphically attested",19,,,,,,
+61,"Marcus Sosius, son of Marcus",yes,1,conjecture,11,Fabia,Galatia,Sebastopolis,,"Tončinić 2011: 84 translates 'sebasto' as Sebatopolis, expecting '-polis' in the next line. Perhaps it could also be Sebaste, for ServicemanID 59 is from this site and is of the same tribe, and therefore 'Sebasto' could here be a carver's 'typo' shall we say, and meant to be 'Sebaste'.",
+62,"Marcus Titus, son of Marcus",yes,1,"epigraphically attested",2,Sergia,Galatia,Isinda,,,
+63,"Lucius Trebonius Valentus",yes,2,"epigraphically attested",1,,,,,,
+64,"Gaius Valerius, son of Gaius",yes,1,"epigraphically attested",14,,Macedonia,Dentum,,"Mitchell 1976: 306, ascribes Dentum, Macedonia as the domicilium of this soldier",
+65,"Quintus Valerius, son of Quintus",yes,1,"epigraphically attested",1,Cornelia,Macedonia,Edessa,,,
+66,"Quintus Valerius, son of Quintus",yes,1,"epigraphically attested",14,Quirina,Galatia,Iconium,,,
+67,"Lucius Valerius, son of Lucius",yes,1,"epigraphically attested",1,Voltinia,Macedonia,Philippi,,,
+68,"Marcus Varenus Valens, son of Marcus",yes,2,"epigraphically attested",14,Voltinia,,,,,
+69,"Titus Varius, son of Titus",yes,1,"epigraphically attested",14,Velina,Galatia,Pessinus,,,
+70,"Gaius Vatinius Capito, son of Sextus",yes,2,"epigraphically attested",14,,Italy,Arretium,,,
+71,"Lucius Vegnonius, son of Lucius ",yes,1,"epigraphically attested",14,,Italy,Florentia,,,
+72,"Gaius Vibius Pudes, son of Gaius",yes,2,"epigraphically attested",5,Pomptina,Italy,Arretium,,,
+73,"Marcus Vibius, son of Marcus",yes,1,"epigraphically attested",1,Aemilia,Macedonia,Dyrrachium,,,
+74,"signifer leg vii cpf",yes,2,"epigraphically attested",9,,,,,,
+75,"vet leg vii cpf",yes,2,"epigraphically attested",14,,,,,,
+76,C[aius?---],yes,1,"epigraphically attested",1,Pollia,Galatia,Aesis,,"Tončinić 2011 reconstructs this place name",
+77,"mil le[g] vii",yes,1,"epigraphically attested",1,Pomptina,Italy,Arretium,,,
+78,"[----]elius mat[----]",yes,4,"epigraphically attested",14,,,R[---],,,
+79,[Au]reli[us-],yes,2,"epigraphically attested",15,,,,,,
+80,"Manius Coelius",yes,1,"epigraphically attested",5,,,,,,
+81,"Titus Cissonius, son of Quintus",yes,1,"epigraphically attested",14,Sergia,,,,,"Brother of ServicemanID 82"
+82,"Publius Cissonius, son of Quintus",maybe,1,conjecture,11,Sergia,,,,,"Brother of ServicemanID 81"
+83,"Lucius Coelius, son of Lucius",yes,1,"epigraphically attested",1,Aniensis,,,,,
+84,"Gaius Julius, son of Gaius",yes,1,"epigraphically attested",4,Papiria,Galatia,Cormassa,,,
+85,"Publius Mestrius Maecianus, son of Publius",yes,1,conjecture,14,,,,,,
+86,"Marcus Lollius, son of Marcus",yes,1,"epigraphically attested",14,,,,,,
+87,"Gaius Aulius Secundus, son of Gaius",yes,2,"epigraphically attested",14,Aniensis,Italy,Cremona,,,
+88,"mil leg v[ii]",yes,4,conjecture,1,,,,,,
+89,frater,maybe,4,conjecture,11,,,,,,"Potentionally a metaphorical 'frater', i.e. fellow serviceman. Not provable however."
+90,"?Ar[---] Tuscus",yes,1,"epigraphically attested",11,,,,,,
+91,"son of Titus",yes,2,"epigraphically attested",11,,,,,"Maybe Quirina tribe",
+92,[An]tonius,yes,9,"epigraphically attested",11,,"Gallia Narbonensis",Vienna,,,
+93,"[---] Valens, son of Spurius",yes,4,conjecture,11,,Italy,Placentia,,,
+94,[---]Capti[o],yes,4,"epigraphically attested",11,,,,,,
+95,"[---] leg vii",yes,4,"epigraphically attested",11,,,,,,
+96,[----]rv[---][---]mil[---],yes,4,conjecture,1,,,,,,
+97,"[---]s C(aius?) Pala[---]",maybe,4,conjecture,11,,,,,"Possibly Palatina tribe",
+98,"ve]ter(anus) leg(ionis)",yes,2,conjecture,14,,,,,,"First line of inscription in CIL seems to read [---]O L[-], this last word could be reconstructed as [---]O L(ucii)[F(ilius)] and thus 'son of Lucius'"
+99,"[---c]enturio le[g(ionis)]",yes,4,conjecture,5,,,,,,
+100,"[m]iles leg vi[i]",yes,4,"epigraphically attested",1,,,,,,
+101,"Julius [---]",yes,11,conjecture,5,,,,,,
+102,"Sextus Titius Geminus",yes,1,"epigraphically attested",13,,,,,,"Čače 2003: 16-21, claims this is the same person as ServicemanID 104(monumentID109), spelling his name wrong: S(extus) instead of G/C(aius)."
+103,"[---]nus Laco",yes,1,"epigraphically attested",18,,,,,,
+104,"Lucius Trebius Secundus",yes,1,conjecture,11,,,,,,"May not refer to a Legio VII member"
+105,"[Vib]ullius T[---]",yes,1,"epigraphically attested",12,,,,,,
+106,"Gaius Marius Maternus",yes,2,"epigraphically attested",5,,,,,,
+107,"Gaius Titus Geminus",yes,1,"epigraphically attested",7,,,,,,"Čače 2003: 16-21, claims this is the same person as ServicemanID 99, with MonumentID 104 having spelt his name wrong: S(extus) instead of G/C(aius)."
+108,"Gaius Painius Numisius",yes,1,"epigraphically attested",4,,,,,,
+109,"Quintus Ancharenus ",maybe,1,conjecture,11,,,,,,"Brother of commemorated (ServicemanID 3), but may also be a soldier of Legio VII"
+110,frater,maybe,1,conjecture,11,,,,,,"Unnamed frater of ServicemanID 10, therefore may be 'comrade' type of frater found in military contexts, see Kepartov 1986"
+111,"Marcus Arruntius, frater [et] heres",maybe,2,conjecture,11,,,,,,"Less likely (yet still possible) that Marcus is blood brother (kin) with the deceased (ServicemanID 28) based on their differing gentilicum, so may be soldier/'comrade' type of frater recorded by Kepartov 1986"
+112,"Secundus, heres",maybe,1,conjecture,11,,,,,,"Heres of ServicemanID 30, unspecified status, but may be miles."
+113,heredes,maybe,1,conjecture,11,,,,,,"heredes of ServicemanID 33, unkonwn number and unknown status, may be fellow miles however, as the commemorated was an active miles, and therefore may not have had a family/children/wife etc."
+114,heres,maybe,2,conjecture,11,,,,,,"Heres of ServicemanID 12, could therefore be miles as 12 died whilst still on active service"
+115,"Gaius Mummius",maybe,1,conjecture,11,,,,,,"Could be a son, brother, or non-relative of ServicemanID 25 (on account of shared praenomen but not gentilicum) who was also fellow miles"
+116,heredes,maybe,1,conjecture,11,,,,,,"Could be miles of some relation to ServicemanID 35, but 35 was a veteran so may also have been a family member or civilian"
+117,frater,maybe,1,conjecture,11,,,,,,"Unnamed frater of ServicemanID 38, therefore may be 'comrade' type of frater found in military contexts, see Kepartov 1986"
+118,Maximus,maybe,1,conjecture,11,,,,,,"Unknown relation to ServicemanID 44, possibly fellow miles"
+119,heres,maybe,1,conjecture,11,,,,,,"Unnamed heres of ServicemanID 51, could be miles. Indeed, 51 was an active miles when they were commemorated"
+120,"Lucius Gellus",maybe,1,conjecture,11,Sergia,,,,,"Commemorator of ServicemanID 62, same tribe as ID 62, but different names (both praenomen and gentilicum), so could be a relative (brother?) from same Eastern city (Isinda), or another site in Asia Minor, for a lot of the members from Asia minor are from the Sergia tribe. Nonetheless, he may be a fellow miles of Legio VII"
+121,"Lucius Valerius, heres",maybe,1,conjecture,11,,,,,,"Commemorator of ServicemanID 65. Likely relative, e.g. son or brother, based on same gentilicum, may have been a miles, however he may also have been a civilian son, for the monument was erected in Salona, and also references a freedwoman named Valeria Quinta, who may have been the wife of ServicemanID 65"
+122,"Quintus Portorius",maybe,1,conjecture,21,,,,,,"Comemmorator of ServicemanID 66 along with ServicemanID 123, could be comrade, son or brother, and possibly a miles as the monument is from Pagus Scunstaicus where there was a large veteran community. However, he may also be a civilian"
+123,"Quintus Valerius Anteros",maybe,1,conjecture,21,,,,,,"Comemmorator of ServicemanID 66 along with ServicemanID 122, could be son or brother, and possibly a miles as the monument is from Pagus Scunstaicus where there was a large veteran community. However, he may also be a civilian"
+124,heres,maybe,1,conjecture,11,,,,,,"Unnamed heres of ServicemanID 69, could be a miles as Pagus Scunasticus was home to a large veteran community, but may also be a civilian son as ID 69 was a settled veteran who may have had a family"
+125,"[---]lius heres",maybe,1,conjecture,11,,,,,,"Fragmentarily named heres of ServicemanID 73. Monument was found at Tilurium and ServicemanID 73 did die during active duty, so possibly a fellow miles"
+126,"Gaius Fabius",maybe,4,conjecture,11,,,,,"Maybe Sergia tribe","Son of ServicemanID 17. As his father is possibly a Legio VII miles, Gaius Fabius is possibly one too (perhaps less conjecture however). His father is of the Sergia tribe, so he may have been a member of it too"
+127,"Gaius M[arcilius?]",maybe,2,conjecture,11,,,,,,"conjecture the commemorator of ServicemanID 45. Unknown relation, however may have the same gentilicum, and therefore may be the father of ServicemanID 45, as he also has the same praenomen as father of ServicemanID 45. Irrespective of this, he may also have been a fellow miles/veteran"
+128,"Lucius Oppidus Secundus",yes,10,"epigraphically attested",17,Claudia,Dalmatia,Varvaria,,,
+129,]SF[,maybe,11,conjecture,11,,,,,,
+130,"Severus Ubius, son of Triocharus",yes,6,"epigraphically attested",2,,,,,,
+131,"Gaius Julius Theodorus, son of Barceneus",yes,7,"epigraphically attested",1,,,,,,
+132,"Gaius Julius Andromachus",yes,7,"epigraphically attested",1,,,,,,
+133,"Gaius Julius Apollla",maybe,7,conjecture,11,,,,,,"Commemorator of ServicemanID 133, referred to as 'sodalis' (friend), may therefore be fellow soldier. This is supported by the fact the stelae was conjecture originally erected at Tilurium. Cambi 1979; 1994."
+134,"Gaius Julius Scapula",maybe,7,conjecture,11,,,,,,"Commemorator of ServicemanID 132. Referred to as 'frater', perhaps a fellow soldier (comrade) because of different Nomen Gentilicium, but perhaps also fellow solider (kin brother), or just civilian (kin brother). Supported by the fact the stelae was conjecture originally erected at Tilurium. Cambi 1979; 1994."
+135,Urbanus,maybe,6,conjecture,11,,,,,,"Commemorator of ServicemanID 131. Different nomen gentilicium may mean this individual is unrelated, and they may be a fellow soldier, particularly as 131 died during active service, and the stelae was conjecture originally erected at Tilurium. Cambi 1979; 1994."
+136,(eques?),maybe,,,3,,,,,,
+137,"Lucius Sal[vius] Marcus",yes,5,"epigraphically attested",20,,,,,,

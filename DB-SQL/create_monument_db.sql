@@ -1,14 +1,14 @@
-DROP TABLE IF EXISTS Corpus;
-DROP TABLE IF EXISTS Monument;
-DROP TABLE IF EXISTS FindSpot;
-DROP TABLE IF EXISTS LegioServicemen;
-DROP TABLE IF EXISTS MonumentCorpus;
-DROP TABLE IF EXISTS Units;
-DROP TABLE IF EXISTS MilitaryStatus;
-DROP TABLE IF EXISTS MonumentServicemen;
+DROP TABLE IF EXISTS corpus;
+DROP TABLE IF EXISTS monument;
+DROP TABLE IF EXISTS findspot;
+DROP TABLE IF EXISTS legio_serviceman;
+DROP TABLE IF EXISTS monument_corpus;
+DROP TABLE IF EXISTS unit;
+DROP TABLE IF EXISTS military_status;
+DROP TABLE IF EXISTS monument_serviceman;
 
 
-CREATE TABLE FindSpot (
+CREATE TABLE findspot (
 	FindSpotID INTEGER PRIMARY KEY,
 	RomanProvince TEXT,
 	AncientSite TEXT,
@@ -23,29 +23,29 @@ CREATE TABLE FindSpot (
 	Trismegistos TEXT
 );
 
-UPDATE FindSpot SET RomanProvince = NULL WHERE RomanProvince = '';
-UPDATE FindSpot SET AncientSite = NULL WHERE AncientSite = '';
-UPDATE FindSpot SET SpecificAncientLocation = NULL WHERE SpecificAncientLocation = '';
-UPDATE FindSpot SET ModernSite = NULL WHERE ModernSite = '';
-UPDATE FindSpot SET SpecificModernLocation = NULL WHERE SpecificModernLocation = '';
-UPDATE FindSpot SET ModernLocationNote = NULL WHERE ModernLocationNote = '';
-UPDATE FindSpot SET ExtraLocationNote = NULL WHERE ExtraLocationNote = '';
-UPDATE FindSpot SET LONGITUDE_epsg_4326 = NULL WHERE LONGITUDE_epsg_4326 = '';
-UPDATE FindSpot SET LATITUDE_epsg_4326 = NULL WHERE LATITUDE_epsg_4326 = '';
-UPDATE FindSpot SET Pleiades = NULL WHERE Pleiades = '';
-UPDATE FindSpot SET Trismegistos = NULL WHERE Trismegistos = '';
+UPDATE findspot SET RomanProvince = NULL WHERE RomanProvince = '';
+UPDATE findspot SET AncientSite = NULL WHERE AncientSite = '';
+UPDATE findspot SET SpecificAncientLocation = NULL WHERE SpecificAncientLocation = '';
+UPDATE findspot SET ModernSite = NULL WHERE ModernSite = '';
+UPDATE findspot SET SpecificModernLocation = NULL WHERE SpecificModernLocation = '';
+UPDATE findspot SET ModernLocationNote = NULL WHERE ModernLocationNote = '';
+UPDATE findspot SET ExtraLocationNote = NULL WHERE ExtraLocationNote = '';
+UPDATE findspot SET LONGITUDE_epsg_4326 = NULL WHERE LONGITUDE_epsg_4326 = '';
+UPDATE findspot SET LATITUDE_epsg_4326 = NULL WHERE LATITUDE_epsg_4326 = '';
+UPDATE findspot SET Pleiades = NULL WHERE Pleiades = '';
+UPDATE findspot SET Trismegistos = NULL WHERE Trismegistos = '';
 
 
 .mode csv
-.import ../original_data/FindSpot.csv FindSpot
+.import ../original_data/findspot.csv findspot
 
-select 'findspotsloaded', count(*) from FindSpot;
+select 'findspotsloaded', count(*) from findspot;
 
 
-CREATE TABLE Monument (
+CREATE TABLE monument (
 	MonumentID INTEGER PRIMARY KEY,
-	FindSpotID INTEGER REFERENCES FindSpot,
-	MonumentSpecificFindSpotNote TEXT,
+	FindSpotID INTEGER REFERENCES findspot,
+	MonumentSpecificFindspotNote TEXT,
 	PublicationCitation TEXT,
 	DateFoundOrPublished DATE,
 	DateFoundorPublishedPrecisionNote TEXT,
@@ -70,7 +70,7 @@ CREATE TABLE Monument (
 );
 
 .mode csv
-.import ../original_data/Monument.csv Monument
+.import ../original_data/monument.csv monument
 
 select 'monumentsloaded', count(*) from monument;
 
@@ -101,18 +101,18 @@ UPDATE monument SET Media = NULL WHERE Media = '';
 
 
 
-CREATE TABLE Units (
+CREATE TABLE unit (
 	UnitID INTEGER PRIMARY KEY,
 	UnitTitle TEXT
 );
 
 .mode csv
-.import ../original_data/Units.csv Units
+.import ../original_data/unit.csv unit
 
-select 'unitsloaded', count(*) from Units;
+select 'unitsloaded', count(*) from unit;
 
 
-CREATE TABLE MilitaryStatus (
+CREATE TABLE military_status (
 	MilitaryStatusID INTEGER PRIMARY KEY,
 	FirstRecordedOffice TEXT,
  	SecondRecordedOffice TEXT,
@@ -123,55 +123,55 @@ CREATE TABLE MilitaryStatus (
 );
 
 .mode csv
-.import ../original_data/MilitaryStatus.csv MilitaryStatus
+.import ../original_data/military_status.csv military_status
 
-select 'officesloaded', count(*) from MilitaryStatus;
+select 'officesloaded', count(*) from military_status;
 
-UPDATE MilitaryStatus SET FirstRecordedOffice = NULL WHERE FirstRecordedOffice = '';
-UPDATE MilitaryStatus SET SecondRecordedOffice = NULL WHERE SecondRecordedOffice = '';
-UPDATE MilitaryStatus SET FirstOfficeCertainty = NULL WHERE FirstOfficeCertainty = '';
-UPDATE MilitaryStatus SET SecondOfficeCertainty = NULL WHERE SecondOfficeCertainty = '';
-UPDATE MilitaryStatus SET VeteranStatus = NULL WHERE VeteranStatus = '';
-UPDATE MilitaryStatus SET VeteranStatusCertainty = NULL WHERE VeteranStatusCertainty = '';
+UPDATE military_status SET FirstRecordedOffice = NULL WHERE FirstRecordedOffice = '';
+UPDATE military_status SET SecondRecordedOffice = NULL WHERE SecondRecordedOffice = '';
+UPDATE military_status SET FirstOfficeCertainty = NULL WHERE FirstOfficeCertainty = '';
+UPDATE military_status SET SecondOfficeCertainty = NULL WHERE SecondOfficeCertainty = '';
+UPDATE military_status SET VeteranStatus = NULL WHERE VeteranStatus = '';
+UPDATE military_status SET VeteranStatusCertainty = NULL WHERE VeteranStatusCertainty = '';
 
 
 
-CREATE TABLE Corpus (
+CREATE TABLE corpus (
 	CorpusName TEXT PRIMARY KEY
 );
 
 
 .mode csv
-.import ../original_data/Corpus.csv Corpus
+.import ../original_data/corpus.csv corpus
 
-select 'corpusloaded', count(*) from Corpus;
+select 'corpusloaded', count(*) from corpus;
 
 
 
-CREATE TABLE MonumentCorpus (
+CREATE TABLE monument_corpus (
   MonumentCorpusID INTEGER PRIMARY KEY,
-	MonumentID INTEGER REFERENCES Monument NOT NULL,
-	CorpusName TEXT NOT NULL REFERENCES Corpus,
+	MonumentID INTEGER REFERENCES monument NOT NULL,
+	CorpusName TEXT NOT NULL REFERENCES corpus,
 	Reference TEXT NOT NULL,
 	isPrimaryReference TEXT
 );
 
 .mode csv
-.import ../original_data/MonumentCorpus.csv MonumentCorpus
+.import ../original_data/monument_corpus.csv monument_corpus
 
-select 'referencesloaded', count(*) from MonumentCorpus;
+select 'referencesloaded', count(*) from monument_corpus;
 
-UPDATE MonumentCorpus SET isPrimaryReference = NULL WHERE isPrimaryReference = '';
+UPDATE monument_corpus SET isPrimaryReference = NULL WHERE isPrimaryReference = '';
 
 
 
-CREATE TABLE LegioServicemen (
+CREATE TABLE legio_serviceman (
   ServicemanID INTEGER PRIMARY KEY,
 	Name TEXT,
 	DefiniteServiceman TEXT,
-	UnitID INTEGER REFERENCES Units,
+	UnitID INTEGER REFERENCES unit,
 	LiklihoodOfUnitAttribution TEXT,
-  MilitaryStatusID INTEGER REFERENCES MilitaryStatus,
+  MilitaryStatusID INTEGER REFERENCES military_status,
 	Tribe TEXT,
 	OriginProvince TEXT,
 	OriginSettlement TEXT,
@@ -180,31 +180,31 @@ CREATE TABLE LegioServicemen (
 	ServicemanNote TEXT
 );
 -- 'ServicemanID' is used to refer to the Legio VII serviceman recorded upon the inscription. There can be multiple per MonumentID
--- DefiniteServiceman refers to whether or not they were a soldier/milites, not necessarily Legio VII. For that, see .Monument
+-- DefiniteServiceman refers to whether or not they were a soldier/milites, not necessarily Legio VII. For that, see .monument
 
 .mode csv
-.import ../original_data/LegioServicemen.csv LegioServicemen
+.import ../original_data/legio_serviceman.csv legio_serviceman
 
-select 'legionariesloaded', count(*) from LegioServicemen;
+select 'legionariesloaded', count(*) from legio_serviceman;
 
-UPDATE LegioServicemen SET Name = NULL WHERE Name = '';
-UPDATE LegioServicemen SET DefiniteServiceman = NULL WHERE DefiniteServiceman = '';
-UPDATE LegioServicemen SET UnitID = NULL WHERE UnitID = '';
-UPDATE LegioServicemen SET LiklihoodOfUnitAttribution = NULL WHERE LiklihoodOfUnitAttribution = '';
-UPDATE LegioServicemen SET Tribe = NULL WHERE Tribe = '';
-UPDATE LegioServicemen SET MilitaryStatusID = NULL WHERE MilitaryStatusID = '';
-UPDATE LegioServicemen SET OriginProvince = NULL WHERE OriginProvince = '';
-UPDATE LegioServicemen SET OriginSettlement = NULL WHERE OriginSettlement = '';
-UPDATE LegioServicemen SET OriginCertainty = NULL WHERE OriginCertainty = '';
-UPDATE LegioServicemen SET ServicemanNote = NULL WHERE ServicemanNote = '';
-UPDATE LegioServicemen SET TribusDomiciliumNote = NULL WHERE TribusDomiciliumNote = '';
+UPDATE legio_serviceman SET Name = NULL WHERE Name = '';
+UPDATE legio_serviceman SET DefiniteServiceman = NULL WHERE DefiniteServiceman = '';
+UPDATE legio_serviceman SET UnitID = NULL WHERE UnitID = '';
+UPDATE legio_serviceman SET LiklihoodOfUnitAttribution = NULL WHERE LiklihoodOfUnitAttribution = '';
+UPDATE legio_serviceman SET Tribe = NULL WHERE Tribe = '';
+UPDATE legio_serviceman SET MilitaryStatusID = NULL WHERE MilitaryStatusID = '';
+UPDATE legio_serviceman SET OriginProvince = NULL WHERE OriginProvince = '';
+UPDATE legio_serviceman SET OriginSettlement = NULL WHERE OriginSettlement = '';
+UPDATE legio_serviceman SET OriginCertainty = NULL WHERE OriginCertainty = '';
+UPDATE legio_serviceman SET ServicemanNote = NULL WHERE ServicemanNote = '';
+UPDATE legio_serviceman SET TribusDomiciliumNote = NULL WHERE TribusDomiciliumNote = '';
 
 
 
-CREATE TABLE MonumentServicemen (
+CREATE TABLE monument_serviceman (
 	  MonumentServicemanID NUMBER PRIMARY KEY,
-		ServicemanID INTEGER REFERENCES LegioServicemen,
-		MonumentID INTEGER REFERENCES Monument,
+		ServicemanID INTEGER REFERENCES legio_serviceman,
+		MonumentID INTEGER REFERENCES monument,
 		ServicemanReferencedAs TEXT,
 		PossibleDuplicateServicemanID INTEGER,
 		SourceForDuplicateArgument TEXT
@@ -215,13 +215,13 @@ CREATE TABLE MonumentServicemen (
 -- PossibleDuplicateServicemanID records the ServicemanID of the individual which may be a duplicate of this certain MonumentID
 
 .mode csv
-.import ../original_data/MonumentServicemen.csv MonumentServicemen
+.import ../original_data/monument_serviceman.csv monument_serviceman
 
-select 'monumentservicemenloaded', count(*) from MonumentServicemen;
+select 'monumentservicemenloaded', count(*) from monument_serviceman;
 
-UPDATE MonumentServicemen SET ServicemanReferencedAs = NULL WHERE ServicemanReferencedAs = '';
-UPDATE MonumentServicemen SET PossibleDuplicateServicemanID = NULL WHERE PossibleDuplicateServicemanID = '';
-UPDATE MonumentServicemen SET SourceForDuplicateArgument = NULL WHERE SourceForDuplicateArgument = '';
+UPDATE monument_serviceman SET ServicemanReferencedAs = NULL WHERE ServicemanReferencedAs = '';
+UPDATE monument_serviceman SET PossibleDuplicateServicemanID = NULL WHERE PossibleDuplicateServicemanID = '';
+UPDATE monument_serviceman SET SourceForDuplicateArgument = NULL WHERE SourceForDuplicateArgument = '';
 
 -- Below are the various views created so that some information from various tables can be found in the same view
 
@@ -232,8 +232,8 @@ SELECT
 	CorpusName || ' ' || Reference AS "Reference",
 	MonumentType AS "Monument_Type",
 	Media
-  FROM MonumentCorpus
-	JOIN Monument USING (MonumentID)
+  FROM monument_corpus
+	JOIN monument USING (MonumentID)
  WHERE isPrimaryReference is not null;
 
 
@@ -241,60 +241,60 @@ DROP VIEW IF EXISTS all_corpora;
 CREATE VIEW all_corpora as
 SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDCS, EDH, OtherRef
   FROM (SELECT MonumentID
-          FROM Monument)
+          FROM monument)
   LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS CIL
-        			 FROM MonumentCorpus
+        			 FROM monument_corpus
         			 WHERE CorpusName = 'CIL'
         			 GROUP BY MonumentID) AS ciltable USING (MonumentID)
   LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS Tončinić
-        			 FROM MonumentCorpus
+        			 FROM monument_corpus
         			 WHERE CorpusName = 'Tončinić'
         			 GROUP BY MonumentID) AS Tončinićtable USING (MonumentID)
   LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS Betz
-        			 FROM MonumentCorpus
+        			 FROM monument_corpus
         			 WHERE CorpusName = 'Betz'
         			 GROUP BY MonumentID) AS Betztable USING (MonumentID)
   LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS ILJug
-        			 FROM MonumentCorpus
+        			 FROM monument_corpus
         			 WHERE CorpusName = 'ILJug'
         			 GROUP BY MonumentID) AS ILJugtable USING (MonumentID)
 	LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS AE
-						   FROM MonumentCorpus
+						   FROM monument_corpus
 						   WHERE CorpusName = 'AE'
 						   GROUP BY MonumentID) AS AEtable USING (MonumentID)
 	LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS EDCS
-						 		FROM MonumentCorpus
+						 		FROM monument_corpus
 						 		WHERE CorpusName = 'EDCS'
 						 		GROUP BY MonumentID) AS EDCStable USING (MonumentID)
 	LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS EDH
-						 	 FROM MonumentCorpus
+						 	 FROM monument_corpus
 						   WHERE CorpusName = 'EDH'
 						   GROUP BY MonumentID) AS EDHtable USING (MonumentID)
   LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS OtherRef
-        			 FROM MonumentCorpus
+        			 FROM monument_corpus
         			 WHERE CorpusName = 'Other Ref'
         			 GROUP BY MonumentID) AS OtherReftable USING (MonumentID);
 
 DROP VIEW IF EXISTS all_servicemen;
 CREATE VIEW all_servicemen AS
 SELECT DISTINCT
-	LegioServicemen.ServicemanID,
+	legio_serviceman.ServicemanID,
 	MonumentIDs,
 	Name AS 'Nomina',
 	Tribe AS 'Tribus',
 	OriginSettlement ||(coalesce(','|| OriginProvince, ' ')) AS 'Domicilium',
 	DefiniteServiceman,
-	Units.UnitTitle ||'('|| LegioServicemen.LiklihoodOfUnitAttribution ||')' AS 'Unit_Affiliation_and_Certainty',
+	unit.UnitTitle ||'('|| legio_serviceman.LiklihoodOfUnitAttribution ||')' AS 'Unit_Affiliation_and_Certainty',
 	FirstRecordedOffice ||'('|| FirstOfficeCertainty ||')' AS 'Office_and_Certainty',
 	SecondRecordedOffice ||'('|| SecondOfficeCertainty ||')' AS 'Other_Office_and_certainty',
 	VeteranStatus ||'('|| VeteranStatusCertainty ||')' AS 'Veteran_Status_and_Certainty',
 	ServicemanNote
-	FROM MonumentServicemen
-		JOIN LegioServicemen USING (ServicemanID)
-		JOIN MilitaryStatus USING (MilitaryStatusID)
-		JOIN Units USING (UnitID)
+	FROM monument_serviceman
+		JOIN legio_serviceman USING (ServicemanID)
+		JOIN military_status USING (MilitaryStatusID)
+		JOIN unit USING (UnitID)
 		JOIN (SELECT ServicemanID, group_concat(MonumentID, '; ') AS MonumentIDs
-	        			 FROM MonumentServicemen
+	        			 FROM monument_serviceman
 	        			 WHERE ServicemanID = ServicemanID
 	        			 GROUP BY ServicemanID) AS MonumentIDTable USING (ServicemanID)
 	ORDER BY DefiniteServiceman DESC, ServicemanID;
@@ -306,9 +306,9 @@ SELECT MonumentID,
 	MonumentType,
 	DateFrom ||' to '|| DateTo AS 'Creation_Date',
 	RomanProvince ||', '|| AncientSite AS 'Site_of_Discovery'
-	FROM Monument
-		JOIN MonumentCorpus USING (MonumentID)
-		JOIN FindSpot USING (FindSpotID)
+	FROM monument
+		JOIN monument_corpus USING (MonumentID)
+		JOIN findspot USING (FindSpotID)
 			WHERE (MonumentType = 'stela'
 				or MonumentType = 'funerary inscription'
 				or MonumentType = 'titulus'
@@ -350,7 +350,7 @@ SELECT
 	Trismegistos,
 	MonumentNote,
 	Media
-	FROM Monument
-			JOIN FindSpot USING (FindSpotID)
-			JOIN MonumentCorpus USING (MonumentID)
+	FROM monument
+			JOIN findspot USING (FindSpotID)
+			JOIN monument_corpus USING (MonumentID)
 						WHERE isPrimaryReference IS NOT NULL

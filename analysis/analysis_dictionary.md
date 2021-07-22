@@ -77,23 +77,23 @@ The **5** analysis tables and their columns are:
 
 ``` SQL
 SELECT DISTINCT
-	LegioServicemen.ServicemanID,
+	legio_serviceman.ServicemanID,
 	MonumentIDs,
 	Name AS 'Nomina',
 	Tribe AS 'Tribus',
 	OriginSettlement ||(coalesce(','|| OriginProvince, ' ')) AS 'Domicilium',
 	DefiniteServiceman,
-	Units.UnitTitle ||'('|| LegioServicemen.LiklihoodOfUnitAttribution ||')' AS 'Unit_Affiliation_and_Certainty',
+	unit.UnitTitle ||'('|| legio_serviceman.LiklihoodOfUnitAttribution ||')' AS 'Unit_Affiliation_and_Certainty',
 	FirstRecordedOffice ||'('|| FirstOfficeCertainty ||')' AS 'Office_and_Certainty',
 	SecondRecordedOffice ||'('|| SecondOfficeCertainty ||')' AS 'Other_Office_and_certainty',
 	VeteranStatus ||'('|| VeteranStatusCertainty ||')' AS 'Veteran_Status_and_Certainty',
 	ServicemanNote
-	FROM MonumentServicemen
-		JOIN LegioServicemen USING (ServicemanID)
-		JOIN MilitaryStatus USING (MilitaryStatusID)
-		JOIN Units USING (UnitID)
+	FROM monument_serviceman
+		JOIN legio_serviceman USING (ServicemanID)
+		JOIN military_status USING (MilitaryStatusID)
+		JOIN unit USING (UnitID)
 		JOIN (SELECT ServicemanID, group_concat(MonumentID, '; ') AS MonumentIDs
-	        			 FROM MonumentServicemen
+	        			 FROM monument_serviceman
 	        			 WHERE ServicemanID = ServicemanID
 	        			 GROUP BY ServicemanID) AS MonumentIDTable USING (ServicemanID)
 	ORDER BY DefiniteServiceman DESC, ServicemanID;
