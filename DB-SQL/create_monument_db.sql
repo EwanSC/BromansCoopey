@@ -225,8 +225,8 @@ UPDATE MonumentServicemen SET SourceForDuplicateArgument = NULL WHERE SourceForD
 
 -- Below are the various views created so that some information from various tables can be found in the same view
 
-DROP VIEW IF EXISTS PrimaryCorpus;
-CREATE VIEW PrimaryCorpus as
+DROP VIEW IF EXISTS primary_thesis_corpus;
+CREATE VIEW primary_thesis_corpus as
 SELECT
 	MonumentID,
 	CorpusName || ' ' || Reference AS "Reference",
@@ -237,8 +237,8 @@ SELECT
  WHERE isPrimaryReference is not null;
 
 
-DROP VIEW IF EXISTS AllCorpora;
-CREATE VIEW AllCorpora as
+DROP VIEW IF EXISTS all_corpora;
+CREATE VIEW all_corpora as
 SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDCS, EDH, OtherRef
   FROM (SELECT MonumentID
           FROM Monument)
@@ -275,8 +275,8 @@ SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDCS, EDH, OtherRef
         			 WHERE CorpusName = 'Other Ref'
         			 GROUP BY MonumentID) AS OtherReftable USING (MonumentID);
 
-DROP VIEW IF EXISTS All_Servicemen;
-CREATE VIEW All_Servicemen AS
+DROP VIEW IF EXISTS all_servicemen;
+CREATE VIEW all_servicemen AS
 SELECT DISTINCT
 	LegioServicemen.ServicemanID,
 	MonumentIDs,
@@ -299,8 +299,8 @@ SELECT DISTINCT
 	        			 GROUP BY ServicemanID) AS MonumentIDTable USING (ServicemanID)
 	ORDER BY DefiniteServiceman DESC, ServicemanID;
 
-DROP VIEW IF EXISTS Definite_Funerary_Monuments;
-CREATE VIEW Definite_Funerary_Monuments AS
+DROP VIEW IF EXISTS definite_funerary_monuments;
+CREATE VIEW definite_funerary_monuments AS
 SELECT MonumentID,
 	CorpusName ||' ' || Reference AS 'Monument_Reference',
 	MonumentType,
@@ -320,8 +320,8 @@ SELECT MonumentID,
 				or MonumentOfSeventhLegion = 'maybe')
 			ORDER BY RomanProvince, AncientSite;
 
-DROP VIEW IF EXISTS Monument_and_Location;
-CREATE VIEW Monument_and_Location AS
+DROP VIEW IF EXISTS monument_and_location;
+CREATE VIEW monument_and_location AS
 SELECT
 	MonumentID,
 	CorpusName ||' ' || Reference AS 'Monument_Reference',

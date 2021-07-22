@@ -15,8 +15,8 @@ sqlite3 BromansDB.db -csv -header 'SELECT * FROM Units ORDER BY UnitID' > ../dat
 
 
 mkdir -p ../analysis
-sqlite3 BromansDB.db -csv -header 'SELECT * FROM All_Servicemen' > ../analysis/All_Servicemen.csv
-sqlite3 BromansDB.db -csv -header 'SELECT * FROM AllCorpora' > ../analysis/AllCorpora.csv
-sqlite3 BromansDB.db -csv -header 'SELECT * FROM Definite_Funerary_Monuments' > ../analysis/Definite_Funerary_Monuments.csv
-sqlite3 BromansDB.db -csv -header 'SELECT * FROM Monument_and_Location' > ../analysis/Monument_and_Location.csv
-sqlite3 BromansDB.db -csv -header 'SELECT * FROM PrimaryCorpus' > ../analysis/PrimaryCorpus.csv
+sqlite3 BromansDB.db -csv -header 'SELECT * FROM all_servicemen' > ../analysis/all_servicemen.csv
+sqlite3 BromansDB.db -csv -header 'SELECT * FROM all_corpora' > ../analysis/all_corpora.csv
+sqlite3 BromansDB.db -csv -header 'SELECT * FROM definite_funerary_monuments' > ../analysis/definite_funerary_monuments.csv
+sqlite3 BromansDB.db -csv -header 'SELECT * FROM monument_and_location' > ../analysis/monument_and_location.csv
+sqlite3 BromansDB.db -csv -header 'SELECT * FROM primary_thesis_corpus' > ../analysis/primary_thesis_corpus.csv

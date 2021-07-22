@@ -1,4 +1,4 @@
-# Dictionary for /analysis tables
+# Dictionary for /analysis
 
 ## Overview
 
@@ -7,7 +7,7 @@
 ## The Tables
 
 The **5** analysis tables and their columns are:
-1. **All_Servicemen.csv**
+1. **all_servicemen.csv**
   * ServicemanID
   * Monument
   * Nomina
@@ -19,7 +19,7 @@ The **5** analysis tables and their columns are:
   * Other_Office_and_certainty
   * Veteran_Status_and_Certainty
   * ServicemanNote
-2. **AllCorpora.csv**
+2. **all_corpora.csv**
   * MonumentID
   * CIL
   * Tončinić
@@ -69,9 +69,9 @@ The **5** analysis tables and their columns are:
   * Monument_Type
   * Media
 
-## Table Tours
+## Table Field Descriptions
 
-### All_Servicemen.csv
+### all_servicemen.csv
 
 * This Table is created with this .sql code:
 
