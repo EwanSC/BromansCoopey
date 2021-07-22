@@ -37,7 +37,7 @@ UPDATE findspot SET Trismegistos = NULL WHERE Trismegistos = '';
 
 
 .mode csv
-.import ../original_data/findspot.csv findspot
+.import ../original_source_data/findspot.csv findspot
 
 select 'findspotsloaded', count(*) from findspot;
 
@@ -70,7 +70,7 @@ CREATE TABLE monument (
 );
 
 .mode csv
-.import ../original_data/monument.csv monument
+.import ../original_source_data/monument.csv monument
 
 select 'monumentsloaded', count(*) from monument;
 
@@ -107,7 +107,7 @@ CREATE TABLE unit (
 );
 
 .mode csv
-.import ../original_data/unit.csv unit
+.import ../original_source_data/unit.csv unit
 
 select 'unitsloaded', count(*) from unit;
 
@@ -123,7 +123,7 @@ CREATE TABLE military_status (
 );
 
 .mode csv
-.import ../original_data/military_status.csv military_status
+.import ../original_source_data/military_status.csv military_status
 
 select 'officesloaded', count(*) from military_status;
 
@@ -142,7 +142,7 @@ CREATE TABLE corpus (
 
 
 .mode csv
-.import ../original_data/corpus.csv corpus
+.import ../original_source_data/corpus.csv corpus
 
 select 'corpusloaded', count(*) from corpus;
 
@@ -157,7 +157,7 @@ CREATE TABLE monument_corpus (
 );
 
 .mode csv
-.import ../original_data/monument_corpus.csv monument_corpus
+.import ../original_source_data/monument_corpus.csv monument_corpus
 
 select 'referencesloaded', count(*) from monument_corpus;
 
@@ -183,7 +183,7 @@ CREATE TABLE legio_serviceman (
 -- DefiniteServiceman refers to whether or not they were a soldier/milites, not necessarily Legio VII. For that, see .monument
 
 .mode csv
-.import ../original_data/legio_serviceman.csv legio_serviceman
+.import ../original_source_data/legio_serviceman.csv legio_serviceman
 
 select 'legionariesloaded', count(*) from legio_serviceman;
 
@@ -215,7 +215,7 @@ CREATE TABLE monument_serviceman (
 -- PossibleDuplicateServicemanID records the ServicemanID of the individual which may be a duplicate of this certain MonumentID
 
 .mode csv
-.import ../original_data/monument_serviceman.csv monument_serviceman
+.import ../original_source_data/monument_serviceman.csv monument_serviceman
 
 select 'monumentservicemenloaded', count(*) from monument_serviceman;
 
