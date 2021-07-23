@@ -1,0 +1,123 @@
+<h1 id="dictionary-for-analysis">Dictionary for /analysis</h1>
+<h2 id="overview">Overview</h2>
+<p><strong>5</strong> csv tables have been generated as a form of analysis via the <em>DB Browser for SQLite</em> 'view' function. It is important to note that <strong>NOT</strong> all columns from the /data tables feature in these views. Instead, they represent <em>some</em> of the types of queries/analyses which can be made through this data.</p>
+<h2 id="the-tables">The Tables</h2>
+<p>The <strong>5</strong> analysis tables and their columns are: 1. <strong>all_servicemen.csv</strong> * ServicemanID * Monument * Nomina * Tribus * Domicilium * DefiniteServiceman * Unit_Affiliation_and_Certainty * Office_and_Certainty * Other_Office_and_certainty * Veteran_Status_and_Certainty * ServicemanNote 2. <strong>all_corpora.csv</strong> * MonumentID * CIL * Tončinić * Betz * ILJug * AE * EDCS * EDH * OtherRef 3. <strong>Definite_Funerary_Monuments.csv</strong> * MonumentID * Monument_Reference * MonumentType * Creation_Date * Site_of_Discovery 4. <strong>Monument_and_Location.csv</strong> * MonumentID * Monument_Reference * MonumentType * Mention_Legio_VII * Inscription * Translation * Source_of_Translation * Tončinić_2011_Style_Type * Lower_Field_Decoration * Portrait * Frieze * Creation_Date * DateNote * Current_Location * Ancient_Province * Ancient_Site * General_Provenience * Modern_Find_Site * Modern_Provenience * General_Location_Note * Unique_Monument_Provenience_Note * LAT * LONG * Pleiades * Trismegistos * MonumentNote * Media 5. <strong>PrimaryCorpus.csv</strong> * MonumentID * Reference * Monument_Type * Media</p>
+<h2 id="table-field-descriptions">Table Field Descriptions</h2>
+<h3 id="all_servicemen.csv">all_servicemen.csv</h3>
+<ul class="incremental">
+<li>This table combines data from multiple tables within the dataset to provide an overview of the servicemen recorded on monuments within the corpus.</li>
+<li>This Table is created with this .sql code:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> <span class="kw">DISTINCT</span>
+    legio_serviceman.ServicemanID,
+    MonumentIDs,
+    Name <span class="kw">AS</span> <span class="st">&#39;Nomina&#39;</span>,
+    Tribe <span class="kw">AS</span> <span class="st">&#39;Tribus&#39;</span>,
+    OriginSettlement ||(<span class="kw">coalesce</span>(<span class="st">&#39;,&#39;</span>|| OriginProvince, <span class="st">&#39; &#39;</span>)) <span class="kw">AS</span> <span class="st">&#39;Domicilium&#39;</span>,
+    DefiniteServiceman,
+    unit.UnitTitle ||<span class="st">&#39;(&#39;</span>|| legio_serviceman.LiklihoodOfUnitAttribution ||<span class="st">&#39;)&#39;</span> <span class="kw">AS</span> <span class="st">&#39;Unit_Affiliation_and_Certainty&#39;</span>,
+    FirstRecordedOffice ||<span class="st">&#39;(&#39;</span>|| FirstOfficeCertainty ||<span class="st">&#39;)&#39;</span> <span class="kw">AS</span> <span class="st">&#39;Office_and_Certainty&#39;</span>,
+    SecondRecordedOffice ||<span class="st">&#39;(&#39;</span>|| SecondOfficeCertainty ||<span class="st">&#39;)&#39;</span> <span class="kw">AS</span> <span class="st">&#39;Other_Office_and_certainty&#39;</span>,
+    VeteranStatus ||<span class="st">&#39;(&#39;</span>|| VeteranStatusCertainty ||<span class="st">&#39;)&#39;</span> <span class="kw">AS</span> <span class="st">&#39;Veteran_Status_and_Certainty&#39;</span>,
+    ServicemanNote
+    <span class="kw">FROM</span> monument_serviceman
+        <span class="kw">JOIN</span> legio_serviceman <span class="kw">USING</span> (ServicemanID)
+        <span class="kw">JOIN</span> military_status <span class="kw">USING</span> (MilitaryStatusID)
+        <span class="kw">JOIN</span> unit <span class="kw">USING</span> (UnitID)
+        <span class="kw">JOIN</span> (<span class="kw">SELECT</span> ServicemanID, group_concat(MonumentID, <span class="st">&#39;; &#39;</span>) <span class="kw">AS</span> MonumentIDs
+                         <span class="kw">FROM</span> monument_serviceman
+                         <span class="kw">WHERE</span> ServicemanID = ServicemanID
+                         <span class="kw">GROUP</span> <span class="kw">BY</span> ServicemanID) <span class="kw">AS</span> MonumentIDTable <span class="kw">USING</span> (ServicemanID)
+    <span class="kw">ORDER</span> <span class="kw">BY</span> DefiniteServiceman <span class="kw">DESC</span>, ServicemanID;</code></pre></div>
+<ul class="incremental">
+<li>Columns:</li>
+</ul>
+<ol class="incremental" style="list-style-type: decimal">
+<li><strong>ServicemanID</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/LegioServicemen.ServicemanID)</li>
+<li>This is the column where the ID number for each individual serviceman referenced in the corpus is listed. It is the Primary Key from the data/LegioServicemen table. It is a surrogate key with no relationship to external datasets. The table is ordered by this column. It is ordered firstly by whether or not the serviceman is definitely or likely a serviceman (e.g. epigraphically attested or conjecture), and then is ordered by ServicemanID.</li>
+<li>Distinct Values: 1-135; 137</li>
+</ul>
+<ol class="incremental" start="2" style="list-style-type: decimal">
+<li><strong>MonumentIDs</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/LegioServicemen.MonumentID)</li>
+<li>The MonumentID (from data/Monument.MonumentID) of the monument/s that record information about each serviceman. As such there can be several values for each ServicemanID. MonumentID is a surrogate Foreign key linking to data/Monument.</li>
+<li>Distinct Values: MonumentID 2, 4-35, 39-101, 103-109, 126-129</li>
+</ul>
+<ol class="incremental" start="3" style="list-style-type: decimal">
+<li><strong>Nomina</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/LegioServicemen.name)</li>
+<li>Name and paternal relation (where recorded) of the serviceman. Names are translated into English where the original inscription is complete, and left in the original Latin when incomplete (including lacunae).</li>
+<li>Distinct values: all values. While there may be duplicate names, they are names shared by individual people. Use ServicemanID to determine uniqueness.</li>
+</ul>
+<ol class="incremental" start="4" style="list-style-type: decimal">
+<li><strong>Tribus</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/LegioServicemen.tribe)</li>
+<li>Roman tribe or <em>tribus</em> (Latin) of the recorded serviceman if recorded. <em>null</em> means an absence of data referring to tribe (either it is not recorded or the inscription is fragmentary).</li>
+<li>Distinct Values: <em>null</em>; Aemilia; Aniensis; Camilia; Claudia; Cornelia; Fabia; Lemonia; Maecia; Palatina; Papiria; Pollia; Pomptina; Publilia; Quirina; Scaptia; Sergia; Tromentia; Velina; Voltinia</li>
+</ul>
+<ol class="incremental" start="5" style="list-style-type: decimal">
+<li><strong>Domicilium</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/LegioServicemen.OriginSettlement &amp; data/LegioServicemen.OriginProvince)</li>
+<li><em>Domicilium</em> (Latin), or city of origin, of the serviceman and the Roman province of this settlement/city. <em>null</em> means an absence of data referring to <em>Domicilium</em> (either it is not recorded or the inscription is fragmentary).</li>
+<li>Distinct Values: <em>null</em>; Aesis, Galatia; Alorum, Macedonia; Amblada, Galatia; Ancyra, Galatia; Arretium, Italy; Augusta Troas, Asia; Augusta,; Beneventum, Italy; Bononia, Italy; Brixia, Italy; Clistinna, Galatia; Conana, Galatia; Cormassa, Galatia; Cremona, Italy; Dentum, Macedonia; Dyrrachium, Macedonia; Edessa, Macedonia; Florentia, Italy; Forum Corneli, Italy; Heraclea,; Iconium, Galatia; Isinda, Galatia; Laranda, Galatia; Libarna, Italy; Milyas, Galatia; Ninica, Galatia; Pessinus, Galatia; Phazimon, Galatia; Philippi, Macedonia; Pisaurum, Italy; Placentia, Italy; R[---],; Sebaste, Galatia; Sebastopolis, Galatia; Sinope, Galatia; Ticinum, Italy; Trernahensis,; Varvaria, Dalmatia; Verona, Italy; Vienna, Gallia Narbonensis</li>
+</ul>
+<ol class="incremental" start="6" style="list-style-type: decimal">
+<li><strong>DefiniteServiceman</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (LegioServicemen.DefiniteServiceman)</li>
+<li>Records whether the individual is definitely or potentially a serviceman with the values 'yes' and 'maybe'. 'yes' = the individual is recorded as a soldier upon the monument. 'maybe' = the individual could potentially be a soldier, but this is not explicitly stated in writing within the inscription. Refer to ServicemanNote for more information on why an individual classed as 'maybe' has been included.</li>
+<li>Values: yes; maybe</li>
+</ul>
+<ol class="incremental" start="7" style="list-style-type: decimal">
+<li><strong>Unit_Affiliation_and_Certainty</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/Units.UnitTitle &amp; data/LegioServicemen.LiklihoodOfUnitAttribution)</li>
+<li>Latin name of Roman unit/s that the serviceman served in, or likely served in, followed by the certainty of this attribution inside parentheses recorded as either 'epigraphically attested' or 'conjecture'. 'conjecture' = the unit attribution of the office is possible on account of factors such as monument decoration, but it is not specified within the inscription.</li>
+<li>Values: Ala Tungrorum(conjecture); Ala Tungrorum(epigraphically attested); Cohors II Cyrrhestarum(conjecture); Cohors II Cyrrhestarum(epigraphically attested); Legio VII Claudia pia fidelis and VII Claudia(epigraphically attested); Legio VII Claudia pia fidelis or XI Claudia pia fidelis(conjecture); Legio VII Claudia pia fidelis(conjecture); Legio VII Claudia pia fidelis(epigraphically attested); Legio VII Claudia(epigraphically attested); Legio VII Macedonica(epigraphically attested); Legio VII or VII Claudia pia fidelis(conjecture); Legio VII or VII Claudia pia fidelis(epigraphically attested); Legio VII or VIII(epigraphically attested); Legio VII(conjecture); Legio VII(epigraphically attested); Legio VII, VII Claudia pia fidelis, XI, XI Claudia pia fidelis(conjecture); Legio XI(epigraphically attested)</li>
+</ul>
+<ol class="incremental" start="8" style="list-style-type: decimal">
+<li><strong>Office_and_Certainty</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/MilitaryStatus.FirstRecordedOffice &amp; data/MilitaryStatus.FirstOfficeCertainty)</li>
+<li>First office of the servicemen (if recorded) in Latin, followed by the certainty of this office being ascribed to them (inside parentheses). The two values for certainty of attribution are 'epigraphically attested' or 'conjecture'. 'conjecture' = the attribution of the office is possible on account of factors such as monument decoration, but it is not specified within the inscription. Use ServicemanNote for insight into those classed with offices classed as 'conjecture'. <em>null</em> means an absence of data referring to office (either it is not recorded or the inscription is fragmentary).</li>
+<li>Values: <em>null</em>; centurio(conjecture); centurio(epigraphically attested); eques(conjecture); eques(epigraphically attested); imaginifer(epigraphically attested); miles(epigraphically attested); primus pilus(epigraphically attested); princeps posterior(epigraphically attested); scriba(epigraphically attested); signifer(epigraphically attested); tribunus(conjecture)</li>
+</ul>
+<ol class="incremental" start="9" style="list-style-type: decimal">
+<li><strong>Other_Office_and_certainty</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/MilitaryStatus.SecondRecordedOffice &amp; data/MilitaryStatus.SecondOfficeCertainty)</li>
+<li>Second listed office of the servicemen (if recorded) in Latin, followed by the certainty of this office being ascribed to them (inside parentheses). The value for certainty of attribution is 'epigraphically attested'. <em>null</em> means an absence of data referring to a second office (either it is not recorded or the inscription is fragmentary).</li>
+<li>Values: <em>null</em>; exacto consularis(epigraphically attested); iudex(epigraphically attested); praefectus castorum(epigraphically attested)</li>
+</ul>
+<ol class="incremental" start="10" style="list-style-type: decimal">
+<li><strong>Veteran_Status_and_Certainty</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/MilitaryStatus.VeteranStatus &amp; data/MilitaryStatus.Veteran_Status_and_Certainty)</li>
+<li>The veteran (Latin: <em>veteranus</em>) status of the servicemen (if recorded) as well as the certainty of this status being ascribed to them (inside parentheses). The two values for certainty of attribution are 'epigraphically attested' or 'conjecture'. 'conjecture' = the veteran status is possible on account of factors such as monument decoration, but it is not specified within the inscription. Use ServicemanNote for insight into those classed with offices classed as 'conjecture'. <em>null</em> means an absence of data referring to veteran status (either it is not recorded or the inscription is fragmentary).</li>
+<li>Values: <em>null</em>; veteranus(conjecture); veteranus(epigraphically attested)</li>
+</ul>
+<ol class="incremental" start="11" style="list-style-type: decimal">
+<li><strong>ServicemanNote</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/LegioServicemen.ServicemanNote)</li>
+<li>This column records any extra information regarding the serviceman and anything to do with their status as a serviceman, their unit attribution, possible double ups in terms of identification, and the rationale for their inclusion in this table if not clear.</li>
+<li>Values: This column has 38 distinct values including <em>null</em>. These notes consist of paragraphs or sentences.</li>
+</ul>

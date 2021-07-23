@@ -72,7 +72,7 @@ The **5** analysis tables and their columns are:
 ## Table Field Descriptions
 
 ### all_servicemen.csv
-
+* This table combines data from multiple tables within the dataset to provide an overview of the servicemen recorded on monuments within the corpus.
 * This Table is created with this .sql code:
 
 ``` SQL
@@ -121,7 +121,7 @@ SELECT DISTINCT
 * _Domicilium_ (Latin), or city of origin, of the serviceman and the Roman province of this settlement/city. _null_ means an absence of data referring to _Domicilium_ (either it is not recorded or the inscription is fragmentary).
 * Distinct Values: _null_; Aesis, Galatia; Alorum, Macedonia; Amblada, Galatia; Ancyra, Galatia; Arretium, Italy; Augusta Troas, Asia; Augusta,; Beneventum, Italy; Bononia, Italy; Brixia, Italy; Clistinna, Galatia; Conana, Galatia; Cormassa, Galatia; Cremona, Italy; Dentum, Macedonia; Dyrrachium, Macedonia; Edessa, Macedonia; Florentia, Italy; Forum Corneli, Italy; Heraclea,; Iconium, Galatia; Isinda, Galatia; Laranda, Galatia; Libarna, Italy; Milyas, Galatia; Ninica, Galatia; Pessinus, Galatia; Phazimon, Galatia; Philippi, Macedonia; Pisaurum, Italy; Placentia, Italy; R[---],; Sebaste, Galatia; Sebastopolis, Galatia; Sinope, Galatia; Ticinum, Italy; Trernahensis,; Varvaria, Dalmatia; Verona, Italy; Vienna, Gallia Narbonensis
 6. **DefiniteServiceman**
-* Source Table: (LegioServicemen.DefiniteServiceman)
+* Source Table: (data/LegioServicemen.DefiniteServiceman)
 * Records whether the individual is definitely or potentially a serviceman with the values 'yes' and 'maybe'. 'yes' = the individual is recorded as a soldier upon the monument. 'maybe' = the individual could potentially be a soldier, but this is not explicitly stated in writing within the inscription. Refer to ServicemanNote for more information on why an individual classed as 'maybe' has been included.
 * Values: yes; maybe
 7. **Unit_Affiliation_and_Certainty**
@@ -144,3 +144,101 @@ SELECT DISTINCT
 * Source Table: (data/LegioServicemen.ServicemanNote)
 * This column records any extra information regarding the serviceman and anything to do with their status as a serviceman, their unit attribution, possible double ups in terms of identification, and the rationale for their inclusion in this table if not clear.
 * Values: This column has 38 distinct values including _null_. These notes consist of paragraphs or sentences.
+
+### all_corpora.csv
+* This table is meant to act as a reader friendly bibliography table, combining the data from data/corpus and data/monument_corpus to record the monuments references numbers in various epigraphic reference works, as well as secondary literature referring to this monument.
+* This table is created with the SQL code:
+``` SQL
+SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDCS, EDH, OtherRef
+  FROM (SELECT MonumentID
+          FROM monument)
+  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS CIL
+        			 FROM monument_corpus
+        			 WHERE CorpusName = 'CIL'
+        			 GROUP BY MonumentID) AS ciltable USING (MonumentID)
+  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS Tončinić
+        			 FROM monument_corpus
+        			 WHERE CorpusName = 'Tončinić'
+        			 GROUP BY MonumentID) AS Tončinićtable USING (MonumentID)
+  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS Betz
+        			 FROM monument_corpus
+        			 WHERE CorpusName = 'Betz'
+        			 GROUP BY MonumentID) AS Betztable USING (MonumentID)
+  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS ILJug
+        			 FROM monument_corpus
+        			 WHERE CorpusName = 'ILJug'
+        			 GROUP BY MonumentID) AS ILJugtable USING (MonumentID)
+	LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS AE
+						   FROM monument_corpus
+						   WHERE CorpusName = 'AE'
+						   GROUP BY MonumentID) AS AEtable USING (MonumentID)
+	LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS EDCS
+						 		FROM monument_corpus
+						 		WHERE CorpusName = 'EDCS'
+						 		GROUP BY MonumentID) AS EDCStable USING (MonumentID)
+	LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS EDH
+						 	 FROM monument_corpus
+						   WHERE CorpusName = 'EDH'
+						   GROUP BY MonumentID) AS EDHtable USING (MonumentID)
+  LEFT OUTER JOIN (SELECT MonumentID, group_concat(Reference, '; ') AS OtherRef
+        			 FROM monument_corpus
+        			 WHERE CorpusName = 'Other Ref'
+        			 GROUP BY MonumentID) AS OtherReftable USING (MonumentID);
+```
+
+* Columns:
+1. **MonumentID**
+* Source Table: (data/monument.MonumentID)
+* MonumentID is a surrogate Foreign key linking from data/monument. It identifies the monument each line in this table is referring too, providing their means of identification within this dataset.
+* Values: 1-130
+2. **CIL**
+* Source Table: (data/monument_corpus.CorpusName & data/monument_corpus.Reference)
+* Records the reference number/s of the monument in the (1863-) _corpus inscriptionem latinarum_ (CIL). _null_ means the absence of information about this monument's references in the _corpus inscriptionem latinarum_ (CIL) within _this_ dataset = it has either not been found/recorded or it does not exist. If a monument has multiple entries in the CIL, each entry is separated by a ';'.
+* Values: Each value is _null_ or distinct. If distinct, in the format of: "'Volume' , 'Reference number'". E.g. 03, 14951 is inscription #14951 in the 3rd volume of the CIL (often recorded as III 14951).
+3. **Tončinić**
+* Source Table: (data/monument_corpus.CorpusName & data/monument_corpus.Reference)
+* Records the category number/s (English: cat. no., Hrvatski: kat. br.) of the monument in Tončinić (2011) _Spomenici VII. legije na području rimske provincije Dalmacije / Monuments of Legio VII in the Roman Province of Dalmatia_. _null_ means the absence of information about this monument in Tončinić (2011) = it does not exist.
+* Values: 001-115
+4. **Betz**
+* Source Table: (data/monument_corpus.CorpusName & data/monument_corpus.Reference)
+* Records the category number/s (English: cat. no., Hrvatski: kat. br.) of the monument in Betz (1938) _Untersuchungen zur Militärgeschichte der römischen Provinz Dalmatien_. _null_ means the absence of information about this monument in Betz (1938) = it does not exist. If a monument has multiple entries in Betz (1938) each entry is separated by a ';'.
+* Values: 001; 004-025; 027-082; 084; 173-174
+5. **ILJug**
+* Source Table: (data/monument_corpus.CorpusName & data/monument_corpus.Reference)
+* Records the reference number/s of the monument in the (1963-1986) _Inscriptiones latinae quae in Iugoslavia_ (ILJug). _null_ means the absence of information about this monument's references in ILJug within _this_ dataset = it has either not been found/recorded or it does not exist.
+* Values: All values are distinct or _null_. If distinct, in format of: "'Volume', 'Reference number'". E.g. 3, 2092 is inscription 2092 in the 3rd volume of ILJug.
+6. **AE**
+* Source Table: (data/monument_corpus.CorpusName & data/monument_corpus.Reference)
+* Records the publication and reference number/s of the monument in the (1888-) _L'Année Epigraphique_ (AE). _null_ means the absence of information about this monument's references in AE within _this_ dataset = it has either not been found/recorded or it does not exist. If a monument has multiple entries in the AE, each entry is separated by a ';'.
+* Values: All values are distinct or _null_. If distinct, in format of: "'Year of AE', 'Reference number'". E.g. 1900, 0046 is inscription 46 from the AE volume published for the year 1900.
+7. **EDCS**
+* Source Table: (data/monument_corpus.CorpusName & data/monument_corpus.Reference)
+*
+* Values:
+8. **EDH**
+* Source Table: (data/monument_corpus.CorpusName & data/monument_corpus.Reference)
+*
+* Values:
+9. **OtherRef**
+* Source Table: (data/monument_corpus.CorpusName & data/monument_corpus.Reference)
+*
+* Values:
+
+
+### Definite_Funerary_Monuments.csv
+* This table...
+* This table is created with the SQL code:
+``` SQL
+```
+
+### Monument_and_Location.csv
+* This table...
+* This table is created with the SQL code:
+``` SQL
+```
+
+### PrimaryCorpus.csv
+* This table...
+* This table is created with the SQL code:
+``` SQL
+```
