@@ -77,7 +77,7 @@
 <li><strong>DefiniteServiceman</strong></li>
 </ol>
 <ul class="incremental">
-<li>Source Table: (LegioServicemen.DefiniteServiceman)</li>
+<li>Source Table: (data/LegioServicemen.DefiniteServiceman)</li>
 <li>Records whether the individual is definitely or potentially a serviceman with the values 'yes' and 'maybe'. 'yes' = the individual is recorded as a soldier upon the monument. 'maybe' = the individual could potentially be a soldier, but this is not explicitly stated in writing within the inscription. Refer to ServicemanNote for more information on why an individual classed as 'maybe' has been included.</li>
 <li>Values: yes; maybe</li>
 </ul>
@@ -120,4 +120,135 @@
 <li>Source Table: (data/LegioServicemen.ServicemanNote)</li>
 <li>This column records any extra information regarding the serviceman and anything to do with their status as a serviceman, their unit attribution, possible double ups in terms of identification, and the rationale for their inclusion in this table if not clear.</li>
 <li>Values: This column has 38 distinct values including <em>null</em>. These notes consist of paragraphs or sentences.</li>
+</ul>
+<h3 id="all_corpora.csv">all_corpora.csv</h3>
+<ul class="incremental">
+<li>This table is meant to act as a reader friendly bibliography table, combining the data from data/corpus and data/monument_corpus to record the monuments references numbers in various epigraphic reference works, as well as secondary literature referring to this monument.</li>
+<li><p>This table is created with the SQL code:</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDCS, EDH, OtherRef
+  <span class="kw">FROM</span> (<span class="kw">SELECT</span> MonumentID
+      <span class="kw">FROM</span> monument)
+  <span class="kw">LEFT</span> <span class="kw">OUTER</span> <span class="kw">JOIN</span> (<span class="kw">SELECT</span> MonumentID, group_concat(Reference, <span class="st">&#39;; &#39;</span>) <span class="kw">AS</span> CIL
+                 <span class="kw">FROM</span> monument_corpus
+                 <span class="kw">WHERE</span> CorpusName = <span class="st">&#39;CIL&#39;</span>
+                 <span class="kw">GROUP</span> <span class="kw">BY</span> MonumentID) <span class="kw">AS</span> ciltable <span class="kw">USING</span> (MonumentID)
+  <span class="kw">LEFT</span> <span class="kw">OUTER</span> <span class="kw">JOIN</span> (<span class="kw">SELECT</span> MonumentID, group_concat(Reference, <span class="st">&#39;; &#39;</span>) <span class="kw">AS</span> Tončinić
+                 <span class="kw">FROM</span> monument_corpus
+                 <span class="kw">WHERE</span> CorpusName = <span class="st">&#39;Tončinić&#39;</span>
+                 <span class="kw">GROUP</span> <span class="kw">BY</span> MonumentID) <span class="kw">AS</span> Tončinićtable <span class="kw">USING</span> (MonumentID)
+  <span class="kw">LEFT</span> <span class="kw">OUTER</span> <span class="kw">JOIN</span> (<span class="kw">SELECT</span> MonumentID, group_concat(Reference, <span class="st">&#39;; &#39;</span>) <span class="kw">AS</span> Betz
+                 <span class="kw">FROM</span> monument_corpus
+                 <span class="kw">WHERE</span> CorpusName = <span class="st">&#39;Betz&#39;</span>
+                 <span class="kw">GROUP</span> <span class="kw">BY</span> MonumentID) <span class="kw">AS</span> Betztable <span class="kw">USING</span> (MonumentID)
+  <span class="kw">LEFT</span> <span class="kw">OUTER</span> <span class="kw">JOIN</span> (<span class="kw">SELECT</span> MonumentID, group_concat(Reference, <span class="st">&#39;; &#39;</span>) <span class="kw">AS</span> ILJug
+                 <span class="kw">FROM</span> monument_corpus
+                 <span class="kw">WHERE</span> CorpusName = <span class="st">&#39;ILJug&#39;</span>
+                 <span class="kw">GROUP</span> <span class="kw">BY</span> MonumentID) <span class="kw">AS</span> ILJugtable <span class="kw">USING</span> (MonumentID)
+<span class="kw">LEFT</span> <span class="kw">OUTER</span> <span class="kw">JOIN</span> (<span class="kw">SELECT</span> MonumentID, group_concat(Reference, <span class="st">&#39;; &#39;</span>) <span class="kw">AS</span> AE
+                       <span class="kw">FROM</span> monument_corpus
+                       <span class="kw">WHERE</span> CorpusName = <span class="st">&#39;AE&#39;</span>
+                       <span class="kw">GROUP</span> <span class="kw">BY</span> MonumentID) <span class="kw">AS</span> AEtable <span class="kw">USING</span> (MonumentID)
+<span class="kw">LEFT</span> <span class="kw">OUTER</span> <span class="kw">JOIN</span> (<span class="kw">SELECT</span> MonumentID, group_concat(Reference, <span class="st">&#39;; &#39;</span>) <span class="kw">AS</span> EDCS
+                            <span class="kw">FROM</span> monument_corpus
+                            <span class="kw">WHERE</span> CorpusName = <span class="st">&#39;EDCS&#39;</span>
+                            <span class="kw">GROUP</span> <span class="kw">BY</span> MonumentID) <span class="kw">AS</span> EDCStable <span class="kw">USING</span> (MonumentID)
+<span class="kw">LEFT</span> <span class="kw">OUTER</span> <span class="kw">JOIN</span> (<span class="kw">SELECT</span> MonumentID, group_concat(Reference, <span class="st">&#39;; &#39;</span>) <span class="kw">AS</span> EDH
+                         <span class="kw">FROM</span> monument_corpus
+                       <span class="kw">WHERE</span> CorpusName = <span class="st">&#39;EDH&#39;</span>
+                       <span class="kw">GROUP</span> <span class="kw">BY</span> MonumentID) <span class="kw">AS</span> EDHtable <span class="kw">USING</span> (MonumentID)
+  <span class="kw">LEFT</span> <span class="kw">OUTER</span> <span class="kw">JOIN</span> (<span class="kw">SELECT</span> MonumentID, group_concat(Reference, <span class="st">&#39;; &#39;</span>) <span class="kw">AS</span> OtherRef
+                 <span class="kw">FROM</span> monument_corpus
+                 <span class="kw">WHERE</span> CorpusName = <span class="st">&#39;Other Ref&#39;</span>
+                 <span class="kw">GROUP</span> <span class="kw">BY</span> MonumentID) <span class="kw">AS</span> OtherReftable <span class="kw">USING</span> (MonumentID);</code></pre></div></li>
+<li>Columns:</li>
+</ul>
+<ol class="incremental" style="list-style-type: decimal">
+<li><strong>MonumentID</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument.MonumentID)</li>
+<li>MonumentID is a surrogate Foreign key linking from data/monument. It identifies the monument each line in this table is referring too, providing their means of identification within this dataset.</li>
+<li>Values: 1-130</li>
+</ul>
+<ol class="incremental" start="2" style="list-style-type: decimal">
+<li><strong>CIL</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument_corpus.CorpusName &amp; data/monument_corpus.Reference)</li>
+<li>Records the reference number/s of the monument in the (1863-) <em>corpus inscriptionem latinarum</em> (CIL). <em>null</em> means the absence of information about this monument's references in the <em>corpus inscriptionem latinarum</em> (CIL) within <em>this</em> dataset = it has either not been found/recorded or it does not exist. If a monument has multiple entries in the CIL, each entry is separated by a ';'.</li>
+<li>Values: Each value is <em>null</em> or distinct. If distinct, in the format of: &quot;'Volume' , 'Reference number'&quot;. E.g. 03, 14951 is inscription #14951 in the 3rd volume of the CIL (often recorded as III 14951).</li>
+</ul>
+<ol class="incremental" start="3" style="list-style-type: decimal">
+<li><strong>Tončinić</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument_corpus.CorpusName &amp; data/monument_corpus.Reference)</li>
+<li>Records the category number/s (English: cat. no., Hrvatski: kat. br.) of the monument in Tončinić (2011) <em>Spomenici VII. legije na području rimske provincije Dalmacije / Monuments of Legio VII in the Roman Province of Dalmatia</em>. <em>null</em> means the absence of information about this monument in Tončinić (2011) = it does not exist.</li>
+<li>Values: 001-115</li>
+</ul>
+<ol class="incremental" start="4" style="list-style-type: decimal">
+<li><strong>Betz</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument_corpus.CorpusName &amp; data/monument_corpus.Reference)</li>
+<li>Records the category number/s (English: cat. no., Hrvatski: kat. br.) of the monument in Betz (1938) <em>Untersuchungen zur Militärgeschichte der römischen Provinz Dalmatien</em>. <em>null</em> means the absence of information about this monument in Betz (1938) = it does not exist. If a monument has multiple entries in Betz (1938) each entry is separated by a ';'.</li>
+<li>Values: 001; 004-025; 027-082; 084; 173-174</li>
+</ul>
+<ol class="incremental" start="5" style="list-style-type: decimal">
+<li><strong>ILJug</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument_corpus.CorpusName &amp; data/monument_corpus.Reference)</li>
+<li>Records the reference number/s of the monument in the (1963-1986) <em>Inscriptiones latinae quae in Iugoslavia</em> (ILJug). <em>null</em> means the absence of information about this monument's references in ILJug within <em>this</em> dataset = it has either not been found/recorded or it does not exist.</li>
+<li>Values: All values are distinct or <em>null</em>. If distinct, in format of: &quot;'Volume', 'Reference number'&quot;. E.g. 3, 2092 is inscription 2092 in the 3rd volume of ILJug.</li>
+</ul>
+<ol class="incremental" start="6" style="list-style-type: decimal">
+<li><strong>AE</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument_corpus.CorpusName &amp; data/monument_corpus.Reference)</li>
+<li>Records the publication and reference number/s of the monument in the (1888-) <em>L'Année Epigraphique</em> (AE). <em>null</em> means the absence of information about this monument's references in AE within <em>this</em> dataset = it has either not been found/recorded or it does not exist. If a monument has multiple entries in the AE, each entry is separated by a ';'.</li>
+<li>Values: All values are distinct or <em>null</em>. If distinct, in format of: &quot;'Year of AE', 'Reference number'&quot;. E.g. 1900, 0046 is inscription 46 from the AE volume published for the year 1900.</li>
+</ul>
+<ol class="incremental" start="7" style="list-style-type: decimal">
+<li><strong>EDCS</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument_corpus.CorpusName &amp; data/monument_corpus.Reference)</li>
+<li>Records the URL and identifier of the entry for the monument on the <em><a href="http://db.edcs.eu/epigr/epi.php?s_sprache=en">Epigraphik-Datenbank Clauss Slaby</a></em> (EDCS). <em>null</em> means the absence of information about this monument's references in EDCS within <em>this</em> dataset = it has not been found/ does not exist. If a monument has multiple entries in the EDCS, each entry is separated by a ';'.</li>
+<li>Values: All values are distinct or <em>null</em>. If distinct, they comprise of a URL to the monument on the EDCS website. The last <strong>8</strong> numerals of each URL are also the monuments EDCS identification number. E.g. http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&amp;p_edcs_id=EDCS-28400134 = EDCS ID 8400134.</li>
+</ul>
+<ol class="incremental" start="8" style="list-style-type: decimal">
+<li><strong>EDH</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument_corpus.CorpusName &amp; data/monument_corpus.Reference)</li>
+<li>Records the URL and identifier of the entry for the monument on the <em><a href="https://edh-www.adw.uni-heidelberg.de/home">Epigraphic Database Heidelberg</a></em> (EDH). <em>null</em> means the absence of information about this monument's references in EDH within <em>this</em> dataset = it has not been found/ does not exist. If a monument has multiple entries in the EDH, each entry is separated by a ';'.</li>
+<li>Values: All values are distinct or <em>null</em>. If distinct, they comprise of a URL to the monument on the EDH website. The last <strong>8</strong> characters of each URL are also the monuments EDH identification number. E.g. https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD028366 = EDH ID HD028366.</li>
+</ul>
+<ol class="incremental" start="9" style="list-style-type: decimal">
+<li><strong>OtherRef</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument_corpus.CorpusName &amp; data/monument_corpus.Reference)</li>
+<li>Records the bibliographic citations for any other reference works, catalogues, appendices, books or papers which refer to the monument (aside from CIL, Tončinić, Betz, ILJug, AE, EDCS or EDH). These works and their abbreviations (if any) are listed in DB-SQL/bibliography_for_db.bib and DB-SQL/bibliography_for_db.ris. <em>null</em> means the absence of information about other references to this monument within <em>this</em> dataset = they have not been found/ do not not exist. If a monument has multiple other references, each entry is separated by a ';'.</li>
+<li>Values: The values are either <em>null</em> or refer to a bibliographic citation in author date format (Chicago)[https://libguides.mq.edu.au/referencing/Chicago]. E.g. Wilkes 1969, 461; Maršić 2010, 65-67.</li>
+</ul>
+<h3 id="definite_funerary_monuments.csv">Definite_Funerary_Monuments.csv</h3>
+<ul class="incremental">
+<li>This table...</li>
+<li><p>This table is created with the SQL code:</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"></code></pre></div></li>
+</ul>
+<h3 id="monument_and_location.csv">Monument_and_Location.csv</h3>
+<ul class="incremental">
+<li>This table...</li>
+<li><p>This table is created with the SQL code:</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"></code></pre></div></li>
+</ul>
+<h3 id="primarycorpus.csv">PrimaryCorpus.csv</h3>
+<ul class="incremental">
+<li>This table...</li>
+<li><p>This table is created with the SQL code:</p>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"></code></pre></div></li>
 </ul>

@@ -29,7 +29,7 @@ The **5** analysis tables and their columns are:
   * EDCS
   * EDH
   * OtherRef
-3. **Definite_Funerary_Monuments.csv**
+3. **definite_funerary_monuments.csv**
   * MonumentID
   * Monument_Reference
   * MonumentType
@@ -213,23 +213,59 @@ SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDCS, EDH, OtherRef
 * Values: All values are distinct or _null_. If distinct, in format of: "'Year of AE', 'Reference number'". E.g. 1900, 0046 is inscription 46 from the AE volume published for the year 1900.
 7. **EDCS**
 * Source Table: (data/monument_corpus.CorpusName & data/monument_corpus.Reference)
-*
-* Values:
+* Records the URL and identifier of the entry for the monument on the _[Epigraphik-Datenbank Clauss Slaby](http://db.edcs.eu/epigr/epi.php?s_sprache=en)_ (EDCS). _null_ means the absence of information about this monument's references in EDCS within _this_ dataset = it has not been found/ does not exist. If a monument has multiple entries in the EDCS, each entry is separated by a ';'.
+* Values: All values are distinct or _null_. If distinct, they comprise of a URL to the monument on the EDCS website. The last **8** numerals of each URL are also the monuments EDCS identification number. E.g. http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-28400134 = EDCS ID 8400134.
 8. **EDH**
 * Source Table: (data/monument_corpus.CorpusName & data/monument_corpus.Reference)
-*
-* Values:
+* Records the URL and identifier of the entry for the monument on the _[Epigraphic Database Heidelberg](https://edh-www.adw.uni-heidelberg.de/home)_ (EDH). _null_ means the absence of information about this monument's references in EDH within _this_ dataset = it has not been found/ does not exist. If a monument has multiple entries in the EDH, each entry is separated by a ';'.
+* Values: All values are distinct or _null_. If distinct, they comprise of a URL to the monument on the EDH website. The last **8** characters of each URL are also the monuments EDH identification number. E.g. https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD028366 = EDH ID HD028366.
 9. **OtherRef**
 * Source Table: (data/monument_corpus.CorpusName & data/monument_corpus.Reference)
-*
-* Values:
+* Records the bibliographic citations for any other reference works, catalogues, appendices, books or papers which refer to the monument (aside from CIL, Tončinić, Betz, ILJug, AE, EDCS or EDH). These works and their abbreviations (if any) are listed in DB-SQL/bibliography_for_db.bib and DB-SQL/bibliography_for_db.ris. _null_ means the absence of information about other references to this monument within _this_ dataset = they have not been found/ do not not exist. If a monument has multiple other references, each entry is separated by a ';'.
+* Values: The values are either _null_ or refer to a bibliographic citation in author date format (Chicago)[https://libguides.mq.edu.au/referencing/Chicago]. E.g. Wilkes 1969, 461; Maršić 2010, 65-67.
 
-
-### Definite_Funerary_Monuments.csv
+### definite_funerary_monuments.csv
 * This table...
 * This table is created with the SQL code:
 ``` SQL
+
+SELECT MonumentID,
+	CorpusName ||' ' || Reference AS 'Monument_Reference',
+	MonumentType,
+	DateFrom ||' to '|| DateTo AS 'Creation_Date',
+	RomanProvince ||', '|| AncientSite AS 'Site_of_Discovery'
+	FROM monument
+		JOIN monument_corpus USING (MonumentID)
+		JOIN findspot USING (FindSpotID)
+			WHERE (MonumentType = 'stela'
+				or MonumentType = 'funerary inscription'
+				or MonumentType = 'titulus'
+				or MonumentType = 'inscription fragment'
+				or MonumentType = 'sacral monument'
+				or MonumentType = 'altar')
+			AND isPrimaryReference IS NOT NULL
+				AND (MonumentOfSeventhLegion = 'yes'
+				or MonumentOfSeventhLegion = 'maybe')
+			ORDER BY RomanProvince, AncientSite;
+
 ```
+
+1. **Monument_Reference**
+* Source Table:
+*
+* Values:
+2. **MonumentType**
+* Source Table:
+*
+* Values:
+3. **Creation_Date**
+* Source Table:
+*
+* Values:
+4. **Site_of_Discovery**
+* Source Table:
+*
+* Values:
 
 ### Monument_and_Location.csv
 * This table...
