@@ -225,18 +225,6 @@ UPDATE monument_serviceman SET SourceForDuplicateArgument = NULL WHERE SourceFor
 
 -- Below are the various views created so that some information from various tables can be found in the same view
 
-DROP VIEW IF EXISTS primary_thesis_corpus;
-CREATE VIEW primary_thesis_corpus as
-SELECT
-	MonumentID,
-	CorpusName || ' ' || Reference AS "Reference",
-	MonumentType AS "Monument_Type",
-	Media
-  FROM monument_corpus
-	JOIN monument USING (MonumentID)
- WHERE isPrimaryReference is not null;
-
-
 DROP VIEW IF EXISTS all_corpora;
 CREATE VIEW all_corpora as
 SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDCS, EDH, OtherRef
@@ -299,13 +287,16 @@ SELECT DISTINCT
 	        			 GROUP BY ServicemanID) AS MonumentIDTable USING (ServicemanID)
 	ORDER BY DefiniteServiceman DESC, ServicemanID;
 
-DROP VIEW IF EXISTS definite_funerary_monuments;
-CREATE VIEW definite_funerary_monuments AS
+DROP VIEW IF EXISTS leg_vii_funerary_monument;
+CREATE VIEW leg_vii_funerary_monument AS
 SELECT MonumentID,
 	CorpusName ||' ' || Reference AS 'Monument_Reference',
+	MonumentOfSeventhLegion,
 	MonumentType,
 	DateFrom ||' to '|| DateTo AS 'Creation_Date',
-	RomanProvince ||', '|| AncientSite AS 'Site_of_Discovery'
+	RomanProvince ||', '|| AncientSite AS 'Site_of_Discovery',
+	Inscription,
+	Media
 	FROM monument
 		JOIN monument_corpus USING (MonumentID)
 		JOIN findspot USING (FindSpotID)
@@ -318,10 +309,10 @@ SELECT MonumentID,
 			AND isPrimaryReference IS NOT NULL
 				AND (MonumentOfSeventhLegion = 'yes'
 				or MonumentOfSeventhLegion = 'maybe')
-			ORDER BY RomanProvince, AncientSite;
+			ORDER BY MonumentOfSeventhLegion DESC, MonumentID;
 
-DROP VIEW IF EXISTS monument_and_location;
-CREATE VIEW monument_and_location AS
+DROP VIEW IF EXISTS all_monument_with_location;
+CREATE VIEW all_monument_with_location AS
 SELECT
 	MonumentID,
 	CorpusName ||' ' || Reference AS 'Monument_Reference',

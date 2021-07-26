@@ -29,13 +29,16 @@ The **5** analysis tables and their columns are:
   * EDCS
   * EDH
   * OtherRef
-3. **definite_funerary_monuments.csv**
+3. **leg_vii_funerary_monument.csv**
   * MonumentID
   * Monument_Reference
+  * MonumentOfSeventhLegion
   * MonumentType
   * Creation_Date
   * Site_of_Discovery
-4. **Monument_and_Location.csv**
+  * Inscription
+  * Media
+4. **all_monument_with_location.csv**
   * MonumentID
   * Monument_Reference
   * MonumentType
@@ -62,11 +65,6 @@ The **5** analysis tables and their columns are:
   * Pleiades
   * Trismegistos
   * MonumentNote
-  * Media
-5. **PrimaryCorpus.csv**
-  * MonumentID
-  * Reference
-  * Monument_Type
   * Media
 
 ## Table Field Descriptions
@@ -107,7 +105,7 @@ SELECT DISTINCT
 2. **MonumentIDs**
 * Source Table: (data/LegioServicemen.MonumentID)
 * The MonumentID (from data/Monument.MonumentID) of the monument/s that record information about each serviceman. As such there can be several values for each ServicemanID. MonumentID is a surrogate Foreign key linking to data/Monument.
-* Distinct Values: MonumentID 2, 4-35, 39-101, 103-109, 126-129
+* Distinct Values: MonumentID 2; 4-35; 39-101; 103-109; 126-129
 3. **Nomina**
 * Source Table: (data/LegioServicemen.name)
 * Name and paternal relation (where recorded) of the serviceman. Names are translated into English where the original inscription is complete, and left in the original Latin when incomplete (including lacunae).
@@ -221,19 +219,21 @@ SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDCS, EDH, OtherRef
 * Values: All values are distinct or _null_. If distinct, they comprise of a URL to the monument on the EDH website. The last **8** characters of each URL are also the monuments EDH identification number. E.g. https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD028366 = EDH ID HD028366.
 9. **OtherRef**
 * Source Table: (data/monument_corpus.CorpusName & data/monument_corpus.Reference)
-* Records the bibliographic citations for any other reference works, catalogues, appendices, books or papers which refer to the monument (aside from CIL, Tončinić, Betz, ILJug, AE, EDCS or EDH). These works and their abbreviations (if any) are listed in DB-SQL/bibliography_for_db.bib and DB-SQL/bibliography_for_db.ris. _null_ means the absence of information about other references to this monument within _this_ dataset = they have not been found/ do not not exist. If a monument has multiple other references, each entry is separated by a ';'.
+* Records the bibliographic citations for any other reference works, catalogues, appendices, books or papers which refer to the monument (aside from CIL, Tončinić, Betz, ILJug, AE, EDCS or EDH). These works and their abbreviations (if any) are listed in DB-SQL/bibliography_for_db.bib and DB-SQL/bibliography_for_db.ris. _null_ means the absence of information about other references to this monument within _this_ dataset = they have not been found/ do not exist. If a monument has multiple other references, each entry is separated by a ';'.
 * Values: The values are either _null_ or refer to a bibliographic citation in author date format (Chicago)[https://libguides.mq.edu.au/referencing/Chicago]. E.g. Wilkes 1969, 461; Maršić 2010, 65-67.
 
-### definite_funerary_monuments.csv
+### leg_vii_funerary_monument.csv
 * This table...
 * This table is created with the SQL code:
 ``` SQL
-
 SELECT MonumentID,
 	CorpusName ||' ' || Reference AS 'Monument_Reference',
+	MonumentOfSeventhLegion,
 	MonumentType,
 	DateFrom ||' to '|| DateTo AS 'Creation_Date',
-	RomanProvince ||', '|| AncientSite AS 'Site_of_Discovery'
+	RomanProvince ||', '|| AncientSite AS 'Site_of_Discovery',
+	Inscription,
+	Media
 	FROM monument
 		JOIN monument_corpus USING (MonumentID)
 		JOIN findspot USING (FindSpotID)
@@ -246,34 +246,43 @@ SELECT MonumentID,
 			AND isPrimaryReference IS NOT NULL
 				AND (MonumentOfSeventhLegion = 'yes'
 				or MonumentOfSeventhLegion = 'maybe')
-			ORDER BY RomanProvince, AncientSite;
-
+			ORDER BY MonumentOfSeventhLegion DESC, MonumentID;
 ```
+* Columns
+1. **MonumentID**
+* Source Table: (data/monument.MonumentID)
+* MonumentID is a surrogate Foreign key linking from data/monument. It identifies the monument each line in this table is referring too, providing their means of identification within this dataset.
+* Values: 2; 4-35; 39-82; 84-101; 103; 129-130
+2. **Monument_Reference**
+* Source Table: (data/monument_corpus.CorpusName & data/monument_corpus.Reference)
+* Records the 'primary reference' of each monument referred to in this table. 'Primary reference' refers to the reference which was used to identify this monument in the thesis related to this database (this can be found in /thesis/). The order of preference for reference works was as follows (DESC): CIL, AE, ILJug, Tončinić, Betz, OtherRef (see data/corpus for these values). These works are listed in DB-SQL/bibliography_for_db.bib and DB-SQL/bibliography_for_db.ris.
+* Values: Each value is a distinct citation. Either in the form of "'Reference work abbreviation','Volume','Reference number'" for a reference work, or author date (Chicago) for non reference works.
+3. **MonumentOfSeventhLegion**
+* Source Table: (data/monument.MonumentOfSeventhLegion)
+* Records whether the monument commemorates, or was commemorated by, a serviceman of Legio VII. Values are 'yes' or 'maybe'. 'yes' = Legio VII is mentioned in what is left of the inscription or it can be reconstructed beyond reasonable doubt. 'maybe' = Legio VII is not mentioned in what is left of the inscription, but one can hypothesise that the monument belonged to a member of Legio VII based on 1) what survives of the inscription, 2) the location of the monument, 3) the style of the monument or 4) a combination of all these factors.
+* Values: yes, maybe
+4. **MonumentType**
+* Source Table: (data/monument.Monument_Type)
+* Records the class of funerary monument. Funerary monuments are understood as: "inscribed markers (often, but not exclusively, made of stone) primarily erected to indicate places of interment, as well as produce and preserve a memory of the deceased or soon-to-be deceased in a quasi-public cemeterial or funerary context" (Coopey 2020). The definitions for the types of monument are as follows: 'stela' = "stone monuments or ‘slabs’ with an inscribed epitaph bearing formulaic descriptions of the deceased and the commemorators" (Coopey 2020). 'tituli' = "isolated epitaphs with no, or minimal decorations" (Coopey 2020). 'altar' = a sacrificial altar with a funerary inscription. 'sacral monument' = a monument of a sacral nature.  'funerary inscription' = "an inscription fragment with content of a funerary nature whose larger monument has been too damaged to ascertain its specific type". 'inscription fragment' = a fragmentary from a monument which may have once been funerary or sacral but not enough is left for this to be securely ascertained.
+* Values: titulus; stela; sacral monument; inscription fragment; funerary inscription; altar
+5. **Creation_Date**
+* Source Table:
+*
+* Values:
+6. **Site_of_Discovery**
+* Source Table:
+*
+* Values:
+7. **Inscription**
+* Source Table:
+*
+* Values:
+8. **Media**
+* Source Table:
+*
+* Values:
 
-1. **Monument_Reference**
-* Source Table:
-*
-* Values:
-2. **MonumentType**
-* Source Table:
-*
-* Values:
-3. **Creation_Date**
-* Source Table:
-*
-* Values:
-4. **Site_of_Discovery**
-* Source Table:
-*
-* Values:
-
-### Monument_and_Location.csv
-* This table...
-* This table is created with the SQL code:
-``` SQL
-```
-
-### PrimaryCorpus.csv
+### all_monument_with_location.csv
 * This table...
 * This table is created with the SQL code:
 ``` SQL
