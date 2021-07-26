@@ -294,7 +294,7 @@ SELECT MonumentID,
 	MonumentOfSeventhLegion,
 	MonumentType,
 	DateFrom ||' to '|| DateTo AS 'Creation_Date',
-	RomanProvince ||', '|| AncientSite AS 'Site_of_Discovery',
+	RomanProvince ||(coalesce(', '|| AncientSite, '')) AS 'Site_of_Discovery',
 	Inscription,
 	Media
 	FROM monument
@@ -322,15 +322,15 @@ SELECT
 	Translation,
 	TranslationSource AS 'Source_of_Translation',
 	Tončinić2011StelaeType AS 'Tončinić_2011_Style_Type',
-	LowerFieldDecoration ||', '|| (coalesce(LowerFieldDetail, ' ')) AS 'Lower_Field_Decoration',
+	LowerFieldDecoration || (coalesce(', '|| LowerFieldDetail, '')) AS 'Lower_Field_Decoration',
 	Portrait,
 	Frieze,
 	DateFrom ||' to '||	DateTo AS 'Creation_Date',
 	DateNote,
-	ModernHolding ||', '|| (coalesce(HoldingData, ' ')) AS 'Current_Location',
-	RomanProvince AS 'Ancient_Province',
+	ModernHolding ||(coalesce(', '|| HoldingData, '')) AS 'Current_Location',
+	RomanProvince AS 'Roman_Province',
 	AncientSite AS 'Ancient_Site',
-	SpecificAncientLocation AS 'General_Provenience',
+	SpecificAncientLocation AS 'Specific_Provenience',
 	ModernSite AS 'Modern_Find_Site',
 	SpecificModernLocation 'Modern_Provenience',
 	ExtraLocationNote AS 'General_Location_Note',
@@ -340,6 +340,7 @@ SELECT
 	Pleiades,
 	Trismegistos,
 	MonumentNote,
+	DBInclusionReason,
 	Media
 	FROM monument
 			JOIN findspot USING (FindSpotID)

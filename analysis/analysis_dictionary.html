@@ -2,7 +2,7 @@
 <h2 id="overview">Overview</h2>
 <p><strong>5</strong> csv tables have been generated as a form of analysis via the <em>DB Browser for SQLite</em> 'view' function. It is important to note that <strong>NOT</strong> all columns from the /data tables feature in these views. Instead, they represent <em>some</em> of the types of queries/analyses which can be made through this data.</p>
 <h2 id="the-tables">The Tables</h2>
-<p>The <strong>5</strong> analysis tables and their columns are: 1. <strong>all_servicemen.csv</strong> * ServicemanID * Monument * Nomina * Tribus * Domicilium * DefiniteServiceman * Unit_Affiliation_and_Certainty * Office_and_Certainty * Other_Office_and_certainty * Veteran_Status_and_Certainty * ServicemanNote 2. <strong>all_corpora.csv</strong> * MonumentID * CIL * Tončinić * Betz * ILJug * AE * EDCS * EDH * OtherRef 3. <strong>Definite_Funerary_Monuments.csv</strong> * MonumentID * Monument_Reference * MonumentType * Creation_Date * Site_of_Discovery 4. <strong>Monument_and_Location.csv</strong> * MonumentID * Monument_Reference * MonumentType * Mention_Legio_VII * Inscription * Translation * Source_of_Translation * Tončinić_2011_Style_Type * Lower_Field_Decoration * Portrait * Frieze * Creation_Date * DateNote * Current_Location * Ancient_Province * Ancient_Site * General_Provenience * Modern_Find_Site * Modern_Provenience * General_Location_Note * Unique_Monument_Provenience_Note * LAT * LONG * Pleiades * Trismegistos * MonumentNote * Media 5. <strong>PrimaryCorpus.csv</strong> * MonumentID * Reference * Monument_Type * Media</p>
+<p>The <strong>5</strong> analysis tables and their columns are: 1. <strong>all_servicemen.csv</strong> * ServicemanID * Monument * Nomina * Tribus * Domicilium * DefiniteServiceman * Unit_Affiliation_and_Certainty * Office_and_Certainty * Other_Office_and_certainty * Veteran_Status_and_Certainty * ServicemanNote 2. <strong>all_corpora.csv</strong> * MonumentID * CIL * Tončinić * Betz * ILJug * AE * EDCS * EDH * OtherRef 3. <strong>leg_vii_funerary_monument.csv</strong> * MonumentID * Monument_Reference * MonumentOfSeventhLegion * MonumentType * Creation_Date * Site_of_Discovery * Inscription * Media 4. <strong>all_monument_with_location.csv</strong> * MonumentID * Monument_Reference * MonumentType * Mention_Legio_VII * Inscription * Translation * Source_of_Translation * Tončinić_2011_Style_Type * Lower_Field_Decoration * Portrait * Frieze * Creation_Date * DateNote * Current_Location * Roman_Province * Ancient_Site * Specific_Provenience * Modern_Find_Site * Modern_Provenience * General_Location_Note * Unique_Monument_Provenience_Note * LAT * LONG * Pleiades * Trismegistos * MonumentNote * DBInclusionReason * Media</p>
 <h2 id="table-field-descriptions">Table Field Descriptions</h2>
 <h3 id="all_servicemen.csv">all_servicemen.csv</h3>
 <ul class="incremental">
@@ -47,7 +47,7 @@
 <ul class="incremental">
 <li>Source Table: (data/LegioServicemen.MonumentID)</li>
 <li>The MonumentID (from data/Monument.MonumentID) of the monument/s that record information about each serviceman. As such there can be several values for each ServicemanID. MonumentID is a surrogate Foreign key linking to data/Monument.</li>
-<li>Distinct Values: MonumentID 2, 4-35, 39-101, 103-109, 126-129</li>
+<li>Distinct Values: MonumentID 2; 4-35; 39-101; 103-109; 126-129</li>
 </ul>
 <ol class="incremental" start="3" style="list-style-type: decimal">
 <li><strong>Nomina</strong></li>
@@ -231,24 +231,373 @@
 </ol>
 <ul class="incremental">
 <li>Source Table: (data/monument_corpus.CorpusName &amp; data/monument_corpus.Reference)</li>
-<li>Records the bibliographic citations for any other reference works, catalogues, appendices, books or papers which refer to the monument (aside from CIL, Tončinić, Betz, ILJug, AE, EDCS or EDH). These works and their abbreviations (if any) are listed in DB-SQL/bibliography_for_db.bib and DB-SQL/bibliography_for_db.ris. <em>null</em> means the absence of information about other references to this monument within <em>this</em> dataset = they have not been found/ do not not exist. If a monument has multiple other references, each entry is separated by a ';'.</li>
-<li>Values: The values are either <em>null</em> or refer to a bibliographic citation in author date format (Chicago)[https://libguides.mq.edu.au/referencing/Chicago]. E.g. Wilkes 1969, 461; Maršić 2010, 65-67.</li>
+<li>Records the bibliographic citations for any other reference works, catalogues, appendices, books or papers which refer to the monument (aside from CIL, Tončinić, Betz, ILJug, AE, EDCS or EDH). These works and their abbreviations (if any) are listed in DB-SQL/bibliography_for_db.bib and DB-SQL/bibliography_for_db.ris. <em>null</em> means the absence of information about other references to this monument within <em>this</em> dataset = they have not been found/ do not exist. If a monument has multiple other references, each entry is separated by a ';'.</li>
+<li>Values: The values are either <em>null</em> or a citation in author date format <a href="https://libguides.mq.edu.au/referencing/Chicago">Chicago</a>. E.g. Wilkes 1969, 461; Maršić 2010, 65-67.</li>
 </ul>
-<h3 id="definite_funerary_monuments.csv">Definite_Funerary_Monuments.csv</h3>
+<h3 id="leg_vii_funerary_monument.csv">leg_vii_funerary_monument.csv</h3>
 <ul class="incremental">
-<li>This table...</li>
+<li>This table records the 98 funerary and sacral monuments which do, or may, commemorate or refer to a member of the Roman Legio VII. These are the monuments which acted as the primary focus of the MRes Thesis research this database was a part of (Coopey 2020).</li>
 <li><p>This table is created with the SQL code:</p>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"></code></pre></div></li>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span> MonumentID,
+CorpusName ||<span class="st">&#39; &#39;</span> || Reference <span class="kw">AS</span> <span class="st">&#39;Monument_Reference&#39;</span>,
+MonumentOfSeventhLegion,
+MonumentType,
+DateFrom ||<span class="st">&#39; to &#39;</span>|| DateTo <span class="kw">AS</span> <span class="st">&#39;Creation_Date&#39;</span>,
+RomanProvince ||(<span class="kw">coalesce</span>(<span class="st">&#39;, &#39;</span>|| AncientSite, <span class="st">&#39;&#39;</span>)) <span class="kw">AS</span> <span class="st">&#39;Site_of_Discovery&#39;</span>,
+Inscription,
+Media
+<span class="kw">FROM</span> monument
+    <span class="kw">JOIN</span> monument_corpus <span class="kw">USING</span> (MonumentID)
+    <span class="kw">JOIN</span> findspot <span class="kw">USING</span> (FindSpotID)
+        <span class="kw">WHERE</span> (MonumentType = <span class="st">&#39;stela&#39;</span>
+            <span class="kw">or</span> MonumentType = <span class="st">&#39;funerary inscription&#39;</span>
+            <span class="kw">or</span> MonumentType = <span class="st">&#39;titulus&#39;</span>
+            <span class="kw">or</span> MonumentType = <span class="st">&#39;inscription fragment&#39;</span>
+            <span class="kw">or</span> MonumentType = <span class="st">&#39;sacral monument&#39;</span>
+            <span class="kw">or</span> MonumentType = <span class="st">&#39;altar&#39;</span>)
+        <span class="kw">AND</span> isPrimaryReference <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span>
+            <span class="kw">AND</span> (MonumentOfSeventhLegion = <span class="st">&#39;yes&#39;</span>
+            <span class="kw">or</span> MonumentOfSeventhLegion = <span class="st">&#39;maybe&#39;</span>)
+        <span class="kw">ORDER</span> <span class="kw">BY</span> MonumentOfSeventhLegion <span class="kw">DESC</span>, MonumentID;</code></pre></div></li>
+<li>Columns</li>
 </ul>
-<h3 id="monument_and_location.csv">Monument_and_Location.csv</h3>
+<ol class="incremental" style="list-style-type: decimal">
+<li><strong>MonumentID</strong></li>
+</ol>
 <ul class="incremental">
-<li>This table...</li>
-<li><p>This table is created with the SQL code:</p>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"></code></pre></div></li>
+<li>Source Table: (data/monument.MonumentID)</li>
+<li>MonumentID is a surrogate Foreign key linking from data/monument. It identifies the monument each line in this table is referring too, providing their means of identification within this dataset.</li>
+<li>Values: 2; 4-35; 39-82; 84-101; 103; 129-130</li>
 </ul>
-<h3 id="primarycorpus.csv">PrimaryCorpus.csv</h3>
+<ol class="incremental" start="2" style="list-style-type: decimal">
+<li><strong>Monument_Reference</strong></li>
+</ol>
 <ul class="incremental">
-<li>This table...</li>
+<li>Source Table: (data/monument_corpus.CorpusName &amp; data/monument_corpus.Reference)</li>
+<li>Records the 'primary reference' of each monument referred to in this table. 'Primary reference' refers to the reference which was used to identify this monument in the thesis (Coopey 2020) related to this database (this can be found in /thesis/). The order of preference for reference works was as follows (DESC): 'CIL', 'AE', 'ILJug', 'Tončinić', 'Betz', 'OtherRef' (see data/corpus for these values). These works are listed in DB-SQL/bibliography_for_db.bib and DB-SQL/bibliography_for_db.ris.</li>
+<li>Values: Each value is a distinct citation. Either in the form of &quot;'Reference work abbreviation', 'Volume', 'Reference number'&quot; for a reference work, or author date (Chicago) for non reference works.</li>
+</ul>
+<ol class="incremental" start="3" style="list-style-type: decimal">
+<li><strong>MonumentOfSeventhLegion</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument.MonumentOfSeventhLegion)</li>
+<li>Records whether the monument records, commemorates, or was commemorated by, a serviceman/servicemen of Legio VII. Values are 'yes' or 'maybe'. 'yes' = Legio VII is mentioned in what is left of the inscription or it can be reconstructed beyond reasonable doubt. 'maybe' = Legio VII is not mentioned in what is left of the inscription, but one can hypothesise that the monument belonged to a member of Legio VII based on 1) what survives of the inscription, 2) the location of the monument, 3) the style of the monument, 4) a combination of all these factors.</li>
+<li>Values: yes, maybe</li>
+</ul>
+<ol class="incremental" start="4" style="list-style-type: decimal">
+<li><strong>MonumentType</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument.Monument_Type)</li>
+<li>Records the class of funerary monument.</li>
+<li>'titulus' = &quot;isolated epitaphs with no, or minimal decorations&quot; (Coopey 2020).</li>
+<li>'stela' = &quot;stone monuments or ‘slabs’ with an inscribed epitaph bearing formulaic descriptions of the deceased and the commemorators&quot; (Coopey 2020).</li>
+<li>'sacral monument' = a monument of a sacral nature. 'sacral altar' = an altar where the inscription is sacral in nature.</li>
+<li>'inscription fragment' = a fragmentary from a monument which may have once been funerary or sacral but not enough is left for this to be securely ascertained.</li>
+<li>'funerary inscription' = &quot;an inscription fragment with content of a funerary nature whose larger monument has been too damaged to ascertain its specific type&quot;.</li>
+<li>'altar' = a sacrificial altar with a funerary inscription.</li>
+<li>Values: titulus; stela; sacral monument; inscription fragment; funerary inscription; altar</li>
+</ul>
+<ol class="incremental" start="5" style="list-style-type: decimal">
+<li><strong>Creation_Date</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument.DateFrom &amp; data/monument.DateTo)</li>
+<li>Records the date range for the creation of the monument. The dates are in BCE/CE. With BCE represented by negative values. E.g. -30 = 30 BCE</li>
+<li>Values: The dates range between -30 and 230</li>
+</ul>
+<ol class="incremental" start="6" style="list-style-type: decimal">
+<li><strong>Site_of_Discovery</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/findspot.RomanProvince &amp; data/findspot.AncientSite)</li>
+<li>Records the Ancient find spot of the monument (province and site).</li>
+<li>Values: Dalmatia; Dalmatia, Aequum; Dalmatia, Andetrium; Dalmatia, Asseria; Dalmatia, Burnum; Dalmatia, Corinium; Dalmatia, Iadera; Dalmatia, Municipium Riditarum/Rider; Dalmatia, Narona; Dalmatia, Pagus Scunasticus; Dalmatia, Salona; Dalmatia, Siculi; Dalmatia, Tilurium; Dalmatia, Tragurium; Galatia, Antiochia Pisidiae; Galatia, Apollonia/Tymandus; Galatia, Cormasa; Galatia, Iconium; Moesia Superior, Viminacium; Thracia, Lysimacheia.</li>
+</ul>
+<ol class="incremental" start="7" style="list-style-type: decimal">
+<li><strong>Inscription</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument.inscription)</li>
+<li>Records a transcription of the inscription found upon each monument in the original Latin or, rarely, ancient Greek, following the <a href="https://en.wikipedia.org/wiki/Leiden_Conventions">Leiden Conventions</a>.</li>
+<li>Values: Each value is a distinct transliteration of an inscription.</li>
+</ul>
+<ol class="incremental" start="8" style="list-style-type: decimal">
+<li><strong>Media</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument.Media)</li>
+<li>Records URLs for images (photos or illustrations) of the monument. Where possible, the URL is for the <a href="http://lupa.at" class="uri">http://lupa.at</a> website. With some monuments having links to EDCS <a href="http://db.edcs.eu" class="uri">http://db.edcs.eu</a>, and some having no images within the database (represented with <em>null</em>)</li>
+<li>Values: <em>null</em> or distinct. Distinct values are all URLs to gallery of images.</li>
+</ul>
+<h3 id="all_monument_with_location.csv">all_monument_with_location.csv</h3>
+<ul class="incremental">
+<li>This table records all information from the data/monument and data/findspot tables to provide an in-depth overview of the archaeological and epigraphic corpus stored in this dataset (as opposed to the individuals mentioned). It is, in a sense, a kind of 'Master' table.</li>
 <li><p>This table is created with the SQL code:</p>
-<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"></code></pre></div></li>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">SELECT</span>
+MonumentID,
+CorpusName ||<span class="st">&#39; &#39;</span> || Reference <span class="kw">AS</span> <span class="st">&#39;Monument_Reference&#39;</span>,
+MonumentType,
+MonumentOfSeventhLegion <span class="kw">AS</span> <span class="st">&#39;Mention_Legio_VII&#39;</span>,
+Inscription,
+Translation,
+TranslationSource <span class="kw">AS</span> <span class="st">&#39;Source_of_Translation&#39;</span>,
+Tončinić2011StelaeType <span class="kw">AS</span> <span class="st">&#39;Tončinić_2011_Style_Type&#39;</span>,
+LowerFieldDecoration || (<span class="kw">coalesce</span>(<span class="st">&#39;, &#39;</span>|| LowerFieldDetail, <span class="st">&#39; &#39;</span>)) <span class="kw">AS</span> <span class="st">&#39;Lower_Field_Decoration&#39;</span>,
+Portrait,
+Frieze,
+DateFrom ||<span class="st">&#39; to &#39;</span>|| DateTo <span class="kw">AS</span> <span class="st">&#39;Creation_Date&#39;</span>,
+DateNote,
+ModernHolding ||(<span class="kw">coalesce</span>(<span class="st">&#39;, &#39;</span>|| HoldingData, <span class="st">&#39; &#39;</span>)) <span class="kw">AS</span> <span class="st">&#39;Current_Location&#39;</span>,
+RomanProvince <span class="kw">AS</span> <span class="st">&#39;Roman_Province&#39;</span>,
+AncientSite <span class="kw">AS</span> <span class="st">&#39;Ancient_Site&#39;</span>,
+SpecificAncientLocation <span class="kw">AS</span> <span class="st">&#39;Specific_Provenience&#39;</span>,
+ModernSite <span class="kw">AS</span> <span class="st">&#39;Modern_Find_Site&#39;</span>,
+SpecificModernLocation <span class="st">&#39;Modern_Provenience&#39;</span>,
+ExtraLocationNote <span class="kw">AS</span> <span class="st">&#39;General_Location_Note&#39;</span>,
+MonumentSpecificFindSpotNote <span class="kw">AS</span> <span class="st">&#39;Unique_Monument_Provenience_Note&#39;</span>,
+LATITUDE_epsg_4326 <span class="kw">AS</span> <span class="st">&#39;LAT&#39;</span>,
+LONGITUDE_epsg_4326 <span class="kw">AS</span> <span class="st">&#39;LONG&#39;</span>,
+Pleiades,
+Trismegistos,
+MonumentNote,
+DBInclusionReason,
+Media
+<span class="kw">FROM</span> monument
+        <span class="kw">JOIN</span> findspot <span class="kw">USING</span> (FindSpotID)
+        <span class="kw">JOIN</span> monument_corpus <span class="kw">USING</span> (MonumentID)
+                    <span class="kw">WHERE</span> isPrimaryReference <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span></code></pre></div></li>
+<li>Columns</li>
+</ul>
+<ol class="incremental" style="list-style-type: decimal">
+<li><strong>MonumentID</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument.MonumentID)</li>
+<li>MonumentID is a surrogate Foreign key linking from data/monument. It identifies the monument each line in this table is referring too, providing their means of identification within this dataset.</li>
+</ul>
+<ol class="incremental" start="2" style="list-style-type: decimal">
+<li><strong>Monument_Reference</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the 'primary reference' of each monument referred to in this table. 'Primary reference' refers to the reference which was used to identify this monument in the thesis (Coopey 2020) related to this database (this can be found in /thesis/). The order of preference for reference works was as follows (DESC): 'CIL', 'AE', 'ILJug', 'Tončinić', 'Betz', 'OtherRef' (see data/corpus for these values). These works are listed in DB-SQL/bibliography_for_db.bib and DB-SQL/bibliography_for_db.ris.</li>
+<li>Values: Each value is a distinct citation. Either in the form of &quot;'Reference work abbreviation', 'Volume', 'Reference number'&quot; for a reference work, or author date (Chicago) for non reference works.</li>
+</ul>
+<ol class="incremental" start="3" style="list-style-type: decimal">
+<li><strong>MonumentType</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the class of archaeological / epigraphic monument. The definitions for the types of monument are as follows:</li>
+<li>'titulus' = &quot;isolated epitaphs with no, or minimal decorations&quot; (Coopey 2020).</li>
+<li>'tegula' = terracotta roof tile.</li>
+<li>'stela' = &quot;stone monuments or ‘slabs’ with an inscribed epitaph bearing formulaic descriptions of the deceased and the commemorators&quot; (Coopey 2020).</li>
+<li>'sacral monument' = a monument of a sacral nature. 'sacral altar' = an altar where the inscription is sacral in nature.</li>
+<li>'milestone' = a milestone from a Roman road.</li>
+<li>'inscription fragment' = a fragmentary from a monument which may have once been funerary or sacral but not enough is left for this to be securely ascertained.</li>
+<li>'funerary inscription' = an inscription fragment with content of a funerary nature whose larger monument has been too damaged to ascertain its specific type.</li>
+<li>'construction dedication' = a dedicatory epitaph commemorating the construction of a building or structure.</li>
+<li>'boundary inscription' = an inscriptions from a boundary stone usually recording the demarcation of land by a Roman official.</li>
+<li>'altar' = a sacrificial altar with a funerary inscription.</li>
+<li>Values: titulus; tegula; stela; sacral monument; sacral altar; milestone; inscription fragment; funerary inscription; construction dedication; boundary inscription; altar.</li>
+</ul>
+<ol class="incremental" start="4" style="list-style-type: decimal">
+<li><strong>Mention_Legio_VII</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument.MonumentOfSeventhLegion)</li>
+<li>Records whether the monument records, commemorates, or was commemorated by, a serviceman/servicemen of Legio VII. Values are 'yes', 'maybe', 'no'. 'yes' = Legio VII is mentioned in what is left of the inscription or it can be reconstructed beyond reasonable doubt. 'maybe' = Legio VII is not mentioned in what is left of the inscription, but one can hypothesise that the monument belonged to a member of Legio VII based on 1) what survives of the inscription, 2) the location of the monument, 3) the style of the monument, 4) a combination of all these factors. 'no' = no mention of Legio VII in extant inscription and no reason to believe it once existed (e.g. refers to a member of another unit). For why these monuments classed a 'no' are included in this database, refer to DBInclusionReason in this table (or data/monument.DBInclusionReason).</li>
+<li>Values: yes, maybe, no</li>
+</ul>
+<ol class="incremental" start="5" style="list-style-type: decimal">
+<li><strong>Inscription</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument.inscription)</li>
+<li>Records a transcription of the inscription found upon each monument in the original Latin or, rarely, ancient Greek, following the <a href="https://en.wikipedia.org/wiki/Leiden_Conventions">Leiden Conventions</a>.</li>
+<li>Values: Each value is a distinct transliteration of an inscription.</li>
+</ul>
+<ol class="incremental" start="6" style="list-style-type: decimal">
+<li><strong>Translation</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument.Translation)</li>
+<li>Records an English translation of the Latin/Ancient Greek (including lacunae where appropriate).</li>
+<li>Values: Each translation is distinct. While there may be duplicate translations, the inscription they are a translation of is distinct, in which case refer to MonumentID to differentiate.</li>
+</ul>
+<ol class="incremental" start="7" style="list-style-type: decimal">
+<li><strong>Source_of_Translation</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (Data/monument.TranslationSource)</li>
+<li>Records the attribution for the English translation of the inscription. <em>null</em> = there is not translation within this dataset concerning this inscription, so there is nothing to attribute. Any attribution involving &quot;Coopey&quot; refers to the co-author of this database of the same name. Other citations are in author-date <a href="https://libguides.mq.edu.au/referencing/Chicago">Chicago</a> style.</li>
+<li>Values: <em>null</em>; Tončinić 2011; Demicheli, Tončinić 2012; Coopey, edit of Tončinić 2011 and Cesarik 2016; Coopey, edit of Tončinić 2011 (made with help of Milićević-Bradač); Coopey, edit of Tončinić 2011; Coopey, edit of Rendić-Miočević 1987; Coopey</li>
+</ul>
+<ol class="incremental" start="8" style="list-style-type: decimal">
+<li><strong>Tončinić_2011_Style_Type</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument.Tončinić2011StelaeType)</li>
+<li>Records the typological style type of the monument according to Tončinić (2011: 150-153). Here <em>null</em> means there is not data relating to this column for a monument = either it is not classifiable within this typology or it is not a funerary monument.</li>
+<li>Values: <em>null</em>; A1a; A1b; A2; A3a; A3b; A3c; Ra; Rb; Rc; altar; tituli</li>
+</ul>
+<ol class="incremental" start="9" style="list-style-type: decimal">
+<li><strong>Lower_Field_Decoration</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monumentLowerFieldDecoration &amp; data/monument.LowerFieldDetail)</li>
+<li>Records what decoration there is within the lower field (portion) of the monument (if any) and any details which can be made out. Here <em>null</em> refers to the absence of data concerning the decoration of the lower field of this monument within this dataset = the monument either does not have a lower field or the lower field is broken off/lost. The broad description of the decoration style is recorded first, followed by any smaller details within this decoration. 'undecorated' = the lower field exists but is not undecorated.</li>
+<li>Values: <em>null</em>; (reduced) dual-panelled door, bow, arrows and quiver; dolabra; dona militaria; panelled door; panelled door, lions and handles; quad-panelled door; quad-panelled door, busts and knockers; quad-panelled door, construction tools; quad-panelled door, door knockers; quad-panelled door, handles; quad-panelled door, handles and knockers; quad-panelled door, knockers and floral; quad-panelled door, lions; quad-panelled door, lions and 'Attis'; quad-panelled door, lions and floral; quad-panelled door, lions and handles; quad-panelled door, lions and vines; undecorated</li>
+</ul>
+<ol class="incremental" start="10" style="list-style-type: decimal">
+<li><strong>Portrait</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument.Portrait)</li>
+<li>Records the type of portrait depicted upon the monument (if any). <em>null</em> refers to the absence of data concerning this feature for a monument within this dataset = the monument is broken/lost.</li>
+<li>Values: <em>null</em>; bust; bust and rider; dual bust; family bust; no portrait; rider</li>
+</ul>
+<ol class="incremental" start="11" style="list-style-type: decimal">
+<li><strong>Frieze</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument.Frieze)</li>
+<li>Records information concerning the decorative style of the frieze upon the monument, if any. <em>null</em> refers to the absence of data concerning a frieze for this monument within this dataset = the frieze is lost or the monument type cannot have a frieze. 'no frieze' means the monument could have had a frieze stylistically speaking, but does not.</li>
+<li>Values: <em>null</em>; floral; military; no frieze.</li>
+</ul>
+<ol class="incremental" start="12" style="list-style-type: decimal">
+<li><strong>Creation_Date</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument.DateFrom &amp; data/monument.DateTo)</li>
+<li>Records the date range for the creation of the monument. The dates are in BCE/CE. With BCE represented by negative values. E.g. -30 = 30 BCE</li>
+<li>Values: The dates range between -30 and 230</li>
+</ul>
+<ol class="incremental" start="13" style="list-style-type: decimal">
+<li><strong>DateNote</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument.DateNote)</li>
+<li>Records a note about the dating of a monument, such as a more specific date, an issue, the rationale for a certain dating or a scholarly disagreement. <em>null</em> means the absence of a note about the date within <em>this</em> dataset.</li>
+<li>Values: Values are distinct (sentences or more specific ranges) or <em>null</em></li>
+</ul>
+<ol class="incremental" start="14" style="list-style-type: decimal">
+<li><strong>Current_Location</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument.ModernHolding &amp; data/monument.HoldingData)</li>
+<li>Records the status/modern location of the monument and any relevant holding number. <em>null</em> means that there is no data concerning the status of this monument within this dataset = no information was available or found. The value 'lost' means that the monument is <em>known</em> to be lost.</li>
+<li>Values: When not <em>null</em> or 'lost', the values are distinct pieces of information about modern location.</li>
+</ul>
+<ol class="incremental" start="15" style="list-style-type: decimal">
+<li><strong>Roman_Province</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/findspot.RomanProvince)</li>
+<li>Records the Roman province wherein the monument was found.</li>
+<li>Values: Dalmatia; Galatia; Moesia Superior; Thracia</li>
+</ul>
+<ol class="incremental" start="16" style="list-style-type: decimal">
+<li><strong>Ancient_Site</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/findspot.AncientSite)</li>
+<li>Records the Latin name of the ancient site where the monument was found. <em>null</em> means there is no data concerning the find site of a monument in this dataset = it has not been recorded or it is not known.</li>
+<li>Values: <em>null</em>; Aequum; Andetrium; Antiochia Pisidiae; Apollonia/Tymandus; Asseria; Burnum; Corinium; Cormasa; Iadera; Iconium; Lysimacheia; Municipium Riditarum/Rider; Narona; Pagus Scunasticus; Pons Tiluri; Salona; Siculi; Spalatum; Tilurium; Tragurium; Viminacium</li>
+</ul>
+<ol class="incremental" start="17" style="list-style-type: decimal">
+<li><strong>Specific_Provenience</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/findspot.SpecificAncientLocation)</li>
+<li>Records more precise and specific data relating to provenience (if available) in relation to a contemporary ancient structures, locations or features. <em>null</em> = no more precise find spot data is available or it was not recorded in this dataset.</li>
+<li>Values: <em>null</em>; East Necropolis; North Necropolis; Porta Caesarea-Five bridges</li>
+</ul>
+<ol class="incremental" start="18" style="list-style-type: decimal">
+<li><strong>Modern_Find_Site</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/findspot.ModernSite)</li>
+<li>Records the modern Croatian or Turkish name of the site where the monument was found.</li>
+<li>Values: <em>null</em>; Bijaći; Bolayir; Danilo; Dicmo; Donji Karin; Drmno; Dugopolje; Filovača; Gardun; Glavica-Ljubuški; Glavice; Gorica; Gornji Muć; Gornji Postinje; Gračine-Humac; Grebine-Vitaljina; Gâvur Ören; Hrvace; Humac; Imotski; Kapljuč; Kistanje; Klis; Konya; Košute; Krinj-Hrvace; Krug; Podgrađe; Popovići; Prud; Razvođe; Seget Donji; Sinj; Sinjsko polje; Smokovice-Hardomilje; Solin; Split; Trilj; Trogir; Vaganj-Jajce; Veljaci; Vid; Vojnić; Vuna-Hardomilje; Yalvaç; Zadar; Čitluk</li>
+</ul>
+<ol class="incremental" start="19" style="list-style-type: decimal">
+<li><strong>Modern_Provenience</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/findspot.SpecificModernLocation)</li>
+<li>Records even more precise information concerning the provenience of the monument. <em>null</em> refers to the lack of data within this dataset concerning provenience. 'uncertain' = it is known that the provenience of this monument in not known.</li>
+<li>Values: <em>null</em>; Cetina River; Church of st Michael; Mausoleum of Diocletian; built into modern structure; carved into rock; part of c.4th Late Antique tomb; re-used in Christian Cemetery; re-used in Medieval Cemetery; secondary use; surrounds of the amphitheatre; ul. Marka Marulića; uncertain</li>
+</ul>
+<ol class="incremental" start="20" style="list-style-type: decimal">
+<li><strong>General_Location_Note</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/findspot.ExtraLocationNote)</li>
+<li>Contains extra information about the location of a monument, such as nearby landmarks or other sites. <em>null</em> means there is not extra information recorded about this site in this database.</li>
+<li>Values: <em>null</em>; 5km from Čitluk; Gradina; Matinčevo-Porta Suburbia I; Pet mostova; could also be from another site around the Sinjsko polje; found between Vojnić and Gardun; near Antiochia Pisidiae; near Burnum/Kistanje; near Dubrava, Poljice; near Jesenice, Poljice; near Karin; near Metković; near Porta Andetria; near Sinj; near Tragurium/Trogir; near Šibenik; right bank of Trebižat river</li>
+</ul>
+<ol class="incremental" start="21" style="list-style-type: decimal">
+<li><strong>Unique_Monument_Provenience_Note</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument.MonumentSpecificFindSpotNote)</li>
+<li>Extra information specific to the provenience and discovery of each monument (where available). <em>null</em> means there is no extra unique information recorded for a monument.</li>
+<li>Values: Each value is either <em>null</em> or a piece/pieces of information distinct to each monument.</li>
+</ul>
+<ol class="incremental" start="22" style="list-style-type: decimal">
+<li><strong>LAT</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/findspot.LATITUDE_epsg_4326)</li>
+<li>Records the latitude of the find spot of the monument using <a href="https://epsg.io/4326">EPSG 326</a>: World Geodetic System 1984. <em>null</em> means that the latitude was not recorded in this dataset because the find spot was not specific enough (e.g., a whole province)</li>
+<li>Values: There are 56 DISTINCT LAT values including <em>null</em></li>
+</ul>
+<ol class="incremental" start="23" style="list-style-type: decimal">
+<li><strong>LONG</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/findspot.LONGITUDE_epsg_4326)</li>
+<li>Records the longitude of the find spot of the monument using <a href="https://epsg.io/4326">EPSG 326</a>: World Geodetic System 1984. <em>null</em> means that the longitude was not recorded in this dataset because the find spot was not specific enough (e.g., a whole province)</li>
+<li>Values: There are 56 DISTINCT LONG values including <em>null</em></li>
+</ul>
+<ol class="incremental" start="24" style="list-style-type: decimal">
+<li><strong>Pleiades</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/findspot.Pleiades)</li>
+<li>Records the URL to the <a href="https://pleiades.stoa.org">Pleiades</a> page for the find site of this monument. The last 6 digits of each URL are also the Pleiades identifier. <em>null</em> means there is no Pleiades entry for the find site of this monument in this dataset = it was not found or does not exist.</li>
+<li>Values: There are 22 DISTINCT Pleiades values including <em>null</em></li>
+</ul>
+<ol class="incremental" start="25" style="list-style-type: decimal">
+<li><strong>Trismegistos</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/findspot.Trismegistos)</li>
+<li>Records the URL to the <a href="https://www.trismegistos.org">Trismegistos</a> page for the find site of this monument. The digits at the end of each URL are also the Trismegistos identifier. <em>null</em> means there is no Trismegistos entry for the find site of this monument in this dataset = it was not found or does not exist.</li>
+<li>Values: There are 30 DISTINCT Trismegistos values including <em>null</em></li>
+</ul>
+<ol class="incremental" start="26" style="list-style-type: decimal">
+<li><strong>MonumentNote</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument.MonumentNote)</li>
+<li>Records any additional information concerning the monument which does not fall into other columns. Such as scholarly debate concerning attribution, the degree of preservation (or lack thereof) and discrepancies in secondary literature. <em>null</em> means no extra information was provided for this monument.</li>
+<li>Values: There are 54 DISTINCT MonumentNote values including <em>null</em></li>
+</ul>
+<ol class="incremental" start="27" style="list-style-type: decimal">
+<li><strong>DBInclusionReason</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument.DBInclusionReason)</li>
+<li>Records the rationale for including the monument when it does not refer/possibly refer to Legio VII in the inscription. <em>null</em> means there was no need state the rational for the inclusion of the monument = it refers, or may refer, to Legio VII.</li>
+<li>Values: There are 21 DISTINCT DBInclusionReason values including <em>null</em></li>
+</ul>
+<ol class="incremental" start="28" style="list-style-type: decimal">
+<li><strong>Media</strong></li>
+</ol>
+<ul class="incremental">
+<li>Source Table: (data/monument.Media)</li>
+<li>Records URLs for images (photos or illustrations) of the monument. Where possible, the URL is for the <a href="http://lupa.at" class="uri">http://lupa.at</a> website. With some monuments having links to EDCS <a href="http://db.edcs.eu" class="uri">http://db.edcs.eu</a>, and some having no images within the database (represented with <em>null</em>)</li>
+<li>Values: <em>null</em> or distinct. Distinct values are all URLs to gallery of images.</li>
 </ul>

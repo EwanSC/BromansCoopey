@@ -34,7 +34,7 @@ FindSpotID,RomanProvince,AncientSite,SpecificAncientLocation,ModernSite,Specific
 33,Dalmatia,"Pagus Scunasticus","","Gračine-Humac","","","",17.528855,43.182217,"",https://www.trismegistos.org/place/43363
 34,Dalmatia,Aequum,"",Hrvace,"","","",16.621101,43.755188,https://pleiades.stoa.org/places/197095,https://www.trismegistos.org/place/19893
 35,Dalmatia,Siculi,"","Bijaći","","","near Tragurium/Trogir",16.298595,43.555434,https://pleiades.stoa.org/places/197511,https://www.trismegistos.org/place/29385
-36,Dalmatia,Salona,"Porta Caesara-Five bridges",Solin,"","","Pet mostova",16.483576,43.538339,https://pleiades.stoa.org/places/197488,https://www.trismegistos.org/place/7043
+36,Dalmatia,Salona,"Porta Caesarea-Five bridges",Solin,"","","Pet mostova",16.483576,43.538339,https://pleiades.stoa.org/places/197488,https://www.trismegistos.org/place/7043
 37,Dalmatia,Salona,"North Necropolis","Kapljuč","re-used in Christian Cemetery","","",16.47679,43.53937,https://pleiades.stoa.org/places/197488,https://www.trismegistos.org/place/7043
 38,Dalmatia,"Pagus Scunasticus","",Grebine-Vitaljina,"re-used in Medieval Cemetery","","",17.5285698,43.182298,"",https://www.trismegistos.org/place/43363
 39,Dalmatia,"","",Vaganj-Jajce,"","","",17.17608,44.15513,"",https://www.trismegistos.org/place/36267
@@ -43,14 +43,14 @@ FindSpotID,RomanProvince,AncientSite,SpecificAncientLocation,ModernSite,Specific
 42,Galatia,Iconium,"",Konya,"","","near Antiochia Pisidiae",32.492331,37.872202,https://pleiades.stoa.org/places/648647,https://www.trismegistos.org/place/2919
 43,Dalmatia,Tragurium,"",Trogir,"","","",16.25063,43.517639,https://pleiades.stoa.org/places/197555,https://www.trismegistos.org/place/29369
 44,Dalmatia,Burnum,"",Kistanje,"","","",16.025622,44.018914,https://pleiades.stoa.org/places/197184,https://www.trismegistos.org/place/29387
-45,Dalmatia,Salona,"East Necropolis?",Klis,"","","",16.496858,43.540222,https://pleiades.stoa.org/places/197488,https://www.trismegistos.org/place/7043
+45,Dalmatia,Salona,"East Necropolis",Klis,"","","",16.496858,43.540222,https://pleiades.stoa.org/places/197488,https://www.trismegistos.org/place/7043
 46,Dalmatia,Tragurium,"","Seget Donji","","","",16.2333,43.5167,https://pleiades.stoa.org/places/197555,https://www.trismegistos.org/place/29369
 47,Dalmatia,Andetrium,"","Gornji Postinje","","","",16.424,43.701,https://pleiades.stoa.org/places/197115,https://www.trismegistos.org/place/29420
 48,Dalmatia,"","","Popovići","","","near Karin",15.663098,44.075137,"",https://www.trismegistos.org/place/36189
 49,Dalmatia,"","",Krug,"","","near Jesenice, Poljice",16.634664,43.456728,"",https://www.trismegistos.org/place/36097
 50,Dalmatia,"","","Razvođe","","","near Burnum/Kistanje",16.107708,43.92898,"",""
 51,Dalmatia,"","",Gorica,"","","near Dubrava, Poljice",16.647371,43.495214,"",""
-52,Dalmatia,Aequum?,"","Sinjsko polje","","","",16.695576,43.675387,"",""
+52,Dalmatia,Aequum,"","Sinjsko polje","","","could also be from another site around the Sinjsko polje",16.695576,43.675387,"",""
 53,Dalmatia,Aequum,"",Krinj-Hrvace,"","","",16.644167,43.745556,https://pleiades.stoa.org/places/197095,https://www.trismegistos.org/place/19893
 54,Dalmatia,Aequum,"","Čitluk","","","",16.655704,43.739278,https://pleiades.stoa.org/places/197095,https://www.trismegistos.org/place/19893
 55,Galatia,Apollonia/Tymandus,"","","","","",30.607024,38.104416,https://pleiades.stoa.org/places/609563,https://www.trismegistos.org/place/16444
