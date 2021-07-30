@@ -72,7 +72,7 @@ The **5** analysis tables and their columns are:
 
 ### all_servicemen.csv
 * This table combines data from multiple tables within the dataset to provide an overview of the servicemen recorded on monuments within the corpus.
-* This Table is created with this .sql code:
+* This table is created with this .sql code:
 
 ``` SQL
 SELECT DISTINCT
