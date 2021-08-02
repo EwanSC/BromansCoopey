@@ -1,0 +1,131 @@
+<h1 id="dictionary-for-data-tables">Dictionary for /data tables</h1>
+<h2 id="overview">Overview</h2>
+<p>There are 8 tables of data which comprise this database. These are stored in csv files in /data/. The original csv files are in /original_source_data/ and these were imported into a SQLite database (BromansDB.db) after running the creation statement in DB-SQL/create_monument_db.sql via rebuildDB.sh. Once in the database these tables (and related analysis tables, see analysis/analysis_dictionary) were then exported using DB-SQL/exportDatabase.sh.</p>
+<p>These tables hold various types of geographical, epigraphical, visual, and historical data related to inscribed Roman funerary monuments belonging to, or commemorating, servicemen or veterans of the Roman Seventh Legion (Legio VII) in the province of Dalmatia (the modern Eastern Adriatic coastline and hinterland), as well as select pieces of relevant sacral and administrative epigraphic material.</p>
+<h2 id="the-tables">The Tables</h2>
+<p>The <strong>8</strong> data tables and their columns are: 1. <strong>corpus.csv</strong> * CorpusName 2. <strong>findspot</strong> * FindSpotID * RomanProvince * AncientSite * SpecificAncientLocation * ModernSite * SpecificModernLocation * ModernLocationNote * ExtraLocationNote * LONGITUDE_epsg_4326 * LATITUDE_epsg_4326 * Pleiades * Trismegistos 3. <strong>legio_serviceman</strong> * ServicemanID * Name * DefiniteServiceman * UnitID * LiklihoodOfUnitAttribution * MilitaryStatusID * Tribe * OriginProvince * OriginSettlement * OriginCertainty * TribusDomiciliumNote * ServicemanNote 4. <strong>military_status</strong> * MilitaryStatusID * FirstRecordedOffice * SecondRecordedOffice * FirstOfficeCertainty * SecondOfficeCertainty * VeteranStatus * VeteranStatusCertainty 5. <strong>monument</strong> * MonumentID * FindSpotID * MonumentSpecificFindspotNote * PublicationCitation * DateFoundOrPublished * DateFoundorPublishedPrecisionNote * MonumentType * MonumentOfSeventhLegion * Inscription * Translation * TranslationSource * LowerFieldDecoration * LowerFieldDetail * Portrait * Frieze * DateFrom * DateTo * DateNote * Tončinić2011StelaeType * ModernHolding * HoldingData * MonumentNote * DBInclusionReason * Media 6. <strong>monument_corpus</strong> * MonumentCorpusID * MonumentID * CorpusName * Reference * isPrimaryReference 7. <strong>monument_serviceman</strong> * MonumentServicemanID * ServicemanID * MonumentID * ServicemanReferencedAs * PossibleDuplicateServicemanID * SourceForDuplicateArgument 8. <strong>unit</strong> * UnitID * UnitTitle</p>
+<h2 id="table-field-descriptions">Table Field Descriptions</h2>
+<h3 id="corpus.csv">corpus.csv</h3>
+<ul class="incremental">
+<li>This table records the categories (abbreviations) of bibliographic corpora that are listed in this database. It is linked to data/monument_corpus.CorpusName.</li>
+<li>This table is created using the .sql code:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">TABLE</span> corpus (
+    CorpusName TEXT <span class="kw">PRIMARY</span> <span class="kw">KEY</span>
+);</code></pre></div>
+<ul class="incremental">
+<li>Columns:</li>
+</ul>
+<ol class="incremental" style="list-style-type: decimal">
+<li><strong>CorpusName</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the categories (abbreviations) of bibliographic corpora that are listed in this database.</li>
+<li>Distinct Values: AE; Betz; CIL; EDCS; EDH; ILJug; Other Ref; Tončinić. These abbreviations are all expanded upon in the database bibliography: DB-SQL/bibliography_for_db.bib &amp; DB-SQL/bibliography_for_db.ris. 'Other Ref' = a corpus, reference work, article or book which is not covered by the other categories.</li>
+</ul>
+<h3 id="findspot.csv">findspot.csv</h3>
+<ul class="incremental">
+<li>This table...</li>
+<li>This table is created using the .sql code:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">TABLE</span> findspot (
+    FindSpotID <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,
+    RomanProvince TEXT,
+    AncientSite TEXT,
+    SpecificAncientLocation TEXT,
+    ModernSite TEXT,
+    SpecificModernLocation TEXT,
+    ModernLocationNote TEXT,
+    ExtraLocationNote TEXT,
+    LONGITUDE_epsg_4326 <span class="dt">NUMBER</span>,
+    LATITUDE_epsg_4326 <span class="dt">NUMBER</span>,
+    Pleiades TEXT,
+    Trismegistos TEXT
+);</code></pre></div>
+<ul class="incremental">
+<li>Columns</li>
+</ul>
+<ol class="incremental" style="list-style-type: decimal">
+<li><strong>FindSpotID</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records an identifier for each row of findspot data. This primary key is a surrogate key.</li>
+<li>Distinct Values: 1-66</li>
+</ul>
+<ol class="incremental" start="2" style="list-style-type: decimal">
+<li><strong>RomanProvince</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the Latin name of the Roman Imperial province where a monument was found. The name used is the same name as that which would have been used when the monument was created (e.g. contemporaneous).</li>
+<li>Distinct Values: Dalmatia; Thracia; Moesia Superior; Galatia</li>
+</ul>
+<ol class="incremental" start="3" style="list-style-type: decimal">
+<li><strong>AncientSite</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the Latin name of the ancient site where the monument was found. <em>null</em> means there is no data concerning the find site of a monument in this dataset = it has not been recorded or it is not known.</li>
+<li>Distinct Values: <em>null</em>; Aequum; Andetrium; Antiochia Pisidiae; Apollonia/Tymandus; Asseria; Burnum; Corinium; Cormasa; Iadera; Iconium; Lysimacheia; Municipium Riditarum/Rider; Narona; Pagus Scunasticus; Pons Tiluri; Salona; Siculi; Spalatum; Tilurium; Tragurium; Viminacium</li>
+</ul>
+<ol class="incremental" start="4" style="list-style-type: decimal">
+<li><strong>SpecificAncientLocation</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records a precise and specific data relating to provenience (if available) in relation to a contemporary ancient structures, locations or features. 'null' = no specific ancient find site has been recorded in this dataset.</li>
+<li>Distinct Values: <em>null</em>; North Necropolis; East Necropolis; Porta Caesarea-Five bridges</li>
+</ul>
+<ol class="incremental" start="5" style="list-style-type: decimal">
+<li><strong>ModernSite</strong></li>
+</ol>
+<ul class="incremental">
+<li></li>
+<li>Distinct Values:</li>
+</ul>
+<ol class="incremental" start="6" style="list-style-type: decimal">
+<li><strong>SpecificModernLocation</strong></li>
+</ol>
+<ul class="incremental">
+<li></li>
+<li>Distinct Values:</li>
+</ul>
+<ol class="incremental" start="7" style="list-style-type: decimal">
+<li><strong>ModernLocationNote</strong></li>
+</ol>
+<ul class="incremental">
+<li></li>
+<li>Distinct Values:</li>
+</ul>
+<ol class="incremental" start="8" style="list-style-type: decimal">
+<li><strong>ExtraLocationNote</strong></li>
+</ol>
+<ul class="incremental">
+<li></li>
+<li>Distinct Values:</li>
+</ul>
+<ol class="incremental" start="9" style="list-style-type: decimal">
+<li><strong>LONGITUDE_epsg_4326</strong></li>
+</ol>
+<ul class="incremental">
+<li></li>
+<li>Distinct Values:</li>
+</ul>
+<ol class="incremental" start="10" style="list-style-type: decimal">
+<li><strong>LATITUDE_epsg_4326</strong></li>
+</ol>
+<ul class="incremental">
+<li></li>
+<li>Distinct Values:</li>
+</ul>
+<ol class="incremental" start="11" style="list-style-type: decimal">
+<li><strong>Pleiades</strong></li>
+</ol>
+<ul class="incremental">
+<li></li>
+<li>Distinct Values:</li>
+</ul>
+<ol class="incremental" start="12" style="list-style-type: decimal">
+<li><strong>Trismegistos</strong></li>
+</ol>
+<ul class="incremental">
+<li></li>
+<li>Distinct Values:</li>
+</ul>
