@@ -2,7 +2,7 @@
 
 ## Overview
 
-There are 8 tables of data which comprise this database. These are stored in csv files in /data/. The original csv  files are in /original_source_data/ and these were imported into a .DB file (BromansDB.db) after running the creation statement in DB-SQL/create_monument_db.sql via rebuildDB.sh. Once in the database these tables (and related analysis tables, see analysis/analysis_dictionary) were then exported using DB-SQL/exportDatabase.sh.
+There are 8 tables of data which comprise this database. These are stored in csv files in /data/. The original csv  files are in /original_source_data/ and these were imported into a SQLite database (BromansDB.db) after running the creation statement in DB-SQL/create_monument_db.sql via rebuildDB.sh. Once in the database these tables (and related analysis tables, see analysis/analysis_dictionary) were then exported using DB-SQL/exportDatabase.sh.
 
 These tables hold various types of geographical, epigraphical, visual, and historical data related to inscribed Roman funerary monuments belonging to, or commemorating, servicemen or veterans of the Roman Seventh Legion (Legio VII) in the province of Dalmatia (the modern Eastern Adriatic coastline and hinterland), as well as select pieces of relevant sacral and administrative epigraphic material.
 
@@ -13,7 +13,8 @@ The **8** data tables and their columns are:
 * CorpusName
 2. **findspot**
 * FindSpotID
-* Roman_Province
+* RomanProvince
+* AncientSite
 * SpecificAncientLocation
 * ModernSite
 * SpecificModernLocation
@@ -125,36 +126,39 @@ CREATE TABLE findspot (
 ```
 
 * Columns
-1. FindSpotID
+1. **FindSpotID**
+* Records an identifier for each row of findspot data. This primary key is a surrogate key.
+* Distinct Values: 1-66
+2. **RomanProvince**
+* Records the Latin name of the Roman Imperial province where a monument was found. The name used is the same name as that which would have been used when the monument was created (e.g. contemporaneous).
+* Distinct Values: Dalmatia; Thracia; Moesia Superior; Galatia
+3. **AncientSite**
+* Records the Latin name of the ancient site where the monument was found. _null_ means there is no data concerning the find site of a monument in this dataset = it has not been recorded or it is not known.
+* Distinct Values: _null_; Aequum; Andetrium; Antiochia Pisidiae; Apollonia/Tymandus; Asseria; Burnum; Corinium; Cormasa; Iadera; Iconium; Lysimacheia; Municipium Riditarum/Rider; Narona; Pagus Scunasticus; Pons Tiluri; Salona; Siculi; Spalatum; Tilurium; Tragurium; Viminacium
+4. **SpecificAncientLocation**
+* Records a precise and specific data relating to provenience (if available) in relation to a contemporary ancient structures, locations or features. 'null' = no specific ancient find site has been recorded in this dataset.
+* Distinct Values: _null_; North Necropolis; East Necropolis; Porta Caesarea-Five bridges
+5. **ModernSite**
 *
 * Distinct Values:
-2. Roman_Province
+6. **SpecificModernLocation**
 *
 * Distinct Values:
-3. SpecificAncientLocation
+7. **ModernLocationNote**
 *
 * Distinct Values:
-4. ModernSite
+8. **ExtraLocationNote**
 *
 * Distinct Values:
-5. SpecificModernLocation
+9. **LONGITUDE_epsg_4326**
 *
 * Distinct Values:
-6. ModernLocationNote
+10. **LATITUDE_epsg_4326**
 *
 * Distinct Values:
-7. ExtraLocationNote
+11. **Pleiades**
 *
 * Distinct Values:
-8. LONGITUDE_epsg_4326
-*
-* Distinct Values:
-9. LATITUDE_epsg_4326
-*
-* Distinct Values:
-10. Pleiades
-*
-* Distinct Values:
-11. Trismegistos
+12. **Trismegistos**
 *
 * Distinct Values:
