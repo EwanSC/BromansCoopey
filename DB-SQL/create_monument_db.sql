@@ -58,8 +58,8 @@ CREATE TABLE monument (
 	LowerFieldDetail TEXT,
 	Portrait TEXT,
 	Frieze TEXT,
-	DateFrom DATE,
-	DateTo DATE,
+	DateFrom INTEGER, -- INTEGER YEAR - years are BCE
+	DateTo INTEGER, -- INTEGER YEAR - years are BCE
 	DateNote TEXT,
 	Tončinić2011StelaeType TEXT,
 	ModernHolding TEXT,
