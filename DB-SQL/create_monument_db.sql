@@ -38,7 +38,12 @@ UPDATE findspot SET LATITUDE_epsg_4326 = NULL WHERE LATITUDE_epsg_4326 = '';
 UPDATE findspot SET Pleiades = NULL WHERE Pleiades = '';
 UPDATE findspot SET Trismegistos = NULL WHERE Trismegistos = '';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d191af6763ba1bcd16e290c59b56393ec2f3b767
 select 'findspotsloaded', count(*) from findspot;
+select 'nulls in findspot SpecificModernLocation', count(*) from findspot where SpecificModernLocation is null;
 
 
 CREATE TABLE monument (
