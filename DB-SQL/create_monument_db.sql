@@ -23,6 +23,9 @@ CREATE TABLE findspot (
 	Trismegistos TEXT
 );
 
+.mode csv
+.import ../original_source_data/findspot.csv findspot
+
 UPDATE findspot SET RomanProvince = NULL WHERE RomanProvince = '';
 UPDATE findspot SET AncientSite = NULL WHERE AncientSite = '';
 UPDATE findspot SET SpecificAncientLocation = NULL WHERE SpecificAncientLocation = '';
@@ -36,10 +39,8 @@ UPDATE findspot SET Pleiades = NULL WHERE Pleiades = '';
 UPDATE findspot SET Trismegistos = NULL WHERE Trismegistos = '';
 
 
-.mode csv
-.import ../original_source_data/findspot.csv findspot
-
 select 'findspotsloaded', count(*) from findspot;
+select 'nulls in findspot SpecificModernLocation', count(*) from findspot where SpecificModernLocation is null;
 
 
 CREATE TABLE monument (
