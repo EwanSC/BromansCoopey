@@ -102,10 +102,10 @@ CREATE TABLE corpus (
 * Columns:
 1. **CorpusName**
 * Records the categories (abbreviations) of bibliographic corpora that are listed in this database.
-* Distinct Values: AE; Betz; CIL; EDCS; EDH; ILJug; Other Ref; Tončinić. These abbreviations are all expanded upon in the database bibliography: DB-SQL/bibliography_for_db.bib & DB-SQL/bibliography_for_db.ris. 'Other Ref' = a corpus, reference work, article or book which is not covered by the other categories.
+* Values: AE; Betz; CIL; EDCS; EDH; ILJug; Other Ref; Tončinić. These abbreviations are all expanded upon in the database bibliography: DB-SQL/bibliography_for_db.bib & DB-SQL/bibliography_for_db.ris. 'Other Ref' = a corpus, reference work, article or book which is not covered by the other categories.
 
 ### findspot.csv
-* This table...
+* This table records the contextual and geographical find spot data for the monuments within the database.
 * This table is created using the .sql code:
 
 ``` SQL
@@ -127,38 +127,38 @@ CREATE TABLE findspot (
 
 * Columns
 1. **FindSpotID**
-* Records an identifier for each row of findspot data. This primary key is a surrogate key.
-* Distinct Values: 1-66
+* Records an identifier for each row of find spot data. This primary key is a surrogate key.
+* Values: 1-66
 2. **RomanProvince**
-* Records the Latin name of the Roman Imperial province where a monument was found. The name used is the same name as that which would have been used when the monument was created (e.g. contemporaneous).
-* Distinct Values: Dalmatia; Thracia; Moesia Superior; Galatia
+* Records the Latin name of the Roman Imperial province where a monument was found. The name used is the same name as that which would have been used when the monument was created (e.g. contemporaneous), except for 'Dalmatia', which is also used for monuments that were created when this region was part of the bigger province named Illyricum which was split some time under Tiberius or Claudius into Dalmatia and Pannonia.
+* Constrained Vocabulary from https://pleiades.stoa.org/places. Values: Dalmatia; Thracia; Moesia Superior; Galatia
 3. **AncientSite**
 * Records the Latin name of the ancient site where the monument was found. _null_ means there is no data concerning the find site of a monument in this dataset = it has not been recorded or it is not known.
-* Distinct Values: _null_; Aequum; Andetrium; Antiochia Pisidiae; Apollonia/Tymandus; Asseria; Burnum; Corinium; Cormasa; Iadera; Iconium; Lysimacheia; Municipium Riditarum/Rider; Narona; Pagus Scunasticus; Pons Tiluri; Salona; Siculi; Spalatum; Tilurium; Tragurium; Viminacium
+* Constrained vocabulary, where possible values are taken from https://www.trismegistos.org/geo/, otherwise see analysis/all_corpora for source works. Values: _null_; Aequum; Andetrium; Antiochia Pisidiae; Apollonia/Tymandus; Asseria; Burnum; Corinium; Cormasa; Iadera; Iconium; Lysimacheia; Municipium Riditarum/Rider; Narona; Pagus Scunasticus; Pons Tiluri; Salona; Siculi; Spalatum; Tilurium; Tragurium; Viminacium
 4. **SpecificAncientLocation**
 * Records a precise and specific data relating to provenience (if available) in relation to a contemporary ancient structures, locations or features. 'null' = no specific ancient find site has been recorded in this dataset.
-* Distinct Values: _null_; North Necropolis; East Necropolis; Porta Caesarea-Five bridges
+* Values: Constrained vocabulary (own): _null_; North Necropolis; East Necropolis; Porta Caesarea-Five bridges
 5. **ModernSite**
-*
-* Distinct Values:
+* Records the modern Croatian or Turkish name of the site where the monument was found.
+* Values: Constrained vocabulary from various academic written sources:
 6. **SpecificModernLocation**
 *
-* Distinct Values:
+* Values:
 7. **ModernLocationNote**
 *
-* Distinct Values:
+* Values:
 8. **ExtraLocationNote**
 *
-* Distinct Values:
+* Values:
 9. **LONGITUDE_epsg_4326**
 *
-* Distinct Values:
+* Values:
 10. **LATITUDE_epsg_4326**
 *
-* Distinct Values:
+* Values:
 11. **Pleiades**
 *
-* Distinct Values:
+* Values:
 12. **Trismegistos**
 *
-* Distinct Values:
+* Values:
