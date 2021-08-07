@@ -1,4 +1,4 @@
-ServicemanID,Name,DefiniteServiceman,UnitID,LiklihoodOfUnitAttribution,MilitaryStatusID,Tribe,OriginProvince,OriginSettlement,OriginCertainty,TribusDomiciliumNote,ServicemanNote
+ServicemanID,Name,DefiniteServiceman,UnitID,LiklihoodOfUnitAttribution,MilitaryStatusID,Tribe,OriginProvince,OriginSettlement,OriginCertainty,TribeSettlementNote,ServicemanNote
 1,"veteranorum? leg VII CPF",yes,2,"epigraphically attested",8,,,,,,
 2,"Lucius Vettius Secundus, son of Marcus",yes,1,"epigraphically attested",14,Maecia,Italy,Libarna,,,
 3,"Lucius Ancharenus, son of Quintus",yes,1,"epigraphically attested",1,Sergia,Galatia,Laranda,,,

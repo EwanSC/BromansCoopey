@@ -15,7 +15,6 @@ CREATE TABLE findspot (
 	SpecificAncientLocation TEXT,
 	ModernSite TEXT,
 	SpecificModernLocation TEXT,
-	ModernLocationNote TEXT,
 	ExtraLocationNote TEXT,
 	LONGITUDE_epsg_4326 NUMBER,
 	LATITUDE_epsg_4326 NUMBER,
@@ -31,19 +30,13 @@ UPDATE findspot SET AncientSite = NULL WHERE AncientSite = '';
 UPDATE findspot SET SpecificAncientLocation = NULL WHERE SpecificAncientLocation = '';
 UPDATE findspot SET ModernSite = NULL WHERE ModernSite = '';
 UPDATE findspot SET SpecificModernLocation = NULL WHERE SpecificModernLocation = '';
-UPDATE findspot SET ModernLocationNote = NULL WHERE ModernLocationNote = '';
 UPDATE findspot SET ExtraLocationNote = NULL WHERE ExtraLocationNote = '';
 UPDATE findspot SET LONGITUDE_epsg_4326 = NULL WHERE LONGITUDE_epsg_4326 = '';
 UPDATE findspot SET LATITUDE_epsg_4326 = NULL WHERE LATITUDE_epsg_4326 = '';
 UPDATE findspot SET Pleiades = NULL WHERE Pleiades = '';
 UPDATE findspot SET Trismegistos = NULL WHERE Trismegistos = '';
 
-<<<<<<< HEAD
-=======
-
->>>>>>> d191af6763ba1bcd16e290c59b56393ec2f3b767
 select 'findspotsloaded', count(*) from findspot;
-select 'nulls in findspot SpecificModernLocation', count(*) from findspot where SpecificModernLocation is null;
 
 
 CREATE TABLE monument (
@@ -180,7 +173,7 @@ CREATE TABLE legio_serviceman (
 	OriginProvince TEXT,
 	OriginSettlement TEXT,
 	OriginCertainty TEXT,
-	TribusDomiciliumNote TEXT,
+	TribeSettlementNote TEXT,
 	ServicemanNote TEXT
 );
 -- 'ServicemanID' is used to refer to the Legio VII serviceman recorded upon the inscription. There can be multiple per MonumentID
@@ -201,7 +194,7 @@ UPDATE legio_serviceman SET OriginProvince = NULL WHERE OriginProvince = '';
 UPDATE legio_serviceman SET OriginSettlement = NULL WHERE OriginSettlement = '';
 UPDATE legio_serviceman SET OriginCertainty = NULL WHERE OriginCertainty = '';
 UPDATE legio_serviceman SET ServicemanNote = NULL WHERE ServicemanNote = '';
-UPDATE legio_serviceman SET TribusDomiciliumNote = NULL WHERE TribusDomiciliumNote = '';
+UPDATE legio_serviceman SET TribeSettlementNote = NULL WHERE TribeSettlementNote = '';
 
 
 
