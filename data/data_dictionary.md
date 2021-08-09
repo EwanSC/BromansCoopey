@@ -412,7 +412,7 @@ CREATE TABLE monument_corpus (
 * Constrained values: 1; _null_
 
 ### monument_serviceman.csv
-* This table...
+* This table records data relating to which monuments refer to which servicemen, and in what capacity.
 * This table is created using the .sql code:
 
 ``` SQL
@@ -428,20 +428,45 @@ CREATE TABLE monument_serviceman (
 
 * Columns
 1. MonumentServicemanID
-*
-* Values:
+* Primary key and surrogate key. Provides means of identification for each combination of monument (MonumentID) and serviceman (ServicemanID).
+* Numerical values: 1-139
 2. ServicemanID
-*
-* Values:
+* Foreign key and surrogate key referencing data/legio_serviceman.ServicemanID. Identifies the serviceman referred to on a monument.
+* Constrained numerical values: 1-137
 3. MonumentID
-*
-* Values:
+* Foreign key and surrogate key referencing data/monument.MonumentID and  identifying the monument in each line.
+* Constrained numerical values: 2; 4-109; 126-130
 4. ServicemanReferencedAs
-*
-* Values:
+* Records the capacity in which the serviceman/servicemen were referred to in the monument's inscription. _null_ means that their capacity is not ascertainable or has not been recorded in this dataset. Other than _null_ there are 6 possible values:
+	* 'administrator' = referred to in an administrative capacity.
+	* 'commemorated' = commemorated by the monument.
+	* 'commemorator' = erected the monument in commemoration of another/others.
+	* 'commemorator and commemorated' = erected the monument in commemoration of others and/or themselves.
+	* 'dedicant' = dedicated the monument to a certain deity (typically used in reference to altars)
+	* 'political supporter' = referred to as a political supporter
+* Constrained values (own): _null_; administrator; commemorated; commemorator; commemorator and commemorated; dedicant; political supporter
 5. PossibleDuplicateServicemanID
-*
-* Values:
+* Records if the serviceman may be a duplicate of another serviceman with a separate ServicemanID from another MonumentID. Provideds the ServicemanID of the possible duplciate. _null_ means no information regarding possible duplicates has been recorded in this dataset (they are represented as duplicates in the dataset already, or they have no potential duplicates).
+* Values: _null_, 102; 107
 6. SourceForDuplicateArgument
-*
-* Values:
+* Records the bibliographical reference for any scholarly sources which hypothesise that a certain ServicemanID may be a duplicate of another ServicemanID. _null_ means there has been no data recorded for this column in this dataset.
+* Values: Textual descriptions or _null_
+
+### 8. unit.csv
+* This table records data concerning the unit, or possible combinations of units, an individual serviceman can be assigned within this dataset.
+* This table is created using the .sql code:
+
+``` SQL
+CREATE TABLE unit (
+	UnitID INTEGER PRIMARY KEY,
+	UnitTitle TEXT
+);
+```
+
+* Columns
+1. **UnitID**
+* Primary key and surrogate key which records the unit/s a serviceman may have served in according to the inscription on a monument. This column can be joined with data/unit.UnitTitle to be more (human) reader friendly. As seen with analysis/all_servicemen.Unit_Affiliation_and_Certainty.
+* Numerical values: 1-12
+2. **UnitTitle**
+* Latin name of Roman unit/s that a serviceman served in, or likely served in.
+* Constrained vocabulary. Values: Ala Tungrorum; Cohors II Cyrrhestarum; Legio VII; Legio VII Claudia; Legio VII Claudia pia fidelis; Legio VII Claudia pia fidelis and VII Claudia; Legio VII Claudia pia fidelis or XI Claudia pia fidelis; Legio VII Macedonica; Legio VII or VII Claudia pia fidelis; Legio VII or VIII; Legio VII, VII Claudia pia fidelis, XI, XI Claudia pia fidelis; Legio XI
