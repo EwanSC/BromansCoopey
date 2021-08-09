@@ -188,7 +188,7 @@ SELECT MonumentID, CIL, Tončinić, Betz, ILJug, AE, EDCS, EDH, OtherRef
 * Columns:
 1. **MonumentID**
 * Source Table: (data/monument.MonumentID)
-* MonumentID is a surrogate key and Foreign key linking from data/monument. It identifies the monument each line in this table is referring too, providing their means of identification within this dataset.
+* MonumentID is a surrogate key and Foreign key linking from data/monument. It identifies the monument each line in this table is referring to, providing their means of identification within this dataset.
 * Values: 1-130
 2. **CIL**
 * Source Table: (data/monument_corpus.CorpusName & data/monument_corpus.Reference)
@@ -371,8 +371,8 @@ SELECT
 * Constrained vocabulary from Tončinić (2011). Values: _null_; A1a; A1b; A2; A3a; A3b; A3c; Ra; Rb; Rc; altar; tituli
 9. **Lower_Field_Decoration**
 * Source Table: (data/monumentLowerFieldDecoration & data/monument.LowerFieldDetail)
-* Records what decoration there is within the lower field (portion) of the monument (if any) and any details which can be made out. Here _null_ refers to the absence of data concerning the decoration of the lower field of this monument within this dataset = the monument either does not have a lower field or the lower field is broken off/lost. The broad description of the decoration style is recorded first, followed by any smaller details within this decoration. 'undecorated' = the lower field exists but is not undecorated.
-* Values: Constrained textual descriptions, own vocabulary: _null_; (reduced) dual-panelled door, bow, arrows and quiver; dolabra; dona militaria; panelled door; panelled door, lions and handles; quad-panelled door; quad-panelled door, busts and knockers; quad-panelled door, construction tools; quad-panelled door, door knockers; quad-panelled door, handles; quad-panelled door, handles and knockers; quad-panelled door, knockers and floral; quad-panelled door, lions; quad-panelled door, lions and 'Attis'; quad-panelled door, lions and floral; quad-panelled door, lions and handles; quad-panelled door, lions and vines; undecorated
+* Records what decoration there is within the lower field (portion) of the monument (if any) and any details which can be made out. Here _null_ refers to the absence of data concerning the decoration of the lower field of this monument within this dataset = the monument either does not have a lower field or the lower field is broken off/lost. The broad description of the decoration style is recorded first, followed by any smaller details within this decoration. 'undecorated' = the lower field exists but is undecorated.
+* Textual descriptions, own vocabulary with some monuments sharing same value. Values: _null_; (reduced) dual-panelled door, bow, arrows and quiver; dolabra; dona militaria; panelled door; panelled door, lions and handles; quad-panelled door; quad-panelled door, busts and knockers; quad-panelled door, construction tools; quad-panelled door, door knockers; quad-panelled door, handles; quad-panelled door, handles and knockers; quad-panelled door, knockers and floral; quad-panelled door, lions; quad-panelled door, lions and 'Attis'; quad-panelled door, lions and floral; quad-panelled door, lions and handles; quad-panelled door, lions and vines; undecorated
 10. **Portrait**
 * Source Table: (data/monument.Portrait)
 * Records the type of portrait depicted upon the monument (if any). _null_ refers to the absence of data concerning this feature for a monument within this dataset = the monument is broken/lost.

@@ -100,8 +100,8 @@ CREATE TABLE corpus (
 
 * Columns:
 1. **CorpusName**
-* Records the categories (abbreviations) of bibliographic corpora that are listed in this database.
-* Values: AE; Betz; CIL; EDCS; EDH; ILJug; Other Ref; Tončinić. These abbreviations are all expanded upon in the database bibliography: DB-SQL/bibliography_for_db.bib & DB-SQL/bibliography_for_db.ris. 'Other Ref' = a corpus, reference work, article or book which is not covered by the other categories.
+* Records the categories (abbreviations) of bibliographic corpora that are listed in this database. Primary key. Abbreviations are all expanded upon in the database bibliography: DB-SQL/bibliography_for_db.bib & DB-SQL/bibliography_for_db.ris. 'Other Ref' = a corpus, reference work, article or book which is not covered by the other categories.
+* Values: AE; Betz; CIL; EDCS; EDH; ILJug; Other Ref; Tončinić.
 
 ### findspot.csv
 * This table records the contextual and geographical find spot data for the monuments within the database.
@@ -125,7 +125,7 @@ CREATE TABLE findspot (
 
 * Columns
 1. **FindSpotID**
-* Records an identifier for each row of find spot data. This primary key is a surrogate key.
+* Records an identifier for each row of find spot data. This primary key is a surrogate key. Identifies the various geographical locations of findspots for monuments within this corpus
 * Values: 1-66
 2. **RomanProvince**
 * Records the Latin name of the Roman Imperial province where a monument was found. The name used is the same name as that which would have been used when the monument was created (e.g. contemporaneous), except for 'Dalmatia', which is also used for monuments that were created when this region was part of the bigger province named Illyricum which was split some time under Tiberius or Claudius into Dalmatia and Pannonia.
@@ -159,7 +159,7 @@ CREATE TABLE findspot (
 * URL values: 30 DISTINCT Trismegistos values including _null_
 
 ### legio_serviceman.csv
-* This table records data concerning the servicemen and potential servicemen within this corpus.
+* This table records data concerning the servicemen and potential servicemen within this corpus. It is the 'core' table of the dataset for legionary/serviceman data, alongside data/monument which is the 'core' for monument information.
 * This table is created using the .sql code:
 
 ``` SQL
@@ -259,7 +259,7 @@ Records the certainty of the attribution of this veteran status to a serviceman.
 
 ### monument.csv
 
-* This table records...
+* This table records data about the monuments held within this dataset. It is the 'core' table of the dataset for monument data, alongside data/legio_serviceman which is the 'core' for legionary information.
 * This table is created using the .sql code:
 
 ``` SQL
@@ -292,74 +292,156 @@ CREATE TABLE monument (
 ```
 * Columns
 1. **MonumentID**
-*
-Values
+* MonumentID is a primary key and a surrogate key. It identifies the monument in each line, providing their means of identification within this entire dataset.
+* Numerical values: 1-130
 2. **FindSpotID**
-*
-Values
+* A foreign key referencing data/findspot.FindSpotID. A surrogate key which identifies the various geographical locations of findspots for monuments within this corpus. Designed to be used to join this table with data from the findspot table, as seen with analysis/all_monument_with_location.csv.
+* Numerical values: 1-66
 3. **MonumentSpecificFindspotNote**
-*
-Values
+* Extra information unique to the provenience and discovery of each monument (where available). _null_ means there is no extra unique information recorded for a monument.
+* Values: Textual descriptions. Each value is either _null_ or a piece/pieces of information distinct to each monument.
 4. **PublicationCitation**
-*
-Values
+* Records the work in which the monument was first cited. All works are recorded in the DB-SQL/bibliography_for_db.bib and DB-SQL/bibliography_for_db.ris files. _null_ means no data about first publication was recorded in this dataset.
+* Some values (citations) are shared between monuments. Values: There are 50 distinct values, including _null_. Citations are in author date format [Chicago](https://libguides.mq.edu.au/referencing/Chicago) or an abbreviation.
 5. **DateFoundOrPublished**
-*
-Values
+* Records the year in which the monument is thought to have been found, or when it was first published (to ascertain if it records the publishing date, correspond with data/monument.PublicationCitation). _null_ means no data about discovery/publish date is recorded in this dataset.
+* Some values (years) are shared between monuments. Values: 38 distinct values including _null_
 6. **DateFoundorPublishedPrecisionNote**
-*
-Values
+* Contains textual note on the precision or nature of a publication/discovery date. _null_ means no notes on discovery/publish date are recorded in this dataset.
+* Values: Textual descriptions. There are 30 distinct values including _null_
 7. **MonumentType**
-*
-Values
+* Records the class of archaeological / epigraphic monument. The definitions for the types of monument are as follows:
+  * 'titulus' = "isolated epitaphs with no, or minimal decorations" (Coopey 2020).
+  * 'tegula' = terracotta roof tile.
+  * 'stela' = "stone monuments or ‘slabs’ with an inscribed epitaph bearing formulaic descriptions of the deceased and the commemorators" (Coopey 2020).
+  * 'sacral monument' = a monument of a sacral nature. 'sacral altar' = an altar where the inscription is sacral in nature.
+  * 'milestone' = a milestone from a Roman road.
+  * 'inscription fragment' = a fragmentary from a monument which may have once been funerary or sacral but not enough is left for this to be securely ascertained.
+  * 'funerary inscription' = an inscription fragment with content of a funerary nature whose larger monument has been too damaged to ascertain its specific type.
+  * 'construction dedication' = a dedicatory epitaph commemorating the construction of a building or structure.
+  * 'boundary inscription' = an inscriptions from a boundary stone usually recording the demarcation of land by a Roman official.
+  * 'altar' = a sacrificial altar with a funerary inscription.
+* Constrained vocabulary (see above). Values: titulus; tegula; stela; sacral monument; sacral altar; milestone; inscription fragment; funerary inscription; construction dedication; boundary inscription; altar.
 8. **MonumentOfSeventhLegion**
-*
-Values
+* Records whether the monument records, commemorates, or was commemorated by, a serviceman/servicemen of Legio VII. Values are 'yes', 'maybe', 'no'. 'yes' = Legio VII is mentioned in what is left of the inscription or it can be reconstructed beyond reasonable doubt. 'maybe' = Legio VII is not mentioned in what is left of the inscription, but one can hypothesise that the monument belonged to a member of Legio VII based on 1) what survives of the inscription, 2) the location of the monument, 3) the style of the monument, 4) a combination of all these factors. 'no' = no mention of Legio VII in extant inscription and no reason to believe it once existed (e.g. refers to a member of another unit). For why these monuments classed a 'no' are included in this database, refer to data/monument.DBInclusionReason.
+* Constrained vocabulary. Values: yes, maybe, no
 9. **Inscription**
-*
-Values
+* Records a transcription of the inscription found upon each monument in the original Latin or, rarely, ancient Greek, following the [Leiden Conventions](https://en.wikipedia.org/wiki/Leiden_Conventions).
+* Values: Textual descriptions. Each value is a distinct transliteration of an inscription.
 10. **Translation**
-*
-Values
+* Records an English translation of the Latin/Ancient Greek (including lacunae where appropriate).
+* Values: Textual description: Each translation is distinct. While there may be duplicate translations, the inscription they are based off is distinct, in which case refer to MonumentID to differentiate.
 11. **TranslationSource**
-*
-Values
+* Records the attribution for the English translation of the inscription. _null_ = there is not translation within this dataset concerning this inscription, so there is nothing to attribute. Any attribution involving "Coopey" refers to the co-author of this database of the same name. Other citations are in author-date [Chicago](https://libguides.mq.edu.au/referencing/Chicago) style.
+* Constrained vocabulary (see above). Values: _null_; Tončinić 2011; Demicheli, Tončinić 2012; Coopey, edit of Tončinić 2011 and Cesarik 2016; Coopey, edit of Tončinić 2011 (made with help of Milićević-Bradač); Coopey, edit of Tončinić 2011; Coopey, edit of Rendić-Miočević 1987; Coopey
 12. **LowerFieldDecoration**
-*
-Values
+* Records what decoration there is within the lower field (portion) of the monument (if any) and any details which can be made out. Here _null_ refers to the absence of data concerning the decoration of the lower field of this monument within this dataset = the monument either does not have a lower field or the lower field is broken off/lost. Descriptions are as follows:
+  * 'undecorated' = the lower field exists but is undecorated.
+  * '(reduced) dual-panelled door' = a two-panelled door motif
+  * 'dolabra' = a Roman pick-axe
+  * 'dona militaria' = Roman military awards
+  * 'panelled door' = a door motif with an undiscernible number of panels
+  * 'quad-panelled door' = a four-panelled door motif
+* Textual descriptions, own constrained vocabulary. Values: _null_; (reduced) dual-panelled door; dolabra; dona militaria; panelled door; quad-panelled door; undecorated
 13. **LowerFieldDetail**
-*
-Values
+* Records smaller sculptural details visible within the decoration upon the lower field of a monument. Meant to be used with data/monument.LowerFieldDecoration, as seen with analysis/all_monument_with_location.Lower_Field_Decoration. _null_ means no data concerning the lower field was recorded in this dataset (there is none, it does not have a lower field, it was not recorded)
+* Values: Textual descriptions with some duplicates between monuments. _null_; bow, arrows and quiver; busts and knockers; construction tools; door knockers; handles; handles and knockers; knockers and floral; lions; lions and 'Attis'; lions and floral; lions and handles; lions and vines
 14. **Portrait**
-*
-Values
+* Records the type of portrait depicted upon the monument (if any). _null_ refers to the absence of data concerning this feature for a monument within this dataset = the monument is broken/lost.
+* Constrained vocabulary (own). Values: _null_; bust; bust and rider; dual bust; family bust; no portrait; rider
 15. **Frieze**
-*
-Values
+* Records information concerning the decorative style of the frieze upon the monument, if any. _null_ refers to the absence of data concerning a frieze for this monument within this dataset = the frieze is lost or the monument type cannot have a frieze. 'no frieze' means the monument could have had a frieze stylistically speaking, but does not.
+* Constrained vocabulary (own). Values: _null_; floral; military; no frieze
 16. **DateFrom**
-*
-Values
+* Beginning date of date range for the creation of the monument. Dates are in BCE/CE. With BCE represented by negative values. E.g. -30 = 30 BCE. Dates are own, based on scholarly interpretations.
+*  Numerical values: 14 distinct values
 17. **DateTo**
-*
-Values
+* End date of date range for the creation of the monument. Dates are in BCE/CE. With BCE represented by negative values. E.g. -30 = 30 BCE. Dates are own, based on scholarly interpretations.
+* Numerical values: 16 distinct values
 18. **DateNote**
-*
-Values
+* Records a note about the dating of a monument, such as a more specific date, an issue, the rationale for a certain dating or a scholarly disagreement. _null_ means the absence of a note about the date within _this_ dataset.
+* Values: Textual descriptions. Values are distinct (sentences or more specific ranges) or _null
 19. **Tončinić2011StelaeType**
-*
-Values
+* Records the typological style type of the monument according to Tončinić (2011) _Spomenici VII. legije na području rimske provincije Dalmacije / Monuments of Legio VII in the Roman Province of Dalmatia_: 150-153. Here _null_ means there is not data relating to this column for a monument = either it is not classifiable within this typology or it is not a funerary monument.
+* Constrained vocabulary from Tončinić (2011). Values: _null_; A1a; A1b; A2; A3a; A3b; A3c; Ra; Rb; Rc; altar; tituli
 20. **ModernHolding**
-*
-Values
+* Records the name of the museum or site where the monument is now held/situated. Where possible, Croatian and English versions of the names are provided. _null_ means not data about modern holding has been recorded in this dataset (it is not known, or it is uncertain). 'Secondary use'% means the monument is in a state of re-use. The site of re-use is sometimes recorded.
+* Values: Textual descriptions. 17 distinct values including _null_
 21. **HoldingData**
-*
-Values
+* Records any other information concerning the modern holding/situation of the monument, such as specific location or museum accession number. _null_ means not data about modern holding has been recorded in this dataset (it is not known, or it is uncertain).
+* Values: textual descriptions. 81 values including _null_
 22. **MonumentNote**
-*
-Values
+* Records any additional information concerning the monument which does not fall into other columns. Such as scholarly debate concerning attribution, the degree of preservation (or lack thereof) and discrepancies in secondary literature. _null_ means no extra information was provided for this monument.
+* Values: Textual descriptions. 54 distinct values including _null_
 23. **DBInclusionReason**
-*
-Values
+* Records the rationale for including the monument when it does not refer/possibly refer to Legio VII in the inscription. _null_ means there was no need state the rational for the inclusion of the monument = it refers, or may refer, to Legio VII.
+* Values: Textual descriptions. 21 distinct values
 24. **Media**
+* Records URLs for images (photos or illustrations) of the monument. Where possible, the URL is for the <http://lupa.at> website. With some monuments having links to EDCS <http://db.edcs.eu>, and some having no images within the database (represented with _null_)
+* URL values: _null_ or distinct. Distinct values are all URLs to gallery of images
+
+### monument_corpus.csv
+* This table records the references for this dataset, listing the works which publish, cite and/or discuss a monument.
+* This table is created using the .sql code:
+
+``` SQL
+CREATE TABLE monument_corpus (
+  MonumentCorpusID INTEGER PRIMARY KEY,
+	MonumentID INTEGER REFERENCES monument NOT NULL,
+	CorpusName TEXT NOT NULL REFERENCES corpus,
+	Reference TEXT NOT NULL,
+	isPrimaryReference TEXT
+);
+```
+
+* Columns
+1. **MonumentCorpusID**
+* Primary key and surrogate key. Identifies each distinct reference and monument combination.
+* Values: 1-908
+2. **MonumentID**
+* MonumentID is a surrogate key and Foreign key linking from data/monument. It identifies the monument each line in this table is referring to, providing their means of identification within this dataset.
+* Values: 1-130
+3. **CorpusName**
+* Records the category of bibliographic reference information for each line/MonumentCorpusID. Foreign key referencing data/corpus.CorpusName. Abbreviations are all expanded upon in the database bibliography: DB-SQL/bibliography_for_db.bib & DB-SQL/bibliography_for_db.ris. 'Other Ref' = a corpus, reference work, article or book which is not covered by the other categories.
+* Constrained values (own): AE; Betz; CIL; EDCS; EDH; ILJug; Other Ref; Tončinić
+4. **Reference**
+* Records the rest of the metadata for the reference. For those MonumentCorpusID which are of a category _other than_ 'OtherRef', this will have a catalogue number or volume and references number. For those of 'OtherRef' classification, this will have an author date citation in [Chicago](https://libguides.mq.edu.au/referencing/Chicago). E.g. Wilkes 1969, 461; Maršić 2010, 65-67.
+* Textual descriptions. Values: All values distinct, if duplicated, refer to MonumentCorpusID and CorpusName to distinguish.
+5. **isPrimaryReference**
+* Marks whether or not this reference data (all columns) was the primary means of citation in the thesis related to this dataset (Coopey 2020). The order of preference for reference works was as follows (DESC): 'CIL', 'AE', 'ILJug', 'Tončinić', 'Betz', 'OtherRef'. The value '1' marks this reference out as the' primary reference', _null_ means it is not the primary reference.
+* Constrained values: 1; _null_
+
+### monument_serviceman.csv
+* This table...
+* This table is created using the .sql code:
+
+``` SQL
+CREATE TABLE monument_serviceman (
+	  MonumentServicemanID NUMBER PRIMARY KEY,
+		ServicemanID INTEGER REFERENCES legio_serviceman,
+		MonumentID INTEGER REFERENCES monument,
+		ServicemanReferencedAs TEXT,
+		PossibleDuplicateServicemanID INTEGER,
+		SourceForDuplicateArgument TEXT
+);
+```
+
+* Columns
+1. MonumentServicemanID
 *
-Values
+* Values:
+2. ServicemanID
+*
+* Values:
+3. MonumentID
+*
+* Values:
+4. ServicemanReferencedAs
+*
+* Values:
+5. PossibleDuplicateServicemanID
+*
+* Values:
+6. SourceForDuplicateArgument
+*
+* Values:

@@ -119,7 +119,7 @@ MonumentCorpusID,MonumentID,CorpusName,Reference,isPrimaryReference
 118,16,"Tončinić",012,
 119,16,"Other Ref","Wilkes 1969, 463",
 120,16,"Other Ref","Medini 1984, 108-109, no. 2",
-121,16,"Fadić 1997, no. 2","",
+121,16,"Other Ref","Fadić 1997, no. 2",
 122,16,EDH,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD058819,
 123,17,"Tončinić",013,
 124,17,Betz,008,
@@ -130,7 +130,7 @@ MonumentCorpusID,MonumentID,CorpusName,Reference,isPrimaryReference
 129,18,"Tončinić",014,
 130,18,Betz,080,
 131,18,ILJug,"3, 1949",1
-132,18,"Hofmann 1905, 88","",
+132,18,"Other Ref","Hofmann 1905, 88",
 133,18,"Other Ref","Wilkes 1969, 463",
 134,18,"Other Ref","Fadić 1997, no. 20",
 135,18,EDH,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD034293,
@@ -447,7 +447,7 @@ MonumentCorpusID,MonumentID,CorpusName,Reference,isPrimaryReference
 446,63,Betz,013,
 447,63,ILJug,"3, 1968",
 448,63,AE,"1940, 0177",1
-449,63,AE,"AE 1941, 0055",
+449,63,AE,"1941, 0055",
 450,63,"Other Ref","BD-VAHD (51) 1930-1934, 230",
 451,63,"Other Ref","Abramić 1940, 230-231 pl. 36.1",
 452,63,EDH,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD021072,
@@ -722,7 +722,7 @@ MonumentCorpusID,MonumentID,CorpusName,Reference,isPrimaryReference
 721,108,AE,"1891, 0017",
 722,109,"Tončinić",099,
 723,109,AE,"2003, 1332",1
-724,109,"Čače 2003, 19-21","",
+724,109,"Other Ref","Čače 2003, 19-21",
 725,109,EDH,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD045056,
 726,110,"Tončinić",100,1
 727,110,"Other Ref","Tončinić, Tabak, Librenjak 2011, cat. no. 1",
