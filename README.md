@@ -1,4 +1,6 @@
-# Community and Identity in the Roman Seventh Legio: Digitally mapping funerary monuments referring to *Legio VII* servicemen and related members of the military community in Roman *Dalmatia.*
+# Community and Identity in the Roman Seventh Legio: 
+
+**Digitally mapping funerary monuments referring to *Legio VII* servicemen and related members of the military community in Roman *Dalmatia***
 
 
 ## Authors:
