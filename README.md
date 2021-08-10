@@ -1,7 +1,7 @@
 # BromansCoopey
 ## ReadMe
 
--   **Project Title**:* *Community and Identity in the Roman Seventh
+-   **Project Title**: Community and Identity in the Roman Seventh
     Legion
 
 -   **Descriptive Subtitle**: Digitally mapping funerary monuments
