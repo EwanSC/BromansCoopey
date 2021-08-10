@@ -423,11 +423,11 @@ SELECT
 * Values: Textual descriptions. Each value is either _null_ or a piece/pieces of information distinct to each monument.
 22. **LAT**
 * Source Table: (data/findspot.LATITUDE_epsg_4326)
-* Records the latitude of the find spot of the monument using [EPSG 326]( https://epsg.io/4326): World Geodetic System 1984. _null_ means that the latitude was not recorded in this dataset because the find spot was not specific enough (e.g., a whole province)
+* Records the latitude of the find spot of the monument using [EPSG 326]( https://epsg.io/4326): World Geodetic System 1984. _null_ means that the latitude was not recorded in this dataset because the find spot was not specific enough (e.g., a whole province). Source of latitude was Trismegistos (https://www.trismegistos.org/geo/) or Pleiades (https://pleiades.stoa.org/), and if neither available, Google Maps (https://www.google.com/maps). All were subject to being edited for higher precision by the author, however.
 * Numerical values: 56 DISTINCT LAT values including _null_
 23. **LONG**
 * Source Table: (data/findspot.LONGITUDE_epsg_4326)
-* Records the longitude of the find spot of the monument using [EPSG 326]( https://epsg.io/4326): World Geodetic System 1984. _null_ means that the longitude was not recorded in this dataset because the find spot was not specific enough (e.g., a whole province)
+* Records the longitude of the find spot of the monument using [EPSG 326]( https://epsg.io/4326): World Geodetic System 1984. _null_ means that the longitude was not recorded in this dataset because the find spot was not specific enough (e.g., a whole province). Source of longitude was Trismegistos (https://www.trismegistos.org/geo/) or Pleiades (https://pleiades.stoa.org/), and if neither available, Google Maps (https://www.google.com/maps). All were subject to being edited for higher precision by the author, however. 
 * Numerical values: 56 DISTINCT LONG values including _null_
 24. **Pleiades**
 * Source Table: (data/findspot.Pleiades)
