@@ -27,9 +27,9 @@ Legio VII in the Roman Province of Dalmatia'. This database stores
 various types of geographical, epigraphical, visual, and historical
 data related to Roman funerary and sacral inscriptions belonging to,
 or commemorating, servicemen or veterans of the Roman Seventh Legion
-(*Legio VII*) in the province of *Dalmatia *(the modern Eastern
+(*Legio VII*) in the province of *Dalmatia* (the modern Eastern
 Adriatic coastline and hinterland). This project, and the related
-thesis '*Fratres Romani* in *Dalmatia*’,* *investigated the social
+thesis '*Fratres Romani* in *Dalmatia*’, investigated the social
 dynamics of *Legio VII*, as well as processes of identity and
 community construction within the unit. It is hoped that this
 dataset will facilitate future research into military life in
@@ -103,9 +103,9 @@ CC-BY-SA 4.0 International
 -   `analysis/` (*example analysis csvs*)
 -   `data/` (*data for this database in csvs*)
 -   `DB-SQL/` (*files* *related to the database such as bibliogrpahies, the database, building/exporting shell commands*)
--   `original\_source\_data` (*original data csvs*)
+-   `original_source_data/` (*original data csvs*)
 -   `thesis/` (*thesis which database is related to*)
--   `publication\_files/` (*various files related to publication of this database to OCD <https://opencontext.org/>*)
+-   `publication_files/` (*various files related to publication of this database to OCD <https://opencontext.org/>*)
 
 ## Methodological Notes
 
@@ -147,9 +147,9 @@ the authors/organisers of the online resource with suggested changes.
 
 ## File metadata
 
-- **Table Field Descriptions:** Provided in `data/data\_dictionary` and
-    `analysis/analysis\_dictionary`.
-- **Provide “Keys”:** Provided in `data/data\_dictionary` and
-    `analysis/analysis\_dictionary`.
+- **Table Field Descriptions:** Provided in `data/README.md` and
+    `analysis/README.md`.
+- **Provide “Keys”:** Provided in `data/README.md` and
+    `analysis/README.md`.
 - **Controlled Vocabularies (“Standards”)**: Provided in
-    `data/data\_dictionary` and `analysis/analysis\_dictionary`.
+    `data/README.md` and `analysis/README.md`.
