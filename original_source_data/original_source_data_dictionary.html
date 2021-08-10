@@ -1,0 +1,653 @@
+<h1 id="dictionary-for-original_source_data-tables">Dictionary for /original_source_data tables</h1>
+<h2 id="overview">Overview</h2>
+<p>This folder holds CSV tables used for inputting data into the DB. There are 8 tables of data. These are stored in csv files. These were imported into a SQLite database (BromansDB.db) after running the creation statement in DB-SQL/create_monument_db.sql via rebuild_db.sh. Once in the database these tables (and related analysis tables, see analysis/analysis_dictionary) were then exported using DB-SQL/export_database.sh.</p>
+<p>These tables hold various types of geographical, epigraphical, visual, and historical data related to inscribed Roman funerary monuments belonging to, or commemorating, servicemen or veterans of the Roman Seventh Legion (Legio VII) in the province of Dalmatia (the modern Eastern Adriatic coastline and hinterland), as well as select pieces of relevant sacral and administrative epigraphic material.</p>
+<h2 id="the-tables">The Tables</h2>
+<p>The <strong>8</strong> data tables and their columns are: 1. <strong>corpus.csv</strong> * CorpusName 2. <strong>findspot</strong> * FindSpotID * RomanProvince * AncientSite * SpecificAncientLocation * ModernSite * SpecificModernLocation * ExtraLocationNote * LONGITUDE_epsg_4326 * LATITUDE_epsg_4326 * Pleiades * Trismegistos 3. <strong>legio_serviceman</strong> * ServicemanID * Name * DefiniteServiceman * UnitID * LiklihoodOfUnitAttribution * MilitaryStatusID * Tribe * OriginProvince * OriginSettlement * OriginCertainty * TribeSettlementNote * ServicemanNote 4. <strong>military_status</strong> * MilitaryStatusID * FirstRecordedOffice * SecondRecordedOffice * FirstOfficeCertainty * SecondOfficeCertainty * VeteranStatus * VeteranStatusCertainty 5. <strong>monument</strong> * MonumentID * FindSpotID * MonumentSpecificFindspotNote * PublicationCitation * DateFoundOrPublished * DateFoundorPublishedPrecisionNote * MonumentType * MonumentOfSeventhLegion * Inscription * Translation * TranslationSource * LowerFieldDecoration * LowerFieldDetail * Portrait * Frieze * DateFrom * DateTo * DateNote * Tončinić2011StelaeType * ModernHolding * HoldingData * MonumentNote * DBInclusionReason * Media 6. <strong>monument_corpus</strong> * MonumentCorpusID * MonumentID * CorpusName * Reference * isPrimaryReference 7. <strong>monument_serviceman</strong> * MonumentServicemanID * ServicemanID * MonumentID * ServicemanReferencedAs * PossibleDuplicateServicemanID * SourceForDuplicateArgument 8. <strong>unit</strong> * UnitID * UnitTitle</p>
+<h2 id="table-field-descriptions">Table Field Descriptions</h2>
+<h3 id="corpus.csv">corpus.csv</h3>
+<ul class="incremental">
+<li>This table records the categories (abbreviations) of bibliographic corpora that are listed in this database. It is linked to original_source_data/monument_corpus.CorpusName.</li>
+<li>This table is created using the .sql code:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">TABLE</span> corpus (
+    CorpusName TEXT <span class="kw">PRIMARY</span> <span class="kw">KEY</span>
+);</code></pre></div>
+<ul class="incremental">
+<li>Columns:</li>
+</ul>
+<ol class="incremental" style="list-style-type: decimal">
+<li><strong>CorpusName</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the categories (abbreviations) of bibliographic corpora that are listed in this database. Primary key. Abbreviations are all expanded upon in the database bibliography: DB-SQL/bibliography_for_db.bib &amp; DB-SQL/bibliography_for_db.ris. 'Other Ref' = a corpus, reference work, article or book which is not covered by the other categories.</li>
+<li>Values: AE; Betz; CIL; EDCS; EDH; ILJug; Other Ref; Tončinić.</li>
+</ul>
+<h3 id="findspot.csv">findspot.csv</h3>
+<ul class="incremental">
+<li>This table records the contextual and geographical find spot data for the monuments within the database.</li>
+<li>This table is created using the .sql code:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">TABLE</span> findspot (
+    FindSpotID <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,
+    RomanProvince TEXT,
+    AncientSite TEXT,
+    SpecificAncientLocation TEXT,
+    ModernSite TEXT,
+    SpecificModernLocation TEXT,
+    ExtraLocationNote TEXT,
+    LONGITUDE_epsg_4326 <span class="dt">NUMBER</span>,
+    LATITUDE_epsg_4326 <span class="dt">NUMBER</span>,
+    Pleiades TEXT,
+    Trismegistos TEXT
+);</code></pre></div>
+<ul class="incremental">
+<li>Columns</li>
+</ul>
+<ol class="incremental" style="list-style-type: decimal">
+<li><strong>FindSpotID</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records an identifier for each row of find spot data. This primary key is a surrogate key. Identifies the various geographical locations of findspots for monuments within this corpus</li>
+<li>Values: 1-66</li>
+</ul>
+<ol class="incremental" start="2" style="list-style-type: decimal">
+<li><strong>RomanProvince</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the Latin name of the Roman Imperial province where a monument was found. The name used is the same name as that which would have been used when the monument was created (e.g. contemporaneous), except for 'Dalmatia', which is also used for monuments that were created when this region was part of the bigger province named Illyricum which was split some time under Tiberius or Claudius into Dalmatia and Pannonia.</li>
+<li>Constrained Vocabulary from https://pleiades.stoa.org/places. Values: Dalmatia; Thracia; Moesia Superior; Galatia</li>
+</ul>
+<ol class="incremental" start="3" style="list-style-type: decimal">
+<li><strong>AncientSite</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the Latin name of the ancient site where the monument was found. <em>null</em> means there is no data concerning the find site of a monument in this dataset = it has not been recorded or it is not known.</li>
+<li>Constrained vocabulary, where possible values are taken from https://www.trismegistos.org/geo/, otherwise see analysis/all_corpora for source works. Values: <em>null</em>; Aequum; Andetrium; Antiochia Pisidiae; Apollonia/Tymandus; Asseria; Burnum; Corinium; Cormasa; Iadera; Iconium; Lysimacheia; Municipium Riditarum/Rider; Narona; Pagus Scunasticus; Pons Tiluri; Salona; Siculi; Spalatum; Tilurium; Tragurium; Viminacium</li>
+</ul>
+<ol class="incremental" start="4" style="list-style-type: decimal">
+<li><strong>SpecificAncientLocation</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records a precise and specific data relating to provenience (if available) in relation to a contemporary ancient structures, locations or features. 'null' = no specific ancient find site has been recorded in this dataset.</li>
+<li>Values: Constrained vocabulary (own): <em>null</em>; North Necropolis; East Necropolis; Porta Caesarea-Five bridges</li>
+</ul>
+<ol class="incremental" start="5" style="list-style-type: decimal">
+<li><strong>ModernSite</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the modern Croatian or Turkish name of the site where the monument was found. <em>null</em> means the</li>
+<li>Constrained vocabulary from various academic written sources. Values: <em>null</em>; Bijaći; Bolayir; Danilo; Dicmo; Donji Karin; Drmno; Dugopolje; Filovača; Gardun; Glavica-Ljubuški; Glavice; Gorica; Gornji Muć; Gornji Postinje; Gračine-Humac; Grebine-Vitaljina; Gâvur Ören; Hrvace; Humac; Imotski; Kapljuč; Kistanje; Klis; Konya; Košute; Krinj-Hrvace; Krug; Podgrađe; Popovići; Prud; Razvođe; Seget Donji; Sinj; Sinjsko polje; Smokovice-Hardomilje; Solin; Split; Trilj; Trogir; Vaganj-Jajce; Veljaci; Vid; Vojnić; Vuna-Hardomilje; Yalvaç; Zadar; Čitluk</li>
+</ul>
+<ol class="incremental" start="6" style="list-style-type: decimal">
+<li><strong>SpecificModernLocation</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records even more precise information concerning the provenience of the monument. <em>null</em> refers to the lack of data within this dataset concerning provenience. 'uncertain' = it is known that the provenience of this monument in not known.</li>
+<li>Values are textual descriptions, whilst some text may be duplicated, they are separate find spots, see corresponding MonumentID for identification. Values: <em>null</em>; Cetina River; Church of st Michael; Mausoleum of Diocletian; built into modern structure; carved into rock; part of c.4th Late Antique tomb; re-used in Christian Cemetery; re-used in Medieval Cemetery; secondary use; surrounds of the amphitheatre; ul. Marka Marulića; uncertain</li>
+</ul>
+<ol class="incremental" start="7" style="list-style-type: decimal">
+<li><strong>ExtraLocationNote</strong></li>
+</ol>
+<ul class="incremental">
+<li>Contains extra information about the location of a monument, such as nearby landmarks or other sites. <em>null</em> means there is not extra information recorded about this site in this database.</li>
+<li>Values are textual descriptions (own). Values: <em>null</em>; 5km from Čitluk; Gradina; Matinčevo-Porta Suburbia I; Pet mostova; could also be from another site around the Sinjsko polje; found between Vojnić and Gardun; near Antiochia Pisidiae; near Burnum/Kistanje; near Dubrava, Poljice; near Jesenice, Poljice; near Karin; near Metković; near Porta Andetria; near Sinj; near Tragurium/Trogir; near Šibenik; right bank of Trebižat river</li>
+</ul>
+<ol class="incremental" start="8" style="list-style-type: decimal">
+<li><strong>LONGITUDE_epsg_4326</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the longitude of the find spot of the monument using <a href="https://epsg.io/4326">EPSG 326</a>: World Geodetic System 1984. <em>null</em> means that the longitude was not recorded in this dataset because the find spot was not specific enough (e.g., a whole province). Source of longitude was Trismegistos (https://www.trismegistos.org/geo/) or Pleiades (https://pleiades.stoa.org/), and if neither available, Google Maps (https://www.google.com/maps). All were subject to being edited for higher precision by the author, however.</li>
+<li>Numerical values: 56 DISTINCT LONG values including <em>null</em></li>
+</ul>
+<ol class="incremental" start="9" style="list-style-type: decimal">
+<li><strong>LATITUDE_epsg_4326</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the latitude of the find spot of the monument using <a href="https://epsg.io/4326">EPSG 326</a>: World Geodetic System 1984. <em>null</em> means that the latitude was not recorded in this dataset because the find spot was not specific enough (e.g., a whole province). Source of latitude was Trismegistos (https://www.trismegistos.org/geo/) or Pleiades (https://pleiades.stoa.org/), and if neither available, Google Maps (https://www.google.com/maps). All were subject to being edited for higher precision by the author, however.</li>
+<li>Numerical values: 56 DISTINCT LONG values including <em>null</em></li>
+</ul>
+<ol class="incremental" start="10" style="list-style-type: decimal">
+<li><strong>Pleiades</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the URL to the <a href="https://pleiades.stoa.org">Pleiades</a> page for the find site of this monument. The last 6 digits of each URL are also the Pleiades identifier. <em>null</em> means there is no Pleiades entry for the find site of this monument in this dataset = it was not found or does not exist.</li>
+<li>URL values: 22 DISTINCT Pleiades values including <em>null</em></li>
+</ul>
+<ol class="incremental" start="11" style="list-style-type: decimal">
+<li><strong>Trismegistos</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the URL to the <a href="https://www.trismegistos.org">Trismegistos</a> page for the find site of this monument. The digits at the end of each URL are also the Trismegistos identifier. <em>null</em> means there is no Trismegistos entry for the find site of this monument in this dataset = it was not found or does not exist.</li>
+<li>URL values: 30 DISTINCT Trismegistos values including <em>null</em></li>
+</ul>
+<h3 id="legio_serviceman.csv">legio_serviceman.csv</h3>
+<ul class="incremental">
+<li>This table records data concerning the servicemen and potential servicemen within this corpus. It is the 'core' table of the dataset for legionary/serviceman data, alongside original_source_data/monument which is the 'core' for monument information.</li>
+<li>This table is created using the .sql code:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">TABLE</span> legio_serviceman (
+  ServicemanID <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,
+    Name TEXT,
+    DefiniteServiceman TEXT,
+    UnitID <span class="dt">INTEGER</span> <span class="kw">REFERENCES</span> unit,
+    LiklihoodOfUnitAttribution TEXT,
+  MilitaryStatusID <span class="dt">INTEGER</span> <span class="kw">REFERENCES</span> military_status,
+    Tribe TEXT,
+    OriginProvince TEXT,
+    OriginSettlement TEXT,
+    OriginCertainty TEXT,
+    TribeSettlementNote TEXT,
+    ServicemanNote TEXT
+);</code></pre></div>
+<ul class="incremental">
+<li>Columns</li>
+</ul>
+<ol class="incremental" style="list-style-type: decimal">
+<li><strong>ServicemanID</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records ID number for each individual serviceman referenced in the corpus. It is the Primary Key. It is a surrogate key with no relationship to external datasets.</li>
+<li>Distinct values: 1-137</li>
+</ul>
+<ol class="incremental" start="2" style="list-style-type: decimal">
+<li><strong>Name</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records name and paternal relation (where recorded) of the serviceman. Names are translated into English where the original inscription is complete, and left in the original Latin when incomplete (including lacunae).</li>
+<li>Unconstrained vocabulary. Values: All values are distinct. While there may be duplicate names, they are names shared by individual people. Use ServicemanID to determine uniqueness.</li>
+</ul>
+<ol class="incremental" start="3" style="list-style-type: decimal">
+<li><strong>DefiniteServiceman</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records whether the individual is definitely or potentially a serviceman with the values 'yes' and 'maybe'. 'yes' = the individual is recorded as a soldier upon the monument. 'maybe' = the individual could potentially be a soldier, but this is not explicitly stated in writing within the inscription. Refer to ServicemanNote for more information on why an individual classed as 'maybe' has been included.</li>
+<li>Constrained vocabulary (own). Values: yes; maybe</li>
+</ul>
+<ol class="incremental" start="4" style="list-style-type: decimal">
+<li><strong>UnitID</strong></li>
+</ol>
+<ul class="incremental">
+<li>Foreign key referencing original_source_data/unit.UnitID. Surrogate key which records the unit/s a serviceman may have served in according to the inscription. This column can be joined with original_source_data/unit.UnitTitle to be more (human) reader friendly. As seen with analysis/all_servicemen.Unit_Affiliation_and_Certainty. <em>null</em> here means that not data about the unit of this serviceman has been recorded in this database.</li>
+<li>Constrained vocabulary from original_source_data/unit. values: <em>null</em>; 1-12</li>
+</ul>
+<ol class="incremental" start="5" style="list-style-type: decimal">
+<li><strong>LiklihoodOfUnitAttribution</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the certainty of the Unit attribution for each serviceman as either 'epigraphically attested' or 'conjecture'. 'epigraphically attested' = it is specified in the inscription. 'conjecture' = the unit attribution of the office is possible on account of factors such as monument decoration, but it is not specified within the inscription.</li>
+<li>Constrained vocabulary. values: epigraphically attested; conjecture</li>
+</ul>
+<ol class="incremental" start="6" style="list-style-type: decimal">
+<li><strong>MilitaryStatusID</strong></li>
+</ol>
+<ul class="incremental">
+<li>Foreign key referencing original_source_data/military_status.MilitaryStatusID. Surrogate key recording the combination of offices held by a serviceman, as well as their veteran status. This column can be used to join the table with original_source_data/military_status to be more (human) reader friendly, as seen with analysis/all_servicemen.</li>
+<li>Constrained vocabulary from original_source_data/military_status. Values: 1-21.</li>
+</ul>
+<ol class="incremental" start="7" style="list-style-type: decimal">
+<li><strong>Tribe</strong></li>
+</ol>
+<ul class="incremental">
+<li>Roman tribe or <em>tribus</em> (Latin) of the recorded serviceman if recorded in the inscription. <em>null</em> means an absence of data referring to tribe (either it is not recorded or the inscription is fragmentary).</li>
+<li>Constrained vocabulary. Values: <em>null</em>; Aemilia; Aniensis; Camilia; Claudia; Cornelia; Fabia; Lemonia; Maecia; Palatina; Papiria; Pollia; Pomptina; Publilia; Quirina; Scaptia; Sergia; Tromentia; Velina; Voltinia</li>
+</ul>
+<ol class="incremental" start="8" style="list-style-type: decimal">
+<li><strong>OriginProvince</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the Latin name of the Roman province where the serviceman is thought to have hailed from according to the Domicilium in their commemorative inscription, except for those found on the Italian peninsular, which are recorded as 'Italy'. <em>null</em> means absence of data relating to province in this dataset (either it is not recorded or the inscription is fragmentary).</li>
+<li>Constrained Vocabulary from https://pleiades.stoa.org/places. Values: <em>null</em>; Asia; Dalmatia; Galatia; Gallia Narbonensis; Italy; Macedonia</li>
+</ul>
+<ol class="incremental" start="9" style="list-style-type: decimal">
+<li><strong>OriginSettlement</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records <em>Domicilium</em> (Latin)/ settlement of origin of the serviceman. <em>null</em> means an absence of data referring to <em>Domicilium</em> (either it is not recorded or the inscription is fragmentary).</li>
+<li>Constrained vocabulary from https://www.trismegistos.org/geo/ where available, otherwise taken from inscription in original_source_data/monument.Inscription. Values: <em>null</em>; Aesis; Alorum; Amblada; Ancyra; Arretium; Augusta; Augusta Troas; Beneventum; Bononia; Brixia; Clistinna; Conana; Cormassa; Cremona; Dentum; Dyrrachium; Edessa; Florentia; Forum Corneli; Heraclea; Iconium; Isinda; Laranda; Libarna; Milyas; Ninica; Pessinus; Phazimon; Philippi; Pisaurum; Placentia; R[---]; Sebaste; Sebastopolis; Sinope; Ticinum; Trernahensis; Varvaria; Verona; Vienna</li>
+</ul>
+<ol class="incremental" start="10" style="list-style-type: decimal">
+<li><strong>OriginCertainty</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records if the OriginSettlement of a serviceman is conjecture by recording a '?'. <em>null</em> means that nothing has been noted about the certainty of the soldier's origins. For information on why a serviceman's origins are classed as '?', see original_source_data/legio_serviceman.TribeSettlementNote</li>
+<li>Constrained vocabulary. Values: <em>null</em>; ?</li>
+</ul>
+<ol class="incremental" start="11" style="list-style-type: decimal">
+<li><strong>TribeSettlementNote</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records any notes about the classification a soldier has been given for the .Tribe, .OriginProvince and .OriginSettlement. Information includes rationale for classification, as well as alternative interpretations. <em>null</em> means no notes have been recorded regarding this serviceman's origins or tribe in this database.</li>
+<li>Values: Textual descriptions or <em>null</em>. 19 distinct values including <em>null</em></li>
+</ul>
+<ol class="incremental" start="12" style="list-style-type: decimal">
+<li><strong>ServicemanNote</strong></li>
+</ol>
+<ul class="incremental">
+<li>This column records any extra information regarding the serviceman and anything to do with their status as a serviceman, their unit attribution, possible double ups in terms of identification, and the rationale for their inclusion in this table if not clear.</li>
+<li>Values: Textual descriptions. 38 distinct values including <em>null</em>. These notes consist of paragraphs or sentences.</li>
+</ul>
+<h3 id="military_status.csv">military_status.csv</h3>
+<ul class="incremental">
+<li>This table records the combinations of military offices soldiers recorded within this corpus held, as well as their veteran status (if ascertainable). It is designed to be linked with original_source_data/legio_serviceman.</li>
+<li>This table is created using the .sql code:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">TABLE</span> monument_serviceman (
+      MonumentServicemanID <span class="dt">NUMBER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,
+        ServicemanID <span class="dt">INTEGER</span> <span class="kw">REFERENCES</span> legio_serviceman,
+        MonumentID <span class="dt">INTEGER</span> <span class="kw">REFERENCES</span> monument,
+        ServicemanReferencedAs TEXT,
+        PossibleDuplicateServicemanID <span class="dt">INTEGER</span>,
+        SourceForDuplicateArgument TEXT
+);</code></pre></div>
+<ul class="incremental">
+<li>Columns</li>
+</ul>
+<ol class="incremental" style="list-style-type: decimal">
+<li><strong>MilitaryStatusID</strong></li>
+</ol>
+<ul class="incremental">
+<li>Primary key and surrogate key. Used to identify the combination of military offices serviceman had.</li>
+<li>Numerical values: All distinct. 1-21</li>
+</ul>
+<ol class="incremental" start="2" style="list-style-type: decimal">
+<li><strong>FirstRecordedOffice</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the types of military offices that are recorded first within the inscriptions in this corpus. The offices are left in their Latin spelling, and taken from the inscriptions. <em>nulls</em> mean no first office is recorded in this dataset for this combination of offices (either the inscription does not record one or it is fragmentary).</li>
+<li>Constrained vocabulary. Values: <em>null</em>; centurio; eques; imaginifer; miles; primus pilus; princeps posterior; scriba; signifer; tribunus</li>
+</ul>
+<ol class="incremental" start="3" style="list-style-type: decimal">
+<li><strong>SecondRecordedOffice</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the types of military offices that are recorded second within the inscriptions in this corpus. The offices are left in their Latin spelling, and taken from the inscriptions. <em>nulls</em> mean no second office is recorded in this dataset for this combination of offices (either the inscription does not record one or it is fragmentary).</li>
+<li>Constrained vocabulary. Values: <em>null</em>; exacto consularis; iudex; praefectus castorum</li>
+</ul>
+<ol class="incremental" start="4" style="list-style-type: decimal">
+<li><strong>FirstOfficeCertainty</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the certainty of the attribution of this office to a serviceman. The two values for certainty of attribution are 'epigraphically attested' or 'conjecture'. 'conjecture' = the attribution of the office is possible on account of factors such as monument decoration, but it is not specified within the inscription. Use ServicemanNote for insight into those classed with offices classed as 'conjecture'. <em>null</em> means an absence of data concerning to the certainty of the office in this database.</li>
+<li>Constrained vocabulary. Values: <em>null</em>; conjecture; epigraphically attested</li>
+</ul>
+<ol class="incremental" start="5" style="list-style-type: decimal">
+<li><strong>SecondOfficeCertainty</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the certainty of the attribution of this office to a serviceman. The two values for certainty of attribution are 'epigraphically attested' or 'conjecture'. 'conjecture' = the attribution of the office is possible on account of factors such as monument decoration, but it is not specified within the inscription. Use ServicemanNote for insight into those classed with offices classed as 'conjecture'. <em>null</em> means an absence of data concerning to the certainty of the office in this database.</li>
+<li>Values: <em>null</em>; epigraphically attested</li>
+</ul>
+<ol class="incremental" start="6" style="list-style-type: decimal">
+<li><strong>VeteranStatus</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records that a commemorated serviceman was a veteran by recording the Latin word <em>veteranus</em>. <em>null</em> means that no information regarding veteran status is recorded in this dataset for this serviceman.</li>
+<li>Values: <em>null</em>; veteranus</li>
+</ul>
+<ol class="incremental" start="7" style="list-style-type: decimal">
+<li><strong>VeteranStatusCertainty</strong> Records the certainty of the attribution of this veteran status to a serviceman. The two values for certainty of attribution are 'epigraphically attested' or 'conjecture'. 'conjecture' = the attribution of the veteran status is possible on account of factors such as monument decoration, but it is not specified within the inscription. Use ServicemanNote for insight into those classed with veteran status classed as 'conjecture'. <em>null</em> means an absence of data referring to the certainty of a serviceman's veteran status in this database.</li>
+</ol>
+<ul class="incremental">
+<li>Constrained vocabulary. Values: <em>null</em>; conjecture; epigraphically attested</li>
+</ul>
+<h3 id="monument.csv">monument.csv</h3>
+<ul class="incremental">
+<li>This table records data about the monuments held within this dataset. It is the 'core' table of the dataset for monument data, alongside original_source_data/legio_serviceman which is the 'core' for legionary information.</li>
+<li>This table is created using the .sql code:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">TABLE</span> monument (
+    MonumentID <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,
+    FindSpotID <span class="dt">INTEGER</span> <span class="kw">REFERENCES</span> findspot,
+    MonumentSpecificFindspotNote TEXT,
+    PublicationCitation TEXT,
+    DateFoundOrPublished <span class="dt">DATE</span>,
+    DateFoundorPublishedPrecisionNote TEXT,
+    MonumentType TEXT,
+    MonumentOfSeventhLegion TEXT,
+    Inscription TEXT,
+    Translation TEXT,
+    TranslationSource TEXT,
+    LowerFieldDecoration TEXT,
+    LowerFieldDetail TEXT,
+    Portrait TEXT,
+    Frieze TEXT,
+    DateFrom <span class="dt">INTEGER</span>, <span class="co">-- INTEGER YEAR - years are BCE</span>
+    DateTo <span class="dt">INTEGER</span>, <span class="co">-- INTEGER YEAR - years are BCE</span>
+    DateNote TEXT,
+    Tončinić2011StelaeType TEXT,
+    ModernHolding TEXT,
+    HoldingData TEXT,
+    MonumentNote TEXT,
+    DBInclusionReason TEXT,
+    Media TEXT
+);</code></pre></div>
+<ul class="incremental">
+<li>Columns</li>
+</ul>
+<ol class="incremental" style="list-style-type: decimal">
+<li><strong>MonumentID</strong></li>
+</ol>
+<ul class="incremental">
+<li>MonumentID is a primary key and a surrogate key. It identifies the monument in each line, providing their means of identification within this entire dataset.</li>
+<li>Numerical values: 1-130</li>
+</ul>
+<ol class="incremental" start="2" style="list-style-type: decimal">
+<li><strong>FindSpotID</strong></li>
+</ol>
+<ul class="incremental">
+<li>A foreign key referencing original_source_data/findspot.FindSpotID. A surrogate key which identifies the various geographical locations of findspots for monuments within this corpus. Designed to be used to join this table with data from the findspot table, as seen with analysis/all_monument_with_location.csv.</li>
+<li>Numerical values: 1-66</li>
+</ul>
+<ol class="incremental" start="3" style="list-style-type: decimal">
+<li><strong>MonumentSpecificFindspotNote</strong></li>
+</ol>
+<ul class="incremental">
+<li>Extra information unique to the provenience and discovery of each monument (where available). <em>null</em> means there is no extra unique information recorded for a monument.</li>
+<li>Values: Textual descriptions. Each value is either <em>null</em> or a piece/pieces of information distinct to each monument.</li>
+</ul>
+<ol class="incremental" start="4" style="list-style-type: decimal">
+<li><strong>PublicationCitation</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the work in which the monument was first cited. All works are recorded in the DB-SQL/bibliography_for_db.bib and DB-SQL/bibliography_for_db.ris files. <em>null</em> means no data about first publication was recorded in this dataset.</li>
+<li>Some values (citations) are shared between monuments. Values: There are 50 distinct values, including <em>null</em>. Citations are in author date format <a href="https://libguides.mq.edu.au/referencing/Chicago">Chicago</a> or an abbreviation.</li>
+</ul>
+<ol class="incremental" start="5" style="list-style-type: decimal">
+<li><strong>DateFoundOrPublished</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the year in which the monument is thought to have been found, or when it was first published (to ascertain if it records the publishing date, correspond with original_source_data/monument.PublicationCitation). <em>null</em> means no data about discovery/publish date is recorded in this dataset.</li>
+<li>Some values (years) are shared between monuments. Values: 38 distinct values including <em>null</em></li>
+</ul>
+<ol class="incremental" start="6" style="list-style-type: decimal">
+<li><strong>DateFoundorPublishedPrecisionNote</strong></li>
+</ol>
+<ul class="incremental">
+<li>Contains textual note on the precision or nature of a publication/discovery date. <em>null</em> means no notes on discovery/publish date are recorded in this dataset.</li>
+<li>Values: Textual descriptions. There are 30 distinct values including <em>null</em></li>
+</ul>
+<ol class="incremental" start="7" style="list-style-type: decimal">
+<li><strong>MonumentType</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the class of archaeological / epigraphic monument. The definitions for the types of monument are as follows:</li>
+<li>'titulus' = &quot;isolated epitaphs with no, or minimal decorations&quot; (Coopey 2020).</li>
+<li>'tegula' = terracotta roof tile.</li>
+<li>'stela' = &quot;stone monuments or ‘slabs’ with an inscribed epitaph bearing formulaic descriptions of the deceased and the commemorators&quot; (Coopey 2020).</li>
+<li>'sacral monument' = a monument of a sacral nature. 'sacral altar' = an altar where the inscription is sacral in nature.</li>
+<li>'milestone' = a milestone from a Roman road.</li>
+<li>'inscription fragment' = a fragmentary from a monument which may have once been funerary or sacral but not enough is left for this to be securely ascertained.</li>
+<li>'funerary inscription' = an inscription fragment with content of a funerary nature whose larger monument has been too damaged to ascertain its specific type.</li>
+<li>'construction dedication' = a dedicatory epitaph commemorating the construction of a building or structure.</li>
+<li>'boundary inscription' = an inscriptions from a boundary stone usually recording the demarcation of land by a Roman official.</li>
+<li>'altar' = a sacrificial altar with a funerary inscription.</li>
+<li>Constrained vocabulary (see above). Values: titulus; tegula; stela; sacral monument; sacral altar; milestone; inscription fragment; funerary inscription; construction dedication; boundary inscription; altar.</li>
+</ul>
+<ol class="incremental" start="8" style="list-style-type: decimal">
+<li><strong>MonumentOfSeventhLegion</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records whether the monument records, commemorates, or was commemorated by, a serviceman/servicemen of Legio VII. Values are 'yes', 'maybe', 'no'. 'yes' = Legio VII is mentioned in what is left of the inscription or it can be reconstructed beyond reasonable doubt. 'maybe' = Legio VII is not mentioned in what is left of the inscription, but one can hypothesise that the monument belonged to a member of Legio VII based on 1) what survives of the inscription, 2) the location of the monument, 3) the style of the monument, 4) a combination of all these factors. 'no' = no mention of Legio VII in extant inscription and no reason to believe it once existed (e.g. refers to a member of another unit). For why these monuments classed a 'no' are included in this database, refer to original_source_data/monument.DBInclusionReason.</li>
+<li>Constrained vocabulary. Values: yes, maybe, no</li>
+</ul>
+<ol class="incremental" start="9" style="list-style-type: decimal">
+<li><strong>Inscription</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records a transcription of the inscription found upon each monument in the original Latin or, rarely, ancient Greek, following the <a href="https://en.wikipedia.org/wiki/Leiden_Conventions">Leiden Conventions</a>.</li>
+<li>Values: Textual descriptions. Each value is a distinct transliteration of an inscription.</li>
+</ul>
+<ol class="incremental" start="10" style="list-style-type: decimal">
+<li><strong>Translation</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records an English translation of the Latin/Ancient Greek (including lacunae where appropriate).</li>
+<li>Values: Textual description: Each translation is distinct. While there may be duplicate translations, the inscription they are based off is distinct, in which case refer to MonumentID to differentiate.</li>
+</ul>
+<ol class="incremental" start="11" style="list-style-type: decimal">
+<li><strong>TranslationSource</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the attribution for the English translation of the inscription. <em>null</em> = there is not translation within this dataset concerning this inscription, so there is nothing to attribute. Any attribution involving &quot;Coopey&quot; refers to the co-author of this database of the same name. Other citations are in author-date <a href="https://libguides.mq.edu.au/referencing/Chicago">Chicago</a> style.</li>
+<li>Constrained vocabulary (see above). Values: <em>null</em>; Tončinić 2011; Demicheli, Tončinić 2012; Coopey, edit of Tončinić 2011 and Cesarik 2016; Coopey, edit of Tončinić 2011 (made with help of Milićević-Bradač); Coopey, edit of Tončinić 2011; Coopey, edit of Rendić-Miočević 1987; Coopey</li>
+</ul>
+<ol class="incremental" start="12" style="list-style-type: decimal">
+<li><strong>LowerFieldDecoration</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records what decoration there is within the lower field (portion) of the monument (if any) and any details which can be made out. Here <em>null</em> refers to the absence of data concerning the decoration of the lower field of this monument within this dataset = the monument either does not have a lower field or the lower field is broken off/lost. Descriptions are as follows:</li>
+<li>'undecorated' = the lower field exists but is undecorated.</li>
+<li>'(reduced) dual-panelled door' = a two-panelled door motif</li>
+<li>'dolabra' = a Roman pick-axe</li>
+<li>'dona militaria' = Roman military awards</li>
+<li>'panelled door' = a door motif with an undiscernible number of panels</li>
+<li>'quad-panelled door' = a four-panelled door motif</li>
+<li>Textual descriptions, own constrained vocabulary. Values: <em>null</em>; (reduced) dual-panelled door; dolabra; dona militaria; panelled door; quad-panelled door; undecorated</li>
+</ul>
+<ol class="incremental" start="13" style="list-style-type: decimal">
+<li><strong>LowerFieldDetail</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records smaller sculptural details visible within the decoration upon the lower field of a monument. Meant to be used with original_source_data/monument.LowerFieldDecoration, as seen with analysis/all_monument_with_location.Lower_Field_Decoration. <em>null</em> means no data concerning the lower field was recorded in this dataset (there is none, it does not have a lower field, it was not recorded)</li>
+<li>Values: Textual descriptions with some duplicates between monuments. <em>null</em>; bow, arrows and quiver; busts and knockers; construction tools; door knockers; handles; handles and knockers; knockers and floral; lions; lions and 'Attis'; lions and floral; lions and handles; lions and vines</li>
+</ul>
+<ol class="incremental" start="14" style="list-style-type: decimal">
+<li><strong>Portrait</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the type of portrait depicted upon the monument (if any). <em>null</em> refers to the absence of data concerning this feature for a monument within this dataset = the monument is broken/lost.</li>
+<li>Constrained vocabulary (own). Values: <em>null</em>; bust; bust and rider; dual bust; family bust; no portrait; rider</li>
+</ul>
+<ol class="incremental" start="15" style="list-style-type: decimal">
+<li><strong>Frieze</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records information concerning the decorative style of the frieze upon the monument, if any. <em>null</em> refers to the absence of data concerning a frieze for this monument within this dataset = the frieze is lost or the monument type cannot have a frieze. 'no frieze' means the monument could have had a frieze stylistically speaking, but does not.</li>
+<li>Constrained vocabulary (own). Values: <em>null</em>; floral; military; no frieze</li>
+</ul>
+<ol class="incremental" start="16" style="list-style-type: decimal">
+<li><strong>DateFrom</strong></li>
+</ol>
+<ul class="incremental">
+<li>Beginning date of date range for the creation of the monument. Dates are in BCE/CE. With BCE represented by negative values. E.g. -30 = 30 BCE. Dates are own, based on scholarly interpretations.</li>
+<li>Numerical values: 14 distinct values</li>
+</ul>
+<ol class="incremental" start="17" style="list-style-type: decimal">
+<li><strong>DateTo</strong></li>
+</ol>
+<ul class="incremental">
+<li>End date of date range for the creation of the monument. Dates are in BCE/CE. With BCE represented by negative values. E.g. -30 = 30 BCE. Dates are own, based on scholarly interpretations.</li>
+<li>Numerical values: 16 distinct values</li>
+</ul>
+<ol class="incremental" start="18" style="list-style-type: decimal">
+<li><strong>DateNote</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records a note about the dating of a monument, such as a more specific date, an issue, the rationale for a certain dating or a scholarly disagreement. <em>null</em> means the absence of a note about the date within <em>this</em> dataset.</li>
+<li>Values: Textual descriptions. Values are distinct (sentences or more specific ranges) or _null</li>
+</ul>
+<ol class="incremental" start="19" style="list-style-type: decimal">
+<li><strong>Tončinić2011StelaeType</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the typological style type of the monument according to Tončinić (2011) <em>Spomenici VII. legije na području rimske provincije Dalmacije / Monuments of Legio VII in the Roman Province of Dalmatia</em>: 150-153. Here <em>null</em> means there is not data relating to this column for a monument = either it is not classifiable within this typology or it is not a funerary monument.</li>
+<li>Constrained vocabulary from Tončinić (2011). Values: <em>null</em>; A1a; A1b; A2; A3a; A3b; A3c; Ra; Rb; Rc; altar; tituli</li>
+</ul>
+<ol class="incremental" start="20" style="list-style-type: decimal">
+<li><strong>ModernHolding</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the name of the museum or site where the monument is now held/situated. Where possible, Croatian and English versions of the names are provided. <em>null</em> means not data about modern holding has been recorded in this dataset (it is not known, or it is uncertain). 'Secondary use'% means the monument is in a state of re-use. The site of re-use is sometimes recorded.</li>
+<li>Values: Textual descriptions. 17 distinct values including <em>null</em></li>
+</ul>
+<ol class="incremental" start="21" style="list-style-type: decimal">
+<li><strong>HoldingData</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records any other information concerning the modern holding/situation of the monument, such as specific location or museum accession number. <em>null</em> means not data about modern holding has been recorded in this dataset (it is not known, or it is uncertain).</li>
+<li>Values: textual descriptions. 81 values including <em>null</em></li>
+</ul>
+<ol class="incremental" start="22" style="list-style-type: decimal">
+<li><strong>MonumentNote</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records any additional information concerning the monument which does not fall into other columns. Such as scholarly debate concerning attribution, the degree of preservation (or lack thereof) and discrepancies in secondary literature. <em>null</em> means no extra information was provided for this monument.</li>
+<li>Values: Textual descriptions. 54 distinct values including <em>null</em></li>
+</ul>
+<ol class="incremental" start="23" style="list-style-type: decimal">
+<li><strong>DBInclusionReason</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the rationale for including the monument when it does not refer/possibly refer to Legio VII in the inscription. <em>null</em> means there was no need state the rational for the inclusion of the monument = it refers, or may refer, to Legio VII.</li>
+<li>Values: Textual descriptions. 21 distinct values</li>
+</ul>
+<ol class="incremental" start="24" style="list-style-type: decimal">
+<li><strong>Media</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records URLs for images (photos or illustrations) of the monument. Where possible, the URL is for the <a href="http://lupa.at" class="uri">http://lupa.at</a> website. With some monuments having links to EDCS <a href="http://db.edcs.eu" class="uri">http://db.edcs.eu</a>, and some having no images within the database (represented with <em>null</em>)</li>
+<li>URL values: <em>null</em> or distinct. Distinct values are all URLs to gallery of images</li>
+</ul>
+<h3 id="monument_corpus.csv">monument_corpus.csv</h3>
+<ul class="incremental">
+<li>This table records the references for this dataset, listing the works which publish, cite and/or discuss a monument.</li>
+<li>This table is created using the .sql code:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">TABLE</span> monument_corpus (
+  MonumentCorpusID <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,
+    MonumentID <span class="dt">INTEGER</span> <span class="kw">REFERENCES</span> monument <span class="kw">NOT</span> <span class="kw">NULL</span>,
+    CorpusName TEXT <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">REFERENCES</span> corpus,
+    Reference TEXT <span class="kw">NOT</span> <span class="kw">NULL</span>,
+    isPrimaryReference TEXT
+);</code></pre></div>
+<ul class="incremental">
+<li>Columns</li>
+</ul>
+<ol class="incremental" style="list-style-type: decimal">
+<li><strong>MonumentCorpusID</strong></li>
+</ol>
+<ul class="incremental">
+<li>Primary key and surrogate key. Identifies each distinct reference and monument combination.</li>
+<li>Values: 1-908</li>
+</ul>
+<ol class="incremental" start="2" style="list-style-type: decimal">
+<li><strong>MonumentID</strong></li>
+</ol>
+<ul class="incremental">
+<li>MonumentID is a surrogate key and Foreign key linking from original_source_data/monument. It identifies the monument each line in this table is referring to, providing their means of identification within this dataset.</li>
+<li>Values: 1-130</li>
+</ul>
+<ol class="incremental" start="3" style="list-style-type: decimal">
+<li><strong>CorpusName</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the category of bibliographic reference information for each line/MonumentCorpusID. Foreign key referencing original_source_data/corpus.CorpusName. Abbreviations are all expanded upon in the database bibliography: DB-SQL/bibliography_for_db.bib &amp; DB-SQL/bibliography_for_db.ris. 'Other Ref' = a corpus, reference work, article or book which is not covered by the other categories.</li>
+<li>Constrained values (own): AE; Betz; CIL; EDCS; EDH; ILJug; Other Ref; Tončinić</li>
+</ul>
+<ol class="incremental" start="4" style="list-style-type: decimal">
+<li><strong>Reference</strong></li>
+</ol>
+<ul class="incremental">
+<li>Records the rest of the metadata for the reference. For those MonumentCorpusID which are of a category <em>other than</em> 'OtherRef', this will have a catalogue number or volume and references number. For those of 'OtherRef' classification, this will have an author date citation in <a href="https://libguides.mq.edu.au/referencing/Chicago">Chicago</a>. E.g. Wilkes 1969, 461; Maršić 2010, 65-67.</li>
+<li>Textual descriptions. Values: All values distinct, if duplicated, refer to MonumentCorpusID and CorpusName to distinguish.</li>
+</ul>
+<ol class="incremental" start="5" style="list-style-type: decimal">
+<li><strong>isPrimaryReference</strong></li>
+</ol>
+<ul class="incremental">
+<li>Marks whether or not this reference data (all columns) was the primary means of citation in the thesis related to this dataset (Coopey 2020). The order of preference for reference works was as follows (DESC): 'CIL', 'AE', 'ILJug', 'Tončinić', 'Betz', 'OtherRef'. The value '1' marks this reference out as the' primary reference', <em>null</em> means it is not the primary reference.</li>
+<li>Constrained values: 1; <em>null</em></li>
+</ul>
+<h3 id="monument_serviceman.csv">monument_serviceman.csv</h3>
+<ul class="incremental">
+<li>This table records data relating to which monuments refer to which servicemen, and in what capacity.</li>
+<li>This table is created using the .sql code:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">TABLE</span> monument_serviceman (
+      MonumentServicemanID <span class="dt">NUMBER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,
+        ServicemanID <span class="dt">INTEGER</span> <span class="kw">REFERENCES</span> legio_serviceman,
+        MonumentID <span class="dt">INTEGER</span> <span class="kw">REFERENCES</span> monument,
+        ServicemanReferencedAs TEXT,
+        PossibleDuplicateServicemanID <span class="dt">INTEGER</span>,
+        SourceForDuplicateArgument TEXT
+);</code></pre></div>
+<ul class="incremental">
+<li>Columns</li>
+</ul>
+<ol class="incremental" style="list-style-type: decimal">
+<li>MonumentServicemanID</li>
+</ol>
+<ul class="incremental">
+<li>Primary key and surrogate key. Provides means of identification for each combination of monument (MonumentID) and serviceman (ServicemanID).</li>
+<li>Numerical values: 1-139</li>
+</ul>
+<ol class="incremental" start="2" style="list-style-type: decimal">
+<li>ServicemanID</li>
+</ol>
+<ul class="incremental">
+<li>Foreign key and surrogate key referencing original_source_data/legio_serviceman.ServicemanID. Identifies the serviceman referred to on a monument.</li>
+<li>Constrained numerical values: 1-137</li>
+</ul>
+<ol class="incremental" start="3" style="list-style-type: decimal">
+<li>MonumentID</li>
+</ol>
+<ul class="incremental">
+<li>Foreign key and surrogate key referencing original_source_data/monument.MonumentID and identifying the monument in each line.</li>
+<li>Constrained numerical values: 2; 4-109; 126-130</li>
+</ul>
+<ol class="incremental" start="4" style="list-style-type: decimal">
+<li>ServicemanReferencedAs</li>
+</ol>
+<ul class="incremental">
+<li>Records the capacity in which the serviceman/servicemen were referred to in the monument's inscription. <em>null</em> means that their capacity is not ascertainable or has not been recorded in this dataset. Other than <em>null</em> there are 6 possible values:
+<ul class="incremental">
+<li>'administrator' = referred to in an administrative capacity.</li>
+<li>'commemorated' = commemorated by the monument.</li>
+<li>'commemorator' = erected the monument in commemoration of another/others.</li>
+<li>'commemorator and commemorated' = erected the monument in commemoration of others and/or themselves.</li>
+<li>'dedicant' = dedicated the monument to a certain deity (typically used in reference to altars)</li>
+<li>'political supporter' = referred to as a political supporter</li>
+</ul></li>
+<li>Constrained values (own): <em>null</em>; administrator; commemorated; commemorator; commemorator and commemorated; dedicant; political supporter</li>
+</ul>
+<ol class="incremental" start="5" style="list-style-type: decimal">
+<li>PossibleDuplicateServicemanID</li>
+</ol>
+<ul class="incremental">
+<li>Records if the serviceman may be a duplicate of another serviceman with a separate ServicemanID from another MonumentID. Provideds the ServicemanID of the possible duplciate. <em>null</em> means no information regarding possible duplicates has been recorded in this dataset (they are represented as duplicates in the dataset already, or they have no potential duplicates).</li>
+<li>Values: <em>null</em>, 102; 107</li>
+</ul>
+<ol class="incremental" start="6" style="list-style-type: decimal">
+<li>SourceForDuplicateArgument</li>
+</ol>
+<ul class="incremental">
+<li>Records the bibliographical reference for any scholarly sources which hypothesise that a certain ServicemanID may be a duplicate of another ServicemanID. <em>null</em> means there has been no data recorded for this column in this dataset.</li>
+<li>Values: Textual descriptions or <em>null</em></li>
+</ul>
+<h3 id="unit.csv">8. unit.csv</h3>
+<ul class="incremental">
+<li>This table records data concerning the unit, or possible combinations of units, an individual serviceman can be assigned within this dataset.</li>
+<li>This table is created using the .sql code:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode sql"><code class="sourceCode sql"><span class="kw">CREATE</span> <span class="kw">TABLE</span> unit (
+    UnitID <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,
+    UnitTitle TEXT
+);</code></pre></div>
+<ul class="incremental">
+<li>Columns</li>
+</ul>
+<ol class="incremental" style="list-style-type: decimal">
+<li><strong>UnitID</strong></li>
+</ol>
+<ul class="incremental">
+<li>Primary key and surrogate key which records the unit/s a serviceman may have served in according to the inscription on a monument. This column can be joined with original_source_data/unit.UnitTitle to be more (human) reader friendly. As seen with analysis/all_servicemen.Unit_Affiliation_and_Certainty.</li>
+<li>Numerical values: 1-12</li>
+</ul>
+<ol class="incremental" start="2" style="list-style-type: decimal">
+<li><strong>UnitTitle</strong></li>
+</ol>
+<ul class="incremental">
+<li>Latin name of Roman unit/s that a serviceman served in, or likely served in.</li>
+<li>Constrained vocabulary. Values: Ala Tungrorum; Cohors II Cyrrhestarum; Legio VII; Legio VII Claudia; Legio VII Claudia pia fidelis; Legio VII Claudia pia fidelis and VII Claudia; Legio VII Claudia pia fidelis or XI Claudia pia fidelis; Legio VII Macedonica; Legio VII or VII Claudia pia fidelis; Legio VII or VIII; Legio VII, VII Claudia pia fidelis, XI, XI Claudia pia fidelis; Legio XI</li>
+</ul>
