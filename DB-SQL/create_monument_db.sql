@@ -39,7 +39,6 @@ UPDATE findspot SET Trismegistos = NULL WHERE Trismegistos = '';
 select 'findspotsloaded', count(*) from findspot;
 
 
-
 CREATE TABLE monument (
 	MonumentID INTEGER PRIMARY KEY,
 	FindSpotID INTEGER REFERENCES findspot,
@@ -65,19 +64,6 @@ CREATE TABLE monument (
 	MonumentNote TEXT,
 	DBInclusionReason TEXT,
 	Media TEXT
-);
-
-CREATE TABLE inscribed_monument (
-	MonumentID INTEGER PRIMARY KEY REFERENCES (monument),
-	StuffWhatThatIsInscribed TEXT
-);
-
--- SELECT *
---   FROM monument JOIN inscribed_monument USING (monumentID);
-
-CREATE TABLE small_find_monument (
-	MonumentID INTEGER PRIMARY KEY REFERENCES (monument),
-	Small_Find_description TEXT
 );
 
 .mode csv
