@@ -1,4 +1,4 @@
-# Community and Identity in the Roman Seventh Legio: 
+# Community and Identity in the Roman Seventh Legio:
 
 **Digitally mapping funerary monuments referring to *Legio VII* servicemen and related members of the military community in Roman *Dalmatia***
 
@@ -43,11 +43,11 @@ the Roman world.
 Early Roman Empire (30 BCE – 259 CE)
 
 ## Keywords
-* Roman Empire, 
-* epigraphy, 
-* archaeology, 
+* Roman Empire,
+* epigraphy,
+* archaeology,
 * Roman military,
-* Dalmatia, 
+* Dalmatia,
 * monuments
 
 ## Potential Applications of the Data
@@ -60,10 +60,10 @@ community through their inscribed monuments, and it is hoped that
 future researchers can adapt this database structure onto other
 Roman epigraphic datasets.
 
-## Suppoprt 
+## Support
 This research was supported by the Croatian Studies
 Foundation (CSF) 2020 Community, Culture and Research Scheme, and
-the Macquarie University Macquarie Research Excellence Scholarship
+the Macquarie University Research Excellence Scholarship
 Scheme (MQRES).
 
 ## Related Publications
@@ -96,7 +96,7 @@ Bosnia Hercegovina:
 
 CC-BY-SA 4.0 International
 
-## Map of files 
+## Map of files
 (*descriptions in parentheses where required*)
 
 `/BromansCoopey/`
