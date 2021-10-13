@@ -287,7 +287,7 @@ SELECT MonumentID,
 8. **Media**
 * Source Table: (data/monument.Media)
 * Records URLs for images (photos or illustrations) of the monument. Where possible, the URL is for the <http://lupa.at> website. With some monuments having links to EDCS <http://db.edcs.eu>, and some having no images within the database (represented with _null_)
-* Unconstrained values: _null_ or distinct. Distinct values are all URLs to gallery of images.  
+* Unconstrained values: _null_ or distinct. Distinct values are all URLs to gallery of images.
 
 ### all_monument_with_location.csv
 * This table records all information from the data/monument and data/findspot tables to provide an in-depth overview of the archaeological and epigraphic corpus stored in this dataset (as opposed to the individuals mentioned). It is, in a sense, a kind of 'Master' table.
@@ -363,8 +363,8 @@ SELECT
 * Values: Textual description: Each translation is distinct. While there may be duplicate translations, the inscription they are based off is distinct, in which case refer to MonumentID to differentiate.
 7. **Source_of_Translation**
 * Source Table: (Data/monument.TranslationSource)
-* Records the attribution for the English translation of the inscription. _null_ = there is not translation within this dataset concerning this inscription, so there is nothing to attribute. Any attribution involving "Coopey" refers to the co-author of this database of the same name. Other citations are in author-date [Chicago](https://libguides.mq.edu.au/referencing/Chicago) style.
-* Constrained vocabulary (see above). Values: _null_; Tončinić 2011; Demicheli, Tončinić 2012; Coopey, edit of Tončinić 2011 and Cesarik 2016; Coopey, edit of Tončinić 2011 (made with help of Milićević-Bradač); Coopey, edit of Tončinić 2011; Coopey, edit of Rendić-Miočević 1987; Coopey
+* Records the attribution for the English translation of the inscription. _null_ = there is not translation within this dataset concerning this inscription, so there is nothing to attribute. Any attribution involving "Coopey" refers to the co-author of this database of the same name. Samuel Wessels is an Australian scholar at Macquarie University. Other citations are in author-date [Chicago](https://libguides.mq.edu.au/referencing/Chicago) style.
+* Constrained vocabulary (see above). Values: _null_; Tončinić 2011; Demicheli, Tončinić 2012; Coopey, edit of Tončinić 2011 and Cesarik 2016; Coopey, edit of Tončinić 2011 (made with help of Milićević-Bradač); Coopey, edit of Tončinić 2011; Coopey, edit of Rendić-Miočević 1987; Coopey; Samuel Wessels
 8. **Tončinić_2011_Style_Type**
 * Source Table: (data/monument.Tončinić2011StelaeType)
 * Records the typological style type of the monument according to Tončinić (2011) _Spomenici VII. legije na području rimske provincije Dalmacije / Monuments of Legio VII in the Roman Province of Dalmatia_: 150-153. Here _null_ means there is not data relating to this column for a monument = either it is not classifiable within this typology or it is not a funerary monument.
@@ -427,7 +427,7 @@ SELECT
 * Numerical values: 56 DISTINCT LAT values including _null_
 23. **LONG**
 * Source Table: (data/findspot.LONGITUDE_epsg_4326)
-* Records the longitude of the find spot of the monument using [EPSG 326]( https://epsg.io/4326): World Geodetic System 1984. _null_ means that the longitude was not recorded in this dataset because the find spot was not specific enough (e.g., a whole province). Source of longitude was Trismegistos (https://www.trismegistos.org/geo/) or Pleiades (https://pleiades.stoa.org/), and if neither available, Google Maps (https://www.google.com/maps). All were subject to being edited for higher precision by the author, however. 
+* Records the longitude of the find spot of the monument using [EPSG 326]( https://epsg.io/4326): World Geodetic System 1984. _null_ means that the longitude was not recorded in this dataset because the find spot was not specific enough (e.g., a whole province). Source of longitude was Trismegistos (https://www.trismegistos.org/geo/) or Pleiades (https://pleiades.stoa.org/), and if neither available, Google Maps (https://www.google.com/maps). All were subject to being edited for higher precision by the author, however.
 * Numerical values: 56 DISTINCT LONG values including _null_
 24. **Pleiades**
 * Source Table: (data/findspot.Pleiades)
@@ -448,4 +448,4 @@ SELECT
 28. **Media**
 * Source Table: (data/monument.Media)
 * Records URLs for images (photos or illustrations) of the monument. Where possible, the URL is for the <http://lupa.at> website. With some monuments having links to EDCS <http://db.edcs.eu>, and some having no images within the database (represented with _null_)
-* URL values: _null_ or distinct. Distinct values are all URLs to gallery of images.  
+* URL values: _null_ or distinct. Distinct values are all URLs to gallery of images.
