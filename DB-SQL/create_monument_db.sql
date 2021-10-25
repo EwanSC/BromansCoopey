@@ -6,6 +6,8 @@ DROP TABLE IF EXISTS monument_corpus;
 DROP TABLE IF EXISTS unit;
 DROP TABLE IF EXISTS military_status;
 DROP TABLE IF EXISTS monument_serviceman;
+DROP TABLE IF EXISTS inscribed_monument;
+DROP TABLE IF EXISTS small_find_monument;
 
 
 CREATE TABLE findspot (
@@ -67,19 +69,6 @@ CREATE TABLE monument (
 	Media TEXT
 );
 
-CREATE TABLE inscribed_monument (
-	MonumentID INTEGER PRIMARY KEY REFERENCES (monument),
-	StuffWhatThatIsInscribed TEXT
-);
-
--- SELECT *
---   FROM monument JOIN inscribed_monument USING (monumentID);
-
-CREATE TABLE small_find_monument (
-	MonumentID INTEGER PRIMARY KEY REFERENCES (monument),
-	Small_Find_description TEXT
-);
-
 .mode csv
 .import ../original_source_data/monument.csv monument
 
@@ -110,6 +99,24 @@ UPDATE monument SET MonumentNote = NULL WHERE MonumentNote = '';
 UPDATE monument SET DBInclusionReason = NULL WHERE DBInclusionReason = '';
 UPDATE monument SET Media = NULL WHERE Media = '';
 
+
+CREATE TABLE inscribed_monument (
+	MonumentID INTEGER PRIMARY KEY REFERENCES monument,
+	StuffWhatThatIsInscribed TEXT
+);
+
+-- SELECT *
+--   FROM monument JOIN inscribed_monument USING (monumentID);
+
+select 'inscribedmonumentsloaded', count(*) from inscribed_monument;
+
+
+CREATE TABLE small_find_monument (
+	MonumentID INTEGER PRIMARY KEY REFERENCES monument,
+	Small_Find_description TEXT
+);
+
+select 'smallfindmonumentsloaded', count(*) from small_find_monument;
 
 
 CREATE TABLE unit (
