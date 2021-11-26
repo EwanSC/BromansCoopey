@@ -136,3 +136,6 @@ ServicemanID,Name,DefiniteServiceman,UnitID,LiklihoodOfUnitAttribution,MilitaryS
 135,Urbanus,maybe,6,conjecture,11,,,,,,"Commemorator of ServicemanID 131. Different nomen gentilicium may mean this individual is unrelated, and they may be a fellow soldier, particularly as 131 died during active service, and the stelae was conjecture originally erected at Tilurium. Cambi 1979; 1994."
 136,(eques?),maybe,,,3,,,,,,
 137,"Lucius Sal[vius] Marcus",yes,5,"epigraphically attested",20,,,,,,
+138,"Lucius Luc[] Primus, son of Gaius",yes,13,"epigraphically attested",14,,,,,,
+139,"Lucius Gavius, son of Lucius",yes,13,"epigraphically attested",14,Publilia,Italy,Verona,,,"Apolloinaris not stated on titulus but this was the title of legio XV at the time"
+140,"Marcus Gavius, son of Lucius",maybe,13,conjecture,21,,Italy,Verona,?,"Maybe Publilia tribe","brother of ServicemanID 139, thus same unit, tribe and settlement"

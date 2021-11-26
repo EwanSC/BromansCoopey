@@ -138,3 +138,6 @@ MonumentServicemanID,ServicemanID,MonumentID,ServicemanReferencedAs,PossibleDupl
 137,136,130,,,
 138,137,107,administrator,,
 139,56,102,dedicant,,
+140,138,131,commemorated,,
+141,139,132,"commemorator and commemorated",,
+142,140,132,commemorated,,

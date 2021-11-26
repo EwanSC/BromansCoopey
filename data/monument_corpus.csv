@@ -907,3 +907,17 @@ MonumentCorpusID,MonumentID,CorpusName,Reference,isPrimaryReference
 906,127,EDCS,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-00380803,
 907,128,EDCS,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-00380804,
 908,15,Betz,053,
+909,131,AE,"1979, 445",1
+910,131,AE,"2000, 1175",
+911,131,"Other Ref","Bojanovski 1979, 46-47",
+912,131,"Other Ref","Atanacković-Salčić 1981, 272 no. 13",
+913,131,"Other Ref","Škegro 1997, 87 no. 7",
+914,131,EDCS,https://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-20601175,
+915,131,EDH,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD004491,
+916,132,AE,"1979, 444",1
+917,132,"Other Ref","Bojanovski 1979, 46-47",
+918,132,"Other Ref","Škegro 1997, 86 no. 6",
+919,132,EDCS,https://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-08901077,
+920,132,EDH,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD004479,
+921,131,"Other Ref","Glavičić, Pandža 2017, no. 12",
+922,132,"Other Ref","Glavičić, Pandža 2017, no. 13",
