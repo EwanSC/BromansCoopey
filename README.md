@@ -84,7 +84,7 @@ Bosnia Hercegovina:
 -   Arheološki muzej u Splitu/Archaeological Museum in Split
 -   Arheološki muzej u Zadru/Archaeological Museum in Zadar
 -   Basilica of Santa Maria, Porto
--   Muzej Cetina krajina/Museum of the Cetinska Region
+-   Muzej Cetinske krajina/Museum of Cetina region
 -   Muzej Triljskog kraja/Trilj Regional Museum
 -   Muzej grada Trogira/Trogir City Museum
 -   Muzej u Humcu (Franjevački samostan u Humcu)/Museum of Humac
