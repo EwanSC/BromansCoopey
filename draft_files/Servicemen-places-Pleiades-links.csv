@@ -1,0 +1,37 @@
+Province,Town,Pleaides URI,Lat,Lon,EDITORIAL NOTE,Ewan Actions
+Asia,Augusta Troas,https://pleiades.stoa.org/places/550434,39.7564735,26.1547495,,
+Dalmatia,Varvaria,https://pleiades.stoa.org/places/197574,43.925326,15.842858,,
+Italy,Aesis,https://pleiades.stoa.org/places/413002,43.522416,13.243375,Seems to be in Umbria... ,changed to italy
+Galatia,Amblada,https://pleiades.stoa.org/places/638741,37.518578,31.7386345,,
+Galatia,Ancyra,https://pleiades.stoa.org/places/619103,39.9437925,32.859333,,
+,Clistinna,,,,Not in Pleiades,"Removed province / make null, as location is not known according to some, though Anatolia was hypohtesised by Mitchell 1993 he gives no evidence so best to remove I guess"
+Galatia,Conana,https://pleiades.stoa.org/places/638813,37.955905,30.5129015,,Changed province to Anatolia
+Galatia,Cormassa,https://pleiades.stoa.org/places/638936,37.5053445,30.1194035,Not in Pleiades,Trismegistos gives this pleiades location for its Cormassa/Kormass entry. Changed province to Anatolia
+Galatia,Iconium,https://pleiades.stoa.org/places/648647,37.872202,32.492331,,
+Galatia,Isinda,https://pleiades.stoa.org/places/638872,36.177475,29.6909065,Several choices,Changed to different choice more inland. Changed province to Anatolia
+Galatia,Laranda,https://pleiades.stoa.org/places/648693,37.17845067,33.221586,,
+Galatia,Milyas,https://pleiades.stoa.org/places/638996,36.75,29.75,,
+Galatia,Ninica,https://pleiades.stoa.org/places/648723,36.64252433,33.43940333,,
+Galatia,Pessinus,https://pleiades.stoa.org/places/609500,39.33288187,31.58356062,,
+Galatia,Phazimon,https://pleiades.stoa.org/places/860848,,,Not in Pleiades,"Listed under Phazemon, no lat long provided, same on trismegistos: https://www.trismegistos.org/place/33632"
+Galatia,Sebaste,,,,Several choices,"Not sure on any of these unfortunately, best to leave unspecified"
+Galatia,Sebastopolis,,,,Several choices,"Not sure on any of these unfortunately, best to leave unspecified"
+Galatia,Sinope,https://pleiades.stoa.org/places/857321,42.025776,35.143037,,
+Gallia Narbonensis,Vienna,https://pleiades.stoa.org/places/167719,45.5245105,4.875982,Several choices,Chose https://pleiades.stoa.org/places/167719 'Vienne'
+Italy,Arretium,https://pleiades.stoa.org/places/413032,43.471274,11.863048,,
+Italy,Beneventum,https://pleiades.stoa.org/places/432721,41.130437,14.781161,,
+Italy,Bononia,https://pleiades.stoa.org/places/206975,43.993221,22.8759,,
+Italy,Brixia,https://pleiades.stoa.org/places/383603,45.539773,10.223135,,
+Italy,Cremona,https://pleiades.stoa.org/places/383628,45.133639,10.026149,,
+Italy,Florentia,https://pleiades.stoa.org/places/413138,43.768755,11.256929,,
+Italy,Forum Corneli,https://pleiades.stoa.org/places/393424,44.353995,11.707535,,
+Italy,Libarna,https://pleiades.stoa.org/places/383694,44.7148917,8.8610596,,
+Italy,Pisaurum,https://pleiades.stoa.org/places/413256,43.912081,12.91577,,
+Italy,Placentia,https://pleiades.stoa.org/places/383741,45.0525855,9.6976645,,
+Italy,Ticinum,https://pleiades.stoa.org/places/383798,45.185899,9.156562,,
+Italy,Verona,https://pleiades.stoa.org/places/383816,45.44212955,10.99573601,,
+Macedonia,Aloros,https://pleiades.stoa.org/places/491519,40.588605,22.597349,Not in Pleiades,Found a site under Aloros which fits description. Changed name of site to Aloros
+,Dentum,,,,Not in Pleiades,"Removed province, Mitchell thinks Macedonia but again does not provide convincing evidence (https://doi.org/10.1017/S0009838800033188)"
+Macedonia,Dyrrachium,https://pleiades.stoa.org/places/481818,41.3163425,19.447355,,
+Macedonia,Edessa,https://pleiades.stoa.org/places/491585,40.799718,22.053972,,
+Macedonia,Philippi,https://pleiades.stoa.org/places/501482,41.013317,24.28360833,,Chose https://pleiades.stoa.org/places/501482
