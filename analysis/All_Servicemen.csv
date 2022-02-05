@@ -23,7 +23,7 @@ ServicemanID,MonumentIDs,Nomina,Tribus,Domicilium,DefiniteServiceman,Unit_Affili
 23,24,"Quintus Igneinus Ferox, son of Quintus",Aniensis,"Augusta Troas,Asia",yes,"Legio VII or VII Claudia pia fidelis(conjecture)",,,,"Quintus may be a Legio VII member, it is not explicit in his stela however. This possibility is reinforced by the fact that Legio VII member Gaius Curitatus is from Augusta Troas MonumentID 32, CIL 3, 2109"
 24,25,"Gaius Julius, son of Gaius",Fabia,"Ninica,Galatia",yes,"Legio VII(epigraphically attested)","miles(epigraphically attested)",,,
 25,26,"Gaius Julius, son of Gaius",Velina,"Pessinus,Galatia",yes,"Legio VII(epigraphically attested)",,,"veteranus(epigraphically attested)",
-26,27,"Gaius Julius, son of Gaius",Voltinia,"Clistinna,Galatia",yes,"Legio VII(epigraphically attested)","miles(epigraphically attested)",,,
+26,27,"Gaius Julius, son of Gaius",Voltinia,"Clistinna ",yes,"Legio VII(epigraphically attested)","miles(epigraphically attested)",,,
 27,28,"Gaius Julius Agrippa, son of Gaius",Sergia,,yes,"Legio VII Claudia pia fidelis(epigraphically attested)",,,,
 28,29,"Marcus Julius, son of Marcus",,"Trernahensis ",yes,"Legio VII Claudia pia fidelis(epigraphically attested)","miles(epigraphically attested)",,,
 29,30,"Sextus Clodius, son of Gaius",Publilia,"Verona,Italy",yes,"Legio VII, VII Claudia pia fidelis, XI, XI Claudia pia fidelis(conjecture)","miles(epigraphically attested)",,,"No mention of Legio VII as the stelae is damaged. However, style is the same as many other stelae belonging to servicemen of the legio, and it was found at Tilurium. "
@@ -33,7 +33,7 @@ ServicemanID,MonumentIDs,Nomina,Tribus,Domicilium,DefiniteServiceman,Unit_Affili
 33,34,"Gaius Lartinius, son of Gaius",Pollia,"Forum Corneli,Italy",yes,"Legio VII(epigraphically attested)","miles(epigraphically attested)",,,
 34,35,"Publius Lastus Scaeva, son of Aulus",,"Florentia,Italy",yes,"Legio VII Claudia pia fidelis(epigraphically attested)","eques(epigraphically attested)",,"veteranus(epigraphically attested)",
 35,40,"Gaius Licinius, son of Gaius",Fabia,"Sinope,Galatia",yes,"Legio VII(epigraphically attested)",,,"veteranus(epigraphically attested)",
-36,41,"Marcus Livius, son of Marcus",Palatina,"Alorum,Macedonia",yes,"Legio VII(epigraphically attested)",,,"veteranus(epigraphically attested)",
+36,41,"Marcus Livius, son of Marcus",Palatina,"Aloros,Macedonia",yes,"Legio VII(epigraphically attested)",,,"veteranus(epigraphically attested)",
 37,42,"Gaius Lollius Valens, son of Gaius",Papiria,,yes,"Legio VII Claudia pia fidelis(epigraphically attested)",,,"veteranus(epigraphically attested)",
 38,43,"Gaius Longinus, son of Gaius",Cornelia,"Amblada,Galatia",yes,"Legio VII(epigraphically attested)","miles(epigraphically attested)",,,
 39,44,"Gaius Lucretius",,"Verona,Italy",yes,"Legio VII Claudia pia fidelis(epigraphically attested)","signifer(epigraphically attested)",,,"Brother of ServicemanID 40. Found in same plot according to Betz 1938: 66; and both epitaphs record the same sized grave plot (20x10ft), Tončinić 2011: 62-63."
@@ -60,7 +60,7 @@ ServicemanID,MonumentIDs,Nomina,Tribus,Domicilium,DefiniteServiceman,Unit_Affili
 61,64,"Marcus Sosius, son of Marcus",Fabia,"Sebastopolis,Galatia",yes,"Legio VII(conjecture)",,,,
 62,65,"Marcus Titus, son of Marcus",Sergia,"Isinda,Galatia",yes,"Legio VII(epigraphically attested)","eques(epigraphically attested)",,,
 63,66,"Lucius Trebonius Valentus",,,yes,"Legio VII Claudia pia fidelis(epigraphically attested)","miles(epigraphically attested)",,,
-64,67,"Gaius Valerius, son of Gaius",,"Dentum,Macedonia",yes,"Legio VII(epigraphically attested)",,,"veteranus(epigraphically attested)",
+64,67,"Gaius Valerius, son of Gaius",,"Dentum ",yes,"Legio VII(epigraphically attested)",,,"veteranus(epigraphically attested)",
 65,68,"Quintus Valerius, son of Quintus",Cornelia,"Edessa,Macedonia",yes,"Legio VII(epigraphically attested)","miles(epigraphically attested)",,,
 66,69,"Quintus Valerius, son of Quintus",Quirina,"Iconium,Galatia",yes,"Legio VII(epigraphically attested)",,,"veteranus(epigraphically attested)",
 67,70,"Lucius Valerius, son of Lucius",Voltinia,"Philippi,Macedonia",yes,"Legio VII(epigraphically attested)","miles(epigraphically attested)",,,
@@ -72,7 +72,7 @@ ServicemanID,MonumentIDs,Nomina,Tribus,Domicilium,DefiniteServiceman,Unit_Affili
 73,76,"Marcus Vibius, son of Marcus",Aemilia,"Dyrrachium,Macedonia",yes,"Legio VII(epigraphically attested)","miles(epigraphically attested)",,,
 74,77,"signifer leg vii cpf",,,yes,"Legio VII Claudia pia fidelis(epigraphically attested)","signifer(epigraphically attested)",,,
 75,78,"vet leg vii cpf",,,yes,"Legio VII Claudia pia fidelis(epigraphically attested)",,,"veteranus(epigraphically attested)",
-76,79,C[aius?---],Pollia,"Aesis,Galatia",yes,"Legio VII(epigraphically attested)","miles(epigraphically attested)",,,
+76,79,C[aius?---],Pollia,"Aesis,Italy",yes,"Legio VII(epigraphically attested)","miles(epigraphically attested)",,,
 77,80,"mil le[g] vii",Pomptina,"Arretium,Italy",yes,"Legio VII(epigraphically attested)","miles(epigraphically attested)",,,
 78,81,"[----]elius mat[----]",,"R[---] ",yes,"Legio VII or VII Claudia pia fidelis(epigraphically attested)",,,"veteranus(epigraphically attested)",
 79,82,[Au]reli[us-],,,yes,"Legio VII Claudia pia fidelis(epigraphically attested)",,,veteranus(conjecture),
