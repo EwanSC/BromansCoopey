@@ -4,11 +4,11 @@ Dalmatia,Varvaria,https://pleiades.stoa.org/places/197574,43.925326,15.842858,,
 Italy,Aesis,https://pleiades.stoa.org/places/413002,43.522416,13.243375,Seems to be in Umbria... ,changed to italy
 Galatia,Amblada,https://pleiades.stoa.org/places/638741,37.518578,31.7386345,,
 Galatia,Ancyra,https://pleiades.stoa.org/places/619103,39.9437925,32.859333,,
-,Clistinna,,,,Not in Pleiades,"Removed province / make null, as location is not known according to some, though Anatolia was hypohtesised by Mitchell 1993 he gives no evidence so best to remove I guess"
-Galatia,Conana,https://pleiades.stoa.org/places/638813,37.955905,30.5129015,,Changed province to Anatolia
-Galatia,Cormassa,https://pleiades.stoa.org/places/638936,37.5053445,30.1194035,Not in Pleiades,Trismegistos gives this pleiades location for its Cormassa/Kormass entry. Changed province to Anatolia
+,Clistinna,,,,Not in Pleiades,"Removed province / make null, as location is not known according to some, though Anatolia was hypothesised by Mitchell 1993 he gives no evidence so best to remove I guess"
+Galatia,Conana,https://pleiades.stoa.org/places/638813,37.955905,30.5129015,,
+Galatia,Cormassa,https://pleiades.stoa.org/places/638936,37.5053445,30.1194035,Not in Pleiades,Trismegistos gives this pleiades location for its Cormassa/Kormass entry.
 Galatia,Iconium,https://pleiades.stoa.org/places/648647,37.872202,32.492331,,
-Galatia,Isinda,https://pleiades.stoa.org/places/638872,36.177475,29.6909065,Several choices,Changed to different choice more inland. Changed province to Anatolia
+Galatia,Isinda,https://pleiades.stoa.org/places/638872,36.177475,29.6909065,Several choices,Changed to different choice more inland.
 Galatia,Laranda,https://pleiades.stoa.org/places/648693,37.17845067,33.221586,,
 Galatia,Milyas,https://pleiades.stoa.org/places/638996,36.75,29.75,,
 Galatia,Ninica,https://pleiades.stoa.org/places/648723,36.64252433,33.43940333,,
