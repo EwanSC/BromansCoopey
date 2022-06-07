@@ -40,8 +40,6 @@ UPDATE findspot SET Trismegistos = NULL WHERE Trismegistos = '';
 
 select 'findspotsloaded', count(*) from findspot;
 
-
-
 CREATE TABLE monument (
 	MonumentID INTEGER PRIMARY KEY,
 	FindSpotID INTEGER REFERENCES findspot,
@@ -110,14 +108,12 @@ CREATE TABLE inscribed_monument (
 
 select 'inscribedmonumentsloaded', count(*) from inscribed_monument;
 
-
 CREATE TABLE small_find_monument (
 	MonumentID INTEGER PRIMARY KEY REFERENCES monument,
 	Small_Find_description TEXT
 );
 
 select 'smallfindmonumentsloaded', count(*) from small_find_monument;
-
 
 CREATE TABLE unit (
 	UnitID INTEGER PRIMARY KEY,
@@ -151,7 +147,6 @@ UPDATE military_status SET FirstOfficeCertainty = NULL WHERE FirstOfficeCertaint
 UPDATE military_status SET SecondOfficeCertainty = NULL WHERE SecondOfficeCertainty = '';
 UPDATE military_status SET VeteranStatus = NULL WHERE VeteranStatus = '';
 UPDATE military_status SET VeteranStatusCertainty = NULL WHERE VeteranStatusCertainty = '';
-
 
 
 CREATE TABLE corpus (
