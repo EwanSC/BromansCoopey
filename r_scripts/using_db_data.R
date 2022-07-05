@@ -3,6 +3,7 @@
 # Author: Ewan Coopey
 # Creation: 29/06/2022
 # Last Edit: 05/07/2022
+# CC BY SA 4.0
 
 # First, load packages (import if first time using install.packages).
 # If you have issues downloading "rnaturalearthhires" follow guide here: https://stackoverflow.com/questions/66294044/rnaturalearthhires-package-installation-error
