@@ -14,7 +14,9 @@
     <https://orcid.org/0000-0003-4932-7912>; Solutions Architect
     (Digital Humanities), Macquarie University Faculty of Arts.
 
+## Zenodo DOI
 
+[![DOI](https://zenodo.org/badge/241529551.svg)](https://zenodo.org/badge/latestdoi/241529551)
 
 ## Abstract:
 
