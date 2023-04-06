@@ -155,3 +155,6 @@ the authors/organisers of the online resource with suggested changes.
     `analysis/README.md`.
 - **Controlled Vocabularies (“Standards”)**: Provided in
     `data/README.md` and `analysis/README.md`.
+
+## Data sources
+Roman provincial shapefiles in /r_scripts from <http://awmc.unc.edu/awmc/map_data/shapefiles/cultural_data/political_shading/roman_empire_ad_69_provinces/>
