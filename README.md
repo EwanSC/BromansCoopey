@@ -2,6 +2,7 @@
 
 **Digitally mapping funerary monuments referring to *Legio VII* servicemen and related members of the military community in Roman *Dalmatia***
 
+![a proportional scale map of the monuments of legio seven. they cluster along the eastern Adriatic coastline, with select plots in serbia and turkey](media/all_monuments.png)
 
 ## Authors:
 
@@ -14,9 +15,13 @@
     <https://orcid.org/0000-0003-4932-7912>; Solutions Architect
     (Digital Humanities), Macquarie University Faculty of Arts.
 
-## Zenodo DOI
+## Zenodo
 
 [![DOI](https://zenodo.org/badge/241529551.svg)](https://zenodo.org/badge/latestdoi/241529551)
+
+## Open Context
+
+<https://doi.org/10.6078/M7X34VK8>
 
 ## Abstract:
 
@@ -108,6 +113,9 @@ CC-BY-SA 4.0 International
 -   `original_source_data/` (*original data csvs*)
 -   `thesis/` (*thesis which database is related to*)
 -   `publication_files/` (*various files related to publication of this database to OCD <https://opencontext.org/>*)
+-   `media` (*proportional scale map outputs from /r_scripts*)
+-   `r_scripts` (*R scripts for dataset analysis*)
+-   `shape_files` (*shape files for /R_scripts*)
 
 ## Methodological Notes
 
