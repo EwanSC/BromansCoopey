@@ -3,6 +3,7 @@
 **Digitally mapping funerary monuments referring to *Legio VII* servicemen and related members of the military community in Roman *Dalmatia***
 
 ![a proportional scale map of the monuments of legio seven. they cluster along the eastern Adriatic coastline, with select plots in serbia and turkey](media/all_monuments.png)
+_[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) E S Coopey_
 
 ## Authors:
 
