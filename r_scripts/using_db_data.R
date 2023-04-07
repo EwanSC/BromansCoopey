@@ -14,6 +14,7 @@ library(sqldf)
 library(ggplot2)
 library(ggrepel)
 library(sf)
+library("svglite")
 library("rnaturalearthdata")
 library("rnaturalearth")
 library("rnaturalearthhires")
@@ -47,9 +48,12 @@ ggplot() +
   geom_sf(data = allmonumentsll, aes(size = n), alpha=0.6, colour = '#cd2026') + 
   labs(size = 'Inscribed Monuments') +
   ggtitle("Monuments of Legio VII in Roman Dalmatia", subtitle = "Epigraphic Distribution") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(42, 45.5))
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(42, 45.5)) +
+  theme(text = element_text(family = "Helvetica"))
 
 ggsave("media/dalmatian_monuments.png", dpi = 300)
+ggsave("media/dalmatian_monuments.pdf", dpi = 300)
+ggsave("media/dalmatian_monuments.tiff", dpi = 300)
 
 ggplot() + 
   geom_sf(data = world, color = "darkgrey", fill = "lightgrey") + 
@@ -57,7 +61,9 @@ ggplot() +
   geom_sf(data = allmonumentsll, aes(size = n), alpha=0.6, colour = '#cd2026') + 
   labs(size = 'Inscribed Monuments') +
   ggtitle("Monuments of Legio VII in Dataset", subtitle = "Epigraphic Distribution") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(15.237922, 37.5053445), ylim = c(32.492331, 44.73291))
+  coord_sf(default_crs = st_crs(4326), xlim = c(15.237922, 37.5053445), ylim = c(32.492331, 44.73291)) +
+  theme(text = element_text(family = "Helvetica"))
 
 ggsave("media/all_monuments.png", dpi = 300)
-
+ggsave("media/all_monuments.pdf", dpi = 300)
+ggsave("media/all_monuments.tiff", dpi = 300)
