@@ -114,9 +114,9 @@ CC-BY-SA 4.0 International
 -   `original_source_data/` (*original data csvs*)
 -   `thesis/` (*thesis which database is related to*)
 -   `publication_files/` (*various files related to publication of this database to OCD <https://opencontext.org/>*)
--   `media` (*proportional scale map outputs from /r_scripts*)
--   `r_scripts` (*R scripts for dataset analysis*)
--   `shape_files` (*shape files for /R_scripts*)
+-   `media/` (*proportional scale map outputs from r_scripts/*)
+-   `r_scripts/` (*R scripts for dataset analysis*)
+-   `shape_files/` (*shape files for r_scripts/*)
 
 ## Methodological Notes
 
