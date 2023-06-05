@@ -1,7 +1,7 @@
-MonumentID,CIL,"Tončinić",Betz,ILJug,AE,EDCS,EDH,OtherRef
-1,"03, 02908",092,"001; 084",,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-28400159,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD032704,"ILS 2280; Jagenteufel 1958, no.3.3; Banko, Sticotti 1895, 98ff"
+MonumentID,CIL,Tončinić,Betz,ILJug,AE,EDCS,EDH,OtherRef
+1,"03, 02908",092,001; 084,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-28400159,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD032704,"ILS 2280; Jagenteufel 1958, no.3.3; Banko, Sticotti 1895, 98ff"
 2,"03, 02733",073,072,,"1977, 0613",http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-28300058,,"Galsterer 1971; Demicheli, Tončinić 2012"
-3,"03, 03198a; 03, 03200; 03, 10156; 03, 10158; 17-04, 00130",091,,"1, 0262","1961, 0304; 2006, +1004",http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-54900234,,"Sanader Tončinić 2013; ILS 2478; ILS 5829"
+3,"03, 03198a; 03, 03200; 03, 10156; 03, 10158; 17-04, 00130",091,,"1, 0262","1961, 0304; 2006, +1004",http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-54900234,,Sanader Tončinić 2013; ILS 2478; ILS 5829
 4,,066,,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-51400004,,"Milošević 1998, 151; Demicheli 2011, 71-72 no. 1; Demicheli, Tončinić 2008"
 5,,001,,,"1999, 1230",http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-14800171,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD039866,"Sanader 2000, figs 4 and 6; Sanader, Milićević Bradač, Demicheli 2007; Sanader, Milićević Bradač, Demicheli 2013"
 6,"03, 02709",002,021,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-28300035,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD058869,"Hoffmann 1905, no.42; Wilkes 1969, 463; Fadić 1997, no.1; ILS 2252"
@@ -13,7 +13,7 @@ MonumentID,CIL,"Tončinić",Betz,ILJug,AE,EDCS,EDH,OtherRef
 12,"03, 09733",008,023,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-30100403,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD058840,"BD-VAHD (1) 1878, no.24; Wilkes 1969, 463; Sanader, Milićević Bradač, Demicheli 2007; Sanader, Milićević Bradač, Demicheli 2013; Rendić-Miočević 1987, 226; Fadić 1997, no. 11"
 13,"03, 08735",009,014,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-28700950,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD062531,"BD-VAHD (5) 1882, no.11; Wilkes 1969, 467; BD-VAHD (8), no. 311"
 14,"03, 02014",010,048,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-27601578,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD054710,"Hoffmann 1905, no.46; Wilkes 1969, 460; Marsić 2010, 67-78"
-15,"03, 08487",011,"052; 053",,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-31900305,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD058380,"Wilkes 1969, 463; Hoernes 1880, 37-38; BD-VAHD (8), no. 147; Patsch 1908, 111; Bojanovski 1988, no. 19; Bojanovski 1985, 90; Dodig 2005a, no. 1; Dodig 2006, no. 5"
+15,"03, 08487",011,052; 053,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-31900305,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD058380,"Wilkes 1969, 463; Hoernes 1880, 37-38; BD-VAHD (8), no. 147; Patsch 1908, 111; Bojanovski 1988, no. 19; Bojanovski 1985, 90; Dodig 2005a, no. 1; Dodig 2006, no. 5"
 16,"03, 02710; 03, 09726",012,051,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-28300036,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD058819,"ILS 2253; Hofmann 1905, no. 43; Wilkes 1969, 463; Medini 1984, 108-109, no. 2; Fadić 1997, no. 2"
 17,"03, 02914",013,008,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-28400165,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD060145,"Nedved 1992, no.8; Kurilić 1999, 1878"
 18,,014,080,"3, 1949",,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-10100891,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD034293,"Hofmann 1905, 88; Wilkes 1969, 463; Fadić 1997, no. 20; BD-VAHD (26) 1903, no. 3321"
@@ -34,8 +34,8 @@ MonumentID,CIL,"Tončinić",Betz,ILJug,AE,EDCS,EDH,OtherRef
 33,"03, 14244/1; 11, 00021 (p 1227)",028,050,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-24600965,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD062044,"Wilkes 1969, 460"
 34,"03, 14931",029,031,,"1897, 0105",http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-30200431,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD022811,"BD-VAHD (20) 1897, 130 no.2368; Wilkes 1969, 460; Fadić 1997, no. 16"
 35,"03, 01814",030,019,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-27500114,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD053442,"Wilkes 1969, 460; Bojanovski 1988, 384"
-36,"17-4, 00363",,,"3, 2974",,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-10101980,"https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD035340 ","Sanader, Tončinić 2013, 414; Bojanovski 1978, GodAkSarajevo 17, 68 n. 34. ; Bojanovski 1977, GodAkSarajevo 15, 121-122; point, 2, 2"
-37,"17-4, 00342",,,"3, 2982",,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-10101988,"https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD035356 ","Sanader, Tončinić 2013, 414; BD-VAHD (49) 1926/7, 142-144, no. 3"
+36,"17-4, 00363",,,"3, 2974",,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-10101980,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD035340 ,"Sanader, Tončinić 2013, 414; Bojanovski 1978, GodAkSarajevo 17, 68 n. 34. ; Bojanovski 1977, GodAkSarajevo 15, 121-122; point, 2, 2"
+37,"17-4, 00342",,,"3, 2982",,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-10101988,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD035356 ,"Sanader, Tončinić 2013, 414; BD-VAHD (49) 1926/7, 142-144, no. 3"
 38,"03, 03202; 17-4, 00323a",,,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-28600193,,"ILS 0393; Sanader, Tončinić 2013"
 39,"03, 14514",,,,"1901, 0127b; 1902, 0025",http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-30200722,,"IMS 2, 101; Sanader, Tončinić 2013"
 40,,031,058,,"2000, 1174",http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-20601174,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD039805,"Wilkes 1969, 462; Paškvalin 1985, 120; Atanacković-Salčić 1981, 263-264 no. 2; Bojanovski 1988, 384 no. 35; Škegro 1997, 86 no. 3; Marin et.al. 2000, 510 no. 1; Dodig 2005a, 212 no. 8"
@@ -52,7 +52,7 @@ MonumentID,CIL,"Tončinić",Betz,ILJug,AE,EDCS,EDH,OtherRef
 51,,042,,,"1995, 1232",http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-03300744,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD040157,"Fadić 1995, 168-172; Fadić 1997, 81 no.8; Šegvić 1996, 135-136 no. 32; Sanader, Milićević Bradač, Demicheli 2007; Sanader, Milićević Bradač, Demicheli 2013; Radman-Livaja 2010, 108-109 no. 114"
 52,"03, 09738; 03, 08781",043,035,"3, 1941",,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-30200377,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD034287,"BD-VAHD (1) 1878, 19 no.23; BD-VAHD (26) 1903, 134-135 no. 3244 ; Wilkes 1969, 461; Fadić 1997, 81 no. 9"
 53,"03, 14946",044,062,,"1900, 0139",http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-32700500,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD028366,"BD-VAHD (23) 1900, 118; Miločević 1998, 182; Višić-Ljubić 2008, 122-123 no. 5"
-54,,045,063,"3, 1916",,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-66200163,"https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD056521; https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD034234","Wilkes 1969, 463; Atanacković-Salčić 1981, 265 no. 4; Bojanovski 1988, 384 no. 44; Škegro 1997, 86 no. 4; Čerina, Rismondo 2004 no. 9; Dodig 2005a, 211 no.5"
+54,,045,063,"3, 1916",,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-66200163,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD056521; https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD034234,"Wilkes 1969, 463; Atanacković-Salčić 1981, 265 no. 4; Bojanovski 1988, 384 no. 44; Škegro 1997, 86 no. 4; Čerina, Rismondo 2004 no. 9; Dodig 2005a, 211 no.5"
 55,"03, 02716",046,016,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-28300042,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD058789,"Hofmann 1905, 59-60 no. 47; Fadić 1997, 81 no. 5"
 56,"03, 13978",047,,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-31900031,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD061690,"BD-VAHD (17) 1894, 5 no. 3; Patsch 1897, 350"
 57,"03, 14933",048,082,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-24400350,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD051029,"BD-VAHD (1) 1878, 19 no.27; Hofmann 1905, 50 no. 38; Wilkes 1969, 462; Fadić 1997, 81 no.19"
@@ -86,7 +86,7 @@ MonumentID,CIL,"Tončinić",Betz,ILJug,AE,EDCS,EDH,OtherRef
 85,"03, 06827",,,,"1998, 1386-9",http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-28400847,,"Mitchell 1976; Whately 2016; Mitchell 1993, 73 n.38"
 86,,,,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-13400280,,"Bean 1959, 93; Whately 2016; Mitchell 1993, 73 n.39"
 87,,,,,,,,"IGRRP 3, 1476; Whately 2016; JHS(22), 356; Mitchell 1993, 73 n.39, 138 n. 150"
-88,,,,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-75300231,,"Matijević 2017: fig. 1"
+88,,,,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-75300231,,Matijević 2017: fig. 1
 89,,076,,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-55300299,,
 90,"03, 09711",077,074,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-30000205,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD058594,
 91,"03, 14699",078,078,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-32700263,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD061551,"BD-VAHD (22) 1899, 58-59 no. 2570 A"
@@ -94,7 +94,7 @@ MonumentID,CIL,"Tončinić",Betz,ILJug,AE,EDCS,EDH,OtherRef
 93,"03, 08763",080,077,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-28800847,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD063539,"Wilkes 1969, 46; Alföldy 1969, 236, 266"
 94,,081,076,"3, 2028",,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-10100992,,"BD-VAHD (26) 1903, 189 no. 3228; "
 95,"03, 14248",082,079,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-32201067,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD062028,"BD-VAHD (18) 1895, 216 no. 2111; Miletić 1989, 105; Miletić 1990a, 179"
-96,"03, 08767",083,043,,,"http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-28800850; http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-47800296",https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD062587,
+96,"03, 08767",083,043,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-28800850; http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-47800296,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD062587,
 97,,084,,"3, 3239",,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-10100894,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD034296,"BD-VAHD (26) 1903, 133 no. 3239"
 98,"03, 12909",085,174,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-31400720,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD063895,
 99,,086,,,,http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-55300316,,"BD-VAHD (27) 1904, 53 no. A 3209; Miletić 1989, 101; Miletić 1990a, 174"
@@ -128,4 +128,4 @@ MonumentID,CIL,"Tončinić",Betz,ILJug,AE,EDCS,EDH,OtherRef
 127,,,,,"1994, 1357",http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-00380803,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD039997,"Cambi 1994, cat. no. 3"
 128,,,,,"1994, 1358",http://db.edcs.eu/epigr/edcs_id.php?s_sprache=en&p_edcs_id=EDCS-00380804,https://edh-www.adw.uni-heidelberg.de/edh/inschrift/HD039998,"Cambi 1994, cat. no. 4"
 129,,,,,,,,"MAMA 04, 0237; Mitchell 1993, 73 n.38"
-130,,,,,,,,"Medini 1984: fig. 2; Cambi 2008: 27"
+130,,,,,,,,Medini 1984: fig. 2; Cambi 2008: 27

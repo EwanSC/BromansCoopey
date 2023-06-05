@@ -1,22 +1,22 @@
 MilitaryStatusID,FirstRecordedOffice,SecondRecordedOffice,FirstOfficeCertainty,SecondOfficeCertainty,VeteranStatus,VeteranStatusCertainty
-1,miles,,"epigraphically attested",,,
-2,eques,,"epigraphically attested",,,
+1,miles,,epigraphically attested,,,
+2,eques,,epigraphically attested,,,
 3,eques,,conjecture,,,
-4,eques,,"epigraphically attested",,veteranus,"epigraphically attested"
-5,centurio,,"epigraphically attested",,,
-6,centurio,,"epigraphically attested",,veteranus,"epigraphically attested"
+4,eques,,epigraphically attested,,veteranus,epigraphically attested
+5,centurio,,epigraphically attested,,,
+6,centurio,,epigraphically attested,,veteranus,epigraphically attested
 7,centurio,,conjecture,,,
 8,centurio,,conjecture,,veteranus,conjecture
-9,signifer,,"epigraphically attested",,,
-10,imaginifer,,"epigraphically attested",,,
+9,signifer,,epigraphically attested,,,
+10,imaginifer,,epigraphically attested,,,
 11,unknown,,,,,
-12,tribunus,iudex,conjecture,"epigraphically attested",,
-13,"princeps posterior",,"epigraphically attested",,,
-14,,,,,veteranus,"epigraphically attested"
+12,tribunus,iudex,conjecture,epigraphically attested,,
+13,princeps posterior,,epigraphically attested,,,
+14,,,,,veteranus,epigraphically attested
 15,,,,,veteranus,conjecture
-16,scriba,,"epigraphically attested",,veteranus,"epigraphically attested"
-17,"primus pilus","praefectus castorum","epigraphically attested","epigraphically attested",,
-18,centurio,iudex,conjecture,"epigraphically attested",,
-19,miles,"exacto consularis","epigraphically attested","epigraphically attested",,
-20,centurio,iudex,"epigraphically attested","epigraphically attested",,
+16,scriba,,epigraphically attested,,veteranus,epigraphically attested
+17,primus pilus,praefectus castorum,epigraphically attested,epigraphically attested,,
+18,centurio,iudex,conjecture,epigraphically attested,,
+19,miles,exacto consularis,epigraphically attested,epigraphically attested,,
+20,centurio,iudex,epigraphically attested,epigraphically attested,,
 21,,,,,veteranus,conjecture
