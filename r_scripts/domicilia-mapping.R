@@ -45,18 +45,13 @@ allmonumentsplace <- na.omit(Epigraphy %>%
 (allmonumentsll <- st_as_sf(allmonumentsplace, coords = c('Lon', 'Lat'), remove = FALSE,
                             crs = 4326, agr = "constant"))
 
-tilurium <- read.csv('r_scripts/tilurium.csv')
-
-(tiluriumll <- st_as_sf(tilurium, coords = c('Lon', 'Lat'), remove = FALSE,
-                            crs = 4326, agr = "constant"))
-
 ## plotting
 ggplot() + 
   geom_sf(data = world, color = "darkgrey", fill = "lightgrey") + 
   geom_sf(data = roman_69_provinces, colour = 'black') +
   geom_sf(data = roman_roads, colour = "darkgrey") +
-  geom_sf(data = allmonumentsll, alpha=0.6, colour = '#cd2026') + 
-  geom_sf(data = tiluriumll, alpha=0.6, colour = 'blue') +
+  geom_sf(data = allmonumentsll, colour = '#cd2026') +
+  labs(size = 'Domicilia') +
   ggtitle("Origins of Legio VII Legionaries in Dalmatia", subtitle = "Recorded Domicilia ('City of Origin') in the CIRSL Dataset") +
   coord_sf(default_crs = st_crs(4326), xlim = c(3,36), ylim = c(32,47)) +
   theme_void()
