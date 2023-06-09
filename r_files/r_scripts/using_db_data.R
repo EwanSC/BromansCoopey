@@ -108,8 +108,7 @@ Funerary_Epigraphy_Dal <- sqldf("Select * from Epigraphy
                       or MonumentType = 'funerary inscription'
                       or MonumentType = 'titulus'
                       or MonumentType = 'inscription fragment'
-                      or MonumentType = 'altar'
-                      or MonumentType = 'sacral monument')")
+                      or MonumentType = 'altar')")
 
 Funerary_Epigraphy_Dal_Count <- Funerary_Epigraphy_Dal %>% group_by(MonumentType) %>% 
   summarise(total_count=n(),
@@ -127,15 +126,17 @@ Funerary_Epigraphy_Dal_Place <- na.omit(Funerary_Epigraphy_Dal %>%
                               crs = 4326, agr = "constant"))
 
 ggplot() + 
-  geom_sf(data = world, color = "darkgrey", fill = "lightgrey") + 
+  geom_sf(data = world, color = "cornsilk4", fill = "cornsilk") + 
   geom_sf(data = roman_69_provinces, colour = 'black') +
   geom_sf(data = roman_roads, colour = "darkgrey") +
-  geom_sf(data = Funerary_Epigraphy_Dal_ll, aes(size = n), alpha=0.6, colour = 'black') + 
+  geom_sf(data = Funerary_Epigraphy_Dal_ll, aes(size = n), alpha=0.6, colour = 'black') +
+  scale_size (breaks = c(1,5,10)) +
   geom_sf(data = Key_Settlements_ll, aes(colour = Ancient_Site)) +
   labs(size = 'Number / Broj spomenika', colour = 'Key Sites / Ključna mjesta') +
   ggtitle("Legio VII funerary monuments / Pogrebni spomenici Legio VII", subtitle = "Geographic Distribution / Geografska distribucija") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(42, 45.5)) +
   theme_void()
+  
 
 ggsave("media/dalmatian_funerary_monuments.png", dpi = 300)
 ggsave("media/dalmatian_funerary_monuments.pdf", dpi = 300)
@@ -170,10 +171,11 @@ Maybe_Funerary_Epigraphy_Dal_Place <- na.omit(Maybe_Funerary_Epigraphy_Dal %>%
                                        crs = 4326, agr = "constant"))
 
 ggplot() + 
-  geom_sf(data = world, color = "darkgrey", fill = "lightgrey") + 
+  geom_sf(data = world, color = "cornsilk4", fill = "cornsilk") + 
   geom_sf(data = roman_69_provinces, colour = 'black') +
   geom_sf(data = roman_roads, colour = "darkgrey") +
-  geom_sf(data = Funerary_Epigraphy_Dal_ll, aes(size = n), alpha=0.6, colour = 'black') + 
+  geom_sf(data = Maybe_Funerary_Epigraphy_Dal_ll, aes(size = n), alpha=0.6, colour = 'black') +
+  scale_size (breaks = c(1,2,3)) +
   geom_sf(data = Key_Settlements_ll, aes(colour = Ancient_Site)) +
   labs(size = 'Number / Broj spomenika', colour = 'Key Sites / Ključna mjesta') +
   ggtitle("Possible Legio VII funerary monuments / Mogući pogrebni spomenici Legio VII", subtitle = "Geographic Distribution / Geografska distribucija") +
@@ -183,3 +185,24 @@ ggplot() +
 ggsave("media/maybe_dalmatian_funerary_monuments.png", dpi = 300)
 ggsave("media/maybe_dalmatian_funerary_monuments.pdf", dpi = 300)
 ggsave("media/maybe_dalmatian_funerary_monuments.tiff", dpi = 300)
+
+## now to create table of all funerary monuments (yes and maybe)
+
+All_Funerary_Epigraphy_Dal <- sqldf("Select * from Epigraphy
+                  WHERE Roman_Province
+                    IS 'Dalmatia'
+                    AND (Mention_Legio_VII = 'maybe'
+                        or Mention_Legio_VII = 'yes')
+                    AND (MonumentType = 'stela'
+                        or MonumentType = 'funerary inscription'
+                        or MonumentType = 'titulus'
+                        or MonumentType = 'inscription fragment'
+                        or MonumentType = 'altar')")
+
+Appendix <- na.omit(All_Funerary_Epigraphy_Dal %>%
+                    select(MonumentID,Monument_Reference,Ancient_Site) %>%
+                    group_by(Ancient_Site))
+
+write.csv(Appendix,"r_files/output_tables/Appendix.csv", row.names = FALSE)
+
+## need to add toncininc numbers...
