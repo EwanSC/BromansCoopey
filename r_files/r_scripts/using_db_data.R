@@ -200,8 +200,8 @@ All_Funerary_Epigraphy_Dal <- sqldf("Select * from Epigraphy
                         or MonumentType = 'altar')")
 
 Appendix <- na.omit(All_Funerary_Epigraphy_Dal %>%
-                    select(MonumentID,Monument_Reference,Ancient_Site) %>%
-                    group_by(Ancient_Site))
+                    select(MonumentID,Monument_Reference,MonumentType,Ancient_Site,Modern_Find_Site,Mention_Legio_VII) %>%
+                    group_by(Mention_Legio_VII))
 
 write.csv(Appendix,"r_files/output_tables/Appendix.csv", row.names = FALSE)
 
