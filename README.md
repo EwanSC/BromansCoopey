@@ -2,7 +2,7 @@
 
 **Digitally mapping funerary monuments referring to *Legio VII* servicemen and related members of the military community in Roman *Dalmatia***
 
-![a proportional scale map of the monuments of legio seven. they cluster along the eastern Adriatic coastline, with select plots in serbia and turkey](media/all_monuments.png)
+![a proportional scale map of the monuments of legio seven. they cluster along the eastern Adriatic coastline, with select plots in Serbia and turkey](media/all_monuments.png)
 _[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) E S Coopey_
 
 ## Authors:
@@ -18,9 +18,10 @@ _[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) E S Coopey_
 
 ## Zenodo
 
-[![DOI](https://zenodo.org/badge/241529551.svg)](https://zenodo.org/badge/latestdoi/241529551)
+v.1.0.0 [![DOI](https://zenodo.org/badge/241529551.svg)](https://zenodo.org/badge/latestdoi/241529551)
+v.1.2.0
 
-## Open Context
+## Open Context Dataset
 
 <https://doi.org/10.6078/M7X34VK8>
 
@@ -44,7 +45,7 @@ dataset will facilitate future research into military life in
 *Dalmatia*, as well as investigations of other corpora of Roman
 funerary stelae, as the general form of the dataset is
 transplantable onto epigraphical material from different regions of
-the Roman world.
+the Roman world. This dataset was then analysed with R.
 
 ## Period
 
@@ -75,11 +76,21 @@ the Macquarie University Research Excellence Scholarship
 Scheme (MQRES).
 
 ## Related Publications
-Coopey, E. (2020), ‘*Fratres* *Romani*
+Coopey, E. S. (2020). ‘*Fratres* *Romani*
 in *Dalmatia*: The Social Dynamics of *Legio VII* and the
 Construction of Community and Identity through Roman Funerary
 Monuments’, MRes Thesis, Macquarie University. Accessible via:
 <http://hdl.handle.net/1959.14/1280183>
+
+Coopey, E. S., and B. Ballsun-Stanton (2021). ‘Community and 
+Identity in the Roman Seventh Legion’. _Open Context_. 
+<https://doi.org/10.6078/M7X34VK8>.
+
+Coopey, E. S., and B. Ballsun-Stanton (2023). 
+‘Archaeo-Epigraphic Data Concerning the Community of Legio VII 
+Servicemen in Dalmatia: A Dataset for “Fratres Romani in Dalmatia”’. _
+Journal of Open Archaeology Data_, 11: 3. <https://doi.org/10.5334/joad.93>.
+
 
 ## Current Disposition of the Physical Collection
 The monuments are either 1) lost, 2) in states of secondary use in
@@ -115,8 +126,7 @@ CC-BY-SA 4.0 International
 -   `thesis/` (*thesis which database is related to*)
 -   `publication_files/` (*various files related to publication of this database to OCD <https://opencontext.org/>*)
 -   `media/` (*proportional scale map outputs from r_scripts/*)
--   `r_scripts/` (*R scripts for dataset analysis*)
--   `shape_files/` (*shape files for r_scripts/*)
+-   `r_files/` (*R scripts, data, shape files, and outputs)
 
 ## Methodological Notes
 
@@ -156,6 +166,12 @@ made about the dating provided for certain monuments on online, as were
 certain pieces of geographic data. Sometimes, the author would contact
 the authors/organisers of the online resource with suggested changes.
 
+Since late 2022, R has been used to conduct statistical analyses, as 
+well as to plot, map, and visualise the corpus. Outputs for publications 
+were also created using these.
+
+
+
 ## File metadata
 
 - **Table Field Descriptions:** Provided in `data/README.md` and
@@ -166,4 +182,4 @@ the authors/organisers of the online resource with suggested changes.
     `data/README.md` and `analysis/README.md`.
 
 ## Data sources
-Roman provincial shapefiles in /r_scripts from <http://awmc.unc.edu/awmc/map_data/shapefiles/cultural_data/political_shading/roman_empire_ad_69_provinces/>
+Roman provincial shape files in /r_scripts from <http://awmc.unc.edu/awmc/map_data/shapefiles/cultural_data/political_shading/roman_empire_ad_69_provinces/>
