@@ -95,7 +95,7 @@ Journal of Open Archaeology Data_, 11: 3. <https://doi.org/10.5334/joad.93>.
 ## Current Disposition of the Physical Collection
 The monuments are either 1) lost, 2) in states of secondary use in
 modern structures, or 3) are held in museums across Croatia and
-Bosnia Hercegovina:
+Bosnia Herzegovina:
 -   Arheološka zbirka Franjevačkog samostana u Sinju/Archaeological
     collection of the Franciscan Monastery in Sinj
 -   Arheološka zbirka Marka Matijevića u Solinu/The Archaeological
