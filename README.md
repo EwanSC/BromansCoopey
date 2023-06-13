@@ -80,7 +80,7 @@ Coopey, E. S. (2020). ‘*Fratres* *Romani*
 in *Dalmatia*: The Social Dynamics of *Legio VII* and the
 Construction of Community and Identity through Roman Funerary
 Monuments’, MRes Thesis, Macquarie University. Accessible via:
-<http://hdl.handle.net/1959.14/1280183>
+<https://doi.org/10.25949/19442537.v1>
 
 Coopey, E. S., and B. Ballsun-Stanton (2021). ‘Community and 
 Identity in the Roman Seventh Legion’. _Open Context_. 
