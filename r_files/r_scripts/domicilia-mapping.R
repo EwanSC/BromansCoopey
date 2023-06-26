@@ -26,10 +26,10 @@ class(world)
 
 # lets load a roman provinces shapefile (c.69 CE)
 roman_69_provinces <- st_read(
-  "shape_files/roman_empire_ad_69_provinces.shp")
+  "r_files/shape_files/roman_empire_ad_69_provinces.shp")
 
 roman_roads <- st_read(
-  "shape_files/Roman_roads.shp")
+  "r_files/shape_files/Roman_roads.shp")
 
 Epigraphy <- read.csv('publication_files/Servicemen-places-Pleiades-links.csv')
 

@@ -133,7 +133,7 @@ ggplot() +
   scale_size (breaks = c(1,5,10)) +
   geom_sf(data = Key_Settlements_ll, aes(colour = Ancient_Site)) +
   labs(size = 'Number / Broj spomenika', colour = 'Key Sites / Ključna mjesta') +
-  ggtitle("Legio VII funerary monuments / Pogrebni spomenici Legio VII", subtitle = "Geographic Distribution / Geografska distribucija") +
+  ggtitle("Legio VII funerary monuments / nadgrobni spomenici Legio VII", subtitle = "Geographic Distribution / Geografska distribucija") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(42, 45.5)) +
   theme_void()
   
@@ -178,7 +178,7 @@ ggplot() +
   scale_size (breaks = c(1,2,3)) +
   geom_sf(data = Key_Settlements_ll, aes(colour = Ancient_Site)) +
   labs(size = 'Number / Broj spomenika', colour = 'Key Sites / Ključna mjesta') +
-  ggtitle("Possible Legio VII funerary monuments / Mogući pogrebni spomenici Legio VII", subtitle = "Geographic Distribution / Geografska distribucija") +
+  ggtitle("Possible Legio VII funerary monuments / Mogući nadgrobni spomenici Legio VII", subtitle = "Geographic Distribution / Geografska distribucija") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(42, 45.5)) +
   theme_void()
 
@@ -204,5 +204,3 @@ Appendix <- na.omit(All_Funerary_Epigraphy_Dal %>%
                     group_by(Mention_Legio_VII))
 
 write.csv(Appendix,"r_files/output_tables/Appendix.csv", row.names = FALSE)
-
-## need to add toncininc numbers...
